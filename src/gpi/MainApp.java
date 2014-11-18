@@ -26,14 +26,14 @@ public class MainApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Adam SAS");
         initRootLayout();
-        initOverview(this.SiteOverview, "Site");
-        initOverview(this.AncienneteOverview, "Anciennete");
-        initOverview(this.EtatOverview, "Etat");
-        initOverview(this.AvanceOverview, "Avance");
-        initOverview(this.ParametreOverview, "Parametre");
+        initTabOverview(this.SiteOverview, "Site");
+        initTabOverview(this.AncienneteOverview, "Anciennete");
+        initTabOverview(this.EtatOverview, "Etat");
+        initTabOverview(this.AvanceOverview, "Avance");
+        initTabOverview(this.ParametreOverview, "Parametre");
     }
 
-    public void initOverview(Tab tab,String nom){
+    public void initTabOverview(Tab tab,String nom){
         try {
             tab = new Tab();
             // Load person overview.
