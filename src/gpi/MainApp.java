@@ -75,7 +75,7 @@ public class MainApp extends Application {
             AnchorPane AncienneteOverview = (AnchorPane) loader.load();
 
             Tab tab = new Tab();
-            tab.setText("AnciennetÃ©");
+            tab.setText("Ancienneté");
             tab.setContent(AncienneteOverview);
             // Set person overview into the center of root layout.
             rootLayout.getTabs().add(tab);
@@ -107,7 +107,7 @@ public class MainApp extends Application {
             AnchorPane AvanceOverview = (AnchorPane) loader.load();
 
             Tab tab = new Tab();
-            tab.setText("AvancÃ©");
+            tab.setText("Avancé");
             tab.setContent(AvanceOverview);
             // Set person overview into the center of root layout.
             rootLayout.getTabs().add(tab);
@@ -124,7 +124,7 @@ public class MainApp extends Application {
             AnchorPane ParametreOverview = (AnchorPane) loader.load();
 
             Tab tab = new Tab();
-            tab.setText("ParamÃ¨tre");
+            tab.setText("Paramètre");
             tab.setContent(ParametreOverview);
             // Set person overview into the center of root layout.
             rootLayout.getTabs().add(tab);
