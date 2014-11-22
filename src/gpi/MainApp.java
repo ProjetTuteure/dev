@@ -1,7 +1,13 @@
 package gpi;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import gpi.metier.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
@@ -9,6 +15,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import static java.util.List.*;
 
 
 public class MainApp extends Application {
@@ -74,7 +82,20 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
+    private static ObservableList<Site> siteData = FXCollections.observableArrayList();
+
+
     public static void main(String[] args) {
+        siteData.add(new Site(1, "Limoges", ""));
+        siteData.add(new Site(1, "Tulle", ""));
+        siteData.add(new Site(1, "Paris", ""));
+        siteData.add(new Site(1, "Brive", ""));
+        siteData.add(new Site(1, "Toulouse", ""));
+        siteData.add(new Site(1, "Marseille", ""));
         launch(args);
+    }
+
+    public static ObservableList<Site> getSiteData() {
+        return siteData;
     }
 }
