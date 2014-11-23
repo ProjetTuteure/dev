@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane layoutX="59.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -36,9 +36,10 @@
             </AnchorPane>
          </bottom>
          <top>
-            <AnchorPane prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ComboBox fx:id="comboboxType" layoutX="100.0" layoutY="25.0" prefHeight="30.0" prefWidth="203.0" promptText="Selectionner par type" />
+                  <ComboBox fx:id="comboboxTypeAncienneteOverview" layoutX="98.0" layoutY="22.0" prefHeight="30.0" prefWidth="203.0" promptText="Selectionner par type" />
+                  <ComboBox fx:id="comboboxSiteAncienneteOverview" layoutX="373.0" layoutY="22.0" prefHeight="31.0" prefWidth="196.0" promptText="Sélectionner par site" />
                </children>
             </AnchorPane>
          </top>
