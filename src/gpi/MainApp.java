@@ -47,9 +47,9 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/"+nom+"Overview.fxml"));
-            AnchorPane siteOverview = (AnchorPane) loader.load();
+            AnchorPane tabOverview = (AnchorPane) loader.load();
             tab.setText(nom);
-            tab.setContent(siteOverview);
+            tab.setContent(tabOverview);
             // Set person overview into the center of root layout.
             rootLayout.getTabs().add(tab);
         } catch (IOException e) {
@@ -93,6 +93,17 @@ public class MainApp extends Application {
         siteData.add(new Site(1, "Toulouse", ""));
         siteData.add(new Site(1, "Marseille", ""));
         launch(args);
+    }
+
+    public void changerTab(Tab tab, String nom) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/" + nom + "Overview.fxml"));
+            AnchorPane tabOverview = (AnchorPane) loader.load();
+            tab.setContent(tabOverview);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
