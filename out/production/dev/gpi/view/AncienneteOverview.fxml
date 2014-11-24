@@ -29,17 +29,21 @@
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
-            <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="110.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Imprimer" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="22.5" />
+                  <Button layoutX="619.0" layoutY="40.0" mnemonicParsing="false" text="Imprimer" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
          </bottom>
          <top>
-            <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="110.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ComboBox fx:id="comboboxTypeAncienneteOverview" layoutX="98.0" layoutY="22.0" prefHeight="30.0" prefWidth="203.0" promptText="Selectionner par type" />
-                  <ComboBox fx:id="comboboxSiteAncienneteOverview" layoutX="373.0" layoutY="22.0" prefHeight="31.0" prefWidth="196.0" promptText="Sélectionner par site" />
+                  <HBox layoutX="151.0" layoutY="40.0" spacing="100.0">
+                     <children>
+                        <ComboBox fx:id="comboboxTypeAncienneteOverview" layoutX="98.0" layoutY="22.0" prefHeight="30.0" prefWidth="203.0" promptText="Selectionner par type" />
+                        <ComboBox fx:id="comboboxSiteAncienneteOverview" layoutX="373.0" layoutY="22.0" prefHeight="31.0" prefWidth="196.0" promptText="Sélectionner par site" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </top>
