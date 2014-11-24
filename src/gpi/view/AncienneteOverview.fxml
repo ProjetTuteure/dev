@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,14 +8,14 @@
    <children>
       <BorderPane layoutX="59.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="materielTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn minWidth="0.0" prefWidth="100.0" text="Nom" />
-                <TableColumn minWidth="0.0" prefWidth="100.0" text="Age" />
-                  <TableColumn minWidth="0.0" prefWidth="100.0" text="Fournisseur" />
-                  <TableColumn minWidth="0.0" prefWidth="100.0" text="Prix" />
-                  <TableColumn minWidth="0.0" prefWidth="100.0" text="Date d'achat" />
-                  <TableColumn minWidth="0.0" prefWidth="100.0" text="Etat" />
+                <TableColumn fx:id="nomMateriel" minWidth="0.0" prefWidth="100.0" text="Materiel" />
+                <TableColumn fx:id="ageMateriel" minWidth="0.0" prefWidth="100.0" text="Age" />
+                  <TableColumn fx:id="revendeurMateriel" minWidth="0.0" prefWidth="100.0" text="Revendeur" />
+                  <TableColumn fx:id="montantAchatMateriel" minWidth="0.0" prefWidth="100.0" text="Prix" />
+                  <TableColumn fx:id="dateAchatMateriel" minWidth="0.0" prefWidth="100.0" text="Date d'achat" />
+                  <TableColumn fx:id="etatMateriel" minWidth="0.0" prefWidth="100.0" text="Etat" />
               </columns>
             </TableView>
          </center>

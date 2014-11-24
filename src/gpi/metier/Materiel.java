@@ -1,24 +1,26 @@
 package gpi.metier;
 
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Materiel {
     private String numImmobMat;
-    private String nom;
+    private StringProperty nom;
     private Type type;
     private Etat etat;
-    private String dateExpirationGarantie;
+    private StringProperty dateExpirationGarantie;
     private String repertoireDriver;
     private Facture facture;
     private Site site;
 
     public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture,Site site) {
         this.numImmobMat = numImmobMat;
-        this.nom = nom;
+        this.nom.set(nom);
         this.type = type;
         this.etat = etat;
-        this.dateExpirationGarantie = dateExpirationGarantie;
+        this.dateExpirationGarantie.set(dateExpirationGarantie);
         this.repertoireDriver = repertoireDriver;
         this.facture = facture;
         this.site = site;
@@ -40,12 +42,13 @@ public class Materiel {
         this.numImmobMat = numImmobMat;
     }
 
-    public String getNom() {
+    
+    public StringProperty getNomProperty() {
         return nom;
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nom.set(nom);
     }
 
     public Type getType() {
@@ -64,12 +67,12 @@ public class Materiel {
         this.etat = etat;
     }
 
-    public String getDateExpirationGarantie() {
+    public StringProperty getDateExpirationGarantie() {
         return dateExpirationGarantie;
     }
 
     public void setDateExpirationGarantie(String dateExpirationGarantie) {
-        this.dateExpirationGarantie = dateExpirationGarantie;
+        this.dateExpirationGarantie.set(dateExpirationGarantie);
     }
 
     public String getRepertoireDriver() {

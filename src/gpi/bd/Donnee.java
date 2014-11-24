@@ -61,7 +61,7 @@ public class Donnee {
     }
 
     private void remplireRevendeurData() {
-        revendeurData.add(new Revendeur(1,"Darti","",""));
+        revendeurData.add(new Revendeur(1,"Darty","",""));
         revendeurData.add(new Revendeur(2,"Fnac","",""));
     }
 
