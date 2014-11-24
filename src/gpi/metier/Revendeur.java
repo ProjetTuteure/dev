@@ -1,17 +1,19 @@
 package gpi.metier;
 
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Revendeur {
     private int idRev;
-    private String nomRev;
+    private StringProperty nomRev;
     private String telRev;
     private String adresse;
 
     public Revendeur(int idRev, String nomRev, String telRev, String adresse) {
         this.idRev = idRev;
-        this.nomRev = nomRev;
+        this.nomRev.set(nomRev);
         this.telRev = telRev;
         this.adresse = adresse;
     }
@@ -24,12 +26,12 @@ public class Revendeur {
         this.idRev = idRev;
     }
 
-    public String getNomRev() {
+    public StringProperty getNomRev() {
         return nomRev;
     }
 
     public void setNomRev(String nomRev) {
-        this.nomRev = nomRev;
+        this.nomRev.set(nomRev);
     }
 
     public String getTelRev() {
