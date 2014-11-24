@@ -1,4 +1,4 @@
-package gpi.metier.controller;
+package gpi.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

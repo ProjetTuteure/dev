@@ -1,4 +1,4 @@
-package gpi.metier.controller;
+package gpi.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
