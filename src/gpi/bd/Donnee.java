@@ -31,6 +31,26 @@ public class Donnee {
         remplireMaterielData();
     }
 
+    public ObservableList<Site> getSiteData() {
+        return siteData;
+    }
+
+    public ObservableList<Type> getTypeData() {
+        return typeData;
+    }
+
+    public ObservableList<Revendeur> getRevendeurData() {
+        return revendeurData;
+    }
+
+    public ObservableList<Facture> getFactureData() {
+        return factureData;
+    }
+
+    public ObservableList<Materiel> getMaterielData() {
+        return materielData;
+    }
+
     private void remplireMaterielData() {
         materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0)));
         materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0)));
