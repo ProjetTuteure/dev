@@ -11,8 +11,9 @@ public class Materiel {
     private String dateExpirationGarantie;
     private String repertoireDriver;
     private Facture facture;
+    private Site site;
 
-    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture) {
+    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture,Site site) {
         this.numImmobMat = numImmobMat;
         this.nom = nom;
         this.type = type;
@@ -20,6 +21,15 @@ public class Materiel {
         this.dateExpirationGarantie = dateExpirationGarantie;
         this.repertoireDriver = repertoireDriver;
         this.facture = facture;
+        this.site = site;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
     }
 
     public String getNumImmobMat() {
