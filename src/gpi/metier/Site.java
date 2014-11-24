@@ -31,7 +31,7 @@ public class Site {
     public void setCheminImage(String cheminImage) {
         this.cheminImage = cheminImage;
     }
-
+    
     public Site(int idSite, String nomSte, String cheminImage) {
 
         this.idSite = idSite;

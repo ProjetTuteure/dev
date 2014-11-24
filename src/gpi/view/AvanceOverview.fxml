@@ -85,7 +85,7 @@
                      </GridPane.margin>
                   </TextArea>
                   <ComboBox fx:id="comboboxSiteAvanceOverview" promptText="Selectionner par site" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="comboboxAncienneteAvanceOverview" promptText="Selectectionner par ancienneté" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="comboboxAncienneteAvanceOverview" promptText="Selectionner par ancienneté" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ComboBox fx:id="comboboxTypeAvanceOverview" promptText="Selectionner par type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
