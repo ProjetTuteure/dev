@@ -13,7 +13,7 @@ public class Revendeur {
 
     public Revendeur(int idRev, String nomRev, String telRev, String adresse) {
         this.idRev = idRev;
-        this.nomRev.set(nomRev);
+        this.nomRev.setValue(nomRev);
         this.telRev = telRev;
         this.adresse = adresse;
     }

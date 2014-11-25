@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gpi.bd.Donnee;
 import gpi.metier.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -21,6 +22,7 @@ import static java.util.List.*;
 
 public class MainApp extends Application {
 
+    public static Donnee donnee;
     private Stage primaryStage;
     private TabPane rootLayout;
     private Tab SiteOverview;
@@ -86,6 +88,7 @@ public class MainApp extends Application {
 
 
     public static void main(String[] args) {
+        donnee = new Donnee();
         siteData.add(new Site(1, "Limoges", ""));
         siteData.add(new Site(1, "Tulle", ""));
         siteData.add(new Site(1, "Paris", ""));

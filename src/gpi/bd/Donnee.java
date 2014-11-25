@@ -1,6 +1,7 @@
 package gpi.bd;
 
 import gpi.metier.*;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -27,8 +28,14 @@ public class Donnee {
         remplireSiteData();
         remplireTypeData();
         remplireRevendeurData();
+        remplirFabricantData();
         remplireFactureData();
         remplireMaterielData();
+    }
+
+    private void remplirFabricantData() {
+        fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
+        fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
     }
 
     public ObservableList<Site> getSiteData() {
@@ -52,8 +59,8 @@ public class Donnee {
     }
 
     private void remplireMaterielData() {
-        materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0)));
-        materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0)));
+        materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
+        materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
     }
 
     private void remplireFactureData() {
@@ -61,15 +68,15 @@ public class Donnee {
     }
 
     private void remplireRevendeurData() {
-        revendeurData.add(new Revendeur(1,"Darty","",""));
-        revendeurData.add(new Revendeur(2,"Fnac","",""));
+        revendeurData.add(new Revendeur(1,"Darty"," "," "));
+        revendeurData.add(new Revendeur(2,"Fnac"," "," "));
     }
 
     private void remplireTypeData() {
-        typeData.add(new Type("PC",""));
-        typeData.add(new Type("Routeur",""));
-        typeData.add(new Type("Switch",""));
-        typeData.add(new Type("Clé 3G",""));
+        typeData.add(new Type("PC"," "));
+        typeData.add(new Type("Routeur"," "));
+        typeData.add(new Type("Switch"," "));
+        typeData.add(new Type("Clé 3G"," "));
     }
 
     private void remplireSiteData(){

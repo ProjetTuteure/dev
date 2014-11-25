@@ -14,16 +14,18 @@ public class Materiel {
     private String repertoireDriver;
     private Facture facture;
     private Site site;
+    private Fabricant fabricant;
 
-    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture,Site site) {
+    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant) {
         this.numImmobMat = numImmobMat;
-        this.nom.set(nom);
+        this.nom.setValue(nom);
         this.type = type;
         this.etat = etat;
-        this.dateExpirationGarantie.set(dateExpirationGarantie);
+        this.dateExpirationGarantie.setValue(dateExpirationGarantie);
         this.repertoireDriver = repertoireDriver;
         this.facture = facture;
         this.site = site;
+        this.fabricant = fabricant;
     }
 
     public Site getSite() {
