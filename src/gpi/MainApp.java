@@ -24,11 +24,11 @@ public class MainApp extends Application {
 
     public static Donnee donnee;
     private Stage primaryStage;
-    private TabPane rootLayout;
+    private static TabPane rootLayout;
     private Tab SiteOverview;
     private Tab AncienneteOverview;
     private Tab EtatOverview;
-    private Tab AvanceOverview;
+    private static Tab AvanceOverview;
     private Tab ParametreOverview;
 
     @Override
@@ -98,12 +98,17 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public void changerTab(Tab tab, String nom) {
+    public static void changerTab(String nom) {
         try {
+            MainApp.AvanceOverview=new Tab();
+            Tab tab = new Tab();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/" + nom + "Overview.fxml"));
+            tab.setText("Avance");
             AnchorPane tabOverview = (AnchorPane) loader.load();
             tab.setContent(tabOverview);
+            rootLayout.getTabs().remove(2,3);
+            rootLayout.getTabs().add(2,tab);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -59,17 +59,17 @@ public class Donnee {
     }
 
     private void remplireMaterielData() {
-        materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
-        materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
+//        materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
+  //      materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
     }
 
     private void remplireFactureData() {
-        factureData.add(new Facture("1","11/11/11", (float) 123.50,revendeurData.get(0)));
+//        factureData.add(new Facture("1","11/11/11", (float) 123.50,revendeurData.get(0)));
     }
 
     private void remplireRevendeurData() {
-        revendeurData.add(new Revendeur(1,"Darty"," "," "));
-        revendeurData.add(new Revendeur(2,"Fnac"," "," "));
+//        revendeurData.add(new Revendeur(1,"Darty"," "," "));
+//        revendeurData.add(new Revendeur(2,"Fnac"," "," "));
     }
 
     private void remplireTypeData() {
