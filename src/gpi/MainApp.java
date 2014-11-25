@@ -98,16 +98,12 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public static void changerTab(String nom) {
+    public static void changerTab(String nom,int onglet) {
         try {
-            MainApp.AvanceOverview=new Tab();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/" + nom + "Overview.fxml"));
             AnchorPane tabOverview = (AnchorPane) loader.load();
-            MainApp.AvanceOverview.setText("Avance");
-            MainApp.AvanceOverview.setContent(tabOverview);
-            rootLayout.getTabs().add(3,MainApp.AvanceOverview);
-            rootLayout.getTabs().remove(4,5);
+            rootLayout.getTabs().get(onglet).setContent(tabOverview);
         } catch (IOException e) {
             e.printStackTrace();
         }

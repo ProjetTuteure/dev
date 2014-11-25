@@ -38,8 +38,6 @@ public class RechercheAvanceController implements Initializable {
 
     @FXML
     private void goToScreen2(ActionEvent event){
-        System.out.println("1");
-        MainApp.changerTab("ResultatAvance");
-
+        MainApp.changerTab("ResultatAvance",3);
     }
 }
