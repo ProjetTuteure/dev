@@ -95,7 +95,7 @@
             </Label>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" text="Rechercher" BorderPane.alignment="TOP_LEFT">
+            <Button mnemonicParsing="false" text="Rechercher" onAction="#goToScreen2" BorderPane.alignment="TOP_LEFT">
                <BorderPane.margin>
                   <Insets left="250.0" />
                </BorderPane.margin>

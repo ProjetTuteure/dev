@@ -1,7 +1,9 @@
 package gpi.view;
 
+import gpi.MainApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -10,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RechercheAvanceController implements Initializable {
+    ScreensController myController;
+
     @FXML
     private ComboBox<String> comboboxSiteAvanceOverview;
     @FXML
@@ -26,5 +30,16 @@ public class RechercheAvanceController implements Initializable {
         comboboxSiteAvanceOverview.setItems(list1);
         comboboxAncienneteAvanceOverview.setItems(list2);
         comboboxTypeAvanceOverview.setItems(list3);
+    }
+
+    public void setScreenParent(ScreensController screenParent){
+        myController = screenParent;
+    }
+
+    @FXML
+    private void goToScreen2(ActionEvent event){
+        System.out.println("1");
+        MainApp.changerTab("ResultatAvance");
+
     }
 }
