@@ -1,30 +1,44 @@
 package gpi.metier;
 
 import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
  * Created by thibault on 22/11/14.
  */
 public class Facture {
-    private String numFac;
+    private StringProperty numFac;
     private StringProperty dateFac;
     private FloatProperty montantFac;
     private Revendeur revendeur;
 
     public Facture(String numFac, String dateFac, float montantFac, Revendeur revendeur) {
-        this.numFac = numFac;
-        this.dateFac.set(dateFac);
-        this.montantFac.set(montantFac);
+        this.numFac = new SimpleStringProperty(numFac);
+        this.dateFac= new SimpleStringProperty(dateFac);
+        this.montantFac= new SimpleFloatProperty(montantFac);
         this.revendeur = revendeur;
     }
 
+    public StringProperty dateFacProperty() {
+        return dateFac;
+    }
+
     public String getNumFac() {
+        return numFac.get();
+    }
+
+    public StringProperty numFacProperty() {
         return numFac;
     }
 
     public void setNumFac(String numFac) {
-        this.numFac = numFac;
+        this.numFac.set(numFac);
+    }
+
+    public FloatProperty montantFacProperty() {
+        return montantFac;
     }
 
     public StringProperty getDateFac() {

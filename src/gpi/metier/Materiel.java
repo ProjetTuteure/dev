@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -18,10 +19,10 @@ public class Materiel {
 
     public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant) {
         this.numImmobMat = numImmobMat;
-        this.nom.setValue(nom);
+        this.nom= new SimpleStringProperty(nom);
         this.type = type;
         this.etat = etat;
-        this.dateExpirationGarantie.setValue(dateExpirationGarantie);
+        this.dateExpirationGarantie=new SimpleStringProperty(dateExpirationGarantie);
         this.repertoireDriver = repertoireDriver;
         this.facture = facture;
         this.site = site;

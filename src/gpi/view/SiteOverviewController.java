@@ -48,11 +48,11 @@ public class SiteOverviewController {
 	
 	@FXML
 	private void initialize(){
-		MainApp.donnee=new Donnee();
-		this.ajouterVilleGridPane(MainApp.donnee.getSiteData());
+		/*MainApp.donnee=new Donnee();
+		this.ajouterVilleGridPane(MainApp.donnee.getSiteData());*/
 	}
 	
-	@FXML
+	/*@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites){
 		Label nomVille;
 		ImageView logoVille;
@@ -72,6 +72,6 @@ public class SiteOverviewController {
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp=mainApp;
-	}
+	}*/
 
 }

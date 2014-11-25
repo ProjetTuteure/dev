@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -13,7 +14,7 @@ public class Revendeur {
 
     public Revendeur(int idRev, String nomRev, String telRev, String adresse) {
         this.idRev = idRev;
-        this.nomRev.setValue(nomRev);
+        this.nomRev= new SimpleStringProperty(nomRev);
         this.telRev = telRev;
         this.adresse = adresse;
     }
@@ -27,7 +28,7 @@ public class Revendeur {
     }
 
     public StringProperty getNomRev() {
-        return nomRev;
+        return this.nomRev;
     }
 
     public void setNomRev(String nomRev) {
