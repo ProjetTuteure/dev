@@ -1,22 +1,25 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Prestataire {
 
     private int idPrest;
-    private String nomPrest;
-    private String prenomPrest;
-    private String telPrest;
-    private String societee;
+    private StringProperty nomPrest;
+    private StringProperty prenomPrest;
+    private StringProperty telPrest;
+    private StringProperty societee;
 
     public Prestataire(int idPrest, String nomPrest, String prenomPrest, String telPrest, String societee) {
         this.idPrest = idPrest;
-        this.nomPrest = nomPrest;
-        this.prenomPrest = prenomPrest;
-        this.telPrest = telPrest;
-        this.societee = societee;
+        this.nomPrest = new SimpleStringProperty(nomPrest);
+        this.prenomPrest = new SimpleStringProperty(prenomPrest);
+        this.telPrest = new SimpleStringProperty(telPrest);
+        this.societee = new SimpleStringProperty(societee);
     }
 
     public int getIdPrest() {
@@ -27,35 +30,35 @@ public class Prestataire {
         this.idPrest = idPrest;
     }
 
-    public String getPrenomPrest() {
+    public StringProperty getPrenomPrest() {
         return prenomPrest;
     }
 
     public void setPrenomPrest(String prenomPrest) {
-        this.prenomPrest = prenomPrest;
+        this.prenomPrest.setValue(prenomPrest);
     }
 
-    public String getNomPrest() {
+    public StringProperty getNomPrest() {
         return nomPrest;
     }
 
     public void setNomPrest(String nomPrest) {
-        this.nomPrest = nomPrest;
+        this.nomPrest.setValue(nomPrest);
     }
 
-    public String getTelPrest() {
+    public StringProperty getTelPrest() {
         return telPrest;
     }
 
     public void setTelPrest(String telPrest) {
-        this.telPrest = telPrest;
+        this.telPrest.setValue(telPrest);
     }
 
-    public String getSocietee() {
+    public StringProperty getSocietee() {
         return societee;
     }
 
     public void setSocietee(String societee) {
-        this.societee = societee;
+        this.societee.setValue(societee);
     }
 }

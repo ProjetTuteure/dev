@@ -1,20 +1,23 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Logiciel {
     private int idLog;
-    private String nomLog;
-    private String version;
-    private String dateExpiration;
+    private StringProperty nomLog;
+    private StringProperty version;
+    private StringProperty dateExpiration;
     private Facture facture;
 
     public Logiciel(int idLog, String nomLog, String version, String dateExpiration, Facture facture) {
         this.idLog = idLog;
-        this.nomLog = nomLog;
-        this.version = version;
-        this.dateExpiration = dateExpiration;
+        this.nomLog = new SimpleStringProperty(nomLog);
+        this.version = new SimpleStringProperty(version);
+        this.dateExpiration = new SimpleStringProperty(dateExpiration);
         this.facture = facture;
     }
 
@@ -26,28 +29,28 @@ public class Logiciel {
         this.idLog = idLog;
     }
 
-    public String getNomLog() {
+    public StringProperty getNomLog() {
         return nomLog;
     }
 
     public void setNomLog(String nomLog) {
-        this.nomLog = nomLog;
+        this.nomLog.setValue(nomLog);
     }
 
-    public String getVersion() {
+    public StringProperty getVersion() {
         return version;
     }
 
     public void setVersion(String version) {
-        this.version = version;
+        this.version.setValue(version);
     }
 
-    public String getDateExpiration() {
+    public StringProperty getDateExpiration() {
         return dateExpiration;
     }
 
     public void setDateExpiration(String dateExpiration) {
-        this.dateExpiration = dateExpiration;
+        this.dateExpiration.setValue(dateExpiration);
     }
 
     public Facture getFacture() {

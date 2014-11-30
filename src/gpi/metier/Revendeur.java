@@ -9,14 +9,14 @@ import javafx.beans.property.StringProperty;
 public class Revendeur {
     private int idRev;
     private StringProperty nomRev;
-    private String telRev;
-    private String adresse;
+    private StringProperty telRev;
+    private StringProperty adresse;
 
     public Revendeur(int idRev, String nomRev, String telRev, String adresse) {
         this.idRev = idRev;
         this.nomRev= new SimpleStringProperty(nomRev);
-        this.telRev = telRev;
-        this.adresse = adresse;
+        this.telRev = new SimpleStringProperty(telRev);
+        this.adresse = new SimpleStringProperty(adresse);
     }
 
     public int getIdRev() {
@@ -35,19 +35,19 @@ public class Revendeur {
         this.nomRev.set(nomRev);
     }
 
-    public String getTelRev() {
+    public StringProperty getTelRev() {
         return telRev;
     }
 
     public void setTelRev(String telRev) {
-        this.telRev = telRev;
+        this.telRev.setValue(telRev);
     }
 
-    public String getAdresse() {
+    public StringProperty getAdresse() {
         return adresse;
     }
 
     public void setAdresse(String adresse) {
-        this.adresse = adresse;
+        this.adresse.setValue(adresse);
     }
 }

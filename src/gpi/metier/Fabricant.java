@@ -1,21 +1,24 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Fabricant {
     private int idFab;
-    private String nomFab;
-    private String telFab;
-    private String adresseFab;
+    private StringProperty nomFab;
+    private StringProperty telFab;
+    private StringProperty adresseFab;
 
 
     public Fabricant(int idFab, String nomFab, String telFab, String adresseFab) {
 
         this.idFab = idFab;
-        this.nomFab = nomFab;
-        this.telFab = telFab;
-        this.adresseFab = adresseFab;
+        this.nomFab = new SimpleStringProperty(nomFab);
+        this.telFab = new SimpleStringProperty(telFab);
+        this.adresseFab = new SimpleStringProperty(adresseFab);
     }
 
     public int getIdFab() {
@@ -26,27 +29,27 @@ public class Fabricant {
         this.idFab = idFab;
     }
 
-    public String getTelFab() {
+    public StringProperty getTelFab() {
         return telFab;
     }
 
     public void setTelFab(String telFab) {
-        this.telFab = telFab;
+        this.telFab.setValue(telFab);
     }
 
-    public String getAdresseFab() {
+    public StringProperty getAdresseFab() {
         return adresseFab;
     }
 
     public void setAdresseFab(String adresseFab) {
-        this.adresseFab = adresseFab;
+        this.adresseFab.setValue(adresseFab);
     }
 
-    public String getNomFab() {
+    public StringProperty getNomFab() {
         return nomFab;
     }
 
     public void setNomFab(String nomFab) {
-        this.nomFab = nomFab;
+        this.nomFab.setValue(nomFab);
     }
 }

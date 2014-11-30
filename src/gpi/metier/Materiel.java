@@ -7,23 +7,23 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Materiel {
-    private String numImmobMat;
+    private StringProperty numImmobMat;
     private StringProperty nom;
     private Type type;
     private Etat etat;
     private StringProperty dateExpirationGarantie;
-    private String repertoireDriver;
+    private StringProperty repertoireDriver;
     private Facture facture;
     private Site site;
     private Fabricant fabricant;
 
     public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant) {
-        this.numImmobMat = numImmobMat;
+        this.numImmobMat = new SimpleStringProperty(numImmobMat);
         this.nom= new SimpleStringProperty(nom);
         this.type = type;
         this.etat = etat;
         this.dateExpirationGarantie=new SimpleStringProperty(dateExpirationGarantie);
-        this.repertoireDriver = repertoireDriver;
+        this.repertoireDriver = new SimpleStringProperty(repertoireDriver);
         this.facture = facture;
         this.site = site;
         this.fabricant = fabricant;
@@ -37,12 +37,12 @@ public class Materiel {
         this.site = site;
     }
 
-    public String getNumImmobMat() {
+    public StringProperty getNumImmobMat() {
         return numImmobMat;
     }
 
     public void setNumImmobMat(String numImmobMat) {
-        this.numImmobMat = numImmobMat;
+        this.numImmobMat.setValue(numImmobMat);
     }
 
     
@@ -78,12 +78,12 @@ public class Materiel {
         this.dateExpirationGarantie.set(dateExpirationGarantie);
     }
 
-    public String getRepertoireDriver() {
+    public StringProperty getRepertoireDriver() {
         return repertoireDriver;
     }
 
     public void setRepertoireDriver(String repertoireDriver) {
-        this.repertoireDriver = repertoireDriver;
+        this.repertoireDriver.setValue(repertoireDriver);
     }
 
     public Facture getFacture() {

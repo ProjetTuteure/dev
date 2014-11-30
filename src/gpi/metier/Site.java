@@ -1,21 +1,23 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * Created by thibault on 22/11/14.
  */
 public class Site {
-    private SimpleIntegerProperty idSite;
-    private SimpleStringProperty nomSte;
-    private SimpleStringProperty cheminImage;
+    private IntegerProperty idSite;
+    private StringProperty nomSte;
+    private StringProperty cheminImage;
 
     public String getNomSte() {
         return this.nomSte.get();
     }
 
-    public SimpleStringProperty getNomSteProperty()
+    public StringProperty getNomSteProperty()
     {
     	return this.nomSte;
     }
@@ -23,7 +25,7 @@ public class Site {
         this.nomSte.set(nomSte);
     }
 
-    public SimpleIntegerProperty getIdSiteProperty() {
+    public IntegerProperty getIdSiteProperty() {
         return idSite;
     }
     
@@ -40,7 +42,7 @@ public class Site {
         return cheminImage.get();
     }
     
-    public SimpleStringProperty getCheminImageProperty()
+    public StringProperty getCheminImageProperty()
     {
     	return this.cheminImage;
     }
