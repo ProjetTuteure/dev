@@ -6,7 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="34.0" layoutY="17.0" text="Paramètres" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
@@ -40,30 +39,30 @@
             <Label text="Gerer les maintenances" GridPane.rowIndex="5" />
             <Label text="Gerer les matériels" GridPane.rowIndex="6" />
             <Label text="Gerer les prestataires" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button fx:id="AddEtat" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="addFabr" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="addFact" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="addLog" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="addMaint" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="addMat" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button fx:id="addPrest" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label text="Gerer les revendeurs" GridPane.rowIndex="8" />
             <Label text="Gerer les sites" GridPane.rowIndex="9" />
             <Label text="Gerer les types" GridPane.rowIndex="10" />
             <Label text="Gerer les utilisateurs" GridPane.rowIndex="11" />
             <Label text="Gerer les utilisations" GridPane.rowIndex="12" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Button mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Button fx:id="addRev" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button fx:id="addSite" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button fx:id="addType" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Button fx:id="addUser" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Button fx:id="addUse" mnemonicParsing="false" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Button fx:id="suppEtat" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="suppFab" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="suppFact" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="suppLog" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="suppMaint" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button fx:id="suppMat" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Button fx:id="suppPrest" mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="9" />
             <Button mnemonicParsing="false" text="Supprimer..." GridPane.columnIndex="2" GridPane.rowIndex="10" />
