@@ -144,7 +144,10 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handlemodSite(ActionEvent event) {
+		boolean okClicked = MainApp.showModSiteDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

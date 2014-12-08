@@ -7,6 +7,7 @@ import java.util.List;
 import gpi.bd.Donnee;
 import gpi.metier.*;
 import gpi.view.addSiteDialogController;
+import gpi.view.modSiteDialogController;
 import gpi.view.suppSiteDialogController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -132,7 +133,7 @@ public class MainApp extends Application {
 
 			addSiteDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setPerson(site);
+			// controller.setPerson(site);
 
 			dialogStage.showAndWait();
 
@@ -158,6 +159,32 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 
 			suppSiteDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModSiteDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modSiteDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un site");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modSiteDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
