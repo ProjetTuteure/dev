@@ -1,6 +1,9 @@
 package gpi.view;
 
 
+import gpi.MainApp;
+import gpi.metier.Site;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,152 +18,157 @@ public class ParametreController implements Initializable{
 	
 
 	@FXML
-	private void addEtat(ActionEvent event) {
+	private void handleaddEtat(ActionEvent event) {
 	
 	}
 	@FXML
-	private void modEtat(ActionEvent event) {
+	private void handlemodEtat(ActionEvent event) {
 	
 	}
 	@FXML
-	private void suppEtat(ActionEvent event) {
+	private void handlesuppEtat(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addFabr(ActionEvent event) {
+	private void handleaddFabr(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modFabr(ActionEvent event) {
+	private void handlemodFabr(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppFabr(ActionEvent event) {
+	private void handlesuppFabr(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addFact(ActionEvent event) {
+	private void handleaddFact(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modFact(ActionEvent event) {
+	private void handlemodFact(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppFact(ActionEvent event) {
+	private void handlesuppFact(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addLog(ActionEvent event) {
+	private void handleaddLog(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modLog(ActionEvent event) {
+	private void handlemodLog(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppLog(ActionEvent event) {
+	private void handlesuppLog(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addMaint(ActionEvent event) {
+	private void handleaddMaint(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modMaint(ActionEvent event) {
+	private void handlemodMaint(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppMaint(ActionEvent event) {
+	private void handlesuppMaint(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addMat(ActionEvent event) {
+	private void handleaddMat(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modMat(ActionEvent event) {
+	private void handlemodMat(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppMat(ActionEvent event) {
+	private void handlesuppMat(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addPrest(ActionEvent event) {
+	private void handleaddPrest(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modPrest(ActionEvent event) {
+	private void handlemodPrest(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppPrest(ActionEvent event) {
+	private void handlesuppPrest(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addRev(ActionEvent event) {
+	private void handleaddRev(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modRev(ActionEvent event) {
+	private void handlemodRev(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppRev(ActionEvent event) {
+	private void handlesuppRev(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addSite(ActionEvent event) {
+	private void handleaddSite(ActionEvent event) {
+		  Site site = new Site(0, null, null);
+		  boolean okClicked = MainApp.showAddSiteDialog(site);
+		  if (okClicked) {
+		    
+		  }
 	  
 	}
 	@FXML
-	private void modSite(ActionEvent event) {
+	private void handlemodSite(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppSite(ActionEvent event) {
+	private void handlesuppSite(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addType(ActionEvent event) {
+	private void handleaddType(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modType(ActionEvent event) {
+	private void handlemodType(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppType(ActionEvent event) {
+	private void handlesuppType(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addUser(ActionEvent event) {
+	private void handleaddUser(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modUser(ActionEvent event) {
+	private void handlemodUser(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppUser(ActionEvent event) {
+	private void handlesuppUser(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void addUse(ActionEvent event) {
+	private void handleaddUse(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void modUse(ActionEvent event) {
+	private void handlemodUse(ActionEvent event) {
 	  
 	}
 	@FXML
-	private void suppUse(ActionEvent event) {
+	private void handlesuppUse(ActionEvent event) {
 	  
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	

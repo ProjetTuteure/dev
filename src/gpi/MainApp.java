@@ -6,6 +6,7 @@ import java.util.List;
 
 import gpi.bd.Donnee;
 import gpi.metier.*;
+import gpi.view.addSiteDialogController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,15 +16,15 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import static java.util.List.*;
 
 
 public class MainApp extends Application {
 
     public static Donnee donnee;
-    private Stage primaryStage;
+    private static Stage primaryStage;
     private static TabPane rootLayout;
     private Tab SiteOverview;
     private Tab AncienneteOverview;
@@ -113,4 +114,30 @@ public class MainApp extends Application {
     public static ObservableList<Site> getSiteData() {
         return siteData;
     }
+    
+    public static boolean showAddSiteDialog(Site site) {
+    	  try {
+    	    FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/addSiteDialog.fxml"));
+    	    AnchorPane page = (AnchorPane) loader.load();
+    	    Stage dialogStage = new Stage();
+    	    dialogStage.setTitle("Ajouter un nouveau site");
+    	    dialogStage.initModality(Modality.WINDOW_MODAL);
+    	    dialogStage.initOwner(primaryStage);
+    	    Scene scene = new Scene(page);
+    	    dialogStage.setScene(scene);
+
+    	    addSiteDialogController controller = loader.getController();
+    	    controller.setDialogStage(dialogStage);
+    	    controller.setPerson(site);
+
+    	    dialogStage.showAndWait();
+
+    	    return controller.isOkClicked();
+
+    	  } catch (IOException e) {
+
+    	    e.printStackTrace();
+    	    return false;
+    	  }
+    	}
 }
