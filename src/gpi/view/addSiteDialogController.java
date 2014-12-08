@@ -1,12 +1,12 @@
 package gpi.view;
 
 import gpi.metier.Site;
-
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Dialogs;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 
 
