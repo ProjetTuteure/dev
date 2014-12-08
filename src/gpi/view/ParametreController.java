@@ -1,16 +1,22 @@
 package gpi.view;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 
 
-public class ParametreController {
+
+public class ParametreController implements Initializable{
+	
 
 	@FXML
 	private void addEtat(ActionEvent event) {
-	 
+	
 	}
 	@FXML
 	private void modEtat(ActionEvent event) {
@@ -152,7 +158,11 @@ public class ParametreController {
 	private void suppUse(ActionEvent event) {
 	  
 	}
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
