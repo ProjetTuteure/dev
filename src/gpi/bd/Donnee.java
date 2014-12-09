@@ -83,10 +83,10 @@ public class Donnee {
         siteData.add(new Site(1, "Agen", "sources/images/logo-ville-agen0.png"));
         siteData.add(new Site(2, "Bordeaux", "sources/images/bordeaux.jpg"));
         siteData.add(new Site(3, "Chateauroux", "sources/images/chateauroux.jpg"));
-        siteData.add(new Site(4, "Gueret", "sources/images/gueret.jpg"));
+        siteData.add(new Site(4, "Gueret", "sources/images/Gueret.jpg"));
         siteData.add(new Site(5, "Limoges", "sources/images/limoges.jpg"));
         siteData.add(new Site(6, "Montlucon", "sources/images/montlucon.jpg"));
-        siteData.add(new Site(7, "Saint-Agnant", "sources/images/saintAgnan.jpg"));
+        siteData.add(new Site(7, "Saint-Agnant", "sources/images/saintAgnan.png"));
         siteData.add(new Site(8, "Saint-Junien", "sources/images/saintJunien.jpg"));
     }
 

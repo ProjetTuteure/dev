@@ -55,23 +55,38 @@ public class SiteOverviewController{
 	
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites){
-		/*Label nomVille;
+		Label nomVille;
 		ImageView logoVille;
-		NodeSite nodeSite;
-		for(int i=0;i<this.getNbSite()/4;i++){
-			//On affecte aux Node les objets.
-			nomVille=new Label(sites.get(i).getNomSte());
-			logoVille=new ImageView(new Image(sites.get(i).getCheminImage()));
-			nodeSite=new NodeSite(sites.get(i));
-			//On positionne les Node
-			for (int j=0;j<4;j++){
-				gp_site.add(nodeSite,j,i);
-				//gp_site.add(logoVille,j,i);
-			}	
-		}*/
-		Label label=new Label("Coucou");
-		gp_site.add(label, 1, 1);
+		int k=0;
+		int indiceSite;
+		for(int i=0;i<this.getNbSite();i++)
+		{
+			System.out.println(i);
+			for(int j=0;j<4;j++)
+			{
+				indiceSite=0;
+				System.out.println("j:"+j);
+				System.out.println("k:"+k);
+				logoVille=new ImageView(new Image(sites.get(indiceSite).getCheminImage()));
+				logoVille.setFitWidth(200);
+				logoVille.setFitHeight(175);
+				logoVille.setTranslateY(-12);
+				gp_site.add(logoVille,j,k);
+				indiceSite++;
+			}
+			k++;
+		}
 	}
+	/*	Label label=new Label("Coucou");
+		Label label2=new Label("Bonjour");
+		ImageView imageView=new ImageView(new Image("sources/images/limoges.jpg"));
+		imageView.setFitWidth(200);
+		imageView.setFitHeight(175);
+		imageView.setTranslateY(-12);
+		gp_site.add(label, 0, 0);
+		gp_site.add(label2,0,1);
+		gp_site.add(imageView,1,1);
+		gp_site.add(label,1,1);*/
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp=mainApp;
