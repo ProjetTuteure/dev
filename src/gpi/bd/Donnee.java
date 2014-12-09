@@ -86,7 +86,7 @@ public class Donnee {
         siteData.add(new Site(4, "Gueret", "sources/images/gueret.jpg"));
         siteData.add(new Site(5, "Limoges", "sources/images/limoges.jpg"));
         siteData.add(new Site(6, "Montlucon", "sources/images/montlucon.jpg"));
-        siteData.add(new Site(7, "Saint-Agnant", "sources/images/saintAgnan.jpg"));
+        siteData.add(new Site(7, "Saint-Agnant", "sources/images/saintAgnan.png"));
         siteData.add(new Site(8, "Saint-Junien", "sources/images/saintJunien.jpg"));
     }
 

@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -55,22 +56,17 @@ public class SiteOverviewController{
 	
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites){
-		/*Label nomVille;
-		ImageView logoVille;
-		NodeSite nodeSite;
-		for(int i=0;i<this.getNbSite()/4;i++){
-			//On affecte aux Node les objets.
-			nomVille=new Label(sites.get(i).getNomSte());
-			logoVille=new ImageView(new Image(sites.get(i).getCheminImage()));
-			nodeSite=new NodeSite(sites.get(i));
-			//On positionne les Node
-			for (int j=0;j<4;j++){
-				gp_site.add(nodeSite,j,i);
-				//gp_site.add(logoVille,j,i);
-			}	
-		}*/
-		Label label=new Label("Coucou");
-		gp_site.add(label, 1, 1);
+        for(int i=0;i<this.getNbSite()/4;i++){
+            for (int j=0;j<4;j++){
+                BorderPane tempo = new BorderPane();
+                ImageView image = new ImageView(sites.get((i*4)+j).getCheminImage());
+                image.setFitHeight(50);
+                image.setFitWidth(50);
+                tempo.setCenter(image);
+                tempo.setBottom(new Label(sites.get((i*4)+j).getNomSte()));
+                gp_site.add(tempo,j,i);
+            }
+        }
 	}
 	
 	public void setMainApp(MainApp mainApp){
