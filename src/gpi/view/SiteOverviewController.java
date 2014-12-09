@@ -68,16 +68,6 @@ public class SiteOverviewController{
             }
         }
 	}
-	/*	Label label=new Label("Coucou");
-		Label label2=new Label("Bonjour");
-		ImageView imageView=new ImageView(new Image("sources/images/limoges.jpg"));
-		imageView.setFitWidth(200);
-		imageView.setFitHeight(175);
-		imageView.setTranslateY(-12);
-		gp_site.add(label, 0, 0);
-		gp_site.add(label2,0,1);
-		gp_site.add(imageView,1,1);
-		gp_site.add(label,1,1);*/
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp=mainApp;
