@@ -21,53 +21,10 @@
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <BorderPane.margin>
                         <Insets bottom="100.0" top="100.0" />
                     </BorderPane.margin>
-                    <children>
-                        <ImageView fitHeight="200.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-                            <image>
-                                <Image url="@../../sources/images/pc.jpg" />
-                            </image>
-                        </ImageView>
-                        <Label text="PC" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-                            <image>
-                                <Image url="@../../sources/images/routeur.png" />
-                            </image>
-                        </ImageView>
-                        <Label text="routeur" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
-                            <image>
-                                <Image url="@../../sources/images/switch.jpg" />
-                            </image>
-                        </ImageView>
-                        <Label text="switch" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-                            <image>
-                                <Image url="@../../sources/images/cle3G.PNG" />
-                            </image>
-                        </ImageView>
-                        <Label text="clé 3G" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Label>
-                    </children>
                 </GridPane>
             </center>
          <top>
