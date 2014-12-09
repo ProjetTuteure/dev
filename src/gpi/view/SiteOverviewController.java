@@ -9,13 +9,14 @@ import gpi.bd.Donnee;
 import gpi.metier.Site;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-public class SiteOverviewController {
+public class SiteOverviewController{
 	@FXML
 	private GridPane gp_site;
 	
@@ -48,30 +49,32 @@ public class SiteOverviewController {
 	
 	@FXML
 	private void initialize(){
-		/*MainApp.donnee=new Donnee();
-		this.ajouterVilleGridPane(MainApp.donnee.getSiteData());*/
+		MainApp.donnee=new Donnee();
+		this.ajouterVilleGridPane(this.mainApp.donnee.getSiteData());
 	}
 	
-	/*@FXML
+	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites){
-		Label nomVille;
+		/*Label nomVille;
 		ImageView logoVille;
+		NodeSite nodeSite;
 		for(int i=0;i<this.getNbSite()/4;i++){
-			nomVille=new Label();
-			logoVille=new ImageView();
 			//On affecte aux Node les objets.
-			nomVille.setText(sites.get(i).getNomSte());
-			logoVille.setImage(new Image(sites.get(i).getCheminImage()));
+			nomVille=new Label(sites.get(i).getNomSte());
+			logoVille=new ImageView(new Image(sites.get(i).getCheminImage()));
+			nodeSite=new NodeSite(sites.get(i));
 			//On positionne les Node
 			for (int j=0;j<4;j++){
-				gp_site.add(nomVille,j,i);
-				gp_site.add(logoVille,j,i);
+				gp_site.add(nodeSite,j,i);
+				//gp_site.add(logoVille,j,i);
 			}	
-		}
+		}*/
+		Label label=new Label("Coucou");
+		gp_site.add(label, 1, 1);
 	}
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp=mainApp;
-	}*/
+	}
 
 }

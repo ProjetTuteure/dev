@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Diagramme de gantt projet tuteuré" company="" webLink="http://" view-date="2014-11-01" view-index="0" gantt-divider-location="420" resource-divider-location="300" version="2.0" locale="fr_FR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Diagramme de gantt projet tuteuré" company="" webLink="http://" view-date="2014-11-01" view-index="0" gantt-divider-location="537" resource-divider-location="300" version="2.0" locale="fr_FR">
     <description/>
     <view zooming-state="default:8" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="56" order="0"/>
-        <field id="tpd4" name="Date de début" width="20" order="1"/>
-        <field id="tpd5" name="Date de fin" width="23" order="2"/>
+        <field id="tpd3" name="Nom" width="51" order="0"/>
+        <field id="tpd4" name="Date de début" width="23" order="1"/>
+        <field id="tpd5" name="Date de fin" width="25" order="2"/>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nom" width="70" order="0"/>
-        <field id="1" name="Rôle par défaut" width="29" order="1"/>
+        <field id="0" name="Nom" width="56" order="0"/>
+        <field id="1" name="Rôle par défaut" width="43" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -92,9 +92,9 @@
         <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="233" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="86" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="97" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="272" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="125" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="136" visible="true"/>
     </taskdisplaycolumns>
     <previous/>
     <roles roleset-name="Default"/>
