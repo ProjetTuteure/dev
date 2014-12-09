@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Diagramme de gantt projet tuteuré" company="" webLink="http://" view-date="2014-11-01" view-index="0" gantt-divider-location="537" resource-divider-location="300" version="2.0" locale="fr_FR">
+<?xml version="1.0" encoding="UTF-8"?><project name="Diagramme de gantt projet tuteuré" company="" webLink="http://" view-date="2014-10-01" view-index="0" gantt-divider-location="537" resource-divider-location="300" version="2.0" locale="fr_FR">
     <description/>
-    <view zooming-state="default:8" id="gantt-chart">
+    <view zooming-state="default:9" id="gantt-chart">
         <field id="tpd3" name="Nom" width="51" order="0"/>
         <field id="tpd4" name="Date de début" width="23" order="1"/>
         <field id="tpd5" name="Date de fin" width="25" order="2"/>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nom" width="56" order="0"/>
-        <field id="1" name="Rôle par défaut" width="43" order="1"/>
+        <field id="0" name="Nom" width="50" order="0"/>
+        <field id="1" name="Rôle par défaut" width="50" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -35,49 +35,68 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Debut du projet" color="#000000" meeting="true" start="2014-11-03" duration="0" complete="0" expand="true"/>
-        <task id="7" name="Analyse du sujet" color="#8cb6ce" meeting="false" start="2014-11-03" duration="6" complete="0" expand="true">
-            <depend id="9" type="2" difference="4" hardness="Strong"/>
+        <task id="0" name="Debut du projet et premier RDV avec le client" color="#000000" meeting="true" start="2014-10-02" duration="0" complete="0" expand="true">
+            <depend id="7" type="2" difference="0" hardness="Strong"/>
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="7" name="Analyse du sujet" color="#8cb6ce" meeting="false" start="2014-10-02" duration="11" complete="0" expand="true">
+            <depend id="58" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="9" name="Création des maquettes" color="#8cb6ce" meeting="false" start="2014-10-02" duration="11" complete="0" expand="true">
+            <depend id="58" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="58" name="Remise de rapport au client" color="#000000" meeting="true" start="2014-10-17" duration="0" complete="0" expand="true">
+            <depend id="62" type="2" difference="0" hardness="Strong"/>
+            <depend id="64" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="62" name="Modification des maquettes" meeting="false" start="2014-10-17" duration="15" complete="0" expand="true">
+            <depend id="69" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="64" name="Création d'un mcd" meeting="false" start="2014-10-17" duration="15" complete="0" expand="true">
+            <depend id="69" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="69" name="Deuxiéme Rendez vous avec le client" color="#000000" meeting="true" start="2014-11-07" duration="0" complete="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="9" name="Création des maquettes" color="#8cb6ce" meeting="false" start="2014-11-17" duration="6" complete="0" expand="true">
+        <task id="12" name="Prise en main de javafx" color="#8cb6ce" meeting="false" start="2014-11-07" duration="5" complete="0" expand="true">
             <depend id="14" type="2" difference="0" hardness="Strong"/>
+            <depend id="70" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="12" name="Prise en main de javafx" color="#8cb6ce" meeting="false" start="2014-11-11" duration="5" complete="0" expand="true">
-            <depend id="14" type="2" difference="5" hardness="Strong"/>
+        <task id="14" name="implImentation des interfaces graphiques" color="#8cb6ce" meeting="false" start="2014-11-14" duration="22" complete="0" expand="true">
+            <depend id="23" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="14" name="implémentation des interfaces graphiques" color="#8cb6ce" meeting="false" start="2014-11-25" duration="3" complete="0" expand="true">
-            <depend id="21" type="2" difference="1" hardness="Strong"/>
+        <task id="70" name="Implémentation des classes métier" meeting="false" start="2014-11-14" duration="2" complete="0" expand="true">
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="16" name="Analyse du sujet : méthodes agiles" color="#8cb6ce" meeting="false" start="2014-11-24" duration="5" complete="0" expand="true"/>
-        <task id="21" name="Création d'un jeu d'essai pour tester les interfaces" color="#8cb6ce" meeting="false" start="2014-12-01" duration="11" complete="0" expand="true"/>
-        <task id="23" name="Rendu au client d'une première version" color="#000000" meeting="true" start="2014-12-15" duration="0" complete="0" expand="true">
+        <task id="21" name="Création d'un jeu d'essai pour tester les interfaces" color="#8cb6ce" meeting="false" start="2014-11-18" duration="20" complete="0" expand="true">
+            <depend id="23" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="23" name="Rendu au client d'une première version" color="#000000" meeting="true" start="2014-12-16" duration="0" complete="0" expand="true">
             <depend id="27" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="27" name="Création de la Base de données" color="#8cb6ce" meeting="false" start="2014-12-15" duration="5" complete="0" expand="true">
-            <depend id="29" type="2" difference="15" hardness="Strong"/>
-            <depend id="31" type="2" difference="15" hardness="Strong"/>
-            <depend id="34" type="2" difference="15" hardness="Strong"/>
-            <depend id="37" type="2" difference="15" hardness="Strong"/>
-            <depend id="39" type="2" difference="15" hardness="Strong"/>
+        <task id="27" name="Création de la Base de données" color="#8cb6ce" meeting="false" start="2014-12-16" duration="15" complete="0" expand="true">
+            <depend id="76" type="2" difference="0" hardness="Strong"/>
+            <depend id="91" type="2" difference="0" hardness="Strong"/>
+            <depend id="92" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="29" name="implémentation de &quot;Par Site&quot;" color="#8cb6ce" meeting="false" start="2015-01-12" duration="4" complete="0" expand="true">
-            <depend id="41" type="2" difference="2" hardness="Strong"/>
+        <task id="76" name="Connexion logiciel-base de données" meeting="false" start="2015-01-06" duration="34" complete="0" expand="true">
+            <task id="80" name="Creation des requetes" meeting="false" start="2015-01-06" duration="34" complete="0" expand="true">
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="82" name="Création des managers" meeting="false" start="2015-01-06" duration="34" complete="0" expand="true">
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+            </task>
         </task>
-        <task id="31" name="Implémentation de &quot;Par ancienneté&quot;" color="#8cb6ce" meeting="false" start="2015-01-12" duration="3" complete="0" expand="true">
-            <depend id="41" type="2" difference="2" hardness="Strong"/>
+        <task id="91" name="Connexion logiciel-réseau" meeting="false" start="2015-01-06" duration="34" complete="0" expand="true">
+            <depend id="41" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="34" name="Implémentation de &quot;Par état&quot;" color="#8cb6ce" meeting="false" start="2015-01-12" duration="3" complete="0" expand="true">
-            <depend id="41" type="2" difference="2" hardness="Strong"/>
+        <task id="92" name="Implémentation de la prise en main a distance" meeting="false" start="2015-01-06" duration="34" complete="0" expand="true">
+            <depend id="41" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="37" name="Implémentation de &quot;Recherche avancée&quot;" color="#8cb6ce" meeting="false" start="2015-01-12" duration="4" complete="0" expand="true">
-            <depend id="41" type="2" difference="2" hardness="Strong"/>
+        <task id="41" name="Tests" color="#8cb6ce" meeting="false" start="2015-02-23" duration="6" complete="0" expand="true">
+            <depend id="43" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="39" name="Implémentation de &quot;Paramètres&quot;" color="#8cb6ce" meeting="false" start="2015-01-12" duration="5" complete="0" expand="true">
-            <depend id="41" type="2" difference="2" hardness="Strong"/>
-        </task>
-        <task id="41" name="Tests" color="#8cb6ce" meeting="false" start="2015-01-21" duration="10" complete="0" expand="true"/>
-        <task id="43" name="Fin du projet" color="#000000" meeting="true" start="2015-03-02" duration="0" complete="0" expand="true"/>
+        <task id="43" name="Fin du projet" color="#000000" meeting="true" start="2015-03-03" duration="0" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
@@ -92,9 +111,9 @@
         <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="272" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="271" visible="true"/>
         <displaycolumn property-id="tpd4" order="1" width="125" visible="true"/>
-        <displaycolumn property-id="tpd5" order="2" width="136" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="135" visible="true"/>
     </taskdisplaycolumns>
     <previous/>
     <roles roleset-name="Default"/>
