@@ -41,48 +41,48 @@
             <Label text="Gerer les maintenances" GridPane.rowIndex="6" />
             <Label text="Gerer les matériels" GridPane.rowIndex="7" />
             <Label text="Gerer les prestataires" GridPane.rowIndex="8" />
-            <Button fx:id="addEtat" mnemonicParsing="false" onAction="#handleaddEtat" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="addFabr" mnemonicParsing="false" onAction="#handleaddFabr" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="addFact" mnemonicParsing="false" onAction="#handleaddFact" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="addLog" mnemonicParsing="false" onAction="#handleaddLog" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="addMaint" mnemonicParsing="false" onAction="#handleaddMaint" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button fx:id="addMat" mnemonicParsing="false" onAction="#handleaddMat" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Button fx:id="addPrest" mnemonicParsing="false" onAction="#handleaddPrest" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#handleaddEtat" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handleaddFabr" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleaddFact" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handleaddLog" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handleaddMaint" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#handleaddMat" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#handleaddPrest" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label text="Gerer les revendeurs" GridPane.rowIndex="9" />
             <Label text="Gerer les sites" GridPane.rowIndex="10" />
             <Label text="Gerer les types" GridPane.rowIndex="11" />
             <Label text="Gerer les utilisateurs" GridPane.rowIndex="12" />
             <Label text="Gerer les utilisations" GridPane.rowIndex="13" />
-            <Button fx:id="addRev" mnemonicParsing="false" onAction="#handleaddRev" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Button fx:id="addSite" mnemonicParsing="false" onAction="#handleaddSite" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Button fx:id="addType" mnemonicParsing="false" onAction="#handleaddType" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Button fx:id="addUser" mnemonicParsing="false" onAction="#handleaddUser" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Button fx:id="addUse" mnemonicParsing="false" onAction="#handleaddUse" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Button fx:id="suppEtat" mnemonicParsing="false" onAction="#handlesuppEtat" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button fx:id="suppFabr" mnemonicParsing="false" onAction="#handlesuppFabr" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button fx:id="suppFact" mnemonicParsing="false" onAction="#handlesuppFact" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="suppLog" mnemonicParsing="false" onAction="#handlesuppLog" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Button fx:id="suppMaint" mnemonicParsing="false" onAction="#handlesuppMaint" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Button fx:id="suppMat" mnemonicParsing="false" onAction="#handlesuppMat" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Button fx:id="suppPrest" mnemonicParsing="false" onAction="#handlesuppPrest" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="8" />
-            <Button fx:id="suppRev" mnemonicParsing="false" onAction="#handlesuppRev" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="9" />
-            <Button fx:id="suppSite" mnemonicParsing="false" onAction="#handlesuppSite" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="10" />
-            <Button fx:id="suppType" mnemonicParsing="false" onAction="#handlesuppType" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="11" />
-            <Button fx:id="suppUser" mnemonicParsing="false" onAction="#handlesuppUser" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="12" />
-            <Button fx:id="suppUse" mnemonicParsing="false" onAction="#handlesuppUse" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="13" />
-            <Button mnemonicParsing="false" text="Changer le chemin d'accès au dossier" GridPane.columnIndex="1" />
-            <Button fx:id="modEtat" mnemonicParsing="false" onAction="#handlemodEtat" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="modUse" mnemonicParsing="false" onAction="#handlemodUse" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="13" />
-            <Button fx:id="modUser" mnemonicParsing="false" onAction="#handlemodUser" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="12" />
-            <Button fx:id="modType" mnemonicParsing="false" onAction="#handlemodType" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <Button fx:id="modSite" mnemonicParsing="false" onAction="#handlemodSite" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="10" />
-            <Button fx:id="modRev" mnemonicParsing="false" onAction="#handlemodRev" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Button fx:id="modPrest" mnemonicParsing="false" onAction="#handlemodPrest" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Button fx:id="modMat" mnemonicParsing="false" onAction="#handlemodMat" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Button fx:id="modMaint" mnemonicParsing="false" onAction="#handlemodMaint" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Button fx:id="modLog" mnemonicParsing="false" onAction="#handlemodLog" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button fx:id="modFact" mnemonicParsing="false" onAction="#handlemodFact" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="modFabr" mnemonicParsing="false" onAction="#handlemodFabr" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleaddRev" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#handleaddSite" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Button mnemonicParsing="false" onAction="#handleaddType" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handleaddUser" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handleaddUse" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Button mnemonicParsing="false" onAction="#handlesuppEtat" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handlesuppFabr" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handlesuppFact" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handlesuppLog" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handlesuppMaint" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#handlesuppMat" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#handlesuppPrest" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#handlesuppRev" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#handlesuppSite" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="10" />
+            <Button mnemonicParsing="false" onAction="#handlesuppType" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handlesuppUser" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handlesuppUse" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="13" />
+            <Button mnemonicParsing="false" onAction="#handleChoose" text="Changer le chemin d'accès au dossier" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handlemodEtat" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handlemodUse" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <Button mnemonicParsing="false" onAction="#handlemodUser" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handlemodType" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handlemodSite" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Button mnemonicParsing="false" onAction="#handlemodRev" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#handlemodPrest" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#handlemodMat" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#handlemodMaint" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#handlemodLog" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handlemodFact" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handlemodFabr" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

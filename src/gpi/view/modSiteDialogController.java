@@ -10,6 +10,7 @@ import javafx.scene.control.Dialogs;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -29,6 +30,7 @@ public class modSiteDialogController {
 	@FXML
 	private ComboBox<String> comboboxSiteMod;
 
+	
 	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
 			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
 			"Saint Agan", "Saint Junien");
@@ -88,7 +90,13 @@ public class modSiteDialogController {
 
 	@FXML
 	private void handleChoose(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open File");
+		File file = fileChooser.showOpenDialog(null); // you could pass a stage reference here if you wanted.
 
+		if (file != null){
+		}// do something interesting with the file.
+	
 	}
 
 }

@@ -3,12 +3,15 @@ package gpi.view;
 import gpi.MainApp;
 import gpi.metier.Site;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 public class ParametreController implements Initializable {
 
@@ -208,5 +211,16 @@ public class ParametreController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
-
+	
+	@FXML
+	private void handleChoose(ActionEvent event) {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Open directory");
+        File selectedDirectory =
+                directoryChooser.showDialog(null);
+         
+        if(selectedDirectory != null){
+        }
+	
+	}
 }

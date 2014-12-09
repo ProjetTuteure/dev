@@ -1,16 +1,15 @@
 package gpi.view;
 
-import gpi.metier.Site;
+
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Dialogs;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import gpi.metier.Site;
 
-import java.awt.*;
-import java.io.File;
 
 public class addSiteDialogController {
 	@FXML
@@ -77,7 +76,15 @@ public class addSiteDialogController {
 
 	@FXML
 	private void handleChoose(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open File");
+		File file = fileChooser.showOpenDialog(null); // you could pass a stage reference here if you wanted.
 
+		if (file != null){
+		}// do something interesting with the file.
+	
 	}
+	
+	
 
 }
