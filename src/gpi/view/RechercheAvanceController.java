@@ -32,12 +32,8 @@ public class RechercheAvanceController implements Initializable {
         comboboxTypeAvanceOverview.setItems(list3);
     }
 
-    public void setScreenParent(ScreensController screenParent){
-        myController = screenParent;
-    }
-
     @FXML
-    private void goToScreen2(ActionEvent event){
+     private void goToScreen2(ActionEvent event){
         MainApp.changerTab("ResultatAvance",3);
     }
 }
