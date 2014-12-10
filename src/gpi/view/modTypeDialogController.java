@@ -1,19 +1,16 @@
 package gpi.view;
 
-import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialogs;
+
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.File;
 
 public class modTypeDialogController {
@@ -28,7 +25,6 @@ public class modTypeDialogController {
 	@FXML
 	private ComboBox<String> comboboxSiteMod;
 
-	
 	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
 			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
 			"Saint Agan", "Saint Junien");
@@ -49,7 +45,6 @@ public class modTypeDialogController {
 	@FXML
 	private void handleOk() {
 
-
 		okClicked = true;
 		dialogStage.close();
 
@@ -60,17 +55,15 @@ public class modTypeDialogController {
 		dialogStage.close();
 	}
 
-	
-
 	@FXML
 	private void handleChoose(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open File");
 		File file = fileChooser.showOpenDialog(null);
 
-		if (file != null){
+		if (file != null) {
 		}
-	
+
 	}
 
 }

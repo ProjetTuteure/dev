@@ -131,7 +131,6 @@ public class MainApp extends Application {
 
 			addSiteDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			// controller.setPerson(site);
 
 			dialogStage.showAndWait();
 
@@ -195,7 +194,7 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-	
+
 	public static boolean showAddTypeDialog(Type type) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
@@ -210,7 +209,6 @@ public class MainApp extends Application {
 
 			addTypeDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			// controller.setPerson(site);
 
 			dialogStage.showAndWait();
 
@@ -236,6 +234,32 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 
 			modTypeDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showSuppTypeDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppTypeDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un type");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppTypeDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
