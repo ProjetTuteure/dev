@@ -13,8 +13,7 @@ public class addTypeDialogController {
 	private TextField NameSiteField;
 	@FXML
 	private Stage dialogStage;
-	// @FXML
-	// private Site site;
+
 	@FXML
 	private boolean okClicked = false;
 

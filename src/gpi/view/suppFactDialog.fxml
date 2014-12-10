@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="224.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.suppTypeDialogController">
+<AnchorPane prefHeight="224.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.suppFactDialogController">
   <children>
     <HBox id="HBox" alignment="CENTER" minWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
       <children>
@@ -23,8 +23,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Type a supprimer" />
-            <ComboBox fx:id="comboboxTypeSupp" prefWidth="150.0" GridPane.columnIndex="1" />
+            <Label text="Facture a supprimer" />
+            <ComboBox fx:id="comboboxFactSupp" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
   </children>

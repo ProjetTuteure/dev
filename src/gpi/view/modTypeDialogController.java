@@ -23,15 +23,14 @@ public class modTypeDialogController {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxSiteMod;
+	private ComboBox<String> comboboxTypeMod;
 
-	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
-			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
-			"Saint Agan", "Saint Junien");
+	ObservableList<String> list1 = FXCollections.observableArrayList(
+			"Ordinateur", "Switch", "Routeur", "ClÃ© 3G");
 
 	@FXML
 	private void initialize() {
-		comboboxSiteMod.setItems(list1);
+		comboboxTypeMod.setItems(list1);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

@@ -1,27 +1,29 @@
 package gpi.view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
+//import gpi.bd.Donnee;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+//import javafx.scene.control.ComboBox;
 
 import javafx.stage.Stage;
 
-public class suppTypeDialogController {
+public class modFactDialogController {
+
 	@FXML
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
-	@FXML
-	private ComboBox<String> comboboxTypeSupp;
 
-	ObservableList<String> list1 = FXCollections.observableArrayList(
-			"Ordinateur", "Switch", "Routeur", "Clé 3G");
+	//
+	// @FXML
+	// private ComboBox<String> comboboxSiteSupp;
+	//
+	// Donnee list1 = new Donnee();
 
 	@FXML
 	private void initialize() {
-		comboboxTypeSupp.setItems(list1);
+		// comboboxSiteSupp.setItems(list1.getFactureData());
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -34,6 +36,7 @@ public class suppTypeDialogController {
 
 	@FXML
 	private void handleOk() {
+
 		okClicked = true;
 		dialogStage.close();
 

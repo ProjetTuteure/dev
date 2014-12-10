@@ -1,8 +1,7 @@
 package gpi.view;
 
 import gpi.MainApp;
-import gpi.metier.Site;
-import gpi.metier.Type;
+import gpi.metier.*;
 
 import java.io.File;
 import java.net.URL;
@@ -47,17 +46,27 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddFact(ActionEvent event) {
+		Facture facture = new Facture(null, null, 0, null);
+		boolean okClicked = MainApp.showAddFactDialog(facture);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodFact(ActionEvent event) {
+		boolean okClicked = MainApp.showModFactDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppFact(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppFactDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
