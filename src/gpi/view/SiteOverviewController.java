@@ -56,21 +56,40 @@ public class SiteOverviewController{
 	
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites){
-        for(int i=0;i<this.getNbSite()/4;i++){
-            for (int j=0;j<4;j++){
+       setRow();
+        for(int i=0;i<getNbLigne();i++){
+            for (int j=0;j<4 && (i*4)+j < this.getNbSite() ;j++){
                 BorderPane tempo = new BorderPane();
                 ImageView image = new ImageView(sites.get((i*4)+j).getCheminImage());
-                image.setFitHeight(50);
-                image.setFitWidth(50);
+                image.setFitHeight(75);
+                image.setFitWidth(75);
                 tempo.setCenter(image);
                 tempo.setBottom(new Label(sites.get((i*4)+j).getNomSte()));
                 gp_site.add(tempo,j,i);
             }
         }
+
 	}
 	
 	public void setMainApp(MainApp mainApp){
 		this.mainApp=mainApp;
 	}
 
+
+    private void setRow(){
+        for(int i = 0; i < getNbLigne();i++) {
+            RowConstraints row = new RowConstraints();
+            row.setPercentHeight(100/getNbLigne());
+            gp_site.getRowConstraints().add(row);
+        }
+    }
+
+    public int getNbLigne() {
+        if( this.getNbSite() % 4 ==0){
+            return this.getNbSite()/4;
+        }
+        else{
+            return this.getNbSite()/4 + 1;
+        }
+    }
 }
