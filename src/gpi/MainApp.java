@@ -7,6 +7,7 @@ import java.util.List;
 import gpi.bd.Donnee;
 import gpi.metier.*;
 import gpi.view.addSiteDialogController;
+import gpi.view.addTypeDialogController;
 import gpi.view.modSiteDialogController;
 import gpi.view.suppSiteDialogController;
 import javafx.application.Application;
@@ -186,6 +187,33 @@ public class MainApp extends Application {
 
 			modSiteDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean showAddTypeDialog(Type type) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addTypeDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un nouveau Type");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addTypeDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			// controller.setPerson(site);
 
 			dialogStage.showAndWait();
 

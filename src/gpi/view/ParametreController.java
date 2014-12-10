@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.metier.Site;
+import gpi.metier.Type;
 
 import java.io.File;
 import java.net.URL;
@@ -164,7 +165,11 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddType(ActionEvent event) {
+		Type type = new Type(null, null);
+		boolean okClicked = MainApp.showAddTypeDialog(type);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
