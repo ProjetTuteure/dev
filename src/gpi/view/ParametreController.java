@@ -174,7 +174,10 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handlemodType(ActionEvent event) {
+		boolean okClicked = MainApp.showModTypeDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

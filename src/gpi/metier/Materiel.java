@@ -93,4 +93,12 @@ public class Materiel {
     public void setFacture(Facture facture) {
         this.facture = facture;
     }
+    
+    public Fabricant getFabricant() {
+        return fabricant;
+    }
+
+    public void setFabricant(Fabricant fabricant) {
+        this.fabricant = fabricant;
+    }
 }
