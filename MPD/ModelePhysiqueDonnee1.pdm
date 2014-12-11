@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project Name="Untitled1" Author="Cedric" Version="1.0" Date="11/12/2014" DefaultPackage="1">
+  <Package Id="1" Name="Core" Description="" Color="-1">
+    <Table X="25" Y="27" Width="159" Height="59" Id="1" Name="Site" Comment="">
+      <Key Name="idSite" Comment="" Size="0" Type="Text" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomSite" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="32" Y="150" Width="160" Height="84" Id="2" Name="Utilisateur" Comment="">
+      <Key Name="idUtilisateur" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomUtilisateur" Comment="" Size="0" Type="Text" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="prenomUtilisateur" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="telUtilisateur" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="22" Y="278" Width="160" Height="100" Id="3" Name="Maintenance" Comment="">
+      <Key Name="idMaintenance" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="objetMaintenance" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="descriptionMaintenance" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="coutMaintenance" Comment="" Size="0" Type="Long" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="dateMaintenance" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="22" Y="422" Width="160" Height="100" Id="4" Name="Prestataire" Comment="">
+      <Key Name="idPrestataire" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomPrestataire" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="prenomPrestataire" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="telPrestataire" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="societePrestataire" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="294" Y="230" Width="160" Height="132" Id="5" Name="Materiel" Comment="">
+      <Key Name="numImmob" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="True" DefaultValue="" />
+      <Key Name="intituleMateriel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="typeMateriel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="etatMateriel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="garantieMateriel" Comment="" Size="0" Type="Date" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="statutMateriel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="modeleMateriel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="290" Y="420" Width="160" Height="84" Id="6" Name="Facture" Comment="">
+      <Key Name="idFacture" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="True" DefaultValue="" />
+      <Key Name="dateFacture" Comment="" Size="0" Type="Date" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="montantFacture" Comment="" Size="0" Type="Decimal" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="typeFacture" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="493" Y="38" Width="160" Height="84" Id="7" Name="Fabricant" Comment="">
+      <Key Name="idFabricant" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomFabricant" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="telFabricant" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="adresseFabricant" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="495" Y="170" Width="160" Height="84" Id="8" Name="Revendeur" Comment="">
+      <Key Name="idRevendeur" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomRevendeur" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="telRevendeur" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="adresseRevendeur" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+    <Table X="483" Y="316" Width="160" Height="84" Id="9" Name="Logiciel" Comment="">
+      <Key Name="idLogiciel" Comment="" Size="0" Type="Integer" IsNull="False" IsIndex="False" IsUnique="False" IsPrimary="True" AutoIncrement="False" DefaultValue="" />
+      <Key Name="nomLogiciel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="versionLogiciel" Comment="" Size="0" Type="Text" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+      <Key Name="dateExpirationLogiciel" Comment="" Size="0" Type="Date" IsNull="True" IsIndex="False" IsUnique="False" IsPrimary="False" AutoIncrement="False" DefaultValue="" />
+    </Table>
+  </Package>
+</Project>
