@@ -8,6 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
+
+/**
+ * Created by Kevin 
+ */
+
 public class suppTypeDialogController {
 	@FXML
 	private Stage dialogStage;

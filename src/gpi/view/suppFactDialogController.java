@@ -4,6 +4,11 @@ import javafx.fxml.FXML;
 
 import javafx.stage.Stage;
 
+
+/**
+ * Created by Kevin 
+ */
+
 public class suppFactDialogController {
 	@FXML
 	private Stage dialogStage;

@@ -12,6 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.DirectoryChooser;
 
+
+/**
+ * Created by Kevin 
+ */
+
 public class ParametreController implements Initializable {
 
 	@FXML

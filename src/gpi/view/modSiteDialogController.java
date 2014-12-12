@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+
+/**
+ * Created by Kevin 
+ */
+
 public class modSiteDialogController {
 	@FXML
 	private TextField NameSiteField;

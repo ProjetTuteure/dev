@@ -5,6 +5,11 @@ import javafx.scene.control.TextField;
 
 import javafx.stage.Stage;
 
+
+/**
+ * Created by Kevin 
+ */
+
 public class addLogDialogController {
 	@FXML
 	private TextField NameSiteField;
