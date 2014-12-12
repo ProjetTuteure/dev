@@ -115,12 +115,18 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handlemodMaint(ActionEvent event) {
+		boolean okClicked = MainApp.showModMaintDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppMaint(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppMaintDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
