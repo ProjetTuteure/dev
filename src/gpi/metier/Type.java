@@ -22,6 +22,10 @@ public class Type {
     public void setNom(String nom) {
         this.nom.setValue(nom);
     }
+    
+    public String getNomString(){
+    	return this.nom.get();
+    }
 
     public StringProperty getCheminImage() {
         return cheminImage;
