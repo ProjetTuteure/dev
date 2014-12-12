@@ -13,9 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-
 /**
- * Created by Kevin 
+ * Created by Kevin
  */
 
 public class modSiteDialogController {

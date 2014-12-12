@@ -8,9 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-
 /**
- * Created by Kevin 
+ * Created by Kevin
  */
 
 public class suppTypeDialogController {
@@ -23,17 +22,17 @@ public class suppTypeDialogController {
 
 	private Donnee donneetype = new Donnee();
 
-	private ObservableList<String> listNom ;
+	private ObservableList<String> listNom;
 
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
-				
+
 		for (Type type : donneetype.getTypeData()) {
 			listNom.add(type.getNomString());
 		}
-			comboboxTypeSupp.setItems(listNom);
-		
+		comboboxTypeSupp.setItems(listNom);
+
 	}
 
 	public void setDialogStage(Stage dialogStage) {
