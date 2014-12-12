@@ -126,6 +126,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Ajouter un nouveau site");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -152,6 +153,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Supprimer un site");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -178,6 +180,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Modifier un site");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -204,6 +207,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Ajouter un nouveau Type");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -230,6 +234,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Modifier un Type");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -256,6 +261,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Supprimer un type");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -282,6 +288,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Ajouter une nouvelle facture");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -308,6 +315,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Modifier une facture");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -334,6 +342,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Supprimer une facture");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -350,7 +359,7 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-	
+
 	public static boolean showAddFabrDialog(Fabricant fabricant) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
@@ -360,6 +369,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Ajouter un nouveau fabricant");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -376,7 +386,7 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-	
+
 	public static boolean showModFabrDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
@@ -386,6 +396,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Modifier un fabricant");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
@@ -402,7 +413,7 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
-	
+
 	public static boolean showSuppFabrDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
@@ -412,10 +423,92 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Supprimer un fabricant");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
 			suppFabrDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showAddLogDialog(Logiciel logiciel) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addLogDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un nouveau logiciel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addLogDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModLogDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modLogDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un logiciel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modLogDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showSuppLogDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppLogDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un logiciel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppLogDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();

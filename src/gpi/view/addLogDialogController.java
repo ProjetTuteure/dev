@@ -1,18 +1,22 @@
 package gpi.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 import javafx.stage.Stage;
 
-public class modFabrDialogController {
-
+public class addLogDialogController {
+	@FXML
+	private TextField NameSiteField;
 	@FXML
 	private Stage dialogStage;
+
 	@FXML
 	private boolean okClicked = false;
 
 	@FXML
 	private void initialize() {
+
 	}
 
 	public void setDialogStage(Stage dialogStage) {

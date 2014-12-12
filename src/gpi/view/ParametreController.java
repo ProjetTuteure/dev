@@ -81,17 +81,27 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddLog(ActionEvent event) {
+		Logiciel logiciel = new Logiciel(0, null, null, null, null);
+		boolean okClicked = MainApp.showAddLogDialog(logiciel);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodLog(ActionEvent event) {
+		boolean okClicked = MainApp.showModLogDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppLog(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppLogDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

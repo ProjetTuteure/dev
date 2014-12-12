@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 import javafx.stage.Stage;
 
-public class modFabrDialogController {
+public class modLogDialogController {
 
 	@FXML
 	private Stage dialogStage;

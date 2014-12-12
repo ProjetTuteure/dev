@@ -1,10 +1,6 @@
 package gpi.view;
-//
-//import javafx.collections.FXCollections;
-//import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
-//import javafx.scene.control.ComboBox;
 
 import javafx.stage.Stage;
 
@@ -13,7 +9,6 @@ public class suppFactDialogController {
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
-
 
 	@FXML
 	private void initialize() {

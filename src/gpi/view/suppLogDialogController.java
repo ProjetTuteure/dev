@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 
 import javafx.stage.Stage;
 
-public class modFabrDialogController {
-
+public class suppLogDialogController {
 	@FXML
 	private Stage dialogStage;
 	@FXML
@@ -25,7 +24,6 @@ public class modFabrDialogController {
 
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
 		dialogStage.close();
 
