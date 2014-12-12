@@ -106,7 +106,11 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddMaint(ActionEvent event) {
+		Maintenance maintenance = new Maintenance(0, null, null, null, 0);
+		boolean okClicked = MainApp.showAddMaintDialog(maintenance);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
