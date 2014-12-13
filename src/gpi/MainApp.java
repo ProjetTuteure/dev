@@ -32,6 +32,7 @@ public class MainApp extends Application {
 	private Tab ParametreOverview;
 
     //pour garder en memoire l'etat des onglet : utiliser ces variable :
+	private static List<Object> tab0;
     private static List<Object> tab1;
     private static List<Object> tab2;
     private static List<Object> tab3;
@@ -91,6 +92,9 @@ public class MainApp extends Application {
 
     public static void setCritere(Object o){
         switch (getActiveTab()) {
+        	case 0:
+        		tab0.add(o);
+        		break;
             case 1:
                 tab1.add(o);
                 break;
