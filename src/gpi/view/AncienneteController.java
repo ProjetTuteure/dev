@@ -70,6 +70,12 @@ public class AncienneteController implements Initializable {
 		comboboxTypeAncienneteOverview.setOnAction((event) -> {
 			actionOnCombo(materiel);
 		});
+		
+		materielTable.setOnMouseClicked((event) -> {
+			MainApp.setCritere(materielTable.getSelectionModel().getSelectedItem());
+			System.out.println(materielTable.getSelectionModel().getSelectedItem().getNom().toString());
+			MainApp.changerTab("DetailMachine");
+		});
 	}
 	
 	public void actionOnCombo(ObservableList<Materiel> materiel){
