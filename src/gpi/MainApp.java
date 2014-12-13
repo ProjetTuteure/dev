@@ -130,19 +130,19 @@ public class MainApp extends Application {
     public static void removeCritere(){
         switch (getActiveTab()) {
             case 0:
-                tab0.remove(tab0.size());
+                tab0.remove(tab0.size()-1);
                 break;
             case 1:
-                tab1.remove(tab1.size());
+                tab1.remove(tab1.size()-1);
                 break;
             case 2:
-                tab2.remove(tab2.size());
+                tab2.remove(tab2.size()-1);
                 break;
             case 3:
-                tab3.remove(tab3.size());
+                tab3.remove(tab3.size()-1);
                 break;
             case 4:
-                tab4.remove(tab4.size());
+                tab4.remove(tab4.size()-1);
                 break;
         }
     }
