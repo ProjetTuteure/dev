@@ -32,10 +32,10 @@ public class MainApp extends Application {
 	private Tab ParametreOverview;
 
     //pour garder en memoire l'etat des onglet : utiliser ces variable :
-    private List<Object> tab1;
-    private List<Object> tab2;
-    private List<Object> tab3;
-    private List<Object> tab4;
+    private static List<Object> tab1;
+    private static List<Object> tab2;
+    private static List<Object> tab3;
+    private static List<Object> tab4;
     ////////////////////////////////////////////
 
 	@Override
@@ -89,7 +89,42 @@ public class MainApp extends Application {
 		}
 	}
 
-	/**
+    public static void setCritere(Object o){
+        switch (getActiveTab()) {
+            case 1:
+                tab1.add(o);
+                break;
+            case 2:
+                tab2.add(o);
+                break;
+            case 3:
+                tab3.add(o);
+                break;
+            case 4:
+                tab4.add(o);
+                break;
+        }
+    }
+
+    public static Object getCritere(int index){
+        switch (getActiveTab()) {
+            case 1:
+                return tab1.get(index);
+            case 2:
+                return tab2.get(index);
+            case 3:
+                return tab3.get(index);
+            default:
+                return tab4.get(index);
+        }
+
+    }
+
+    public static int getActiveTab(){
+        return rootLayout.getSelectionModel().getSelectedIndex();
+    }
+
+    /**
 	 * Returns the main stage.
 	 * 
 	 * @return
@@ -98,22 +133,24 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 
-	private static ObservableList<Site> siteData = FXCollections
-			.observableArrayList();
+	private static ObservableList<Site> siteData = FXCollections.observableArrayList();
 
 	public static void main(String[] args) {
 		donnee = new Donnee();
+		
 		siteData.add(new Site(1, "Limoges", ""));
 		siteData.add(new Site(1, "Tulle", ""));
 		siteData.add(new Site(1, "Paris", ""));
 		siteData.add(new Site(1, "Brive", ""));
 		siteData.add(new Site(1, "Toulouse", ""));
 		siteData.add(new Site(1, "Marseille", ""));
+		
 		launch(args);
 	}
 
-	public static void changerTab(String nom, int onglet) {
+	public static void changerTab(String nom) {
 		try {
+            int onglet = getActiveTab();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/" + nom
 					+ "Overview.fxml"));
@@ -601,6 +638,249 @@ public class MainApp extends Application {
 			dialogStage.setScene(scene);
 
 			suppMaintDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showAddMatDialog(Materiel materiel) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un nouveau materiel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModMatDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un materiel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean showSuppMatDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer une maintenance");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showAddPrestDialog(Prestataire prest) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addPrestDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un prestataire");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addPrestDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModPrestDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modPrestDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un prestataire");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modPrestDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showSuppPrestDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppPrestDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un prestataire");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppPrestDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showAddRevDialog(Revendeur rev) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addRevDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModRevDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modRevDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showSuppRevDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppRevDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();

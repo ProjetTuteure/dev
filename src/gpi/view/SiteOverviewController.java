@@ -1,19 +1,12 @@
 package gpi.view;
 
-import java.awt.Panel;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Site;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -77,7 +70,11 @@ public class SiteOverviewController {
                     @Override
                     public void handle(MouseEvent arg0) {
                         System.out.println(((Label)(tempo.getBottom())).getId());
-                        mainApp.changerTab("Type", getOnglet());
+                        mainApp.changerTab("Type");
+                        String id = ((Label)(tempo.getBottom())).getId();
+                        mainApp.setCritere((Integer)(Integer.parseInt(id)));
+                        mainApp.changerTab("Type");
+
                     }
                 });
                 gp_site.add(tempo, j, i);

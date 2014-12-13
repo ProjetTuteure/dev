@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <Label text="Type a supprimer" />
-            <ComboBox fx:id="comboboxTypeSupp" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxtype" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
   </children>

@@ -1,8 +1,11 @@
 package gpi.view;
 
+import gpi.bd.Donnee;
+import gpi.metier.Facture;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -11,16 +14,27 @@ import javafx.stage.Stage;
 
 public class addLogDialogController {
 	@FXML
-	private TextField NameSiteField;
-	@FXML
 	private Stage dialogStage;
 
 	@FXML
 	private boolean okClicked = false;
+	
+	@FXML
+	private ComboBox<String> comboboxfact;
+	
+	private Donnee donneesite = new Donnee();
+
+	private ObservableList<String> listfact;
+	
+	
 
 	@FXML
 	private void initialize() {
-
+		listfact = FXCollections.observableArrayList();
+		for (Facture fac : donneesite.getFactureData()) {
+			listfact.add(fac.getNumFac());
+		}
+		comboboxfact.setItems(listfact);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

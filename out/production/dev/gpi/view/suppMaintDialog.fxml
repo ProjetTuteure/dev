@@ -25,9 +25,9 @@
         </rowConstraints>
          <children>
             <Label text="Objet de la maintenance a supprimer" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxobj" prefWidth="150.0" GridPane.columnIndex="1" />
             <Label text="Date de la maintenance a supprimer" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboboxdate" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
   </children>

@@ -19,21 +19,6 @@ import javafx.stage.DirectoryChooser;
 public class ParametreController implements Initializable {
 
 	@FXML
-	private void handleaddEtat(ActionEvent event) {
-
-	}
-
-	@FXML
-	private void handlemodEtat(ActionEvent event) {
-
-	}
-
-	@FXML
-	private void handlesuppEtat(ActionEvent event) {
-
-	}
-
-	@FXML
 	private void handleaddFabr(ActionEvent event) {
 		Fabricant fabricant = new Fabricant(0, null, null, null);
 		boolean okClicked = MainApp.showAddFabrDialog(fabricant);
@@ -135,47 +120,77 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddMat(ActionEvent event) {
+		Materiel materiel = new Materiel(null, null, null, null, null, null, null, null, null);
+		boolean okClicked = MainApp.showAddMatDialog(materiel);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodMat(ActionEvent event) {
+		boolean okClicked = MainApp.showModMatDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppMat(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppMatDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handleaddPrest(ActionEvent event) {
+		Prestataire prest = new Prestataire(0, null, null, null, null);
+		boolean okClicked = MainApp.showAddPrestDialog(prest);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodPrest(ActionEvent event) {
+		boolean okClicked = MainApp.showModPrestDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppPrest(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppPrestDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handleaddRev(ActionEvent event) {
+		Revendeur rev = new Revendeur(0, null, null, null);
+		boolean okClicked = MainApp.showAddRevDialog(rev);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodRev(ActionEvent event) {
+		boolean okClicked = MainApp.showModRevDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppRev(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppRevDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

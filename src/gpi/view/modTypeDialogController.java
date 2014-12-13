@@ -1,13 +1,12 @@
 package gpi.view;
 
+import gpi.bd.Donnee;
+import gpi.metier.Type;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-
-import javafx.scene.control.TextField;
-
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -18,8 +17,7 @@ import java.io.File;
  */
 
 public class modTypeDialogController {
-	@FXML
-	private TextField NameSiteField;
+
 
 	@FXML
 	private Stage dialogStage;
@@ -29,12 +27,18 @@ public class modTypeDialogController {
 	@FXML
 	private ComboBox<String> comboboxTypeMod;
 
-	ObservableList<String> list1 = FXCollections.observableArrayList(
-			"Ordinateur", "Switch", "Routeur", "Clé 3G");
+	private Donnee donneetype = new Donnee();
+
+	private ObservableList<String> listNom;
 
 	@FXML
 	private void initialize() {
-		comboboxTypeMod.setItems(list1);
+		listNom = FXCollections.observableArrayList();
+
+		for (Type type : donneetype.getTypeData()) {
+			listNom.add(type.getNomString());
+		}
+		comboboxTypeMod.setItems(listNom);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

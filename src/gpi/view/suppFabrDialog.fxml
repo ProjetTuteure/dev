@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <Label text="Fabricant a supprimer" />
-            <ComboBox fx:id="comboboxFactSupp" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxfabr" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
   </children>

@@ -48,6 +48,10 @@ public class Donnee {
 
     public ObservableList<Facture> getFactureData() {
         return factureData;
+    } 
+    
+    public ObservableList<Fabricant> getFabricantData() {
+        return fabricantData;
     }
 
     public ObservableList<Materiel> getMaterielData() {
@@ -60,13 +64,17 @@ public class Donnee {
     }
 
     private void remplireMaterielData() {
-        materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
-        materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
+        materielData.add(new Materiel("1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
+        materielData.add(new Materiel("2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
+		materielData.add(new Materiel("3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE, "31/12/2014", "", factureData.get(0), siteData.get(0), fabricantData.get(0)));
+		materielData.add(new Materiel("4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE, "31/12/2015", "", factureData.get(0), siteData.get(1), fabricantData.get(0)));
+		materielData.add(new Materiel("5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE, "05/02/2015", "", factureData.get(1), siteData.get(2), fabricantData.get(0)));
+		materielData.add(new Materiel("6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE, "14/02/2017", "", factureData.get(1), siteData.get(3), fabricantData.get(0)));
     }
 
     private void remplireFactureData() {
         factureData.add(new Facture("1","11/11/11", (float) 123.50,revendeurData.get(0)));
-        factureData.add(new Facture("2","11/11/11", (float) 99,revendeurData.get(1)));
+        factureData.add(new Facture("2","12/12/12", (float) 99,revendeurData.get(1)));
     }
 
     private void remplireRevendeurData() {
@@ -79,6 +87,10 @@ public class Donnee {
         typeData.add(new Type("Routeur","sources/images/routeur.png"));
         typeData.add(new Type("Switch","sources/images/switch.jpg"));
         typeData.add(new Type("Clé 3G","sources/images/cle3G.PNG"));
+        typeData.add(new Type("PC"," "));
+        typeData.add(new Type("Routeur"," "));
+        typeData.add(new Type("Switch"," "));
+        typeData.add(new Type("Clï¿½ 3G"," "));
     }
 
     private void remplireSiteData(){
@@ -103,5 +115,12 @@ public class Donnee {
     }
 
 
-
+    public Materiel getMateriel(String value) {
+        for(Materiel mat : materielData){
+            if(value == mat.getNumImmobMat().getValue()){
+                return mat;
+            }
+        }
+        return null;
+    }
 }
