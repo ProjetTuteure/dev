@@ -78,6 +78,9 @@ public class Materiel {
     	return etat.name();
     }
 
+    public StringProperty getEtatStringProperty(){
+    	return new SimpleStringProperty(etat.name());
+    }
     public StringProperty getDateExpirationGarantie() {
         return dateExpirationGarantie;
     }

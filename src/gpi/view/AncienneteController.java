@@ -1,8 +1,12 @@
 package gpi.view;
 
+import gpi.MainApp;
+import gpi.bd.Donnee;
 import gpi.metier.Facture;
 import gpi.metier.Materiel;
 import gpi.metier.Revendeur;
+import gpi.metier.Site;
+import gpi.metier.Type;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by Julien on 24/11/2014.
+ * Created by Victor on 24/11/2014.
  */
 public class AncienneteController implements Initializable {
 
@@ -28,39 +32,66 @@ public class AncienneteController implements Initializable {
 	@FXML
 	private TableColumn<Materiel, String> nomMateriel;
 	@FXML
-	private TableColumn<Materiel, String> ageMateriel;
-	@FXML
-	private TableColumn<Materiel, String> revendeurMateriel;
-	@FXML
-	private TableColumn<Materiel, String> montantAchatMateriel;
-	@FXML
 	private TableColumn<Materiel, String> dateAchatMateriel;
 	@FXML
 	private TableColumn<Materiel, String> etatMateriel;
-
-	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
-			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
-			"Saint Agan", "Saint Junien", "Tout");
-	ObservableList<String> list2 = FXCollections.observableArrayList(
-			"Ordinateur", "Switch", "Routeur", "Clé 3G", "Tout");
+	@FXML
+	private TableColumn<Materiel, String> finGarantieMateriel;
+	@FXML
+	private TableColumn<Materiel, String> revendeurMateriel;
+	@FXML
+	private TableColumn<Materiel, String> fabricantMateriel;
+	@FXML
+	private TableColumn<Materiel, String> siteMateriel;
+	
+	private MainApp mainApp;
+	
+	public AncienneteController() {
+    }
+	
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
-		comboboxSiteAncienneteOverview.setItems(list1);
-		comboboxTypeAncienneteOverview.setItems(list2);
-
+		MainApp.donnee = new Donnee();
+		ObservableList<Materiel> materiel=this.mainApp.donnee.getMaterielData();
+		ObservableList<Site> site=this.mainApp.donnee.getSiteData();
+		ObservableList<Type> type=this.mainApp.donnee.getTypeData();
+		this.addDonneeTableView(materiel,site,type);
+	}
+	
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
+	}
+	
+	public void addDonneeTableView(ObservableList<Materiel> materiel,ObservableList<Site> site,ObservableList<Type> type){
+		ObservableList<String> listSite = FXCollections.observableArrayList();
+		ObservableList<String> listType = FXCollections.observableArrayList();
+		
+		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue()
 				.getNomProperty());
-		ageMateriel.setCellValueFactory(cellData -> cellData.getValue()
-				.getDateExpirationGarantie());
-		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue()
-				.getFacture().getRevendeur().getNomRev());
-		montantAchatMateriel.setCellValueFactory(cellData -> cellData
-				.getValue().getSite().getNomSteProperty());
 		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue()
 				.getFacture().getDateFac());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue()
-				.getNomProperty());
+				.getEtatStringProperty());
+		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue()
+				.getDateExpirationGarantie());
+		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue()
+				.getFacture().getRevendeur().getNomRev());
+		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue()
+				.getFabricant().getNomFab());
+		siteMateriel.setCellValueFactory(cellData -> cellData.getValue()
+				.getSite().getNomSteProperty());
+		
+		for(Site s : site){
+			listSite.add(s.getNomSte());
+		}
+		for(Type t : type){
+			listType.add(t.getNomString());
+		}
+		
+		comboboxSiteAncienneteOverview.setItems(listSite);
+		comboboxTypeAncienneteOverview.setItems(listType);
 	}
 }
