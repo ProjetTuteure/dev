@@ -112,6 +112,8 @@ public class MainApp extends Application {
 
     public static Object getCritere(int index){
         switch (getActiveTab()) {
+        	case 0:
+        		return tab0.get(index);
             case 1:
                 return tab1.get(index);
             case 2:
