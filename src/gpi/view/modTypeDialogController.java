@@ -5,9 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-
-import javafx.scene.control.TextField;
-
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -18,8 +15,7 @@ import java.io.File;
  */
 
 public class modTypeDialogController {
-	@FXML
-	private TextField NameSiteField;
+
 
 	@FXML
 	private Stage dialogStage;

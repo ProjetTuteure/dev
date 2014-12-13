@@ -1,13 +1,16 @@
 package gpi.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
  * Created by Kevin
  */
 
-public class modMatDialogController {
+public class addPrestDialogController {
+	@FXML
+	private TextField NameSiteField;
 	@FXML
 	private Stage dialogStage;
 
@@ -32,7 +35,7 @@ public class modMatDialogController {
 
 		okClicked = true;
 		dialogStage.close();
-
+		// }
 	}
 
 	@FXML

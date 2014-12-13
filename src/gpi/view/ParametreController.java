@@ -145,17 +145,27 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddPrest(ActionEvent event) {
+		Prestataire prest = new Prestataire(0, null, null, null, null);
+		boolean okClicked = MainApp.showAddPrestDialog(prest);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodPrest(ActionEvent event) {
+		boolean okClicked = MainApp.showModPrestDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppPrest(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppPrestDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
