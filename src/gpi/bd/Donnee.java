@@ -119,4 +119,17 @@ public class Donnee {
         }
         return null;
     }
+    
+    public Site getSite(int index)
+    {
+    	for(Site site:this.siteData)
+    	{
+    		if(index==site.getIdSite())
+    		{
+    			return site;
+    		}
+    	}
+    	return null;
+    }
+    
 }

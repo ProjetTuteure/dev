@@ -70,15 +70,19 @@ public class TypeOverviewController {
 	@FXML
 	private void initialize() {
 		Donnee donnee = new Donnee();
+		Site site;
+		//site=donnee.getSite((int)mainApp.getCritere(0));
+		System.out.println(mainApp.getActiveTab());
 		this.types=donnee.getTypeData();
-		this.setNomVille("Limoges");
+		this.setLabelNomVille("limoges");
 		setListeTypeMateriel(this.types);
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
 	}
 	
-	private void setNomVille(String nomVille)
+	private void setLabelNomVille(String nomVille)
 	{
+		this.nomVille.setFont(new Font("Arial",20));
 		this.nomVille.setText(nomVille);
 	}
 	

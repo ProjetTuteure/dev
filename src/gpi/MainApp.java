@@ -134,7 +134,6 @@ public class MainApp extends Application {
 	}
 
 	private static ObservableList<Site> siteData = FXCollections.observableArrayList();
-
 	public static void main(String[] args) {
 		donnee = new Donnee();
 		
