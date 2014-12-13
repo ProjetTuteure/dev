@@ -127,6 +127,26 @@ public class MainApp extends Application {
 
     }
 
+    public static void removeCritere(){
+        switch (getActiveTab()) {
+            case 0:
+                tab0.remove(tab0.size());
+                break;
+            case 1:
+                tab1.remove(tab1.size());
+                break;
+            case 2:
+                tab2.remove(tab2.size());
+                break;
+            case 3:
+                tab3.remove(tab3.size());
+                break;
+            case 4:
+                tab4.remove(tab4.size());
+                break;
+        }
+    }
+
     public static int getActiveTab(){
         return rootLayout.getSelectionModel().getSelectedIndex();
     }
