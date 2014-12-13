@@ -44,6 +44,9 @@ public class modMatDialogController {
 
 	private ObservableList<String> listimmo;
 	private ObservableList<String> listEtat;
+	private ObservableList<String> listSite;
+	private ObservableList<String> listFabr;
+	private ObservableList<String> listFact;
 	
 
 	@FXML
@@ -80,6 +83,9 @@ public class modMatDialogController {
 	@FXML
 	private void handlechange() {
 		listEtat = FXCollections.observableArrayList();
+		listSite = FXCollections.observableArrayList();
+		listFact = FXCollections.observableArrayList();
+		listFabr = FXCollections.observableArrayList();
 		
 		
 		nomfield.setText();
@@ -97,32 +103,32 @@ public class modMatDialogController {
 	
 		
 		for (Facture fac : donneesite.getFactureData()) {
-			listEtat.add(fac.getNumFac());
+			listFact.add(fac.getNumFac());
 		}
-		comboboxetat.setItems(listEtat);
+		comboboxfact.setItems(listEtat);
 		//Doit récuperer la facture du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxetat.setPromptText();
+		comboboxfact.setPromptText();
 		
 		
 		
 		for (Fabricant fb : donneesite.getFabricantData()) {
-			listEtat.add(fb.getNomFabString());
+			listFabr.add(fb.getNomFabString());
 		}
-		comboboxetat.setItems(listEtat);
+		comboboxfab.setItems(listEtat);
 		//Doit récuperer le fabricant du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxetat.setPromptText();
+		comboboxfab.setPromptText();
 		
 		
 		
 		for (Site st : donneesite.getSiteData()) {
-			listEtat.add(st.getNomSte());
+			listSite.add(st.getNomSte());
 		}
-		comboboxetat.setItems(listEtat);
+		comboboxsite.setItems(listEtat);
 		//Doit récuperer le site du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxetat.setPromptText();
+		comboboxsite.setPromptText();
 		
 		
 		

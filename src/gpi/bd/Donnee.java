@@ -65,7 +65,7 @@ public class Donnee {
 
     private void remplireMaterielData() {
         materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
-        materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
+        materielData.add(new Materiel("2","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
     }
 
     private void remplireFactureData() {
