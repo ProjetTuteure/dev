@@ -70,7 +70,7 @@ public class SiteOverviewController {
                     @Override
                     public void handle(MouseEvent arg0) {
                         System.out.println(((Label)(tempo.getBottom())).getId());
-                        mainApp.changerTab("Type");
+                       // mainApp.changerTab("Type");
                         String id = ((Label)(tempo.getBottom())).getId();
                         mainApp.setCritere((Integer)(Integer.parseInt(id)));
                         mainApp.changerTab("Type");
