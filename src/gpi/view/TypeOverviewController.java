@@ -105,9 +105,8 @@ public class TypeOverviewController {
 	public void ajouterTypeGridPane(ObservableList<Type> types) {
 		int ligne=0;
 		int colonne=0; 
-		int hauteurCellule=0;
-		int largeurCellule=0;
-		setTailleCellule(hauteurCellule,largeurCellule);
+		int hauteurCellule=150;
+		int largeurCellule=getLargeurCellule(types);
 		for(int i=0;i<this.getNbType();i++)
 		{
 			ImageView image=new ImageView();
@@ -131,24 +130,23 @@ public class TypeOverviewController {
 		}
 		for(int i=0;i<4;i++)
 		{
-			gp_type.getColumnConstraints().add(new ColumnConstraints(196));
+			gp_type.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
 		}
 		for(int i=0;i<getNbLigne(types);i++)
 		{
-			gp_type.getRowConstraints().add(new RowConstraints(150));
+			gp_type.getRowConstraints().add(new RowConstraints(hauteurCellule));
 		}
 	}
 	
-	private void setTailleCellule(int hauteurCellule,int largeurCellule)
+	private int getLargeurCellule(ObservableList<Type> types)
 	{
-		if(this.getNbType()<12)
+		if(types.size()<9)
 		{
-			largeurCellule=200;
+			return 200;
 		}
 		else
 		{
-			largeurCellule=196;
+			 return 196;
 		}
-		hauteurCellule=150;
 	}
 }
