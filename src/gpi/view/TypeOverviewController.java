@@ -96,7 +96,7 @@ public class TypeOverviewController {
 			 */
 		    @Override 
 		    public void handle(ActionEvent e) {
-		    	mainApp.removeCritere(0);
+		    	mainApp.removeCritere();
 		        mainApp.changerTab("Site");
 		    }
 		});
