@@ -1,11 +1,11 @@
 package gpi.view;
 
+import gpi.bd.Donnee;
+import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-
 import javafx.stage.Stage;
 
 /**
@@ -20,13 +20,18 @@ public class suppSiteDialogController {
 	@FXML
 	private ComboBox<String> comboboxSiteSupp;
 
-	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
-			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
-			"Saint Agan", "Saint Junien");
+	private Donnee donneesite = new Donnee();
+
+	private ObservableList<String> listNom;
 
 	@FXML
 	private void initialize() {
-		comboboxSiteSupp.setItems(list1);
+		listNom = FXCollections.observableArrayList();
+
+		for (Site site : donneesite.getSiteData()) {
+			listNom.add(site.getNomSte());
+		}
+		comboboxSiteSupp.setItems(listNom);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

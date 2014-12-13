@@ -36,6 +36,10 @@ public class Materiel {
     public void setSite(Site site) {
         this.site = site;
     }
+    
+    public String getSiteString(){
+    	return site.getNomSte();
+    }
 
     public StringProperty getNumImmobMat() {
         return numImmobMat;
@@ -69,6 +73,10 @@ public class Materiel {
     public void setEtat(Etat etat) {
         this.etat = etat;
     }
+    
+    public String getEtatString(){
+    	return etat.name();
+    }
 
     public StringProperty getDateExpirationGarantie() {
         return dateExpirationGarantie;
@@ -94,12 +102,20 @@ public class Materiel {
         this.facture = facture;
     }
     
+    public String getFactureString(){
+    	return facture.getNumFac();
+    }
+    
     public Fabricant getFabricant() {
         return fabricant;
     }
 
     public void setFabricant(Fabricant fabricant) {
         this.fabricant = fabricant;
+    }
+    
+    public String getFabricantString(){
+    	return fabricant.getNomFab().getValue();
     }
 
     @Override

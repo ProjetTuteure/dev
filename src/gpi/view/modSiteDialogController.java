@@ -1,13 +1,13 @@
 package gpi.view;
 
+import gpi.bd.Donnee;
+import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-
 import javafx.scene.control.TextField;
-
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -31,13 +31,18 @@ public class modSiteDialogController {
 	@FXML
 	private ComboBox<String> comboboxSiteMod;
 
-	ObservableList<String> list1 = FXCollections.observableArrayList("Agen",
-			"Bordeaux", "Chateroux", "Guéret", "Limoges", "Montluçon",
-			"Saint Agan", "Saint Junien");
+	private Donnee donneesite = new Donnee();
+
+	private ObservableList<String> listNom;
 
 	@FXML
 	private void initialize() {
-		comboboxSiteMod.setItems(list1);
+		listNom = FXCollections.observableArrayList();
+
+		for (Site site : donneesite.getSiteData()) {
+			listNom.add(site.getNomSte());
+		}
+		comboboxSiteMod.setItems(listNom);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

@@ -48,6 +48,10 @@ public class Donnee {
 
     public ObservableList<Facture> getFactureData() {
         return factureData;
+    } 
+    
+    public ObservableList<Fabricant> getFabricantData() {
+        return fabricantData;
     }
 
     public ObservableList<Materiel> getMaterielData() {

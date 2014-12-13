@@ -22,11 +22,11 @@
             <Label prefHeight="17.0" prefWidth="202.0" text="Facture du materiel" GridPane.rowIndex="6" />
             <Label prefHeight="17.0" prefWidth="202.0" text="Site du materiel" GridPane.rowIndex="7" />
             <Label prefHeight="17.0" prefWidth="202.0" text="Repertoire Driver" GridPane.rowIndex="8" />
-            <ComboBox maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="comboboxetat" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <DatePicker maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="comboboxfabr" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="comboboxfact" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id="comboboxsite" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" text="Choisir le repertoire Driver..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
       </children>
       <columnConstraints>
