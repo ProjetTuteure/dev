@@ -126,6 +126,27 @@ public class MainApp extends Application {
         }
 
     }
+    
+  /*  public static void removeCritere(int index)
+    {
+    	switch (getActiveTab()) {
+    	case 0:
+    		tab0.remove(index);
+    		break;
+        case 1:
+            tab1.remove(index);
+            break;
+        case 2:
+            tab2.remove(index);
+            break;
+        case 3:
+            tab3.remove(index);
+            break;
+        default:
+        	tab4.remove(index);
+        	break;
+    	}
+    }*/
 
     public static void removeCritere(){
         switch (getActiveTab()) {

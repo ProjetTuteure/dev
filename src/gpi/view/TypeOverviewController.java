@@ -9,10 +9,12 @@ import gpi.metier.Type;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -37,6 +39,9 @@ public class TypeOverviewController {
 	
 	@FXML
 	private ScrollPane sp_type;
+	
+	@FXML
+	private Button b_type;
 	
 	@FXML
 	private GridPane gp_type;
@@ -85,6 +90,16 @@ public class TypeOverviewController {
 		this.setLabelNomVille(site.getNomSte());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
+		b_type.setOnAction(new EventHandler<ActionEvent>() {
+			/**
+			 * On change
+			 */
+		    @Override 
+		    public void handle(ActionEvent e) {
+		    	mainApp.removeCritere(0);
+		        mainApp.changerTab("Site");
+		    }
+		});
 	}
 	
 	/**
@@ -98,7 +113,13 @@ public class TypeOverviewController {
 		this.nomVille.setText(nomVille);
 	}
 	
-	
+	/**
+	 * Permet de calculer le nombre de ligne nécessaire 
+	 * pour le gridPane.
+	 * @param types la liste de type de matériel que l'on doit ajouter
+	 * au GridPane
+	 * @return le nombre de ligne nécessaire pour pouvoir afficher tous les types
+	 */
 	private int getNbLigne(ObservableList<Type> types)
 	{
 		if(this.types.size()%4!=0)
