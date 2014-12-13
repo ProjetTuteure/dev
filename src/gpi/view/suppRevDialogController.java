@@ -7,17 +7,14 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class addMatDialogController {
-
+public class suppRevDialogController {
 	@FXML
 	private Stage dialogStage;
-
 	@FXML
 	private boolean okClicked = false;
 
 	@FXML
 	private void initialize() {
-
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -30,7 +27,6 @@ public class addMatDialogController {
 
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
 		dialogStage.close();
 

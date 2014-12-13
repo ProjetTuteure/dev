@@ -7,8 +7,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class addMatDialogController {
-
+public class modRevDialogController {
 	@FXML
 	private Stage dialogStage;
 

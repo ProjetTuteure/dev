@@ -776,4 +776,85 @@ public class MainApp extends Application {
 		}
 	}
 
+	public static boolean showAddRevDialog(Revendeur rev) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addRevDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModRevDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modRevDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showSuppRevDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppRevDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un revendeur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppRevDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

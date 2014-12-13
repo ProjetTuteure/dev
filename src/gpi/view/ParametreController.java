@@ -170,17 +170,27 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddRev(ActionEvent event) {
+		Revendeur rev = new Revendeur(0, null, null, null);
+		boolean okClicked = MainApp.showAddRevDialog(rev);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodRev(ActionEvent event) {
+		boolean okClicked = MainApp.showModRevDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppRev(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppRevDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

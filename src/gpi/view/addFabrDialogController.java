@@ -1,9 +1,6 @@
 package gpi.view;
 
 import javafx.fxml.FXML;
-
-import javafx.scene.control.TextField;
-
 import javafx.stage.Stage;
 
 /**
@@ -11,8 +8,6 @@ import javafx.stage.Stage;
  */
 
 public class addFabrDialogController {
-	@FXML
-	private TextField NameSiteField;
 	@FXML
 	private Stage dialogStage;
 

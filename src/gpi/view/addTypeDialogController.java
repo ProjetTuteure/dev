@@ -4,7 +4,6 @@ import java.io.File;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -13,8 +12,7 @@ import javafx.stage.Stage;
  */
 
 public class addTypeDialogController {
-	@FXML
-	private TextField NameSiteField;
+
 	@FXML
 	private Stage dialogStage;
 
