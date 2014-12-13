@@ -1,5 +1,6 @@
 package gpi.view;
 
+
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Facture;
@@ -7,6 +8,9 @@ import gpi.metier.Materiel;
 import gpi.metier.Revendeur;
 import gpi.metier.Site;
 import gpi.metier.Type;
+
+import gpi.metier.Materiel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -70,7 +74,7 @@ public class AncienneteController implements Initializable {
 		
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue()
-				.getNomProperty());
+				.getNom());
 		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue()
 				.getFacture().getDateFac());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue()

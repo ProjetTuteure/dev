@@ -27,7 +27,7 @@
             <ComboBox fx:id="comboboxfabr" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <ComboBox fx:id="comboboxfact" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <ComboBox fx:id="comboboxsite" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" text="Choisir le repertoire Driver..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#handleChoose" text="Choisir le repertoire Driver..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
       </children>
       <columnConstraints>
         <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />

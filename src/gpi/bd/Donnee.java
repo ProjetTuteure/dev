@@ -86,7 +86,7 @@ public class Donnee {
         typeData.add(new Type("PC"," "));
         typeData.add(new Type("Routeur"," "));
         typeData.add(new Type("Switch"," "));
-        typeData.add(new Type("Clé 3G"," "));
+        typeData.add(new Type("Clï¿½ 3G"," "));
     }
 
     private void remplireSiteData(){
@@ -111,5 +111,12 @@ public class Donnee {
     }
 
 
-
+    public Materiel getMateriel(String value) {
+        for(Materiel mat : materielData){
+            if(value == mat.getNumImmobMat().getValue()){
+                return mat;
+            }
+        }
+        return null;
+    }
 }

@@ -86,16 +86,18 @@ public class modMatDialogController {
 		listSite = FXCollections.observableArrayList();
 		listFact = FXCollections.observableArrayList();
 		listFabr = FXCollections.observableArrayList();
-		
+
 		//Doit récuperer le nom du matériel selectionné avec l'immo du menu déroulant d'en haut 
 				//pour le mettre en valeur par défaut
-		nomfield.setText();
+        Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
+
+		nomfield.setText(selected.getNom().getValue());
 		//Doit récuperer le type du matériel selectionné avec l'immo du menu déroulant d'en haut 
 				//pour le mettre en valeur par défaut
-		typefield.setText();
+		typefield.setText(selected.getType().getNomString());
 		
 		
-		immofield.setText();
+		immofield.setText(selected.getNumImmobMat().getValue());
 		
 		for (Etat etat : Etat.values()) {
 			listEtat.add(etat.name());
@@ -103,27 +105,27 @@ public class modMatDialogController {
 		comboboxetat.setItems(listEtat);
 		//Doit récuperer l'état du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxetat.setPromptText();
-		
-	
+		comboboxetat.setPromptText(selected.getEtatString());
+
+        datefield.setPromptText(selected.getDateExpirationGarantie().getValue());
 		
 		for (Facture fac : donneesite.getFactureData()) {
 			listFact.add(fac.getNumFac());
 		}
-		comboboxfact.setItems(listEtat);
+		comboboxfact.setItems(listFact);
 		//Doit récuperer la facture du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxfact.setPromptText();
+		comboboxfact.setPromptText(selected.getFactureString());
 		
 		
 		
 		for (Fabricant fb : donneesite.getFabricantData()) {
 			listFabr.add(fb.getNomFabString());
 		}
-		comboboxfab.setItems(listEtat);
+		comboboxfab.setItems(listFabr);
 		//Doit récuperer le fabricant du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxfab.setPromptText();
+		comboboxfab.setPromptText(selected.getFabricantString());
 		
 		
 		
@@ -133,7 +135,7 @@ public class modMatDialogController {
 		comboboxsite.setItems(listEtat);
 		//Doit récuperer le site du matériel selectionné avec l'immo du menu déroulant d'en haut 
 		//pour le mettre en valeur par défaut
-		comboboxsite.setPromptText();
+		comboboxsite.setPromptText(selected.getSiteString());
 		
 		
 		

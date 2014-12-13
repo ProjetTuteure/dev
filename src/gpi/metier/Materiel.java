@@ -50,7 +50,7 @@ public class Materiel {
     }
 
     
-    public StringProperty getNomProperty() {
+    public StringProperty getNom() {
         return nom;
     }
 

@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <Label text="Revendeur a supprimer" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxrev" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
   </children>
