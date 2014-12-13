@@ -89,7 +89,7 @@ public class MainApp extends Application {
 		}
 	}
 
-    public void AffecterCritere(Object o){
+    public void setCritere(Object o){
         switch (getActiveTab()) {
             case 1:
                 tab1.add(o);
@@ -104,6 +104,20 @@ public class MainApp extends Application {
                 tab4.add(o);
                 break;
         }
+    }
+
+    public Object getCritere(int index){
+        switch (getActiveTab()) {
+            case 1:
+                return tab1.get(index);
+            case 2:
+                return tab2.get(index);
+            case 3:
+                return tab3.get(index);
+            default:
+                return tab4.get(index);
+        }
+
     }
 
     public static int getActiveTab(){
