@@ -104,7 +104,10 @@ public class TypeOverviewController {
 	@FXML
 	public void ajouterTypeGridPane(ObservableList<Type> types) {
 		int ligne=0;
-		int colonne=0;
+		int colonne=0; 
+		int hauteurCellule=0;
+		int largeurCellule=0;
+		setTailleCellule(hauteurCellule,largeurCellule);
 		for(int i=0;i<this.getNbType();i++)
 		{
 			ImageView image=new ImageView();
@@ -134,5 +137,18 @@ public class TypeOverviewController {
 		{
 			gp_type.getRowConstraints().add(new RowConstraints(150));
 		}
+	}
+	
+	private void setTailleCellule(int hauteurCellule,int largeurCellule)
+	{
+		if(this.getNbType()<12)
+		{
+			largeurCellule=200;
+		}
+		else
+		{
+			largeurCellule=196;
+		}
+		hauteurCellule=150;
 	}
 }
