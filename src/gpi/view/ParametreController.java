@@ -19,21 +19,6 @@ import javafx.stage.DirectoryChooser;
 public class ParametreController implements Initializable {
 
 	@FXML
-	private void handleaddEtat(ActionEvent event) {
-
-	}
-
-	@FXML
-	private void handlemodEtat(ActionEvent event) {
-
-	}
-
-	@FXML
-	private void handlesuppEtat(ActionEvent event) {
-
-	}
-
-	@FXML
 	private void handleaddFabr(ActionEvent event) {
 		Fabricant fabricant = new Fabricant(0, null, null, null);
 		boolean okClicked = MainApp.showAddFabrDialog(fabricant);
@@ -135,17 +120,27 @@ public class ParametreController implements Initializable {
 
 	@FXML
 	private void handleaddMat(ActionEvent event) {
+		Materiel materiel = new Materiel(null, null, null, null, null, null, null, null, null);
+		boolean okClicked = MainApp.showAddMatDialog(materiel);
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlemodMat(ActionEvent event) {
+		boolean okClicked = MainApp.showModMatDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML
 	private void handlesuppMat(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppMatDialog();
+		if (okClicked) {
 
+		}
 	}
 
 	@FXML

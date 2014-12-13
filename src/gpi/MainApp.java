@@ -614,4 +614,85 @@ public class MainApp extends Application {
 		}
 	}
 
+	public static boolean showAddMatDialog(Materiel materiel) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/addMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un nouveau materiel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			addMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModMatDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier un materiel");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			modMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean showSuppMatDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/suppMatDialog.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer une maintenance");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			suppMatDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
