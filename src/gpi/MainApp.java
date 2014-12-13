@@ -150,7 +150,7 @@ public class MainApp extends Application {
 
 	public static void changerTab(String nom) {
 		try {
-            int onglet = getActiveTab();
+			int onglet = getActiveTab();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/" + nom
 					+ "Overview.fxml"));
