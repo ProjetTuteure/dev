@@ -78,7 +78,6 @@ public class SiteOverviewController {
                     public void handle(MouseEvent arg0) {
                         System.out.println(((Label)(tempo.getBottom())).getId());
                         mainApp.changerTab("Type", getOnglet());
-
                     }
                 });
                 gp_site.add(tempo, j, i);
