@@ -8,6 +8,7 @@ import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Site;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -20,6 +21,8 @@ import javafx.scene.layout.RowConstraints;
 public class SiteOverviewController {
 	@FXML
 	private GridPane gp_site;
+
+    int onglet;
 
 	@FXML
 	private ImageView image_site;
@@ -65,7 +68,7 @@ public class SiteOverviewController {
 				image.setFitWidth(75);
 				tempo.setCenter(image);
 				tempo.setBottom(new Label(sites.get((i * 4) + j).getNomSte()));
-				gp_site.add(tempo, j, i);
+                gp_site.add(tempo, j, i);
 			}
 		}
 
@@ -90,4 +93,12 @@ public class SiteOverviewController {
 			return this.getNbSite() / 4 + 1;
 		}
 	}
+
+    public int getOnglet(){
+        return 1;
+    }
+    @FXML
+    public void mouseClicked(ActionEvent event){
+        MainApp.changerTab("Type", getOnglet());
+    }
 }

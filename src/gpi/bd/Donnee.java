@@ -31,11 +31,7 @@ public class Donnee {
         remplirFabricantData();
         remplireFactureData();
         remplireMaterielData();
-    }
-
-    private void remplirFabricantData() {
-        fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
-        fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
+        remplireLogicielData();
     }
 
     public ObservableList<Site> getSiteData() {
@@ -58,6 +54,11 @@ public class Donnee {
         return materielData;
     }
 
+    private void remplirFabricantData() {
+        fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
+        fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
+    }
+
     private void remplireMaterielData() {
         materielData.add(new Materiel("1","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
         materielData.add(new Materiel("1","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
@@ -65,6 +66,7 @@ public class Donnee {
 
     private void remplireFactureData() {
         factureData.add(new Facture("1","11/11/11", (float) 123.50,revendeurData.get(0)));
+        factureData.add(new Facture("2","11/11/11", (float) 99,revendeurData.get(1)));
     }
 
     private void remplireRevendeurData() {
@@ -94,6 +96,12 @@ public class Donnee {
         siteData.add(new Site(8, "Saint-Junien", "sources/images/saintJunien.jpg"));
         siteData.add(new Site(9, "Saint-Junien", "sources/images/saintJunien.jpg"));
     }
+
+
+    private void remplireLogicielData() {
+        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0",null,this.factureData.get(1)));
+    }
+
 
 
 }

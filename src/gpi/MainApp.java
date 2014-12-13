@@ -31,8 +31,19 @@ public class MainApp extends Application {
 	private static Tab AvanceOverview;
 	private Tab ParametreOverview;
 
+    //pour garder en memoire l'etat des onglet : utiliser ces variable :
+    private List<Object> tab1;
+    private List<Object> tab2;
+    private List<Object> tab3;
+    private List<Object> tab4;
+    ////////////////////////////////////////////
+
 	@Override
 	public void start(Stage primaryStage) {
+        tab1 = new ArrayList<Object>();
+        tab2 = new ArrayList<Object>();
+        tab3 = new ArrayList<Object>();
+        tab4 = new ArrayList<Object>();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Adam SAS");
 		initRootLayout();
