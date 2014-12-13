@@ -18,7 +18,7 @@ public class suppTypeDialogController {
 	@FXML
 	private boolean okClicked = false;
 	@FXML
-	private ComboBox<String> comboboxTypeSupp;
+	private ComboBox<String> comboboxtype;
 
 	private Donnee donneetype = new Donnee();
 
@@ -31,7 +31,7 @@ public class suppTypeDialogController {
 		for (Type type : donneetype.getTypeData()) {
 			listNom.add(type.getNomString());
 		}
-		comboboxTypeSupp.setItems(listNom);
+		comboboxtype.setItems(listNom);
 
 	}
 

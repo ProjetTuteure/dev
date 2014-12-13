@@ -1,6 +1,15 @@
 package gpi.view;
 
+
+
+import gpi.bd.Donnee;
+import gpi.metier.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -10,13 +19,44 @@ import javafx.stage.Stage;
 public class modMatDialogController {
 	@FXML
 	private Stage dialogStage;
-
 	@FXML
 	private boolean okClicked = false;
+	@FXML
+	private TextField nomfield;
+	@FXML
+	private TextField typefield;
+	@FXML
+	private TextField immofield;
+	@FXML
+	private DatePicker datefield;
+	@FXML
+	private ComboBox<String> comboboxetat;
+	@FXML
+	private ComboBox<String> comboboxfab;
+	@FXML
+	private ComboBox<String> comboboxfact;
+	@FXML
+	private ComboBox<String> comboboxsite;
+	@FXML
+	private ComboBox<String> comboboximmo;
+	
+	private Donnee donneesite = new Donnee();
+
+	private ObservableList<String> listimmo;
+	private ObservableList<String> listEtat;
+	private ObservableList<String> listSite;
+	private ObservableList<String> listFabr;
+	private ObservableList<String> listFact;
+	
 
 	@FXML
 	private void initialize() {
+		listimmo = FXCollections.observableArrayList();
 
+		for (Materiel materiel : donneesite.getMaterielData()) {
+			listimmo.add(materiel.getNumImmobMat().getValue());
+		}
+		comboboximmo.setItems(listimmo);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -38,6 +78,65 @@ public class modMatDialogController {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+	
+	@FXML
+	private void handlechange() {
+		listEtat = FXCollections.observableArrayList();
+		listSite = FXCollections.observableArrayList();
+		listFact = FXCollections.observableArrayList();
+		listFabr = FXCollections.observableArrayList();
+		
+		//Doit récuperer le nom du matériel selectionné avec l'immo du menu déroulant d'en haut 
+				//pour le mettre en valeur par défaut
+		nomfield.setText();
+		//Doit récuperer le type du matériel selectionné avec l'immo du menu déroulant d'en haut 
+				//pour le mettre en valeur par défaut
+		typefield.setText();
+		
+		
+		immofield.setText();
+		
+		for (Etat etat : Etat.values()) {
+			listEtat.add(etat.name());
+		}
+		comboboxetat.setItems(listEtat);
+		//Doit récuperer l'état du matériel selectionné avec l'immo du menu déroulant d'en haut 
+		//pour le mettre en valeur par défaut
+		comboboxetat.setPromptText();
+		
+	
+		
+		for (Facture fac : donneesite.getFactureData()) {
+			listFact.add(fac.getNumFac());
+		}
+		comboboxfact.setItems(listEtat);
+		//Doit récuperer la facture du matériel selectionné avec l'immo du menu déroulant d'en haut 
+		//pour le mettre en valeur par défaut
+		comboboxfact.setPromptText();
+		
+		
+		
+		for (Fabricant fb : donneesite.getFabricantData()) {
+			listFabr.add(fb.getNomFabString());
+		}
+		comboboxfab.setItems(listEtat);
+		//Doit récuperer le fabricant du matériel selectionné avec l'immo du menu déroulant d'en haut 
+		//pour le mettre en valeur par défaut
+		comboboxfab.setPromptText();
+		
+		
+		
+		for (Site st : donneesite.getSiteData()) {
+			listSite.add(st.getNomSte());
+		}
+		comboboxsite.setItems(listEtat);
+		//Doit récuperer le site du matériel selectionné avec l'immo du menu déroulant d'en haut 
+		//pour le mettre en valeur par défaut
+		comboboxsite.setPromptText();
+		
+		
+		
 	}
 
 }

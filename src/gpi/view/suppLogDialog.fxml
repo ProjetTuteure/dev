@@ -25,9 +25,9 @@
         </rowConstraints>
          <children>
             <Label text="Nom du logiciel a supprimer" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxlog" prefWidth="150.0" GridPane.columnIndex="1" />
             <Label text="Version du logiciel a supprimer" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboboxversion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
   </children>

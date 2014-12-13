@@ -86,7 +86,6 @@ public class Donnee {
         typeData.add(new Type("PC"," "));
         typeData.add(new Type("Routeur"," "));
         typeData.add(new Type("Switch"," "));
-        typeData.add(new Type("Clé 3G"," "));
     }
 
     private void remplireSiteData(){

@@ -25,9 +25,9 @@
         </rowConstraints>
          <children>
             <Label text="Nom prestataire a supprimer" />
-            <ComboBox fx:id="comboboxTypeSupp" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxnom" prefWidth="150.0" GridPane.columnIndex="1" />
             <Label text="Prenom prestataire a supprimer" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboboxTypeSupp1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboboxprenom" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
   </children>
