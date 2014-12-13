@@ -9,11 +9,13 @@ import gpi.bd.Donnee;
 import gpi.metier.Site;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -63,11 +65,22 @@ public class SiteOverviewController {
 			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
 				BorderPane tempo = new BorderPane();
 				ImageView image = new ImageView(sites.get((i * 4) + j)
-						.getCheminImage());
+                        .getCheminImage());
+                Label label = new Label(sites.get((i * 4) + j).getNomSte());
+                label.setId(""+((i * 4) + j));
 				image.setFitHeight(75);
 				image.setFitWidth(75);
 				tempo.setCenter(image);
-				tempo.setBottom(new Label(sites.get((i * 4) + j).getNomSte()));
+				tempo.setBottom(label);
+                tempo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                    @Override
+                    public void handle(MouseEvent arg0) {
+                        System.out.println(((Label)(tempo.getBottom())).getId());
+                        mainApp.changerTab("Type", getOnglet());
+
+                    }
+                });
                 gp_site.add(tempo, j, i);
 			}
 		}
@@ -95,10 +108,6 @@ public class SiteOverviewController {
 	}
 
     public int getOnglet(){
-        return 1;
-    }
-    @FXML
-    public void mouseClicked(ActionEvent event){
-        MainApp.changerTab("Type", getOnglet());
+        return 0;
     }
 }
