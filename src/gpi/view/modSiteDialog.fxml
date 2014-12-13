@@ -14,7 +14,7 @@
             <Label text="Image du site" GridPane.rowIndex="2" />
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleChoose" text="Choisir l'image..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Label text="Site a modifier" />
-            <ComboBox fx:id="comboboxSiteMod" onInputMethodTextChanged="#handlechange" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <ComboBox fx:id="comboboxSiteMod" onAction="#handlechange" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
       </children>
       <columnConstraints>
         <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
