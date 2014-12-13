@@ -8,36 +8,39 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.TypeOverviewController">
     <children>
         <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <Label prefHeight="16.0" prefWidth="121.0" text="Ville" BorderPane.alignment="TOP_LEFT" />
-         </top>
          <center>
-            <ScrollPane prefHeight="477.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-              </content>
+            <ScrollPane fx:id="sp_type" prefViewportHeight="584.0" prefViewportWidth="800.0">
                <BorderPane.margin>
-                  <Insets top="100.0" />
+                  <Insets bottom="100.0" top="25.0" />
                </BorderPane.margin>
+               <content>
+                  <GridPane fx:id="gp_type" gridLinesVisible="true" prefWidth="796.0">
+                  </GridPane>
+               </content>
             </ScrollPane>
          </center>
+         <top>
+            <BorderPane prefHeight="64.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Label fx:id="nomVille" text="Ville" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <right>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ComboBox fx:id="cb_type" layoutX="14.0" layoutY="32.0" prefWidth="150.0" />
+                        <Label layoutX="17.0" layoutY="14.0" text="Afficher (type de matériel) :" />
+                     </children>
+                  </AnchorPane>
+               </right>
+            </BorderPane>
+         </top>
         </BorderPane>
     </children>
 </AnchorPane>
