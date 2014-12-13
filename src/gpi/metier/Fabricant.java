@@ -49,6 +49,8 @@ public class Fabricant {
         return nomFab;
     }
 
+
+
     public void setNomFab(String nomFab) {
         this.nomFab.setValue(nomFab);
     }

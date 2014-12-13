@@ -1,8 +1,11 @@
 package gpi.view;
 
 import gpi.MainApp;
+import gpi.bd.Donnee;
+import gpi.metier.Materiel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,33 +13,33 @@ import javafx.scene.control.ListView;
 
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListViewController implements Initializable {
 
 	private boolean test=false;
+	private Donnee donnee=new Donnee();
+	private List<Materiel> materielObservableList;
 
 	@FXML
-	private ListView<String> listMateriel;
+	private ListView<Materiel> listMateriel;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listMateriel.getItems().add("Materiel 1 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-		listMateriel.getItems().add("Materiel 2");
-		listMateriel.getItems().add("Materiel 3");
-		listMateriel.getItems().add("Materiel 4");
+		materielObservableList=donnee.getMaterielData();
+		listMateriel.getItems().addAll(materielObservableList);
+
 
 		listMateriel.getSelectionModel().selectedItemProperty().addListener(
-				new ChangeListener<String>() {
-					public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
-						if(test){
-							MainApp.changerTab("DetailMachine", 3);
-						}else{
-							test=true;
-						}
+				(ov, old_val, new_val) -> {
+                    if (test) {
+                        MainApp.changerTab("DetailMachine", 3);
+                    } else {
+                        test = true;
+                    }
 
-					}
-				});
+                });
 	}
 
 	@FXML

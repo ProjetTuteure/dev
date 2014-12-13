@@ -101,4 +101,16 @@ public class Materiel {
     public void setFabricant(Fabricant fabricant) {
         this.fabricant = fabricant;
     }
+
+    @Override
+    public String toString() {
+        return nom.getValue() +
+                ", numImmobMat=" + numImmobMat.getValue()+
+                ", type=" + type.getNomString() +
+                ", etat=" + etat.name() +
+                ", dateExpirationGarantie=" + dateExpirationGarantie.getValue() +
+                ", site=" + site.getNomSte() +
+                ", fabricant=" + fabricant.getNomFab().getValue()
+                ;
+    }
 }
