@@ -53,46 +53,52 @@ public class TypeOverviewController {
 	@FXML
 	private MainApp mainApp;
 	
-	@FXML
-	private ComboBox cb_type;
-	
 
+	/**
+	 * Constructeur
+	 * instancie le gridPane et le scrollPane.
+	 */
 	public TypeOverviewController() {
 		gp_type=new GridPane();
 		sp_type=new ScrollPane();
 	}
 
+	/**
+	 * Retourne le nombre de type qu'il y'a dans l'ObservableList types
+	 * types
+	 * @return nbType le nombre de type qu'il y'a dans l'ObservableList types
+	 */
 	public int getNbType() {
 		return this.types.size();
 	}
 
-
+	/**
+	 * Permet de créer et insérer les éléments dans
+	 * la fenêtre
+	 */
 	@FXML
 	private void initialize() {
 		Donnee donnee = new Donnee();
 		Site site;
-		//site=donnee.getSite((int)mainApp.getCritere(0));
-		System.out.println(mainApp.getActiveTab());
+		site=donnee.getSite((int)mainApp.getCritere(0)+1);
 		this.types=donnee.getTypeData();
-		this.setLabelNomVille("limoges");
-		setListeTypeMateriel(this.types);
+		this.setLabelNomVille(site.getNomSte());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
 	}
 	
+	/**
+	 * Permet de créer la police ainsi que de changer le label
+	 * nomVille situé en haut à gauche de la fenêtre.
+	 * @param nomVille
+	 */
 	private void setLabelNomVille(String nomVille)
 	{
 		this.nomVille.setFont(new Font("Arial",20));
 		this.nomVille.setText(nomVille);
 	}
 	
-	private void setListeTypeMateriel(ObservableList<Type> types)
-	{
-		for(Type type : types)
-		{
-			cb_type.getItems().add(type.getNom().getValue());
-		}
-	}
+	
 	private int getNbLigne(ObservableList<Type> types)
 	{
 		if(this.types.size()%4!=0)
