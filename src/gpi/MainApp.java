@@ -41,6 +41,7 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+        tab0 = new ArrayList<Object>();
         tab1 = new ArrayList<Object>();
         tab2 = new ArrayList<Object>();
         tab3 = new ArrayList<Object>();
@@ -139,16 +140,16 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 
-	private static ObservableList<Site> siteData = FXCollections.observableArrayList();
+	//private static ObservableList<Site> siteData = FXCollections.observableArrayList();
 	public static void main(String[] args) {
 		donnee = new Donnee();
 		
-		siteData.add(new Site(1, "Limoges", ""));
-		siteData.add(new Site(1, "Tulle", ""));
-		siteData.add(new Site(1, "Paris", ""));
-		siteData.add(new Site(1, "Brive", ""));
-		siteData.add(new Site(1, "Toulouse", ""));
-		siteData.add(new Site(1, "Marseille", ""));
+		//siteData.add(new Site(1, "Limoges", ""));
+		//siteData.add(new Site(1, "Tulle", ""));
+		//siteData.add(new Site(1, "Paris", ""));
+		//siteData.add(new Site(1, "Brive", ""));
+		//siteData.add(new Site(1, "Toulouse", ""));
+		//siteData.add(new Site(1, "Marseille", ""));
 		
 		launch(args);
 	}
@@ -166,9 +167,9 @@ public class MainApp extends Application {
 		}
 	}
 
-	public static ObservableList<Site> getSiteData() {
-		return siteData;
-	}
+	//public static ObservableList<Site> getSiteData() {
+		//return siteData;
+	//}
 
 	public static boolean showAddSiteDialog(Site site) {
 		try {
