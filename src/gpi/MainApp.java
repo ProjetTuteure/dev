@@ -89,7 +89,28 @@ public class MainApp extends Application {
 		}
 	}
 
-	/**
+    public void AffecterCritere(Object o){
+        switch (getActiveTab()) {
+            case 1:
+                tab1.add(o);
+                break;
+            case 2:
+                tab2.add(o);
+                break;
+            case 3:
+                tab3.add(o);
+                break;
+            case 4:
+                tab4.add(o);
+                break;
+        }
+    }
+
+    public static int getActiveTab(){
+        return rootLayout.getSelectionModel().getSelectedIndex();
+    }
+
+    /**
 	 * Returns the main stage.
 	 * 
 	 * @return
@@ -112,8 +133,9 @@ public class MainApp extends Application {
 		launch(args);
 	}
 
-	public static void changerTab(String nom, int onglet) {
+	public static void changerTab(String nom) {
 		try {
+            int onglet = getActiveTab();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/" + nom
 					+ "Overview.fxml"));

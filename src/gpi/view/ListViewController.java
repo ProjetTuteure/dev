@@ -3,9 +3,6 @@ package gpi.view;
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Materiel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,7 +31,7 @@ public class ListViewController implements Initializable {
 		listMateriel.getSelectionModel().selectedItemProperty().addListener(
 				(ov, old_val, new_val) -> {
                     if (test) {
-                        MainApp.changerTab("DetailMachine", 3);
+                        MainApp.changerTab("DetailMachine");
                     } else {
                         test = true;
                     }
@@ -44,7 +41,7 @@ public class ListViewController implements Initializable {
 
 	@FXML
 	private void goToScreen1(ActionEvent event) {
-		MainApp.changerTab("Avance", 3);
+		MainApp.changerTab("Avance");
 	}
 
 	@FXML
