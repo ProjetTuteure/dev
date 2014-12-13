@@ -31,15 +31,18 @@
                      </BorderPane.margin>
                   </Label>
                </left>
+               <right>
+                  <Button fx:id="b_type" mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="50.0" top="20.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </BorderPane>
          </top>
-         <bottom>
-            <Pane prefHeight="117.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="b_type" layoutX="374.0" layoutY="34.0" mnemonicParsing="false" text="Retour" />
-               </children>
-            </Pane>
-         </bottom>
         </BorderPane>
     </children>
 </AnchorPane>
