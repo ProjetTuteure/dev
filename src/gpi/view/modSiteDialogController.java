@@ -105,5 +105,10 @@ public class modSiteDialogController {
 		}// do something interesting with the file.
 
 	}
+	
+	@FXML
+	private void handlechange(ActionEvent event){
+		NameSiteField.setText(comboboxSiteMod.getValue());
+	}
 
 }

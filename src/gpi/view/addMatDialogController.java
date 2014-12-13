@@ -1,15 +1,17 @@
 package gpi.view;
 
+import java.io.File;
+
 import gpi.bd.Donnee;
 import gpi.metier.Etat;
 import gpi.metier.Fabricant;
 import gpi.metier.Facture;
-import gpi.metier.Materiel;
 import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 /**
@@ -86,6 +88,16 @@ public class addMatDialogController {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+	
+	@FXML
+	private void handleChoose() {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Choisir un dossier");
+		File selectedDirectory = directoryChooser.showDialog(null);
+
+		if (selectedDirectory != null) {
+		}
 	}
 
 }
