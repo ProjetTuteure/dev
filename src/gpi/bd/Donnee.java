@@ -126,5 +126,14 @@ public class Donnee {
     	}
     	return null;
     }
-    
+
+    public ObservableList<Materiel> rechercher(Site site, Type type){
+        ObservableList<Materiel> resultat = FXCollections.observableArrayList();
+        for(Materiel mat : materielData){
+            if(site == mat.getSite() && type == mat.getType()){
+                resultat.add(mat);
+            }
+        }
+        return resultat;
+    }
 }
