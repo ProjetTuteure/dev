@@ -87,9 +87,14 @@ public class modMatDialogController {
 		listFact = FXCollections.observableArrayList();
 		listFabr = FXCollections.observableArrayList();
 		
-		
+		//Doit récuperer le nom du matériel selectionné avec l'immo du menu déroulant d'en haut 
+				//pour le mettre en valeur par défaut
 		nomfield.setText();
+		//Doit récuperer le type du matériel selectionné avec l'immo du menu déroulant d'en haut 
+				//pour le mettre en valeur par défaut
 		typefield.setText();
+		
+		
 		immofield.setText();
 		
 		for (Etat etat : Etat.values()) {
