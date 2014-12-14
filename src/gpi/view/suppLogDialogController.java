@@ -22,8 +22,6 @@ public class suppLogDialogController {
 	private ComboBox<String> comboboxlog;
 	@FXML
 	private ComboBox<String> comboboxvers;
-	@FXML
-	private ComboBox<String> comboboxfact;
 
 	private Donnee donneesite = new Donnee();
 

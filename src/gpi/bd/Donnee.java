@@ -36,6 +36,7 @@ public class Donnee {
         remplirUtiliseData();
         remplirMaintenanceData();
         remplirEstMaintenuData();
+        remplirPrestaraireData();
     }
 
     public ObservableList<Site> getSiteData() {
@@ -48,6 +49,10 @@ public class Donnee {
 
     public ObservableList<Revendeur> getRevendeurData() {
         return revendeurData;
+    }
+    
+    public ObservableList<Prestataire> getPrestataireData() {
+        return prestataireData;
     }
 
     public ObservableList<Facture> getFactureData() {
@@ -81,6 +86,11 @@ public class Donnee {
     private void remplirFabricantData() {
         fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
         fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
+    }
+    
+    private void remplirPrestaraireData() {
+        prestataireData.add(new Prestataire(1, "Caillou", "Pierre", "05.55.69.87.23", "Caillou et Co."));
+        prestataireData.add(new Prestataire(2, "Noel", "Papa", "00.36.65.65.65", "Pole Nord"));
     }
 
     private void remplirMaterielData() {
@@ -175,6 +185,15 @@ public class Donnee {
         for(Fabricant fab : fabricantData){
             if(value == fab.getNomFabString()){
                 return fab;
+            }
+        }
+        return null;
+    }
+    
+    public Prestataire getPrestaire(String value) {
+        for(Prestataire pr : prestataireData){
+            if(value == pr.getNomPrest().getValue()){
+                return pr;
             }
         }
         return null;
