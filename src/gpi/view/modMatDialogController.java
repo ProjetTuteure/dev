@@ -2,6 +2,8 @@ package gpi.view;
 
 
 
+import java.io.File;
+
 import gpi.bd.Donnee;
 import gpi.metier.*;
 import javafx.collections.FXCollections;
@@ -10,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 /**
@@ -78,6 +81,16 @@ public class modMatDialogController {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+	
+	@FXML
+	private void handlechoose() {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Choisir un dossier");
+		File selectedDirectory = directoryChooser.showDialog(null);
+
+		if (selectedDirectory != null) {
+		}
 	}
 	
 	@FXML
