@@ -10,6 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,6 +29,22 @@ public class AvanceController implements Initializable {
     private ComboBox<String> comboboxAncienneteAvanceOverview;
     @FXML
     private ComboBox<String> comboboxTypeAvanceOverview;
+    @FXML
+    private TextField noImmobilisation;
+    @FXML
+    private TextField nomMateriel;
+    @FXML
+    private TextField utilisateur;
+    @FXML
+    private TextField dateAchat;
+    @FXML
+    private TextField noFacture;
+    @FXML
+    private TextField revendeur;
+    @FXML
+    private TextField fabriquant;
+    @FXML
+    private TextField modele;
 
     private Donnee donnee=new Donnee();
 
@@ -45,6 +64,17 @@ public class AvanceController implements Initializable {
 
     @FXML
     private void goToScreen2(ActionEvent event) {
+        MainApp.setCritere(noImmobilisation.getText());
+        MainApp.setCritere(nomMateriel.getText());
+        MainApp.setCritere(comboboxSiteAvanceOverview.getValue());
+        MainApp.setCritere(comboboxAncienneteAvanceOverview.getValue());
+        MainApp.setCritere(comboboxTypeAvanceOverview.getValue());
+        MainApp.setCritere(utilisateur.getText());
+        MainApp.setCritere(dateAchat.getText());
+        MainApp.setCritere(noFacture.getText());
+        MainApp.setCritere(revendeur.getText());
+        MainApp.setCritere(fabriquant.getText());
+        MainApp.setCritere(modele.getText());
         MainApp.changerTab("ResultatAvance");
     }
 

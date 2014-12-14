@@ -41,46 +41,46 @@
                   <Label text="Revendeur :" GridPane.rowIndex="8" />
                   <Label text="Fabriquant :" GridPane.rowIndex="9" />
                   <Label text="Modèle : " GridPane.rowIndex="10" />
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <TextField fx:id="noImmobilisation" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  </TextField>
+                  <TextField fx:id="nomMateriel" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  </TextField>
+                  <TextField fx:id="utilisateur" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  </TextField>
+                  <TextField fx:id="dateAchat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  </TextField>
+                  <TextField fx:id="noFacture" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  </TextField>
+                  <TextField fx:id="revendeur" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  </TextField>
+                  <TextField fx:id="fabriquant" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                  </TextField>
+                  <TextField fx:id="modele" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
+                  </TextField>
                   <ComboBox fx:id="comboboxSiteAvanceOverview" promptText="Selectionner par site" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox fx:id="comboboxAncienneteAvanceOverview" promptText="Selectionner par ancienneté" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ComboBox fx:id="comboboxTypeAvanceOverview" promptText="Selectionner par type" GridPane.columnIndex="1" GridPane.rowIndex="4" />

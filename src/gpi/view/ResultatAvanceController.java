@@ -27,7 +27,24 @@ public class ResultatAvanceController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         materielObservableList=donnee.getMaterielData();
-        listMateriel.getItems().addAll(materielObservableList);
+
+        for(Materiel materiel:materielObservableList){
+            if((materiel.getNumImmobMat().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
+                    (materiel.getNom().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
+                    (materiel.getSite().getNomSte().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
+                    // (materiel.get().equals(MainApp.getCritere(3)) || MainApp.getCritere(3).equals("")) &&
+                    (materiel.getType().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
+                    //(materiel.().equals(MainApp.getCritere(5)) || MainApp.getCritere(5).equals("")) &&
+                    (materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
+                    (materiel.getFacture().getNumFac().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
+                    (materiel.getFacture().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
+                    (materiel.getFabricant().getNomFab().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals(""))  //&&
+                    //(materiel.get.equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))*/
+                    ){
+                listMateriel.getItems().add(materiel);
+            }
+        }
+
 
         listMateriel.setOnMouseClicked((event)->{
             MainApp.setCritere(listMateriel.getFocusModel().getFocusedItem());
@@ -37,6 +54,7 @@ public class ResultatAvanceController implements Initializable {
 
     @FXML
     private void goToScreen1(ActionEvent event) {
+        MainApp.removeCriteres();
         MainApp.changerTab("Avance");
     }
 }

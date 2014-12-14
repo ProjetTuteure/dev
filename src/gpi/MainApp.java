@@ -146,6 +146,25 @@ public class MainApp extends Application {
                 break;
         }
     }
+	public static void removeCriteres(){
+		switch (getActiveTab()) {
+			case 0:
+				//tab0.remove(tab0.size()-1);
+				break;
+			case 1:
+				//tab1.remove(tab1.size()-1);
+				break;
+			case 2:
+				//tab2.remove(tab2.size()-1);
+				break;
+			case 3:
+				tab3.removeAll(tab3);
+				break;
+			case 4:
+				//tab4.remove(tab4.size()-1);
+				break;
+		}
+	}
 
     public static int getActiveTab(){
         return rootLayout.getSelectionModel().getSelectedIndex();
