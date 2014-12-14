@@ -117,7 +117,7 @@ public class Donnee {
         typeData.add(new Type("PC","sources/images/pc.jpg"));
         typeData.add(new Type("Routeur","sources/images/routeur.png"));
         typeData.add(new Type("Switch","sources/images/switch.jpg"));
-        typeData.add(new Type("Cl� 3G","sources/images/cle3G.PNG"));
+        typeData.add(new Type("Clef 3G","sources/images/cle3G.PNG"));
     }
 
     private void remplirSiteData(){
@@ -155,9 +155,9 @@ public class Donnee {
     
     private void remplirMaintenanceData(){
     	this.maintenanceData.add(new Maintenance(1, "10/01/2014", "erreur", "une erreur inconnue est survenue", 10));
-    	this.maintenanceData.add(new Maintenance(2, "31/02/2012", "orage", "tout a grill�", 5000));
-    	this.maintenanceData.add(new Maintenance(3, "10/04/2014", "neige", "il a neig� dans la salle des serveurs", 999));
-    	this.maintenanceData.add(new Maintenance(4, "11/11/2011", "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense qu eca suffira", 1));
+    	this.maintenanceData.add(new Maintenance(2, "31/02/2012", "orage", "tout a grille", 5000));
+    	this.maintenanceData.add(new Maintenance(3, "10/04/2014", "neige", "il a neige dans la salle des serveurs", 999));
+    	this.maintenanceData.add(new Maintenance(4, "11/11/2011", "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense que ca suffira", 1));
     }
     
     private void remplirEstMaintenuData(){
