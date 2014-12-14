@@ -29,17 +29,10 @@ public class ResultatAvanceController implements Initializable {
         materielObservableList=donnee.getMaterielData();
         listMateriel.getItems().addAll(materielObservableList);
 
-
-        listMateriel.getSelectionModel().selectedItemProperty().addListener(
-                (ov, old_val, new_val) -> {
-                    if (test) {
-                        MainApp.setCritere(listMateriel.getFocusModel().getFocusedItem());
-                        MainApp.changerTab("DetailMachine");
-                    } else {
-                        test = true;
-                    }
-
-                });
+        listMateriel.setOnMouseClicked((event)->{
+            MainApp.setCritere(listMateriel.getFocusModel().getFocusedItem());
+            MainApp.changerTab("DetailMachine");
+        });
     }
 
     @FXML

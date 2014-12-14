@@ -105,7 +105,7 @@ public class DetailMachineController implements Initializable{
 
 	private ObservableList<String> donneesMaterielToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
-		list.add("N° Immo : "+materiel.getNumImmobMat().getValueSafe()+"\n");
+		list.add("Nï¿½ Immo : "+materiel.getNumImmobMat().getValueSafe()+"\n");
 		list.add("Nom : "+materiel.getNom().getValueSafe()+"\n");
 		list.add("Type : "+materiel.getType().getNom().getValueSafe()+"\n");
 		list.add("Etat : "+materiel.getEtatString()+"\n");
@@ -117,7 +117,7 @@ public class DetailMachineController implements Initializable{
 
 	private ObservableList<String> donneesFactureToList(Facture facture) {
 		ObservableList<String> list= FXCollections.observableArrayList();
-		list.add("N° Facture : "+facture.getNumFac()+"\n");
+		list.add("Nï¿½ Facture : "+facture.getNumFac()+"\n");
 		list.add("Date facture : "+facture.getDateFac().getValueSafe()+"\n");
 		list.add("Montant facture : "+facture.getMontantFac().getValue());
 		return list;
