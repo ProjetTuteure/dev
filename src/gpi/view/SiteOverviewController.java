@@ -73,7 +73,7 @@ public class SiteOverviewController {
                     public void handle(MouseEvent arg0) {
                       //  System.out.println(((Label)(tempo.getBottom())).getId());
                         String id = ((Label)(tempo.getBottom())).getId();
-                        mainApp.setCritere(mainApp.donnee.getSite(Integer.parseInt(id)));
+                        mainApp.setCritere(mainApp.donnee.getSite(Integer.parseInt(id)+1));
                         mainApp.changerTab("Type");
                     }
                 });

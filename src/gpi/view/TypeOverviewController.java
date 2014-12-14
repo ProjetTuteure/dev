@@ -85,7 +85,7 @@ public class TypeOverviewController {
 	private void initialize() {
 		Donnee donnee = new Donnee();
 		Site site;
-		site=donnee.getSite((int)mainApp.getCritere(0)+1);
+		site=(Site)(mainApp.getCritere(0));
 		this.types=donnee.getTypeData();
 		this.setLabelNomVille(site.getNomSte());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
