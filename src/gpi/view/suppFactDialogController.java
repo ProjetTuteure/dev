@@ -2,7 +2,6 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Facture;
-import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ public class suppFactDialogController {
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
-	
+
 	@FXML
 	private ComboBox<String> comboboxfact;
 

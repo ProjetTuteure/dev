@@ -1,10 +1,7 @@
 package gpi.view;
 
-
-
 import gpi.bd.Donnee;
 import gpi.metier.Materiel;
-import gpi.metier.Site;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

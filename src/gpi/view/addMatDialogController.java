@@ -32,7 +32,7 @@ public class addMatDialogController {
 	private ComboBox<String> comboboxfact;
 	@FXML
 	private ComboBox<String> comboboxsite;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listNom1;
@@ -51,17 +51,17 @@ public class addMatDialogController {
 			listNom1.add(etat.name());
 		}
 		comboboxetat.setItems(listNom1);
-		
+
 		for (Fabricant fab : donneesite.getFabricantData()) {
 			listNom2.add(fab.getNomFabString());
 		}
 		comboboxfabr.setItems(listNom2);
-		
+
 		for (Facture fac : donneesite.getFactureData()) {
 			listNom3.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listNom3);
-		
+
 		for (Site site : donneesite.getSiteData()) {
 			listNom4.add(site.getNomSte());
 		}
@@ -89,7 +89,7 @@ public class addMatDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handleChoose() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();

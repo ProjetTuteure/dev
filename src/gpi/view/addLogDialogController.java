@@ -18,15 +18,13 @@ public class addLogDialogController {
 
 	@FXML
 	private boolean okClicked = false;
-	
+
 	@FXML
 	private ComboBox<String> comboboxfact;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listfact;
-	
-	
 
 	@FXML
 	private void initialize() {

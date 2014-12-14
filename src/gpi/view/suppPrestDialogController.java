@@ -1,7 +1,6 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Logiciel;
 import gpi.metier.Prestataire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -23,11 +23,11 @@ public class modFactDialogController {
 
 	@FXML
 	private ComboBox<String> comboboxfact;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listfact;
-	
+
 	@FXML
 	private TextField numfield;
 	@FXML
@@ -36,7 +36,6 @@ public class modFactDialogController {
 	private TextField montantfield;
 	@FXML
 	private DatePicker datefield;
-	
 
 	@FXML
 	private void initialize() {
@@ -47,6 +46,7 @@ public class modFactDialogController {
 		}
 		comboboxfact.setItems(listfact);
 	}
+
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
@@ -67,14 +67,14 @@ public class modFactDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange() {
-		 Facture selected = donneesite.getFacture(comboboxfact.getValue());
-		 numfield.setText(selected.getNumFac());
-		 montantfield.setText(selected.getMontantFacString());
-		 datefield.setPromptText(selected.getDateFac().getValue());
-		 revfield.setText(selected.getRevendeur().getNomRev().getValue());
+		Facture selected = donneesite.getFacture(comboboxfact.getValue());
+		numfield.setText(selected.getNumFac());
+		montantfield.setText(selected.getMontantFacString());
+		datefield.setPromptText(selected.getDateFac().getValue());
+		revfield.setText(selected.getRevendeur().getNomRev().getValue());
 	}
 
 }

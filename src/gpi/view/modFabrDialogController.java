@@ -2,7 +2,6 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Fabricant;
-import gpi.metier.Materiel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,7 +21,7 @@ public class modFabrDialogController {
 	private boolean okClicked = false;
 	@FXML
 	private ComboBox<String> comboboxfabr;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listFabr;
@@ -33,7 +32,6 @@ public class modFabrDialogController {
 	private TextField adrfield;
 	@FXML
 	private TextField telfield;
-	
 
 	@FXML
 	private void initialize() {
@@ -44,12 +42,11 @@ public class modFabrDialogController {
 		}
 		comboboxfabr.setItems(listFabr);
 	}
-	
-	
+
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
-	
+
 	@FXML
 	private void handleOk() {
 
@@ -62,13 +59,13 @@ public class modFabrDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	public boolean isOkClicked() {
 		return okClicked;
 	}
-	
+
 	@FXML
-	private void handlechange(){
+	private void handlechange() {
 		Fabricant selected = donneesite.getFabricant(comboboxfabr.getValue());
 		nomfield.setText(selected.getNomFabString());
 		telfield.setText(selected.getTelFab().getValue());

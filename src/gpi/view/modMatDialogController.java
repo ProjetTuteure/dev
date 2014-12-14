@@ -1,9 +1,6 @@
 package gpi.view;
 
-
-
 import java.io.File;
-
 import gpi.bd.Donnee;
 import gpi.metier.*;
 import javafx.collections.FXCollections;
@@ -42,7 +39,7 @@ public class modMatDialogController {
 	private ComboBox<String> comboboxsite;
 	@FXML
 	private ComboBox<String> comboboximmo;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listimmo;
@@ -50,7 +47,6 @@ public class modMatDialogController {
 	private ObservableList<String> listSite;
 	private ObservableList<String> listFabr;
 	private ObservableList<String> listFact;
-	
 
 	@FXML
 	private void initialize() {
@@ -82,7 +78,7 @@ public class modMatDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechoose() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -92,7 +88,7 @@ public class modMatDialogController {
 		if (selectedDirectory != null) {
 		}
 	}
-	
+
 	@FXML
 	private void handlechange() {
 		listEtat = FXCollections.observableArrayList();
@@ -100,46 +96,38 @@ public class modMatDialogController {
 		listFact = FXCollections.observableArrayList();
 		listFabr = FXCollections.observableArrayList();
 
-	
-        Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
+		Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
 
 		nomfield.setText(selected.getNom().getValue());
 		typefield.setText(selected.getType().getNomString());
 		immofield.setText(selected.getNumImmobMat().getValue());
-		datefield.setPromptText(selected.getDateExpirationGarantie().getValue());
-		
+		datefield
+				.setPromptText(selected.getDateExpirationGarantie().getValue());
+
 		for (Etat etat : Etat.values()) {
 			listEtat.add(etat.name());
 		}
 		comboboxetat.setItems(listEtat);
 		comboboxetat.setPromptText(selected.getEtatString());
 
-       
-		
 		for (Facture fac : donneesite.getFactureData()) {
 			listFact.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listFact);
 		comboboxfact.setPromptText(selected.getFactureString());
-		
-		
-		
+
 		for (Fabricant fb : donneesite.getFabricantData()) {
 			listFabr.add(fb.getNomFabString());
 		}
 		comboboxfab.setItems(listFabr);
 		comboboxfab.setPromptText(selected.getFabricantString());
-		
-		
-		
+
 		for (Site st : donneesite.getSiteData()) {
 			listSite.add(st.getNomSte());
 		}
 		comboboxsite.setItems(listEtat);
 		comboboxsite.setPromptText(selected.getSiteString());
-		
-		
-		
+
 	}
 
 }

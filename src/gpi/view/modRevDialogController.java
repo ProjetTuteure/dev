@@ -19,17 +19,17 @@ public class modRevDialogController {
 
 	@FXML
 	private boolean okClicked = false;
-	
+
 	@FXML
 	private TextField nomfield;
 	@FXML
 	private TextField telfield;
 	@FXML
 	private TextField adrfield;
-	
+
 	@FXML
 	private ComboBox<String> comboboxrev;
-	
+
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listrev;
@@ -64,10 +64,10 @@ public class modRevDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange() {
-		
+
 		Revendeur selected = donneesite.getRevendeur(comboboxrev.getValue());
 		nomfield.setText(selected.getNomRev().getValue());
 		telfield.setText(selected.getTelRev().getValue());
