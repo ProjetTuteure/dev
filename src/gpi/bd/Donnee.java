@@ -74,6 +74,10 @@ public class Donnee {
         return utiliseData;
     }
     
+    public ObservableList<Logiciel> getLogicielData() {
+        return logicielData;
+    }
+    
     private void remplirFabricantData() {
         fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
         fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
@@ -220,6 +224,25 @@ public class Donnee {
     	}
     	return null;
     }
+    
+    public Logiciel getLogiciel(String value) {
+        for(Logiciel log : logicielData){
+            if(value == log.getNomLog().getValue()){
+                return log;
+            }
+        }
+        return null;
+    }
+    
+    public Logiciel getLogiciel2(String value) {
+        for(Logiciel log : logicielData){
+            if(value == log.getNomLog().getValue()+" "+log.getVersion().getValue()){
+                return log;
+            }
+        }
+        return null;
+    }
+    
     /**
      * Retourne une liste de materiel en fonction du site et du type de materiel.
      * @param site
