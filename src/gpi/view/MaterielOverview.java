@@ -59,7 +59,7 @@ public class MaterielOverview {
 	@FXML
 	private void initialize() {
 		Site site;
-		site=(Site)(mainApp.getCritere(2));
+		site=(Site)(mainApp.getCritere(0));
 		Type type;
 		type=(Type)mainApp.getCritere(1);
 		System.out.println(site.getNomSte());
@@ -87,7 +87,7 @@ public class MaterielOverview {
 		    @Override 
 		    public void handle(ActionEvent e) {
 		    	mainApp.removeCritere();
-		        mainApp.changerTab("Site");
+		        mainApp.changerTab("Type");
 		    }
 		});
 	}

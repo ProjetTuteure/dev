@@ -171,9 +171,6 @@ public class TypeOverviewController {
 					Type type=donnees.getTypeByNom(label.getText());
 					mainApp.setCritere(type);
 					Site site=(Site)mainApp.getCritere(0);
-					mainApp.setCritere(site);
-					System.out.println(mainApp.getCritere(1));
-					System.out.println(mainApp.getCritere(2));
 					mainApp.changerTab("Materiel");
 				}
 			});

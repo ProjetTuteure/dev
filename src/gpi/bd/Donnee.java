@@ -280,7 +280,7 @@ public class Donnee {
     public ObservableList<Materiel> rechercher(Site site, Type type){
         ObservableList<Materiel> resultat = FXCollections.observableArrayList();
         for(Materiel mat : materielData){
-            if(site.equals(mat.getSite()) && type.equals(mat.getType())){
+            if(site.getIdSite() == mat.getSite().getIdSite() && type.getNom().getValue().equals(mat.getType().getNom().getValue())){
                 resultat.add(mat);
             }
         }
