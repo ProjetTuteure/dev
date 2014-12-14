@@ -208,6 +208,15 @@ public class Donnee {
         return null;
     }
     
+    public Prestataire getPrestaire2(String value) {
+        for(Prestataire pr : prestataireData){
+            if(value == pr.getNomPrest().getValue()+" "+pr.getPrenomPrest().getValue()){
+                return pr;
+            }
+        }
+        return null;
+    }
+    
     public Materiel getMateriel(String value) {
         for(Materiel mat : materielData){
             if(value == mat.getNumImmobMat().getValue()){
