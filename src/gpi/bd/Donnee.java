@@ -199,6 +199,17 @@ public class Donnee {
     	return null;
     }
 
+    public Facture getFacture(String value)
+    {
+    	for(Facture fact:this.factureData)
+    	{
+    		if(value==fact.getNumFac())
+    		{
+    			return fact;
+    		}
+    	}
+    	return null;
+    }
     /**
      * Retourne une liste de materiel en fonction du site et du type de materiel.
      * @param site

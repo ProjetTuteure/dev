@@ -52,6 +52,10 @@ public class Facture {
     public FloatProperty getMontantFac() {
         return montantFac;
     }
+    
+    public String getMontantFacString() {
+        return ""+this.getMontantFac().floatValue();
+    }
 
     public void setMontantFac(float montantFac) {
         this.montantFac.set(montantFac);
