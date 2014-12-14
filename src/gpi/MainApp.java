@@ -48,6 +48,8 @@ public class MainApp extends Application {
         tab4 = new ArrayList<Object>();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Adam SAS");
+		this.primaryStage.setWidth(800);
+		this.primaryStage.setResizable(false);
 		initRootLayout();
 		initTabOverview(this.SiteOverview, "Site");
 		initTabOverview(this.AncienneteOverview, "Anciennete");
