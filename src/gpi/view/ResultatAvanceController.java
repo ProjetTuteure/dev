@@ -3,6 +3,7 @@ package gpi.view;
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Materiel;
+import gpi.metier.Utilise;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,12 +30,21 @@ public class ResultatAvanceController implements Initializable {
         materielObservableList=donnee.getMaterielData();
 
         for(Materiel materiel:materielObservableList){
+            List<Utilise> utilises=donnee.getUtiliseData();
+            boolean estUtilise=false;
+            for(Utilise utilise :utilises){
+                if(utilise.getUtilisateur().getNomUti().getValue().equals(MainApp.getCritere(5))&&
+                        utilise.getMateriel().equals(materiel)
+                        ){
+                    estUtilise=true;
+                }
+            }
             if((materiel.getNumImmobMat().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
                     (materiel.getNom().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
                     (materiel.getSite().getNomSte().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
                     // (materiel.get().equals(MainApp.getCritere(3)) || MainApp.getCritere(3).equals("")) &&
                     (materiel.getType().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
-                    //(materiel.().equals(MainApp.getCritere(5)) || MainApp.getCritere(5).equals("")) &&
+                    (estUtilise || MainApp.getCritere(5).equals("") )&&
                     (materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
                     (materiel.getFacture().getNumFac().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
                     (materiel.getFacture().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
