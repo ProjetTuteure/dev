@@ -62,15 +62,7 @@ public class MaterielOverview {
 		site=(Site)(mainApp.getCritere(0));
 		Type type;
 		type=(Type)mainApp.getCritere(1);
-		System.out.println(site.getNomSte());
-		System.out.println(site.getCheminImage());
-		System.out.println(type.getNomString());
-		System.out.println(type.getCheminImage().getValue());
 		this.materiel=donnees.rechercher(site,type);
-		for(Materiel materiels:materiel)
-		{
-			System.out.println(materiels.getSiteString());
-		}
 		this.setLabelMaterielVille(site.getNomSte()+" -> "+type.getNom().getValue());
 		this.sp_materiel.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterMaterielGridPane(materiel);
@@ -123,6 +115,7 @@ public class MaterielOverview {
 			image.setFitWidth(100);
 			Label label=new Label();
 			label.setText(materiel.get(i).getNom().getValue());
+            label.setId(materiel.get(i).getNumImmobMat().getValue());
 			label.setFont(new Font("Arial",20));
 			BorderPane bp_type=new BorderPane();
 			bp_type.setCenter(image);
@@ -131,13 +124,9 @@ public class MaterielOverview {
 			bp_type.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					Type type=donnees.getTypeByNom(label.getText());
-					mainApp.setCritere(type);
-					Site site=(Site)mainApp.getCritere(0);
-					mainApp.setCritere(site);
-					System.out.println(mainApp.getCritere(0));
-					System.out.println(mainApp.getCritere(1));
-					mainApp.changerTab("Materiel");
+                    Materiel mat = donnees.getMateriel(((Label)(bp_type.getBottom())).getId());
+                    mainApp.setCritere(mat);
+					mainApp.changerTab("DetailMachine");
 				}
 			});
 			if(i%4==0 && i!=0)

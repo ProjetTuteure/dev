@@ -182,7 +182,7 @@ public class DetailMachineController implements Initializable{
 		switch(MainApp.getActiveTab()){
 		case 0:
 			MainApp.removeCritere();
-			MainApp.changerTab("Site");
+			MainApp.changerTab("Materiel");
 			break;
 		case 1:
 			MainApp.removeCritere();
