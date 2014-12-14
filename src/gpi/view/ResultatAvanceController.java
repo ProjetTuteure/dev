@@ -56,56 +56,56 @@ public class ResultatAvanceController implements Initializable {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if(MainApp.getCritere(3).equals("moins d'un ans")){
+            if(MainApp.getCritere(3).equals("moins d'un ans") || MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-1);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de deux ans")){
+            if(MainApp.getCritere(3).equals("moins de deux ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-2);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de trois ans")){
+            if(MainApp.getCritere(3).equals("moins de trois ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR, -3);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de quattre ans")){
+            if(MainApp.getCritere(3).equals("moins de quattre ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-4);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de cinq ans")){
+            if(MainApp.getCritere(3).equals("moins de cinq ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-5);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de six ans")){
+            if(MainApp.getCritere(3).equals("moins de six ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-6);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("moins de sept ans")){
+            if(MainApp.getCritere(3).equals("moins de sept ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-7);
                 if(calendar.getTime().before(date)){
                     estContenu=true;
                 }
             }
-            if(MainApp.getCritere(3).equals("plus de sept ans")){
+            if(MainApp.getCritere(3).equals("plus de sept ans")|| MainApp.getCritere(3).equals("")){
                 calendar.setTime(new Date());
                 calendar.add(Calendar.YEAR,-7);
                 if(calendar.getTime().after(date)){
@@ -117,7 +117,7 @@ public class ResultatAvanceController implements Initializable {
             if((materiel.getNumImmobMat().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
                     (materiel.getNom().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
                     (materiel.getSite().getNomSte().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
-                    (estContenu || MainApp.getCritere(3)==null) &&
+                    (estContenu || MainApp.getCritere(3).equals("")) &&
                     (materiel.getType().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
                     (estUtilise || MainApp.getCritere(5).equals("") )&&
                     (materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&

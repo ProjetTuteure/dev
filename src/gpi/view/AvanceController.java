@@ -67,7 +67,11 @@ public class AvanceController implements Initializable {
         MainApp.setCritere(noImmobilisation.getText());
         MainApp.setCritere(nomMateriel.getText());
         MainApp.setCritere(comboboxSiteAvanceOverview.getValue());
-        MainApp.setCritere(comboboxAncienneteAvanceOverview.getValue());
+        if (comboboxAncienneteAvanceOverview.getValue()==null){
+            MainApp.setCritere("");
+        }else{
+            MainApp.setCritere(comboboxAncienneteAvanceOverview.getValue());
+        }
         MainApp.setCritere(comboboxTypeAvanceOverview.getValue());
         MainApp.setCritere(utilisateur.getText());
         MainApp.setCritere(dateAchat.getText());
