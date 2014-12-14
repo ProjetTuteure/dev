@@ -108,5 +108,4 @@ public class modLogDialogController {
 			comboboxfact.setPromptText(selected2.getFacture().getNumFac());
 		}
 	}
-
 }
