@@ -9,22 +9,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="571.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="571.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.DetailMachineController">
    <children>
       <SplitPane dividerPositions="0.38137082601054484" orientation="VERTICAL" prefHeight="571.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="798.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="92.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="24.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/sources/images/pc.jpg" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="371.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Site -&gt; NomMachine" wrappingWidth="167.6708984375" />
-                  <Text layoutX="371.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chemin Dossier Drivers" />
-                  <Circle fill="#0f8a2a" layoutX="245.0" layoutY="43.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Image url="@../../sources/images/pc.jpg" />
+                     </image></ImageView>
+                  <Text fx:id="textSiteNomMachine" layoutX="371.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Site -&gt; NomMachine" wrappingWidth="167.6708984375" />
+                  <Text fx:id="textCheminDossierDrivers" layoutX="371.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chemin Dossier Drivers" />
+                  <Circle fx:id="colorCircle" fill="#0f8a2a" layoutX="245.0" layoutY="43.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                   <Button layoutX="629.0" layoutY="118.0" mnemonicParsing="false" text="Imprimer Rapport(s)" />
-                  <Button layoutX="665.0" layoutY="51.0" mnemonicParsing="false" text="Retour" />
+                  <Button layoutX="665.0" layoutY="51.0" mnemonicParsing="false" onAction="#goBack" text="Retour" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="798.0">
@@ -35,11 +34,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Numero Immob&#10;Type&#10;Site&#10;Nom&#10;Etat&#10;Expiration Garantie&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewMateriel" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -48,11 +43,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Date Facture&#10;Montant Facture" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewFacture" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -61,11 +52,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Adresse&#10;Nom&#10;Telephone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewFabricant" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -74,24 +61,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Adresse&#10;Nom&#10;Telephone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </Tab>
-                        <Tab text="Logiciels">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Logiciel 1 : version, date expiration&#10;Logiciel 1 : version, date expiration&#10;..." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewRevendeur" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -100,11 +70,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Maintenance 1 : date, cout, description&#10;...&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewMaintenance" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -113,11 +79,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="309.0" prefWidth="798.0" text="Utilisateur 1 : nom, prenom, telephone&#10;...." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-                                       </padding>
-                                    </TextArea>
+                                    <ListView fx:id="listViewUtilisateur" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                           </content>

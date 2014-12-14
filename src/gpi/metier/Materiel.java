@@ -132,4 +132,59 @@ public class Materiel {
                 ", fabricant=" + fabricant.getNomFab().getValue()
                 ;
     }
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Materiel other = (Materiel) obj;
+		if (dateExpirationGarantie == null) {
+			if (other.dateExpirationGarantie != null)
+				return false;
+		} else if (!dateExpirationGarantie.equals(other.dateExpirationGarantie))
+			return false;
+		if (etat != other.etat)
+			return false;
+		if (fabricant == null) {
+			if (other.fabricant != null)
+				return false;
+		} else if (!fabricant.equals(other.fabricant))
+			return false;
+		if (facture == null) {
+			if (other.facture != null)
+				return false;
+		} else if (!facture.equals(other.facture))
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (numImmobMat == null) {
+			if (other.numImmobMat != null)
+				return false;
+		} else if (!numImmobMat.equals(other.numImmobMat))
+			return false;
+		if (repertoireDriver == null) {
+			if (other.repertoireDriver != null)
+				return false;
+		} else if (!repertoireDriver.equals(other.repertoireDriver))
+			return false;
+		if (site == null) {
+			if (other.site != null)
+				return false;
+		} else if (!site.equals(other.site))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
 }
