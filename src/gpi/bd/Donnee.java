@@ -134,7 +134,7 @@ public class Donnee {
 
 
     private void remplirLogicielData() {
-        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0",null,this.factureData.get(1)));
+        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0","10/01/2014",this.factureData.get(1)));
     }
 
     private void remplirUtilisateurData(){
@@ -210,7 +210,7 @@ public class Donnee {
     
     public Maintenance getMaintenance2(String value) {
         for(Maintenance m : maintenanceData){
-            if(value == m.getObjet()+" "+m.getDateMaint()){
+            if(value.equals(m.getObjet()+" "+m.getDateMaint())){
                 return m;
             }
         }
@@ -228,7 +228,7 @@ public class Donnee {
     
     public Prestataire getPrestaire2(String value) {
         for(Prestataire pr : prestataireData){
-            if(value == pr.getNomPrest().getValue()+" "+pr.getPrenomPrest().getValue()){
+            if(value.equals(pr.getNomPrest().getValue()+" "+pr.getPrenomPrest().getValue())){
                 return pr;
             }
         }
