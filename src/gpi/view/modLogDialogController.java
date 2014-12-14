@@ -93,21 +93,26 @@ public class modLogDialogController {
 
 	@FXML
 	private void handlechange2() {
-		if (choix1 = true) {
-			listvers = FXCollections.observableArrayList();
-			String test = comboboxlog.getValue() + " "
-					+ comboboxvers.getValue();
-			Logiciel selected2 = donneesite.getLogiciel2(test);
+		try {
+			if (choix1 = true) {
+				listvers = FXCollections.observableArrayList();
+				String test = comboboxlog.getValue() + " "
+						+ comboboxvers.getValue();
+				Logiciel selected2 = donneesite.getLogiciel2(test);
 
-			nomfield.setText(selected2.getNomLog().getValue());
-			versfield.setText(selected2.getVersion().getValue());
-			datefield.setPromptText(selected2.getDateExpiration().getValue());
+				nomfield.setText(selected2.getNomLog().getValue());
+				versfield.setText(selected2.getVersion().getValue());
+				datefield.setPromptText(selected2.getDateExpiration()
+						.getValue());
 
-			for (Facture fac : donneesite.getFactureData()) {
-				listfact.add(fac.getNumFac());
+				for (Facture fac : donneesite.getFactureData()) {
+					listfact.add(fac.getNumFac());
+				}
+				comboboxfact.setItems(listfact);
+				comboboxfact.setPromptText(selected2.getFacture().getNumFac());
 			}
-			comboboxfact.setItems(listfact);
-			comboboxfact.setPromptText(selected2.getFacture().getNumFac());
+		} catch (NullPointerException e) {
+
 		}
 	}
 }

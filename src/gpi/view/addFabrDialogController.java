@@ -39,5 +39,4 @@ public class addFabrDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
 }

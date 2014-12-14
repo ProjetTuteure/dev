@@ -86,16 +86,19 @@ public class modPrestDialogController {
 
 	@FXML
 	private void handlechange2() {
-		if (choix1 = true) {
-			String test = comboboxnom.getValue() + " "
-					+ comboboxprenom.getValue();
-			Prestataire selected2 = donnee.getPrestaire2(test);
+		try {
+			if (choix1 = true) {
+				String test = comboboxnom.getValue() + " "
+						+ comboboxprenom.getValue();
+				Prestataire selected2 = donnee.getPrestaire2(test);
 
-			nomfield.setText(selected2.getNomPrest().getValue());
-			prenomfield.setText(selected2.getPrenomPrest().getValue());
-			telfield.setText(selected2.getTelPrest().getValue());
-			socfield.setText(selected2.getSocietee().getValue());
+				nomfield.setText(selected2.getNomPrest().getValue());
+				prenomfield.setText(selected2.getPrenomPrest().getValue());
+				telfield.setText(selected2.getTelPrest().getValue());
+				socfield.setText(selected2.getSocietee().getValue());
+			}
+		} catch (NullPointerException e) {
+
 		}
 	}
-
 }

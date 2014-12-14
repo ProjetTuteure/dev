@@ -90,15 +90,20 @@ public class modMaintDialogController {
 
 	@FXML
 	private void handlechange2() {
-		if (choix1 = true) {
-			String test = comboboxobj.getValue() + " "
-					+ comboboxdate.getValue();
-			Maintenance selected2 = donnee.getMaintenance2(test);
+		try {
+			if (choix1 = true) {
 
-			objfield.setText(selected2.getObjet());
-			datefield.setPromptText(selected2.getDateMaint());
-			descfield.setText(selected2.getDescription());
-			coutfield.setText(selected2.getCoutString());
+				String test = comboboxobj.getValue() + " "
+						+ comboboxdate.getValue();
+				Maintenance selected2 = donnee.getMaintenance2(test);
+
+				objfield.setText(selected2.getObjet());
+				datefield.setPromptText(selected2.getDateMaint());
+				descfield.setText(selected2.getDescription());
+				coutfield.setText(selected2.getCoutString());
+			}
+		} catch (NullPointerException e) {
+
 		}
 	}
 
