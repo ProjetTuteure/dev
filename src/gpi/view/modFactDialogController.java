@@ -76,5 +76,4 @@ public class modFactDialogController {
 		datefield.setPromptText(selected.getDateFac().getValue());
 		revfield.setText(selected.getRevendeur().getNomRev().getValue());
 	}
-
 }
