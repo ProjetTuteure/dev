@@ -109,8 +109,8 @@ public class Donnee {
     }
 
     private void remplirRevendeurData() {
-        revendeurData.add(new Revendeur(1,"Darty"," "," "));
-        revendeurData.add(new Revendeur(2,"Fnac"," "," "));
+        revendeurData.add(new Revendeur(1,"Darty","05.55.21.36.54","4 rue n'importe ou"));
+        revendeurData.add(new Revendeur(2,"Fnac","05.55.68.57.41","5 rue je sais pas ou "));
     }
 
     private void remplirTypeData() {
@@ -185,6 +185,15 @@ public class Donnee {
         for(Fabricant fab : fabricantData){
             if(value == fab.getNomFabString()){
                 return fab;
+            }
+        }
+        return null;
+    }
+    
+    public Revendeur getRevendeur(String value) {
+        for(Revendeur rev : revendeurData){
+            if(value == rev.getNomRev().getValue()){
+                return rev;
             }
         }
         return null;
