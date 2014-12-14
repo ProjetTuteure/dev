@@ -12,17 +12,17 @@
    <children>
       <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <GridPane fx:id="gp_site" gridLinesVisible="true" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
+            <ScrollPane BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane fx:id="gp_site" gridLinesVisible="true">
+                     <padding>
+                        <Insets top="86.0" />
+                     </padding></GridPane>
+               </content>
                <BorderPane.margin>
-                  <Insets bottom="100.0" top="100.0" />
+                  <Insets />
                </BorderPane.margin>
-            </GridPane>
+            </ScrollPane>
          </center>
       </BorderPane>
    </children>

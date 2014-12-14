@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -53,7 +54,8 @@ public class SiteOverviewController {
 
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {
-		setRow();
+        setColumn();
+        setRow();
 		for (int i = 0; i < getNbLigne(); i++) {
 			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
 				BorderPane tempo = new BorderPane();
@@ -88,10 +90,18 @@ public class SiteOverviewController {
 	private void setRow() {
 		for (int i = 0; i < getNbLigne(); i++) {
 			RowConstraints row = new RowConstraints();
-			row.setPercentHeight(100 / getNbLigne());
+			row.setPrefHeight(150);
 			gp_site.getRowConstraints().add(row);
 		}
 	}
+
+    public void setColumn(){
+        for(int i = 0; i<4;i++){
+            ColumnConstraints col = new ColumnConstraints();
+            col.setPrefWidth(200);
+            gp_site.getColumnConstraints().add(col);
+        }
+    }
 
 	public int getNbLigne() {
 		if (this.getNbSite() % 4 == 0) {
