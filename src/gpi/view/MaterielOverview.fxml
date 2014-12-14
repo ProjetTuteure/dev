@@ -5,32 +5,27 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.SiteOverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpi.view.MaterielOverview">
    <children>
       <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <GridPane fx:id="gp_site" gridLinesVisible="true" BorderPane.alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <BorderPane.margin>
-                  <Insets bottom="100.0" />
-               </BorderPane.margin>
-            </GridPane>
-         </center>
          <top>
             <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <right>
-                  <Button mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER" />
+                  <Button fx:id="b_retour" mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER" />
                </right>
                <left>
-                  <Label text="Label" BorderPane.alignment="CENTER" />
+                  <Label fx:id="materielVille" text="Label" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
          </top>
+         <center>
+            <ScrollPane fx:id="sp_materiel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <GridPane fx:id="gp_materiel" gridLinesVisible="true">
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

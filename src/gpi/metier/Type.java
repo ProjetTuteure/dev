@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -14,7 +15,7 @@ public class Type {
         this.nom = new SimpleStringProperty(nom);
         this.cheminImage = new SimpleStringProperty(cheminImage);
     }
-
+    
     public StringProperty getNom() {
         return nom;
     }

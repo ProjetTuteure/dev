@@ -155,6 +155,17 @@ public class Donnee {
     	this.estMaintenuData.add(new estMaintenu(materielData.get(3), maintenanceData.get(0)));
     }
 
+    public Type getTypeByNom(String nom)
+    {
+    	for(Type type:typeData)
+    	{
+    		if(nom.equals(type.getNom().getValue()))
+    		{
+    			return type;
+    		}
+    	}
+    	return null;
+    }
     public Materiel getMateriel(String value) {
         for(Materiel mat : materielData){
             if(value == mat.getNumImmobMat().getValue()){
@@ -176,10 +187,16 @@ public class Donnee {
     	return null;
     }
 
+    /**
+     * Retourne une liste de materiel en fonction du site et du type de materiel.
+     * @param site
+     * @param type
+     * @return
+     */
     public ObservableList<Materiel> rechercher(Site site, Type type){
         ObservableList<Materiel> resultat = FXCollections.observableArrayList();
         for(Materiel mat : materielData){
-            if(site == mat.getSite() && type == mat.getType()){
+            if(site.equals(mat.getSite()) && type.equals(mat.getType())){
                 resultat.add(mat);
             }
         }
