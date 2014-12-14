@@ -74,7 +74,7 @@ public class modMaintDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange1() {
 		choix1 = true;
@@ -82,7 +82,9 @@ public class modMaintDialogController {
 		listdate = FXCollections.observableArrayList();
 
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			listdate.add(selected.getDateMaint());
+			if (m.getObjet().equals(selected.getObjet())) {
+				listdate.add(selected.getDateMaint());
+			}
 		}
 		comboboxdate.setItems(listdate);
 	}

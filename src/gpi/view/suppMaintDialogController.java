@@ -39,7 +39,6 @@ public class suppMaintDialogController {
 		comboboxobj.setItems(listobj);
 	}
 
-
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
@@ -59,14 +58,16 @@ public class suppMaintDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange() {
 		Maintenance selected = donnee.getMaintenance(comboboxobj.getValue());
 
 		listdate = FXCollections.observableArrayList();
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			listdate.add(selected.getDateMaint());
+			if (m.getObjet().equals(selected.getObjet())) {
+				listdate.add(selected.getDateMaint());
+			}
 		}
 		comboboxdate.setItems(listdate);
 	}

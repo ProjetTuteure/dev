@@ -57,14 +57,17 @@ public class suppLogDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange() {
 		Logiciel selected = donneesite.getLogiciel(comboboxlog.getValue());
 
 		listvers = FXCollections.observableArrayList();
 		for (Logiciel log : donneesite.getLogicielData()) {
-			listvers.add(selected.getVersion().getValue());
+			if (log.getNomLog().getValue()
+					.equals(selected.getNomLog().getValue())) {
+				listvers.add(selected.getVersion().getValue());
+			}
 		}
 		comboboxvers.setItems(listvers);
 	}

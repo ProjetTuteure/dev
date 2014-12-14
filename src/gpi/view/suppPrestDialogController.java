@@ -1,7 +1,5 @@
 package gpi.view;
 
-
-
 import gpi.bd.Donnee;
 import gpi.metier.Logiciel;
 import gpi.metier.Prestataire;
@@ -60,14 +58,17 @@ public class suppPrestDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange() {
 		Prestataire selected = donneesite.getPrestaire(comboboxnom.getValue());
 
 		listprenom = FXCollections.observableArrayList();
 		for (Prestataire pr : donneesite.getPrestataireData()) {
-			listprenom.add(selected.getPrenomPrest().getValue());
+			if (pr.getNomPrest().getValue()
+					.equals(selected.getNomPrest().getValue())) {
+				listprenom.add(selected.getPrenomPrest().getValue());
+			}
 		}
 		comboboxprenom.setItems(listprenom);
 	}

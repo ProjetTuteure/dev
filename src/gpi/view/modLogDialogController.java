@@ -49,7 +49,7 @@ public class modLogDialogController {
 	@FXML
 	private void initialize() {
 		listlog = FXCollections.observableArrayList();
-        listfact = FXCollections.observableArrayList();
+		listfact = FXCollections.observableArrayList();
 		for (Logiciel log : donneesite.getLogicielData()) {
 			listlog.add(log.getNomLog().getValue());
 		}
@@ -85,7 +85,10 @@ public class modLogDialogController {
 
 		listvers = FXCollections.observableArrayList();
 		for (Logiciel log : donneesite.getLogicielData()) {
-			listvers.add(selected.getVersion().getValue());
+			if (log.getNomLog().getValue()
+					.equals(selected.getNomLog().getValue())) {
+				listvers.add(selected.getVersion().getValue());
+			}
 		}
 		comboboxvers.setItems(listvers);
 	}
@@ -102,7 +105,6 @@ public class modLogDialogController {
 			versfield.setText(selected2.getVersion().getValue());
 			datefield.setPromptText(selected2.getDateExpiration().getValue());
 
-			
 			for (Facture fac : donneesite.getFactureData()) {
 				listfact.add(fac.getNumFac());
 			}
