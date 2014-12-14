@@ -3,6 +3,8 @@ package gpi.view;
 import gpi.bd.Donnee;
 import gpi.metier.Facture;
 import gpi.metier.Logiciel;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -47,7 +49,7 @@ public class modLogDialogController {
 	@FXML
 	private void initialize() {
 		listlog = FXCollections.observableArrayList();
-
+        listfact = FXCollections.observableArrayList();
 		for (Logiciel log : donneesite.getLogicielData()) {
 			listlog.add(log.getNomLog().getValue());
 		}

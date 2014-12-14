@@ -291,7 +291,7 @@ public class Donnee {
     
     public Logiciel getLogiciel2(String value) {
         for(Logiciel log : logicielData){
-            if(value == log.getNomLog().getValue()+" "+log.getVersion().getValue()){
+            if(value.equals(log.getNomLog().getValue()+" "+log.getVersion().getValue())){
                 return log;
             }
         }
