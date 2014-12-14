@@ -77,7 +77,7 @@ public class modPrestDialogController {
 
 		for (Prestataire pr : donnee.getPrestataireData()) {
             if (pr.getNomPrest().getValue().equals(selected.getNomPrest().getValue())) {
-                listprenom.add(selected.getPrenomPrest().getValue());
+                listprenom.add(pr.getPrenomPrest().getValue());
             }
 		}
 		comboboxprenom.setItems(listprenom);

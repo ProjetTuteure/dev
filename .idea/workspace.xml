@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="375f1c62-73b0-4fa1-8955-bd6d74ff124f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java" afterPath="$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,8 +58,8 @@
       <file leaf-file-name="modPrestDialogController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5086849" vertical-offset="770" max-vertical-offset="1395">
-              <caret line="78" column="86" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.471464" vertical-offset="770" max-vertical-offset="1395">
+              <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -974,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5086849" vertical-offset="770" max-vertical-offset="1395">
-          <caret line="78" column="86" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.471464" vertical-offset="770" max-vertical-offset="1395">
+          <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
           <folding />
         </state>
       </provider>
