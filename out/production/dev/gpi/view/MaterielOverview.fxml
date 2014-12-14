@@ -11,7 +11,10 @@
          <top>
             <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <right>
-                  <Button fx:id="b_retour" mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER" />
+                  <Button fx:id="b_retour" mnemonicParsing="false" text="Retour" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="15.0" right="50.0" />
+                     </BorderPane.margin></Button>
                </right>
                <left>
                   <Label fx:id="materielVille" text="Label" BorderPane.alignment="CENTER" />

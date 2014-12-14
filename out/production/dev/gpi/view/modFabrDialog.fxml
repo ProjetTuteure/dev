@@ -14,7 +14,7 @@
             <Label prefHeight="17.0" prefWidth="130.0" text="Téléphone du fabricant" GridPane.rowIndex="3" />
             <Label prefHeight="17.0" prefWidth="129.0" text="Adresse du fabricant" GridPane.rowIndex="4" />
             <TextField fx:id="adrfield" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label prefHeight="17.0" prefWidth="128.0" text="Fabricant a modifier" />
+            <Label prefHeight="17.0" prefWidth="128.0" text="Fabricant à modifier" />
             <ComboBox fx:id="comboboxfabr" onAction="#handlechange" prefWidth="200.0" GridPane.columnIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.rowIndex="1" />

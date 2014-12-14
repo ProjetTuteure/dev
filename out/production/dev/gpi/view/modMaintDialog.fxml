@@ -15,7 +15,7 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></TextField>
-            <Label prefHeight="17.0" prefWidth="130.0" text="Cout de la maintenance" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="130.0" text="Coût de la maintenance" GridPane.rowIndex="4" />
             <Label prefHeight="17.0" prefWidth="168.0" text="Date de la maintenance" GridPane.rowIndex="5" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Separator prefWidth="200.0" GridPane.rowIndex="2" />
@@ -25,11 +25,11 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></DatePicker>
-            <TextArea fx:id="descfield" maxWidth="160.0" prefHeight="76.0" prefWidth="160.0" scrollTop="2.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextArea fx:id="descfield" maxWidth="160.0" prefHeight="76.0" prefWidth="160.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets top="4.0" />
                </GridPane.margin></TextArea>
-            <Label prefHeight="40.0" prefWidth="160.0" text="Objet maintenance a modifier" />
+            <Label prefHeight="40.0" prefWidth="160.0" text="Objet maintenance à modifier" />
             <ComboBox fx:id="comboboxobj" maxWidth="160.0" onAction="#handlechange1" prefWidth="160.0" GridPane.columnIndex="1" />
             <TextField fx:id="coutfield" maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ComboBox fx:id="comboboxdate" maxWidth="160.0" onAction="#handlechange2" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />

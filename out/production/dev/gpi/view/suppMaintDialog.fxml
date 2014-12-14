@@ -24,9 +24,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Objet de la maintenance a supprimer" />
+            <Label text="Objet de la maintenance à supprimer" />
             <ComboBox fx:id="comboboxobj" onAction="#handlechange" prefWidth="150.0" GridPane.columnIndex="1" />
-            <Label text="Date de la maintenance a supprimer" GridPane.rowIndex="1" />
+            <Label text="Date de la maintenance à supprimer" GridPane.rowIndex="1" />
             <ComboBox fx:id="comboboxdate" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>

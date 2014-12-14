@@ -17,7 +17,7 @@
                </GridPane.margin></TextField>
             <Label prefHeight="17.0" prefWidth="130.0" text="Version du logiciel" GridPane.rowIndex="4" />
             <Label prefHeight="17.0" prefWidth="168.0" text="Date d'expiration du logiciel" GridPane.rowIndex="5" />
-            <Label prefHeight="17.0" prefWidth="128.0" text="Logiciel a modifier" />
+            <Label prefHeight="17.0" prefWidth="128.0" text="Logiciel à modifier" />
             <ComboBox fx:id="comboboxlog" onAction="#handlechange1" prefWidth="200.0" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" />
@@ -28,7 +28,7 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></TextField>
-            <Label prefHeight="27.0" prefWidth="196.0" text="Version du logiciel a modifier" GridPane.rowIndex="1" />
+            <Label prefHeight="27.0" prefWidth="196.0" text="Version du logiciel à modifier" GridPane.rowIndex="1" />
             <ComboBox fx:id="comboboxvers" onAction="#handlechange2" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="129.0" text="Facture du logiciel" GridPane.rowIndex="6" />
             <ComboBox fx:id="comboboxfact" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">

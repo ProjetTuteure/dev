@@ -24,9 +24,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nom du logiciel a supprimer" />
+            <Label text="Nom du logiciel à supprimer" />
             <ComboBox fx:id="comboboxlog" onAction="#handlechange" prefWidth="150.0" GridPane.columnIndex="1" />
-            <Label text="Version du logiciel a supprimer" GridPane.rowIndex="1" />
+            <Label text="Version du logiciel à supprimer" GridPane.rowIndex="1" />
             <ComboBox fx:id="comboboxvers" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>

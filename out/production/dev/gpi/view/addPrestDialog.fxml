@@ -11,8 +11,8 @@
       <children>
         <Label text="Nom du prestataire" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <TextField fx:id="NameSiteField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Label text="Prenom du prestataire" GridPane.rowIndex="1" />
-            <Label prefHeight="17.0" prefWidth="162.0" text="Telephone du prestataire" GridPane.rowIndex="2" />
+            <Label text="Prénom du prestataire" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="162.0" text="Téléphone du prestataire" GridPane.rowIndex="2" />
             <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Société du prestataire" GridPane.rowIndex="3" />
             <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

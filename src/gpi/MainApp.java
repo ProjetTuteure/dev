@@ -182,15 +182,8 @@ public class MainApp extends Application {
 	//private static ObservableList<Site> siteData = FXCollections.observableArrayList();
 	public static void main(String[] args) {
 		donnee = new Donnee();
-		
-		//siteData.add(new Site(1, "Limoges", ""));
-		//siteData.add(new Site(1, "Tulle", ""));
-		//siteData.add(new Site(1, "Paris", ""));
-		//siteData.add(new Site(1, "Brive", ""));
-		//siteData.add(new Site(1, "Toulouse", ""));
-		//siteData.add(new Site(1, "Marseille", ""));
-		
 		launch(args);
+
 	}
 
 	public static void changerTab(String nom) {
@@ -820,8 +813,8 @@ public class MainApp extends Application {
 			modPrestDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
-			dialogStage.showAndWait();
 
+			dialogStage.showAndWait();
 			return controller.isOkClicked();
 
 		} catch (IOException e) {
