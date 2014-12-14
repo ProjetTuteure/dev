@@ -76,7 +76,9 @@ public class modPrestDialogController {
 		listprenom = FXCollections.observableArrayList();
 
 		for (Prestataire pr : donnee.getPrestataireData()) {
-			listprenom.add(selected.getPrenomPrest().getValue());
+            if (pr.getNomPrest().getValue().equals(selected.getNomPrest().getValue())) {
+                listprenom.add(selected.getPrenomPrest().getValue());
+            }
 		}
 		comboboxprenom.setItems(listprenom);
 	}
