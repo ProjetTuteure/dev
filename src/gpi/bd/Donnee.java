@@ -166,6 +166,16 @@ public class Donnee {
     	}
     	return null;
     }
+    
+    public Fabricant getFabricant(String value) {
+        for(Fabricant fab : fabricantData){
+            if(value == fab.getNomFabString()){
+                return fab;
+            }
+        }
+        return null;
+    }
+    
     public Materiel getMateriel(String value) {
         for(Materiel mat : materielData){
             if(value == mat.getNumImmobMat().getValue()){
