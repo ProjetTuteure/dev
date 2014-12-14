@@ -2,7 +2,6 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Facture;
-import gpi.metier.Materiel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,10 +75,6 @@ public class modFactDialogController {
 		 montantfield.setText(selected.getMontantFacString());
 		 datefield.setPromptText(selected.getDateFac().getValue());
 		 revfield.setText(selected.getRevendeur().getNomRev().getValue());
-	
-	
-		 
-		 //immofield.setText(selected.getNumImmobMat().getValue());
 	}
 
 }

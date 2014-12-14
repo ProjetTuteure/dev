@@ -87,34 +87,26 @@ public class modMatDialogController {
 		listFact = FXCollections.observableArrayList();
 		listFabr = FXCollections.observableArrayList();
 
-		//Doit récuperer le nom du matériel selectionné avec l'immo du menu déroulant d'en haut 
-				//pour le mettre en valeur par défaut
+	
         Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
 
 		nomfield.setText(selected.getNom().getValue());
-		//Doit récuperer le type du matériel selectionné avec l'immo du menu déroulant d'en haut 
-				//pour le mettre en valeur par défaut
 		typefield.setText(selected.getType().getNomString());
-		
-		
 		immofield.setText(selected.getNumImmobMat().getValue());
+		datefield.setPromptText(selected.getDateExpirationGarantie().getValue());
 		
 		for (Etat etat : Etat.values()) {
 			listEtat.add(etat.name());
 		}
 		comboboxetat.setItems(listEtat);
-		//Doit récuperer l'état du matériel selectionné avec l'immo du menu déroulant d'en haut 
-		//pour le mettre en valeur par défaut
 		comboboxetat.setPromptText(selected.getEtatString());
 
-        datefield.setPromptText(selected.getDateExpirationGarantie().getValue());
+       
 		
 		for (Facture fac : donneesite.getFactureData()) {
 			listFact.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listFact);
-		//Doit récuperer la facture du matériel selectionné avec l'immo du menu déroulant d'en haut 
-		//pour le mettre en valeur par défaut
 		comboboxfact.setPromptText(selected.getFactureString());
 		
 		
@@ -123,8 +115,6 @@ public class modMatDialogController {
 			listFabr.add(fb.getNomFabString());
 		}
 		comboboxfab.setItems(listFabr);
-		//Doit récuperer le fabricant du matériel selectionné avec l'immo du menu déroulant d'en haut 
-		//pour le mettre en valeur par défaut
 		comboboxfab.setPromptText(selected.getFabricantString());
 		
 		
@@ -133,8 +123,6 @@ public class modMatDialogController {
 			listSite.add(st.getNomSte());
 		}
 		comboboxsite.setItems(listEtat);
-		//Doit récuperer le site du matériel selectionné avec l'immo du menu déroulant d'en haut 
-		//pour le mettre en valeur par défaut
 		comboboxsite.setPromptText(selected.getSiteString());
 		
 		
