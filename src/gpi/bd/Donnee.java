@@ -150,7 +150,7 @@ public class Donnee {
     	this.utiliseData.add(new Utilise(utilisateurData.get(1), materielData.get(1)));
     	this.utiliseData.add(new Utilise(utilisateurData.get(2), materielData.get(2)));
     	this.utiliseData.add(new Utilise(utilisateurData.get(3), materielData.get(4)));
-    	this.utiliseData.add(new Utilise(utilisateurData.get(3), materielData.get(4)));
+    	this.utiliseData.add(new Utilise(utilisateurData.get(3), materielData.get(3)));
     }
     
     private void remplirMaintenanceData(){

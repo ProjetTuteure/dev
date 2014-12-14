@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.metier.Etat;
 import gpi.metier.Materiel;
 import gpi.metier.estMaintenu;
 
@@ -58,6 +59,50 @@ public class EtatController implements Initializable{
 		MainApp.donnee = new Donnee();
 		ObservableList<Materiel> materiel=this.mainApp.donnee.getMaterielData();
 		this.addDonneeTableView(materiel);
+		
+		checkBoxEnService.setOnAction((event) -> {
+			actionOnCheckBox(materiel);
+		});
+		
+		checkBoxEnReparation.setOnAction((event) -> {
+			actionOnCheckBox(materiel);
+		});
+		
+		checkBoxHorsService.setOnAction((event) -> {
+			actionOnCheckBox(materiel);
+		});
+		
+		materielTable.setOnMouseClicked((event) -> {
+			MainApp.setCritere(materielTable.getSelectionModel().getSelectedItem());
+			MainApp.changerTab("DetailMachine");
+		});
+	}
+
+	public void actionOnCheckBox(ObservableList<Materiel> materiel){
+		boolean checkEnService=checkBoxEnService.selectedProperty().getValue();
+		boolean checkEnReparation=checkBoxEnReparation.selectedProperty().getValue();
+		boolean checkHorsService=checkBoxHorsService.selectedProperty().getValue();
+		addDonneeRestrictTableView(materiel,checkEnService,checkEnReparation,checkHorsService);
+	}
+	
+	private void addDonneeRestrictTableView(ObservableList<Materiel> materiel,boolean checkEnService, boolean checkEnReparation,boolean checkHorsService) {
+		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();
+		
+		boolean isOk;
+		for(Materiel m : materiel){
+			isOk=false;
+			if(m.getEtat()==Etat.EN_MARCHE && checkEnService){
+				isOk=true;
+			}else if(m.getEtat()==Etat.EN_PANNE && checkEnReparation){
+				isOk=true;
+			}else if(m.getEtat()==Etat.HS && checkHorsService){
+				isOk=true;
+			}
+			if(isOk){
+				restrictedMateriel.add(m);
+			}
+		}
+		addDonneeTableView(restrictedMateriel);
 	}
 
 	private void addDonneeTableView(ObservableList<Materiel> materiel) {
@@ -67,30 +112,30 @@ public class EtatController implements Initializable{
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());
 		
 		ObservableList<String> listMaintenanceMateriel = FXCollections.observableArrayList();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/aaaa");
-		Date date;
-		for(Materiel m : materiel){
-			date=null;
-			for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
-				if(em.getMateriel().getNumImmobMat().equals(m.getNumImmobMat())){
-					try {
-						if(date==null || date.before(sdf.parse(em.getMaintenance().getDateMaint()))){
-							date=sdf.parse(em.getMaintenance().getDateMaint());
-						}
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-				}
-				if(date==null){
-					listMaintenanceMateriel.add("Aucune maintenance sur ce materiel");
-				}else{
-					listMaintenanceMateriel.add(date.toString());
-				}
-			}
-		}
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//		Date date;
+//		for(Materiel m : materiel){
+//			date=null;
+//			for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
+//				if(em.getMateriel().getNumImmobMat().equals(m.getNumImmobMat())){
+//					try {
+//						if(date==null || date.before(sdf.parse(em.getMaintenance().getDateMaint()))){
+//							date=sdf.parse(em.getMaintenance().getDateMaint());
+//						}
+//					} catch (ParseException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//				if(date==null){
+//					listMaintenanceMateriel.add("Aucune maintenance sur ce materiel");
+//				}else{
+//					listMaintenanceMateriel.add(date.toString());
+//				}
+//			}
+//		}
 		etatDepuisDateMateriel.setCellValueFactory(new Callback<CellDataFeatures<Materiel, String>, ObservableValue<String>>() {
 		     public ObservableValue<String> call(CellDataFeatures<Materiel, String> p) {
-		         return new ReadOnlyObjectWrapper(listMaintenanceMateriel);
+		         return new ReadOnlyObjectWrapper("[TODO] Recherche derniere maintenance");
 		     }
 		  });
 		//etatDepuisDateMateriel.setCellValueFactory(cellData -> cellData.getValue().getLastMaintenance(materiel));

@@ -8,18 +8,13 @@ import gpi.metier.Materiel;
 import gpi.metier.Revendeur;
 import gpi.metier.Site;
 import gpi.metier.Type;
+
 import gpi.metier.Materiel;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.JobSettings;
-import javafx.print.PageLayout;
-import javafx.print.PrinterJob;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,8 +31,6 @@ public class AncienneteController implements Initializable {
 	private ComboBox<String> comboboxSiteAncienneteOverview;
 	@FXML
 	private ComboBox<String> comboboxTypeAncienneteOverview;
-//	@FXML
-//	private Button boutonPrint;
 	@FXML
 	private TableView<Materiel> materielTable;
 	@FXML
@@ -82,31 +75,7 @@ public class AncienneteController implements Initializable {
 			MainApp.setCritere(materielTable.getSelectionModel().getSelectedItem());
 			MainApp.changerTab("DetailMachine");
 		});
-		
-//		boutonPrint.setOnAction((event) -> {
-//			windowPrint();
-//		});
 	}
-	
-	
-	
-//	private void windowPrint() {
-//		// Création du job d'impression.
-//		final PrinterJob printerJob = PrinterJob.createPrinterJob();
-//		// Affichage de la boite de dialog de configation de l'impression.    
-//		if (printerJob.showPrintDialog(boutonPrint.getScene().getRoot().getScene().getWindow())) {
-//			// Mise en page, si nécessaire.
-//			//final JobSettings settings = printerJob.getJobSettings();
-//			//final PageLayout pageLayout = settings.getPageLayout();
-//			//final double pageWidth = pageLayout.getPrintableWidth();
-//			//final double pageHeight = pageLayout.getPrintableHeight();
-//		  // Lancement de l'impression.
-//		  if (printerJob.printPage(boutonPrint)) {
-//		    // Fin de l'impression.
-//		    printerJob.endJob();
-//		  }
-//		}
-//	}
 	
 	public void actionOnCombo(ObservableList<Materiel> materiel){
 		String selectedSite="";
