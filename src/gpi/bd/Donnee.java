@@ -199,6 +199,24 @@ public class Donnee {
         return null;
     }
     
+    public Maintenance getMaintenance(String value) {
+        for(Maintenance m : maintenanceData){
+            if(value == m.getObjet()){
+                return m;
+            }
+        }
+        return null;
+    }
+    
+    public Maintenance getMaintenance2(String value) {
+        for(Maintenance m : maintenanceData){
+            if(value == m.getObjet()+" "+m.getDateMaint()){
+                return m;
+            }
+        }
+        return null;
+    }
+    
     public Prestataire getPrestaire(String value) {
         for(Prestataire pr : prestataireData){
             if(value == pr.getNomPrest().getValue()){

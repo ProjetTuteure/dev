@@ -29,6 +29,10 @@ public class Maintenance {
     public float getCout() {
         return cout;
     }
+    
+    public String getCoutString() {
+        return ""+this.getCout();
+    }
 
     public void setCout(float cout) {
         this.cout = cout;

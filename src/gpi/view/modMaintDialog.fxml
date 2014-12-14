@@ -11,7 +11,7 @@
     <GridPane prefHeight="244.0" prefWidth="330.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label prefHeight="17.0" prefWidth="185.0" text="Objet de la maintenance" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <TextField maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <TextField fx:id="objfield" maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></TextField>
@@ -21,18 +21,18 @@
             <Separator prefWidth="200.0" GridPane.rowIndex="2" />
             <Label prefHeight="27.0" prefWidth="196.0" text="Date de la maintenance " GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="129.0" text="Description" GridPane.rowIndex="6" />
-            <DatePicker maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <DatePicker fx:id="datefield" maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></DatePicker>
-            <DatePicker maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea maxWidth="160.0" prefHeight="76.0" prefWidth="160.0" scrollTop="2.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextArea fx:id="descfield" maxWidth="160.0" prefHeight="76.0" prefWidth="160.0" scrollTop="2.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets top="4.0" />
                </GridPane.margin></TextArea>
             <Label prefHeight="40.0" prefWidth="160.0" text="Objet maintenance a modifier" />
-            <ComboBox maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" />
-            <TextField maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboboxobj" maxWidth="160.0" onAction="#handlechange1" prefWidth="160.0" GridPane.columnIndex="1" />
+            <TextField fx:id="coutfield" maxWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboboxdate" maxWidth="160.0" onAction="#handlechange2" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
       <columnConstraints>
         <ColumnConstraints fillWidth="true" halignment="LEFT" hgrow="SOMETIMES" maxWidth="140.0" minWidth="160.0" prefWidth="140.0" />

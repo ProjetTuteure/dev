@@ -1,14 +1,11 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Facture;
-import gpi.metier.Logiciel;
 import gpi.metier.Prestataire;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,13 +34,12 @@ public class modPrestDialogController {
 	private ComboBox<String> comboboxnom;
 	@FXML
 	private ComboBox<String> comboboxprenom;
-	
+
 	private Donnee donnee = new Donnee();
 
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
-	
-	
+
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
@@ -72,19 +68,19 @@ public class modPrestDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-	
+
 	@FXML
 	private void handlechange1() {
 		choix1 = true;
-		Prestataire selected=donnee.getPrestaire(comboboxnom.getValue());
-		listprenom  = FXCollections.observableArrayList();
-		
+		Prestataire selected = donnee.getPrestaire(comboboxnom.getValue());
+		listprenom = FXCollections.observableArrayList();
+
 		for (Prestataire pr : donnee.getPrestataireData()) {
 			listprenom.add(selected.getPrenomPrest().getValue());
 		}
 		comboboxprenom.setItems(listprenom);
 	}
-	
+
 	@FXML
 	private void handlechange2() {
 		if (choix1 = true) {
