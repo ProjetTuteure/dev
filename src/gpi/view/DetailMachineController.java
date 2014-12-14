@@ -50,8 +50,9 @@ public class DetailMachineController implements Initializable{
 	private ListView listViewMaintenance;
 	@FXML
 	private ListView listViewUtilisateur;
+
 	@FXML
-	private ImageView image;
+	private ImageView imageType;
 	
 	private MainApp mainApp;
 	
@@ -60,7 +61,7 @@ public class DetailMachineController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		int index;
+		int index = 0;
 		MainApp.donnee = new Donnee();
 		switch(MainApp.getActiveTab()){
 			case 0:
@@ -76,7 +77,7 @@ public class DetailMachineController implements Initializable{
 				index=11;
 				break;
 		}
-		Materiel materiel=(Materiel)mainApp.getCritere(0);
+		Materiel materiel=(Materiel)mainApp.getCritere(index);
 		textSiteNomMachine.setText(materiel.getSite().getNomSteProperty().getValue()+" --> "+materiel.getNom().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriver().getValueSafe());
 		switch(materiel.getEtat().toString()){
@@ -92,10 +93,7 @@ public class DetailMachineController implements Initializable{
 				colorCircle.setFill(Color.ORANGE);;
 				break;
 		}
-		//image = new ImageView();
-	    //System.out.println(DetailMachineController.class.getClass().getResource("../../sources/images/pc.jpg"));
-	    //Image img = new Image("../../"+materiel.getType().getCheminImage().getValueSafe());
-	    //image.setImage(img);
+		imageType.setImage(new Image(materiel.getType().getCheminImage().getValue()));
 		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
 		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFacture()));
 		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricant()));
