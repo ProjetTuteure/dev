@@ -13,12 +13,12 @@
         <TextField fx:id="typefield" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Image du type" GridPane.rowIndex="2" />
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleChoose" text="Choisir l'image..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Label text="Type a modifier" />
+            <Label text="Type à modifier" />
             <ComboBox fx:id="comboboxTypeMod" onAction="#handlechange" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
       </children>
       <columnConstraints>
-        <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-        <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="216.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="80.0" prefWidth="96.0" />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="205.0" />
       </columnConstraints>
       <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

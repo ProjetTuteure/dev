@@ -17,7 +17,7 @@
             <Label prefHeight="17.0" prefWidth="101.0" text="Montant facture" GridPane.rowIndex="4" />
             <TextField fx:id="montantfield" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="datefield" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label prefHeight="17.0" prefWidth="101.0" text="Facture a modifier" />
+            <Label prefHeight="17.0" prefWidth="101.0" text="Facture à modifier" />
             <ComboBox fx:id="comboboxfact" onAction="#handlechange" prefWidth="200.0" GridPane.columnIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.rowIndex="1" />

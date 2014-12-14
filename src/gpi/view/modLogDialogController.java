@@ -3,8 +3,6 @@ package gpi.view;
 import gpi.bd.Donnee;
 import gpi.metier.Facture;
 import gpi.metier.Logiciel;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -11,13 +11,16 @@
     <GridPane prefHeight="164.0" prefWidth="301.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label prefHeight="17.0" prefWidth="132.0" text="Date de la maintenance" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Label text="Cout de la maintenance" GridPane.rowIndex="1" />
+            <Label text="Coût de la maintenance" GridPane.rowIndex="1" />
             <Label text="Objet de la maintenance" GridPane.rowIndex="2" />
             <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <DatePicker GridPane.columnIndex="1" />
             <Label text="Desciption" GridPane.rowIndex="3" />
-            <TextArea prefColumnCount="20" prefHeight="200.0" prefRowCount="5" prefWidth="200.0" scrollLeft="2.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea prefColumnCount="20" prefHeight="100.0" prefRowCount="5" prefWidth="151.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets top="4.0" />
+               </GridPane.margin></TextArea>
       </children>
       <columnConstraints>
         <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />

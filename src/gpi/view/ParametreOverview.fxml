@@ -31,21 +31,21 @@
         </rowConstraints>
          <children>
             <Label prefHeight="14.0" prefWidth="80.0" text="Dossier Drivers" />
-            <Label text="Gerer les fabriquants" GridPane.rowIndex="6" />
-            <Label text="Gerer les factures" GridPane.rowIndex="5" />
-            <Label text="Gerer les logiciels" GridPane.rowIndex="7" />
-            <Label text="Gerer les maintenances" GridPane.rowIndex="10" />
-            <Label text="Gerer les matériels" GridPane.rowIndex="3" />
-            <Label text="Gerer les prestataires" GridPane.rowIndex="9" />
+            <Label text="Gérer les fabricants" GridPane.rowIndex="6" />
+            <Label text="Gérer les factures" GridPane.rowIndex="5" />
+            <Label text="Gérer les logiciels" GridPane.rowIndex="7" />
+            <Label text="Gérer les maintenances" GridPane.rowIndex="10" />
+            <Label text="Gérer les matériels" GridPane.rowIndex="3" />
+            <Label text="Gérer les prestataires" GridPane.rowIndex="9" />
             <Button mnemonicParsing="false" onAction="#handleaddFabr" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#handleaddFact" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" onAction="#handleaddLog" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" onAction="#handleaddMaint" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Button mnemonicParsing="false" onAction="#handleaddMat" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#handleaddPrest" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="Gerer les revendeurs" GridPane.rowIndex="8" />
-            <Label text="Gerer les sites" GridPane.rowIndex="2" />
-            <Label text="Gerer les types" GridPane.rowIndex="4" />
+            <Label text="Gérer les revendeurs" GridPane.rowIndex="8" />
+            <Label text="Gérer les sites" GridPane.rowIndex="2" />
+            <Label text="Gérer les types" GridPane.rowIndex="4" />
             <Button mnemonicParsing="false" onAction="#handleaddRev" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" onAction="#handleaddSite" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#handleaddType" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
