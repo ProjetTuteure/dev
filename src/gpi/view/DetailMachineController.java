@@ -74,7 +74,8 @@ public class DetailMachineController implements Initializable{
 				index=0;
 				break;
 			case 3:
-				index=11;
+                index=0;
+				//index=11;
 				break;
 		}
 		Materiel materiel=(Materiel)mainApp.getCritere(index);
@@ -193,7 +194,7 @@ public class DetailMachineController implements Initializable{
 			break;
 		case 3:
 			MainApp.removeCritere();
-			MainApp.changerTab("Avance");
+			MainApp.changerTab("ResultatAvance");
 			break;
 		}
     }
