@@ -27,7 +27,7 @@
             <ComboBox fx:id="comboboxfab" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <ComboBox fx:id="comboboxfact" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <ComboBox fx:id="comboboxsite" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Button maxWidth="160.0" minWidth="160.0" mnemonicParsing="false" prefWidth="160.0" text="Choisir répertoire Driver..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Button maxWidth="160.0" minWidth="160.0" mnemonicParsing="false" onAction="#handlechoose" prefWidth="160.0" text="Choisir répertoire Driver..." GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Separator prefWidth="200.0" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="200.0" text="N° d'immo du materiel à modif" />

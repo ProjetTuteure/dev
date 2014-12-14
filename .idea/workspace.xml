@@ -2,47 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="375f1c62-73b0-4fa1-8955-bd6d74ff124f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/dev_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/AvanceController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/AvanceController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/bd/Donnee.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/bd/Donnee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/EtatController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/EtatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/MainApp.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/MainApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/ResultatAvanceController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/ResultatAvanceController.class" />
+      <change type="DELETED" beforePath="C:\Users\Thibault\Documents\git\dev\Executable\Gestion_Parc_Win.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addLogDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addLogDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modFabrDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modFabrDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modFactDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modFactDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modLogDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modLogDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modMaintDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modMaintDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modMatDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modMatDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modPrestDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modPrestDialogController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppLogDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppLogDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFabrDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFabrDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFactDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFactDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMaintDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMaintDialogController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMatDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMatDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppPrestDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppPrestDialogController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gpi/MainApp.java" afterPath="$PROJECT_DIR$/src/gpi/MainApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/MaterielOverview.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/MaterielOverview.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/ParametreOverview.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/ParametreOverview.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addFabrDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addFabrDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addMaintDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addMaintDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addMatDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addMatDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addPrestDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addPrestDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addRevDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addRevDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addSiteDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addSiteDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/addTypeDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/addTypeDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modFabrDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modFabrDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modFactDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modFactDialog.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppRevDialogController.class" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppRevDialogController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modLogDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modLogDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modMaintDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modMaintDialog.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modMatDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modMatDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modPrestDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modPrestDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modRevDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modRevDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modSiteDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modSiteDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/modTypeDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/modTypeDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFabrDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFabrDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFactDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppFactDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppLogDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppLogDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMaintDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMaintDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMatDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppMatDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppPrestDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppPrestDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppRevDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppRevDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppSiteDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppSiteDialog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/dev/gpi/view/suppTypeDialog.fxml" afterPath="$PROJECT_DIR$/out/production/dev/gpi/view/suppTypeDialog.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dev.iws" />
@@ -72,7 +47,7 @@
       <file leaf-file-name="SiteOverviewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gpi/view/SiteOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1972" max-vertical-offset="2091">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1666" max-vertical-offset="1785">
               <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
               <folding />
             </state>
@@ -92,8 +67,8 @@
       <file leaf-file-name="modPrestDialogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36989248" vertical-offset="967" max-vertical-offset="1581">
-              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.60645163" vertical-offset="925" max-vertical-offset="1649">
+              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -101,14 +76,14 @@
       </file>
       <file leaf-file-name="DetailMachineOverview.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gpi/view/DetailMachineOverview.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1649">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -125,7 +100,7 @@
       <file leaf-file-name="TypeOverviewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gpi/view/TypeOverviewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="3672">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3026" max-vertical-offset="3128">
               <caret line="210" column="1" selection-start-line="210" selection-start-column="1" selection-end-line="210" selection-end-column="1" />
               <folding />
             </state>
@@ -135,7 +110,7 @@
       <file leaf-file-name="Donnee.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gpi/bd/Donnee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5321" max-vertical-offset="5423">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4947" max-vertical-offset="5049">
               <caret line="316" column="0" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
               <folding />
             </state>
@@ -156,6 +131,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/gpi/MainApp.java" />
+        <option value="$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java" />
       </list>
     </option>
   </component>
@@ -195,6 +171,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -205,7 +182,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -367,6 +343,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
@@ -514,36 +495,38 @@
       <option name="number" value="Default" />
       <updated>1416777083563</updated>
       <workItem from="1418586170372" duration="898000" />
+      <workItem from="1418587159462" duration="320000" />
+      <workItem from="1418588913442" duration="39000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="898000" />
+    <option name="totallyTimeSpent" value="1257000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="968" height="860" extended-state="1" />
+    <frame x="0" y="0" width="968" height="860" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840237" sideWeight="0.49959776" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840237" sideWeight="0.5470635" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32712767" sideWeight="0.45293644" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32712767" sideWeight="0.45293644" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32878152" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32878152" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39792898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -609,7 +592,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gpi/view/modLogDialogController.java</url>
-          <line>106</line>
+          <line>110</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -648,14 +631,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/view/DetailMachineOverview.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2329">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/MainApp.java">
@@ -931,7 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="525">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -952,14 +934,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/view/DetailMachineOverview.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1455">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/view/TypeOverviewController.java">
@@ -998,8 +980,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gpi/view/modPrestDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36989248" vertical-offset="967" max-vertical-offset="1581">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.60645163" vertical-offset="925" max-vertical-offset="1649">
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
           <folding />
         </state>
       </provider>
