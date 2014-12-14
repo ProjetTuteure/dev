@@ -120,7 +120,7 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("N° Facture : "+facture.getNumFac()+"\n");
 		list.add("Date facture : "+facture.getDateFac().getValueSafe()+"\n");
-		list.add("Montant facture : "+facture.getMontantFac());
+		list.add("Montant facture : "+facture.getMontantFac().getValue());
 		return list;
 	}
 	
@@ -182,15 +182,19 @@ public class DetailMachineController implements Initializable{
     private void goBack(ActionEvent event) {
 		switch(MainApp.getActiveTab()){
 		case 0:
+			MainApp.removeCritere();
 			MainApp.changerTab("Site");
 			break;
 		case 1:
+			MainApp.removeCritere();
 			MainApp.changerTab("Anciennete");
 			break;
 		case 2:
+			MainApp.removeCritere();
 			MainApp.changerTab("Etat");
 			break;
 		case 3:
+			MainApp.removeCritere();
 			MainApp.changerTab("Avance");
 			break;
 		}

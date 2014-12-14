@@ -33,7 +33,7 @@ public class ResultatAvanceController implements Initializable {
         listMateriel.getSelectionModel().selectedItemProperty().addListener(
                 (ov, old_val, new_val) -> {
                     if (test) {
-                        System.out.println(listMateriel.getFocusModel().getFocusedItem().getNom().getValue());
+                        MainApp.setCritere(listMateriel.getFocusModel().getFocusedItem());
                         MainApp.changerTab("DetailMachine");
                     } else {
                         test = true;

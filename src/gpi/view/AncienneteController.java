@@ -135,8 +135,6 @@ public class AncienneteController implements Initializable {
 		boolean isOk;
 		for(Materiel m : materiel){
 			isOk=true;
-			System.out.println(selectedSite);
-			System.out.println(selectedType);
 			if(selectedSite!="Tous"){
 				if(m.getSiteString()!=selectedSite){
 					isOk=false;
