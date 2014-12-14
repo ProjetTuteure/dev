@@ -186,6 +186,18 @@ public class Donnee {
     	}
     	return null;
     }
+    
+    public Type gettype(String value)
+    {
+    	for(Type type:this.typeData)
+    	{
+    		if(value==type.getNomString())
+    		{
+    			return type;
+    		}
+    	}
+    	return null;
+    }
 
     /**
      * Retourne une liste de materiel en fonction du site et du type de materiel.
