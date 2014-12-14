@@ -80,13 +80,13 @@ public class Donnee {
     }
 
     private void remplirMaterielData() {
-        materielData.add(new Materiel("1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0)));
-        materielData.add(new Materiel("2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1)));
-		materielData.add(new Materiel("3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE, "31/12/2014", "", factureData.get(0), siteData.get(0), fabricantData.get(0)));
-		materielData.add(new Materiel("4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE, "31/12/2015", "", factureData.get(0), siteData.get(1), fabricantData.get(0)));
-		materielData.add(new Materiel("5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE, "05/02/2015", "", factureData.get(1), siteData.get(2), fabricantData.get(0)));
-		materielData.add(new Materiel("6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE, "14/02/2017", "", factureData.get(1), siteData.get(3), fabricantData.get(0)));
-		materielData.add(new Materiel("7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE, "14/03/2012", "", factureData.get(1), siteData.get(3), fabricantData.get(0)));
+        materielData.add(new Materiel("1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0),"XXX1"));
+        materielData.add(new Materiel("2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/12","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1),"XXX2"));
+		materielData.add(new Materiel("3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE, "31/12/2014", "", factureData.get(0), siteData.get(0), fabricantData.get(0),"XXX3"));
+		materielData.add(new Materiel("4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE, "31/12/2015", "", factureData.get(0), siteData.get(1), fabricantData.get(0),"XXX4"));
+		materielData.add(new Materiel("5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE, "05/02/2015", "", factureData.get(1), siteData.get(2), fabricantData.get(0),"XXX5"));
+		materielData.add(new Materiel("6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE, "14/02/2017", "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX6"));
+		materielData.add(new Materiel("7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE, "14/03/2012", "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX7<"));
 	    }
 
     private void remplirFactureData() {
@@ -103,7 +103,7 @@ public class Donnee {
         typeData.add(new Type("PC","sources/images/pc.jpg"));
         typeData.add(new Type("Routeur","sources/images/routeur.png"));
         typeData.add(new Type("Switch","sources/images/switch.jpg"));
-        typeData.add(new Type("Clé 3G","sources/images/cle3G.PNG"));
+        typeData.add(new Type("Clï¿½ 3G","sources/images/cle3G.PNG"));
     }
 
     private void remplirSiteData(){
@@ -141,8 +141,8 @@ public class Donnee {
     
     private void remplirMaintenanceData(){
     	this.maintenanceData.add(new Maintenance(1, "10/01/2014", "erreur", "une erreur inconnue est survenue", 10));
-    	this.maintenanceData.add(new Maintenance(2, "31/02/2012", "orage", "tout a grillé", 5000));
-    	this.maintenanceData.add(new Maintenance(3, "10/04/2014", "neige", "il a neigé dans la salle des serveurs", 999));
+    	this.maintenanceData.add(new Maintenance(2, "31/02/2012", "orage", "tout a grillï¿½", 5000));
+    	this.maintenanceData.add(new Maintenance(3, "10/04/2014", "neige", "il a neigï¿½ dans la salle des serveurs", 999));
     	this.maintenanceData.add(new Maintenance(4, "11/11/2011", "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense qu eca suffira", 1));
     }
     

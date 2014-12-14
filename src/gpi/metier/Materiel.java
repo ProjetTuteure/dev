@@ -16,8 +16,9 @@ public class Materiel {
     private Facture facture;
     private Site site;
     private Fabricant fabricant;
+    private String modele;
 
-    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant) {
+    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
         this.numImmobMat = new SimpleStringProperty(numImmobMat);
         this.nom= new SimpleStringProperty(nom);
         this.type = type;
@@ -27,6 +28,7 @@ public class Materiel {
         this.facture = facture;
         this.site = site;
         this.fabricant = fabricant;
+        this.modele=modele;
     }
 
     public Site getSite() {
@@ -119,6 +121,10 @@ public class Materiel {
     
     public String getFabricantString(){
     	return fabricant.getNomFab().getValue();
+    }
+
+    public String getModele() {
+        return modele;
     }
 
     @Override

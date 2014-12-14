@@ -38,8 +38,8 @@ public class ResultatAvanceController implements Initializable {
                     (materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
                     (materiel.getFacture().getNumFac().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
                     (materiel.getFacture().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
-                    (materiel.getFabricant().getNomFab().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals(""))  //&&
-                    //(materiel.get.equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))*/
+                    (materiel.getFabricant().getNomFab().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals("")) &&
+                    (materiel.getModele().equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))
                     ){
                 listMateriel.getItems().add(materiel);
             }
