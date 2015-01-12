@@ -41,7 +41,7 @@ public class ajouterMateriel {
 	private ObservableList<String> listNom4;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
@@ -56,7 +56,7 @@ public class ajouterMateriel {
 		comboboxetat.setItems(listNom1);
 
 		for (Fabricant fab : donneeMat.getFabricantData()) {
-			listNom2.add(fab.getNomFab().getValue());
+			listNom2.add(fab.getNomFabricant().getValue());
 		}
 		comboboxfabr.setItems(listNom2);
 

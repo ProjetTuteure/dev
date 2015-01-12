@@ -185,7 +185,7 @@ public class Donnee {
     
     public Fabricant getFabricant(String value) {
         for(Fabricant fab : fabricantData){
-            if(value == fab.getNomFabString()){
+            if(value == fab.getNomFabricantString()){
                 return fab;
             }
         }

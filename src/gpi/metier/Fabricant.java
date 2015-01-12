@@ -7,53 +7,53 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Fabricant {
-    private int idFab;
-    private StringProperty nomFab;
-    private StringProperty telFab;
-    private StringProperty adresseFab;
+    private int idFabricant;
+    private StringProperty nomFabricant;
+    private StringProperty telFabricant;
+    private StringProperty adresseFabricant;
 
 
     public Fabricant(int idFab, String nomFab, String telFab, String adresseFab) {
 
-        this.idFab = idFab;
-        this.nomFab = new SimpleStringProperty(nomFab);
-        this.telFab = new SimpleStringProperty(telFab);
-        this.adresseFab = new SimpleStringProperty(adresseFab);
+        this.idFabricant = idFab;
+        this.nomFabricant = new SimpleStringProperty(nomFab);
+        this.telFabricant = new SimpleStringProperty(telFab);
+        this.adresseFabricant = new SimpleStringProperty(adresseFab);
     }
 
-    public int getIdFab() {
-        return idFab;
+    public int getIdFabricant() {
+        return idFabricant;
     }
 
-    public void setIdFab(int idFab) {
-        this.idFab = idFab;
+    public void setIdFabricant(int idFab) {
+        this.idFabricant = idFab;
     }
 
-    public StringProperty getTelFab() {
-        return telFab;
+    public StringProperty getTelFabricant() {
+        return telFabricant;
     }
 
-    public void setTelFab(String telFab) {
-        this.telFab.setValue(telFab);
+    public void setTelFabricant(String telFab) {
+        this.telFabricant.setValue(telFab);
     }
 
-    public StringProperty getAdresseFab() {
-        return adresseFab;
+    public StringProperty getAdresseFabricant() {
+        return adresseFabricant;
     }
 
-    public void setAdresseFab(String adresseFab) {
-        this.adresseFab.setValue(adresseFab);
+    public void setAdresseFabricant(String adresseFab) {
+        this.adresseFabricant.setValue(adresseFab);
     }
 
-    public StringProperty getNomFab() {
-        return nomFab;
+    public StringProperty getNomFabricant() {
+        return nomFabricant;
     }
 
-    public String getNomFabString(){
-    	return this.getNomFab().getValue();
+    public String getNomFabricantString(){
+    	return this.getNomFabricant().getValue();
     }
 
     public void setNomFab(String nomFab) {
-        this.nomFab.setValue(nomFab);
+        this.nomFabricant.setValue(nomFab);
     }
 }

@@ -34,14 +34,14 @@ public class modifierFabricant {
 	private TextField telfield;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listFabr = FXCollections.observableArrayList();
 
 		for (Fabricant fab : donneeFabr.getFabricantData()) {
-			listFabr.add(fab.getNomFab().getValue());
+			listFabr.add(fab.getNomFabricant().getValue());
 		}
 		comboboxfabr.setItems(listFabr);
 	}
@@ -93,9 +93,9 @@ public class modifierFabricant {
 	@FXML
 	private void handlechange() {
 		Fabricant selected = donneeFabr.getFabricant(comboboxfabr.getValue());
-		nomfield.setText(selected.getNomFab().getValue());
-		telfield.setText(selected.getTelFab().getValue());
-		adrfield.setText(selected.getAdresseFab().getValue());
+		nomfield.setText(selected.getNomFabricant().getValue());
+		telfield.setText(selected.getTelFabricant().getValue());
+		adrfield.setText(selected.getAdresseFabricant().getValue());
 	}
 
 }

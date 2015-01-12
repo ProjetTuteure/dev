@@ -26,14 +26,14 @@ public class supprimerFabricant {
 	private ObservableList<String> listNom;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
 		for (Fabricant fb : donneesite.getFabricantData()) {
-			listNom.add(fb.getNomFabString());
+			listNom.add(fb.getNomFabricantString());
 		}
 		comboboxfabr.setItems(listNom);
 	}

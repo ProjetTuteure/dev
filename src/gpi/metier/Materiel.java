@@ -145,7 +145,7 @@ public class Materiel {
     }
     
     public String getFabricantString(){
-    	return fabricant.getNomFab().getValue();
+    	return fabricant.getNomFabricant().getValue();
     }
 
     public String getModele() {
@@ -160,7 +160,7 @@ public class Materiel {
                 ", etat=" + etat.name() +
                 ", dateExpirationGarantie=" + getDateExpirationGarantieStringProperty().getValue() +
                 ", site=" + site.getNomSte() +
-                ", fabricant=" + fabricant.getNomFab().getValue()
+                ", fabricant=" + fabricant.getNomFabricant().getValue()
                 ;
     }
 
