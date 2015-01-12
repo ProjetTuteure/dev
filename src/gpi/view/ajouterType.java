@@ -29,7 +29,9 @@ public class ajouterType {
 
 	/**
 	 * Cette methode permet de mettre en fenetre active le popup
-	 * @param dialogStage la fenetre active
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
 	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;

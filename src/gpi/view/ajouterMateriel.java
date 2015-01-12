@@ -41,8 +41,7 @@ public class ajouterMateriel {
 	private ObservableList<String> listNom4;
 
 	/**
-	 * Initialise les données
-	 * Ajoute les données aux combobox
+	 * Initialise les données Ajoute les données aux combobox
 	 */
 	@FXML
 	private void initialize() {
@@ -75,7 +74,9 @@ public class ajouterMateriel {
 
 	/**
 	 * Cette methode permet de mettre en fenetre active le popup
-	 * @param dialogStage la fenetre active
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
 	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
@@ -112,7 +113,8 @@ public class ajouterMateriel {
 	}
 
 	/**
-	 * Cette methode permet de pre remplir les champs lorsqu'un Materiel est selectionne
+	 * Cette methode permet de pre remplir les champs lorsqu'un Materiel est
+	 * selectionne
 	 */
 	@FXML
 	private void handleChoose() {
