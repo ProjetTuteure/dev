@@ -102,8 +102,7 @@ public class modifierLogiciel {
 
 				nomfield.setText(selected2.getNomLog().getValue());
 				versfield.setText(selected2.getVersion().getValue());
-				datefield.setPromptText(selected2.getDateExpiration()
-						.getValue());
+				datefield.setPromptText(selected2.getDateExpirationStringProperty().getValue());
 
 				for (Facture fac : donneeLog.getFactureData()) {
 					listfact.add(fac.getNumFac());

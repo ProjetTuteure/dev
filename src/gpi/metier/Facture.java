@@ -25,7 +25,7 @@ public class Facture {
     }
 
     public StringProperty getDateFacStringProperty() {
-        String dateFacture=dateFac.getDayOfMonth()+""+dateFac.getMonthValue()+"/"+dateFac.getYear();
+        String dateFacture=dateFac.getDayOfMonth()+"/"+dateFac.getMonthValue()+"/"+dateFac.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 

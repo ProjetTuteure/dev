@@ -136,7 +136,7 @@ public class Donnee {
 
 
     private void remplirLogicielData() {
-        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0","10/01/2014",this.factureData.get(1)));
+        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0",LocalDate.parse("2014-10-01"),this.factureData.get(1)));
     }
 
     private void remplirUtilisateurData(){
