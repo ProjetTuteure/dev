@@ -54,8 +54,8 @@ public class AncienneteController implements Initializable {
     }
 	
 	/**
-	 * Initialise les données
-	 * ajoute les données dans la tableView
+	 * Initialise les donnï¿½es
+	 * ajoute les donnï¿½es dans la tableView
 	 * ajoute les actions aux combobox
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class AncienneteController implements Initializable {
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
-		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getDateFac());
+		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getDateFacStringProperty());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatStringProperty());
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantie());
 		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getRevendeur().getNomRev());
@@ -126,10 +126,10 @@ public class AncienneteController implements Initializable {
 	}
 	
 	/**
-	 * Ajoute les données dans la tableView et dans les combobox
-	 * @param materiel la liste de materiels à ajouter dans le tableau de materiel
-	 * @param site la liste de site à ajouter dans la combobox de site
-	 * @param type la liste de type à ajouter dans la combobox de type
+	 * Ajoute les donnï¿½es dans la tableView et dans les combobox
+	 * @param materiel la liste de materiels ï¿½ ajouter dans le tableau de materiel
+	 * @param site la liste de site ï¿½ ajouter dans la combobox de site
+	 * @param type la liste de type ï¿½ ajouter dans la combobox de type
 	 */
 	public void addDonneeTableView(ObservableList<Materiel> materiel,ObservableList<Site> site,ObservableList<Type> type){
 		ObservableList<String> listSite = FXCollections.observableArrayList();
@@ -151,11 +151,11 @@ public class AncienneteController implements Initializable {
 	}
 	
 	/**
-	 * Permet de restreindre l'affichage des données dans la TableView en fonction des critères
-	 * sélectionnés dans les combobox
-	 * @param materiel la liste de matériel à afficher dans la tableView
-	 * @param selectedSite le site dans lequel les matériels sont
-	 * @param selectedType le type de matériel à afficher
+	 * Permet de restreindre l'affichage des donnï¿½es dans la TableView en fonction des critï¿½res
+	 * sï¿½lectionnï¿½s dans les combobox
+	 * @param materiel la liste de matï¿½riel ï¿½ afficher dans la tableView
+	 * @param selectedSite le site dans lequel les matï¿½riels sont
+	 * @param selectedType le type de matï¿½riel ï¿½ afficher
 	 */
 	public void addDonneeRestrictTableView(ObservableList<Materiel> materiel,String selectedSite, String selectedType){
 		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();

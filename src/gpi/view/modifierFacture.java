@@ -73,7 +73,7 @@ public class modifierFacture {
 		Facture selected = donneeFact.getFacture(comboboxfact.getValue());
 		numfield.setText(selected.getNumFac());
 		montantfield.setText(selected.getMontantFacString());
-		datefield.setPromptText(selected.getDateFac().getValue());
+		datefield.setPromptText(selected.getDateFacStringProperty().getValue());
 		revfield.setText(selected.getRevendeur().getNomRev().getValue());
 	}
 }

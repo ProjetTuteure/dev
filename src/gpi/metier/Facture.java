@@ -5,24 +5,28 @@ import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.time.LocalDate;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Facture {
     private StringProperty numFac;
-    private StringProperty dateFac;
+    private LocalDate dateFac;
     private FloatProperty montantFac;
     private Revendeur revendeur;
 
-    public Facture(String numFac, String dateFac, float montantFac, Revendeur revendeur) {
+
+    public Facture(String numFac, LocalDate dateFac, float montantFac, Revendeur revendeur) {
         this.numFac = new SimpleStringProperty(numFac);
-        this.dateFac= new SimpleStringProperty(dateFac);
+        this.dateFac= dateFac;
         this.montantFac= new SimpleFloatProperty(montantFac);
         this.revendeur = revendeur;
     }
 
-    public StringProperty dateFacProperty() {
-        return dateFac;
+    public StringProperty getDateFacStringProperty() {
+        String dateFacture=dateFac.getDayOfMonth()+""+dateFac.getMonthValue()+"/"+dateFac.getYear();
+        return new SimpleStringProperty(dateFacture);
     }
 
     public String getNumFac() {
@@ -41,12 +45,12 @@ public class Facture {
         return montantFac;
     }
 
-    public StringProperty getDateFac() {
+    public LocalDate getDateFac() {
         return dateFac;
     }
 
-    public void setDateFac(String dateFac) {
-        this.dateFac.set(dateFac);
+    public void setDateFac(LocalDate dateFac) {
+        this.dateFac=(dateFac);
     }
 
     public FloatProperty getMontantFac() {

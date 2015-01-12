@@ -61,7 +61,7 @@ public class DetailMachineController implements Initializable{
     }
 	
 	/**
-	 * Initialise les données et affecte l'index en fonction de la page
+	 * Initialise les donnï¿½es et affecte l'index en fonction de la page
 	 * courante
 	 */
 	@Override
@@ -109,9 +109,9 @@ public class DetailMachineController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les données d'un materiel dans une liste
+	 * Ajoute les donnï¿½es d'un materiel dans une liste
 	 * @param materiel le materiel a
-	 * @return la liste des informations concernant le materiel passé en paramètre
+	 * @return la liste des informations concernant le materiel passï¿½ en paramï¿½tre
 	 */
 	private ObservableList<String> donneesMaterielToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
@@ -126,22 +126,22 @@ public class DetailMachineController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les données d'une facture dans une liste de chaîne de caractère
-	 * @param facture la facture dont on veut mettre les données dans la chaîne
-	 * @return la liste des données relatives à la facture passée en paramètre
+	 * Ajoute les donnï¿½es d'une facture dans une liste de chaï¿½ne de caractï¿½re
+	 * @param facture la facture dont on veut mettre les donnï¿½es dans la chaï¿½ne
+	 * @return la liste des donnï¿½es relatives ï¿½ la facture passï¿½e en paramï¿½tre
 	 */
 	private ObservableList<String> donneesFactureToList(Facture facture) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Num Facture : "+facture.getNumFac()+"\n");
-		list.add("Date facture : "+facture.getDateFac().getValueSafe()+"\n");
+		list.add("Date facture : "+facture.getDateFacStringProperty().getValue()+"\n");
 		list.add("Montant facture : "+facture.getMontantFac().getValue());
 		return list;
 	}
 	
 	/**
-	 * Ajoute les données relatives à un fabricant dans une liste de chaîne de caractère
-	 * @param fabricant le fabricant dont on veut mettre les données dans la chaîne
-	 * @return la liste des données relatives au fabricant passé en paramètre
+	 * Ajoute les donnï¿½es relatives ï¿½ un fabricant dans une liste de chaï¿½ne de caractï¿½re
+	 * @param fabricant le fabricant dont on veut mettre les donnï¿½es dans la chaï¿½ne
+	 * @return la liste des donnï¿½es relatives au fabricant passï¿½ en paramï¿½tre
 	 */
 	private ObservableList<String> donneesFabricantToList(Fabricant fabricant) {
 		ObservableList<String> list= FXCollections.observableArrayList();
@@ -152,9 +152,9 @@ public class DetailMachineController implements Initializable{
 	}
 	
 	/**
-	 * Ajoute les données relatives à un revendeur dans une liste de chaîne de caractère
-	 * @param revendeur le revendeur dont on veut ajouter les données dans la chaîne
-	 * @return la liste des données relatives au revendeur passé en paramètre
+	 * Ajoute les donnï¿½es relatives ï¿½ un revendeur dans une liste de chaï¿½ne de caractï¿½re
+	 * @param revendeur le revendeur dont on veut ajouter les donnï¿½es dans la chaï¿½ne
+	 * @return la liste des donnï¿½es relatives au revendeur passï¿½ en paramï¿½tre
 	 */
 	private ObservableList<String> donneesRevendeurToList(Revendeur revendeur) {
 		ObservableList<String> list= FXCollections.observableArrayList();
@@ -165,9 +165,9 @@ public class DetailMachineController implements Initializable{
 	}
 	
 	/**
-	 * Ajoute les données relatives à une maintenance dans une liste de chaîne de caractère
-	 * @param materiel le materiel concerné par la maintenance à ajouter
-	 * @return la liste des données relatives à la maintenance du materiel passé en paramètre
+	 * Ajoute les donnï¿½es relatives ï¿½ une maintenance dans une liste de chaï¿½ne de caractï¿½re
+	 * @param materiel le materiel concernï¿½ par la maintenance ï¿½ ajouter
+	 * @return la liste des donnï¿½es relatives ï¿½ la maintenance du materiel passï¿½ en paramï¿½tre
 	 */
 	private ObservableList<String> donneesMaintenanceToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
@@ -191,9 +191,9 @@ public class DetailMachineController implements Initializable{
 	}
 	
 	/**
-	 * Ajoute les données relatives à un utilisateur dans une liste de chaîne de caractère
-	 * @param materiel le materiel appartenant à l'utilisateur 
-	 * @return la liste des données relatives à l'utilisateur utilisant le materiel passé en paramètre
+	 * Ajoute les donnï¿½es relatives ï¿½ un utilisateur dans une liste de chaï¿½ne de caractï¿½re
+	 * @param materiel le materiel appartenant ï¿½ l'utilisateur 
+	 * @return la liste des donnï¿½es relatives ï¿½ l'utilisateur utilisant le materiel passï¿½ en paramï¿½tre
 	 */
 	private ObservableList<String> donneesUtilisateurToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
@@ -213,7 +213,7 @@ public class DetailMachineController implements Initializable{
 	}
 	
 	/**
-	 * Permet le retour sur les pages précédentes
+	 * Permet le retour sur les pages prï¿½cï¿½dentes
 	 * @param event 
 	 */
 	@FXML

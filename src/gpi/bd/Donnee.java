@@ -5,6 +5,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 /**
  * Created by admin on 24/11/14.
  */
@@ -104,8 +106,8 @@ public class Donnee {
 	    }
 
     private void remplirFactureData() {
-        factureData.add(new Facture("1","11/11/2011", (float) 123.50,revendeurData.get(0)));
-        factureData.add(new Facture("2","12/12/2012", (float) 99,revendeurData.get(1)));
+        factureData.add(new Facture("1", LocalDate.parse("2011-11-11"), (float) 123.50,revendeurData.get(0)));
+        factureData.add(new Facture("2", LocalDate.parse("2012-12-12"), (float) 99,revendeurData.get(1)));
     }
 
     private void remplirRevendeurData() {
