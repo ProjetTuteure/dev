@@ -53,7 +53,9 @@ public class AncienneteController implements Initializable {
 	public AncienneteController() {
     }
 	
-
+	/**
+	 * @see javadoc super classe
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
@@ -77,6 +79,11 @@ public class AncienneteController implements Initializable {
 		});
 	}
 	
+	/**
+	 * Permet de gerer la restriction en fonction du combo box.
+	 * @param materiel la liste de materiel qui sera affichee dans la tableView en fonction
+	 * des restrictions
+	 */
 	public void actionOnCombo(ObservableList<Materiel> materiel){
 		String selectedSite="";
 		String selectedType="";
@@ -93,12 +100,19 @@ public class AncienneteController implements Initializable {
 	    }
 	}
 	
+	/**
+	 * Set le MainApp
+	 * @param mainApp
+	 */
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
 	
+	/**
+	 * ajoute les materiels dans les colonnes de la tableView
+	 * @param materiel la liste des materiels que l'on ajoute.
+	 */
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
-		
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
 		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getDateFac());
@@ -107,9 +121,14 @@ public class AncienneteController implements Initializable {
 		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getRevendeur().getNomRev());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricant().getNomFab());
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());	
-		
 	}
 	
+	/**
+	 * Ajoute les données dans la tableView et dans les combobox
+	 * @param materiel la liste de materiels à ajouter dans le tableau de materiel
+	 * @param site la liste de site à ajouter dans la combobox de site
+	 * @param type la liste de type à ajouter dans la combobox de type
+	 */
 	public void addDonneeTableView(ObservableList<Materiel> materiel,ObservableList<Site> site,ObservableList<Type> type){
 		ObservableList<String> listSite = FXCollections.observableArrayList();
 		ObservableList<String> listType = FXCollections.observableArrayList();
@@ -129,7 +148,13 @@ public class AncienneteController implements Initializable {
 		comboboxTypeAncienneteOverview.setItems(listType);
 	}
 	
-	
+	/**
+	 * Permet de restreindre l'affichage des données dans la TableView en fonction des critères
+	 * sélectionnés dans les combobox
+	 * @param materiel la liste de matériel à afficher dans la tableView
+	 * @param selectedSite le site dans lequel les matériels sont
+	 * @param selectedType le type de matériel à afficher
+	 */
 	public void addDonneeRestrictTableView(ObservableList<Materiel> materiel,String selectedSite, String selectedType){
 		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();
 		boolean isOk;
