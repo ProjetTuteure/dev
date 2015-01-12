@@ -212,7 +212,7 @@ public class Donnee {
     
     public Maintenance getMaintenance2(String value) {
         for(Maintenance m : maintenanceData){
-            if(value.equals(m.getObjet()+" "+m.getDateMaint())){
+            if(value.equals(m.getObjet()+" "+m.getDateMaintStringProperty().getValue())){
                 return m;
             }
         }

@@ -96,7 +96,8 @@ public class modifierMaintenance {
 				String test = comboboxobj.getValue() + " "
 						+ comboboxdate.getValue();
 				Maintenance selected2 = donnee.getMaintenance2(test);
-
+				System.out.println(selected2.getObjet());
+				System.out.println(selected2.getDescription());
 				objfield.setText(selected2.getObjet());
 				datefield.setPromptText(selected2.getDateMaintStringProperty().getValue());
 				descfield.setText(selected2.getDescription());
