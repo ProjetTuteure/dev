@@ -1,20 +1,26 @@
 package gpi.view;
 
-import java.io.File;
-
+import gpi.bd.Donnee;
+import gpi.metier.Site;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 /**
  * Created by Kevin
  */
 
-public class addSiteDialogController {
+public class modifierSite {
 	@FXML
 	private TextField NameSiteField;
+
 	@FXML
 	private Stage dialogStage;
 	// @FXML
@@ -23,8 +29,20 @@ public class addSiteDialogController {
 	private boolean okClicked = false;
 
 	@FXML
-	private void initialize() {
+	private ComboBox<String> comboboxSiteMod;
 
+	private Donnee donneesite = new Donnee();
+
+	private ObservableList<String> listNom;
+
+	@FXML
+	private void initialize() {
+		listNom = FXCollections.observableArrayList();
+
+		for (Site site : donneesite.getSiteData()) {
+			listNom.add(site.getNomSte());
+		}
+		comboboxSiteMod.setItems(listNom);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -86,6 +104,11 @@ public class addSiteDialogController {
 		if (file != null) {
 		}// do something interesting with the file.
 
+	}
+
+	@FXML
+	private void handlechange(ActionEvent event) {
+		NameSiteField.setText(comboboxSiteMod.getValue());
 	}
 
 }

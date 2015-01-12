@@ -1,7 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Materiel;
+import gpi.metier.Facture;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,26 +12,27 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class suppMatDialogController {
+public class supprimerFacture {
 	@FXML
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
+
 	@FXML
-	private ComboBox<String> comboboxmat;
+	private ComboBox<String> comboboxfact;
 
 	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listmat;
+	private ObservableList<String> listNum;
 
 	@FXML
 	private void initialize() {
-		listmat = FXCollections.observableArrayList();
+		listNum = FXCollections.observableArrayList();
 
-		for (Materiel mat : donneesite.getMaterielData()) {
-			listmat.add(mat.getNumImmobMat().getValue());
+		for (Facture fac : donneesite.getFactureData()) {
+			listNum.add(fac.getNumFac());
 		}
-		comboboxmat.setItems(listmat);
+		comboboxfact.setItems(listNum);
 	}
 
 	public void setDialogStage(Stage dialogStage) {

@@ -1,18 +1,13 @@
 package gpi.view;
 
-import java.io.File;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
  * Created by Kevin
  */
 
-public class addTypeDialogController {
-
+public class ajouterFabricant {
 	@FXML
 	private Stage dialogStage;
 
@@ -44,15 +39,4 @@ public class addTypeDialogController {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
-	@FXML
-	private void handleChoose(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open File");
-		File file = fileChooser.showOpenDialog(null);
-		if (file != null) {
-		}
-
-	}
-
 }

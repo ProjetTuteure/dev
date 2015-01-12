@@ -1,7 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Fabricant;
+import gpi.metier.Revendeur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,14 +12,14 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class suppFabrDialogController {
+public class supprimerRevendeur {
 	@FXML
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxfabr;
+	private ComboBox<String> comboboxrev;
 
 	private Donnee donneesite = new Donnee();
 
@@ -29,10 +29,10 @@ public class suppFabrDialogController {
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
-		for (Fabricant fb : donneesite.getFabricantData()) {
-			listNom.add(fb.getNomFabString());
+		for (Revendeur rv : donneesite.getRevendeurData()) {
+			listNom.add(rv.getNomRev().getValue());
 		}
-		comboboxfabr.setItems(listNom);
+		comboboxrev.setItems(listNom);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
