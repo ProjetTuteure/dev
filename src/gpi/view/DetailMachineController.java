@@ -173,8 +173,8 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Maintenance> listMaintenanceMateriel = FXCollections.observableArrayList();
 		for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
-			if(em.getMateriel().toString().equals(materiel.toString())){
-				listMaintenanceMateriel.add(em.getMaintenance());
+			if(em.getmaterielEstMaintenu().toString().equals(materiel.toString())){
+				listMaintenanceMateriel.add(em.getmaintenanceEstMaintenu());
 			}
 		}
 		int i=1;

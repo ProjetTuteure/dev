@@ -4,27 +4,27 @@ package gpi.metier;
  * Created by thibault on 22/11/14.
  */
 public class estMaintenu {
-    private Materiel materiel;
-    private Maintenance maintenance;
+    private Materiel materielEstMaintenu;
+    private Maintenance maintenanceEstMaintenu;
 
-    public estMaintenu(Materiel materiel, Maintenance maintenance) {
-        this.materiel = materiel;
-        this.maintenance = maintenance;
+    public estMaintenu(Materiel materielEstMaintenu, Maintenance maintenanceEstMaintenu) {
+        this.materielEstMaintenu = materielEstMaintenu;
+        this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }
 
-    public Materiel getMateriel() {
-        return materiel;
+    public Materiel getmaterielEstMaintenu() {
+        return materielEstMaintenu;
     }
 
-    public void setMateriel(Materiel materiel) {
-        this.materiel = materiel;
+    public void setmaterielEstMaintenu(Materiel materielEstMaintenu) {
+        this.materielEstMaintenu = materielEstMaintenu;
     }
 
-    public Maintenance getMaintenance() {
-        return maintenance;
+    public Maintenance getmaintenanceEstMaintenu() {
+        return maintenanceEstMaintenu;
     }
 
-    public void setMaintenance(Maintenance maintenance) {
-        this.maintenance = maintenance;
+    public void setmaintenanceEstMaintenu(Maintenance maintenanceEstMaintenu) {
+        this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }
 }
