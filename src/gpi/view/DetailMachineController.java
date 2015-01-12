@@ -204,10 +204,10 @@ public class DetailMachineController implements Initializable{
 			}
 		}
 		for(Utilisateur u : listUtilisateurMateriel){
-			list.add("\nUtilisateur "+String.valueOf(u.getIdUti())+" :\n");
-			list.add("Nom : "+u.getNomUti().getValueSafe()+"\n");
-			list.add("Prenom : "+u.getPrenomUti().getValueSafe()+"\n");
-			list.add("Telephone : "+u.getTelUti().getValueSafe()+"\n");
+			list.add("\nUtilisateur "+String.valueOf(u.getIdUtilisateur())+" :\n");
+			list.add("Nom : "+u.getNomUtilisateur().getValueSafe()+"\n");
+			list.add("Prenom : "+u.getPrenomUtilisateur().getValueSafe()+"\n");
+			list.add("Telephone : "+u.getTelUtilisateur().getValueSafe()+"\n");
 		}
 		return list;
 	}

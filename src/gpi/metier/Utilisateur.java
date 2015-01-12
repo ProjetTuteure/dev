@@ -7,47 +7,47 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Utilisateur {
-    private int idUti;
-    private StringProperty nomUti;
-    private StringProperty prenomUti;
-    private StringProperty telUti;
+    private int idUtilisateur;
+    private StringProperty nomUtilisateur;
+    private StringProperty prenomUtilisateur;
+    private StringProperty telUtilisateur;
 
-    public Utilisateur(int idUti, String nomUti, String prenomUti, String telUti) {
-        this.idUti = idUti;
-        this.nomUti = new SimpleStringProperty(nomUti);
-        this.prenomUti = new SimpleStringProperty(prenomUti);
-        this.telUti = new SimpleStringProperty(telUti);
+    public Utilisateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String telUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+        this.nomUtilisateur = new SimpleStringProperty(nomUtilisateur);
+        this.prenomUtilisateur = new SimpleStringProperty(prenomUtilisateur);
+        this.telUtilisateur = new SimpleStringProperty(telUtilisateur);
     }
 
-    public int getIdUti() {
-        return idUti;
+    public int getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setIdUti(int idUti) {
-        this.idUti = idUti;
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
-    public StringProperty getNomUti() {
-        return nomUti;
+    public StringProperty getNomUtilisateur() {
+        return nomUtilisateur;
     }
 
-    public void setNomUti(String nomUti) {
-        this.nomUti.setValue(nomUti);
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur.setValue(nomUtilisateur);
     }
 
-    public StringProperty getPrenomUti() {
-        return prenomUti;
+    public StringProperty getPrenomUtilisateur() {
+        return prenomUtilisateur;
     }
 
-    public void setPrenomUti(String prenomUti) {
-        this.prenomUti.setValue(prenomUti);
+    public void setPrenomUtilisateur(String prenomUtilisateur) {
+        this.prenomUtilisateur.setValue(prenomUtilisateur);
     }
 
-    public StringProperty getTelUti() {
-        return telUti;
+    public StringProperty getTelUtilisateur() {
+        return telUtilisateur;
     }
 
-    public void setTelUti(String telUti) {
-        this.telUti.setValue(telUti);
+    public void setTelUtilisateur(String telUtilisateur) {
+        this.telUtilisateur.setValue(telUtilisateur);
     }
 }
