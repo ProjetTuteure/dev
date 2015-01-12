@@ -82,7 +82,7 @@ public class modifierMaintenance {
 
 		for (Maintenance m : donnee.getMaintenanceData()) {
 			if (m.getObjet().equals(selected.getObjet())) {
-				listdate.add(selected.getDateMaint());
+				listdate.add(selected.getDateMaintStringProperty().getValue());
 			}
 		}
 		comboboxdate.setItems(listdate);
@@ -98,7 +98,7 @@ public class modifierMaintenance {
 				Maintenance selected2 = donnee.getMaintenance2(test);
 
 				objfield.setText(selected2.getObjet());
-				datefield.setPromptText(selected2.getDateMaint());
+				datefield.setPromptText(selected2.getDateMaintStringProperty().getValue());
 				descfield.setText(selected2.getDescription());
 				coutfield.setText(selected2.getCoutString());
 			}

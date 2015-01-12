@@ -1,16 +1,23 @@
 package gpi.metier;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by thibault on 22/11/14.
  */
 public class Maintenance {
     private int idMaint;
-    private String dateMaint;
+    private LocalDate dateMaint;
     private String objet;
     private String description;
     private float cout;
 
-    public Maintenance(int idMaint, String dateMaint, String objet, String description, float cout) {
+    public Maintenance(int idMaint, LocalDate dateMaint, String objet, String description, float cout) {
         this.idMaint = idMaint;
         this.dateMaint = dateMaint;
         this.objet = objet;
@@ -54,11 +61,16 @@ public class Maintenance {
         this.objet = objet;
     }
 
-    public String getDateMaint() {
+    public LocalDate getDateMaint() {
         return dateMaint;
     }
 
-    public void setDateMaint(String dateMaint) {
+    public StringProperty getDateMaintStringProperty() {
+        String dateFacture=this.dateMaint.getDayOfMonth()+"/"+this.dateMaint.getMonthValue()+"/"+this.dateMaint.getYear();
+        return new SimpleStringProperty(dateFacture);
+    }
+
+    public void setDateMaint(LocalDate dateMaint) {
         this.dateMaint = dateMaint;
     }
 }

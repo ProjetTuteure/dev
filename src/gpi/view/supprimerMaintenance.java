@@ -65,7 +65,7 @@ public class supprimerMaintenance {
 		listdate = FXCollections.observableArrayList();
 		for (Maintenance m : donnee.getMaintenanceData()) {
 			if (m.getObjet().equals(selected.getObjet())) {
-				listdate.add(selected.getDateMaint());
+				listdate.add(selected.getDateMaintStringProperty().getValue());
 			}
 		}
 		comboboxdate.setItems(listdate);

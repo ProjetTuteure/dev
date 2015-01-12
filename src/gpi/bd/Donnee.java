@@ -156,10 +156,10 @@ public class Donnee {
     }
     
     private void remplirMaintenanceData(){
-    	this.maintenanceData.add(new Maintenance(1, "10/01/2014", "erreur", "une erreur inconnue est survenue", 10));
-    	this.maintenanceData.add(new Maintenance(2, "31/02/2012", "orage", "tout a grille", 5000));
-    	this.maintenanceData.add(new Maintenance(3, "10/04/2014", "neige", "il a neige dans la salle des serveurs", 999));
-    	this.maintenanceData.add(new Maintenance(4, "11/11/2011", "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense que ca suffira", 1));
+    	this.maintenanceData.add(new Maintenance(1, LocalDate.parse("2014-10-01"), "erreur", "une erreur inconnue est survenue", 10));
+    	this.maintenanceData.add(new Maintenance(2, LocalDate.parse("2012-02-27"), "orage", "tout a grille", 5000));
+    	this.maintenanceData.add(new Maintenance(3, LocalDate.parse("2014-04-10"), "neige", "il a neige dans la salle des serveurs", 999));
+    	this.maintenanceData.add(new Maintenance(4, LocalDate.parse("2011-11-11"), "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense que ca suffira", 1));
     }
     
     private void remplirEstMaintenuData(){
