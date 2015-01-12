@@ -3,6 +3,8 @@ package gpi.metier;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.time.LocalDate;
+
 /**
  * Created by thibault on 22/11/14.
  */
@@ -11,19 +13,19 @@ public class Materiel {
     private StringProperty nom;
     private Type type;
     private Etat etat;
-    private StringProperty dateExpirationGarantie;
+    private LocalDate dateExpirationGarantie;
     private StringProperty repertoireDriver;
     private Facture facture;
     private Site site;
     private Fabricant fabricant;
     private String modele;
 
-    public Materiel(String numImmobMat, String nom, Type type, Etat etat, String dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
+    public Materiel(String numImmobMat, String nom, Type type, Etat etat, LocalDate dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
         this.numImmobMat = new SimpleStringProperty(numImmobMat);
         this.nom= new SimpleStringProperty(nom);
         this.type = type;
         this.etat = etat;
-        this.dateExpirationGarantie=new SimpleStringProperty(dateExpirationGarantie);
+        this.dateExpirationGarantie=dateExpirationGarantie;
         this.repertoireDriver = new SimpleStringProperty(repertoireDriver);
         this.facture = facture;
         this.site = site;
@@ -83,12 +85,17 @@ public class Materiel {
     public StringProperty getEtatStringProperty(){
     	return new SimpleStringProperty(etat.name());
     }
-    public StringProperty getDateExpirationGarantie() {
+    public LocalDate getDateExpirationGarantie() {
         return dateExpirationGarantie;
     }
 
-    public void setDateExpirationGarantie(String dateExpirationGarantie) {
-        this.dateExpirationGarantie.set(dateExpirationGarantie);
+    public StringProperty getDateExpirationGarantieStringProperty() {
+        String dateFacture=dateExpirationGarantie.getDayOfMonth()+"/"+dateExpirationGarantie.getMonthValue()+"/"+dateExpirationGarantie.getYear();
+        return new SimpleStringProperty(dateFacture);
+    }
+
+    public void setDateExpirationGarantie(LocalDate dateExpirationGarantie) {
+        this.dateExpirationGarantie=dateExpirationGarantie;
     }
 
     public StringProperty getRepertoireDriver() {
@@ -133,7 +140,7 @@ public class Materiel {
                 ", numImmobMat=" + numImmobMat.getValue()+
                 ", type=" + type.getNomString() +
                 ", etat=" + etat.name() +
-                ", dateExpirationGarantie=" + dateExpirationGarantie.getValue() +
+                ", dateExpirationGarantie=" + getDateExpirationGarantieStringProperty().getValue() +
                 ", site=" + site.getNomSte() +
                 ", fabricant=" + fabricant.getNomFab().getValue()
                 ;

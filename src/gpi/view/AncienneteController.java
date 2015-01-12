@@ -119,7 +119,7 @@ public class AncienneteController implements Initializable {
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
 		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getDateFacStringProperty());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatStringProperty());
-		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantie());
+		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieStringProperty());
 		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getRevendeur().getNomRev());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricant().getNomFab());
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());	

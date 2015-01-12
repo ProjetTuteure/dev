@@ -119,7 +119,7 @@ public class DetailMachineController implements Initializable{
 		list.add("Nom : "+materiel.getNom().getValueSafe()+"\n");
 		list.add("Type : "+materiel.getType().getNom().getValueSafe()+"\n");
 		list.add("Etat : "+materiel.getEtatString()+"\n");
-		list.add("Fin de garantie : "+materiel.getDateExpirationGarantie().getValueSafe()+"\n");
+		list.add("Fin de garantie : "+materiel.getDateExpirationGarantieStringProperty().getValueSafe()+"\n");
 		list.add("Repertoire drivers : "+materiel.getRepertoireDriver().getValueSafe()+"\n");
 		list.add("Site : "+materiel.getSiteString());
 		return list;

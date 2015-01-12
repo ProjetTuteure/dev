@@ -102,7 +102,7 @@ public class modifierMateriel {
 		typefield.setText(selected.getType().getNom().getValue());
 		immofield.setText(selected.getNumImmobMat().getValue());
 		datefield
-				.setPromptText(selected.getDateExpirationGarantie().getValue());
+				.setPromptText(selected.getDateExpirationGarantieStringProperty().getValue());
 
 		for (Etat etat : Etat.values()) {
 			listEtat.add(etat.name());

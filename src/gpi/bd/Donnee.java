@@ -96,13 +96,13 @@ public class Donnee {
     }
 
     private void remplirMaterielData() {
-        materielData.add(new Materiel("1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,"11/11/2012","/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0),"XXX1"));
-        materielData.add(new Materiel("2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,"11/11/2012","/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1),"XXX2"));
-		materielData.add(new Materiel("3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE, "31/12/2014", "", factureData.get(0), siteData.get(0), fabricantData.get(0),"XXX3"));
-		materielData.add(new Materiel("4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE, "31/12/2015", "", factureData.get(0), siteData.get(1), fabricantData.get(0),"XXX4"));
-		materielData.add(new Materiel("5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE, "05/02/2015", "", factureData.get(1), siteData.get(2), fabricantData.get(0),"XXX5"));
-		materielData.add(new Materiel("6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE, "14/02/2017", "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX6"));
-		materielData.add(new Materiel("7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE, "14/03/2012", "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX7<"));
+        materielData.add(new Materiel("1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0),"XXX1"));
+        materielData.add(new Materiel("2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1),"XXX2"));
+		materielData.add(new Materiel("3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-12-31"), "", factureData.get(0), siteData.get(0), fabricantData.get(0),"XXX3"));
+		materielData.add(new Materiel("4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2015-12-31"), "", factureData.get(0), siteData.get(1), fabricantData.get(0),"XXX4"));
+		materielData.add(new Materiel("5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-02-05"), "", factureData.get(1), siteData.get(2), fabricantData.get(0),"XXX5"));
+		materielData.add(new Materiel("6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE,LocalDate.parse("2017-02-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX6"));
+		materielData.add(new Materiel("7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE,LocalDate.parse("2012-03-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX7<"));
 	    }
 
     private void remplirFactureData() {
