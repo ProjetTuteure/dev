@@ -208,7 +208,7 @@ public class MainApp extends Application {
 	public static boolean showAddSiteDialog(Site site) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addSiteDialog.fxml"));
+					MainApp.class.getResource("view/AjouterSite.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un nouveau site");
@@ -235,7 +235,7 @@ public class MainApp extends Application {
 	public static boolean showSuppSiteDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppSiteDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerSite.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un site");
@@ -262,7 +262,7 @@ public class MainApp extends Application {
 	public static boolean showModSiteDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modSiteDialog.fxml"));
+					MainApp.class.getResource("view/ModifierSite.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un site");
@@ -289,7 +289,7 @@ public class MainApp extends Application {
 	public static boolean showAddTypeDialog(Type type) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addTypeDialog.fxml"));
+					MainApp.class.getResource("view/AjouterType.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un nouveau Type");
@@ -316,7 +316,7 @@ public class MainApp extends Application {
 	public static boolean showModTypeDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modTypeDialog.fxml"));
+					MainApp.class.getResource("view/ModifierType.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un Type");
@@ -343,7 +343,7 @@ public class MainApp extends Application {
 	public static boolean showSuppTypeDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppTypeDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerType.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un type");
@@ -370,7 +370,7 @@ public class MainApp extends Application {
 	public static boolean showAddFactDialog(Facture facture) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addFactDialog.fxml"));
+					MainApp.class.getResource("view/AjouterFacture.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter une nouvelle facture");
@@ -397,7 +397,7 @@ public class MainApp extends Application {
 	public static boolean showModFactDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modFactDialog.fxml"));
+					MainApp.class.getResource("view/ModifierFacture.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier une facture");
@@ -424,7 +424,7 @@ public class MainApp extends Application {
 	public static boolean showSuppFactDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppFactDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerFacture.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer une facture");
@@ -451,7 +451,7 @@ public class MainApp extends Application {
 	public static boolean showAddFabrDialog(Fabricant fabricant) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addFabrDialog.fxml"));
+					MainApp.class.getResource("view/AjouterFabricant.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un nouveau fabricant");
@@ -478,7 +478,7 @@ public class MainApp extends Application {
 	public static boolean showModFabrDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modFabrDialog.fxml"));
+					MainApp.class.getResource("view/ModifierFabricant.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un fabricant");
@@ -505,7 +505,7 @@ public class MainApp extends Application {
 	public static boolean showSuppFabrDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppFabrDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerFabricant.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un fabricant");
@@ -532,7 +532,7 @@ public class MainApp extends Application {
 	public static boolean showAddLogDialog(Logiciel logiciel) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addLogDialog.fxml"));
+					MainApp.class.getResource("view/AjouterLogiciel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un nouveau logiciel");
@@ -559,7 +559,7 @@ public class MainApp extends Application {
 	public static boolean showModLogDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modLogDialog.fxml"));
+					MainApp.class.getResource("view/ModifierLogiciel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un logiciel");
@@ -586,7 +586,7 @@ public class MainApp extends Application {
 	public static boolean showSuppLogDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppLogDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerLogiciel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un logiciel");
@@ -613,7 +613,7 @@ public class MainApp extends Application {
 	public static boolean showAddMaintDialog(Maintenance maintenance) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addMaintDialog.fxml"));
+					MainApp.class.getResource("view/AjouterMaintenance.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter une nouvelle maintenance");
@@ -640,7 +640,7 @@ public class MainApp extends Application {
 	public static boolean showModMaintDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modMaintDialog.fxml"));
+					MainApp.class.getResource("view/ModifierMaintenance.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier une maintenance");
@@ -667,7 +667,7 @@ public class MainApp extends Application {
 	public static boolean showSuppMaintDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppMaintDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerMaintenance.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer une maintenance");
@@ -694,7 +694,7 @@ public class MainApp extends Application {
 	public static boolean showAddMatDialog(Materiel materiel) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addMatDialog.fxml"));
+					MainApp.class.getResource("view/AjouterMateriel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un nouveau materiel");
@@ -721,7 +721,7 @@ public class MainApp extends Application {
 	public static boolean showModMatDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modMatDialog.fxml"));
+					MainApp.class.getResource("view/ModifierMateriel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un materiel");
@@ -748,7 +748,7 @@ public class MainApp extends Application {
 	public static boolean showSuppMatDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppMatDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerMateriel.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer une maintenance");
@@ -775,7 +775,7 @@ public class MainApp extends Application {
 	public static boolean showAddPrestDialog(Prestataire prest) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addPrestDialog.fxml"));
+					MainApp.class.getResource("view/AjouterPrestataire.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un prestataire");
@@ -802,7 +802,7 @@ public class MainApp extends Application {
 	public static boolean showModPrestDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modPrestDialog.fxml"));
+					MainApp.class.getResource("view/ModifierPrestataire.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un prestataire");
@@ -829,7 +829,7 @@ public class MainApp extends Application {
 	public static boolean showSuppPrestDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppPrestDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerPrestataire.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un prestataire");
@@ -856,7 +856,7 @@ public class MainApp extends Application {
 	public static boolean showAddRevDialog(Revendeur rev) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/addRevDialog.fxml"));
+					MainApp.class.getResource("view/AjouterRevendeur.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Ajouter un revendeur");
@@ -883,7 +883,7 @@ public class MainApp extends Application {
 	public static boolean showModRevDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modRevDialog.fxml"));
+					MainApp.class.getResource("view/ModifierRevendeur.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Modifier un revendeur");
@@ -910,7 +910,7 @@ public class MainApp extends Application {
 	public static boolean showSuppRevDialog() {
 		try {
 			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/suppRevDialog.fxml"));
+					MainApp.class.getResource("view/SupprimerRevendeur.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Supprimer un revendeur");
