@@ -41,6 +41,7 @@ public class Donnee {
         remplirMaintenanceData();
         remplirEstMaintenuData();
         remplirPrestaraireData();
+        remplirComposantData();
     }
 
     public ObservableList<Site> getSiteData() {
@@ -176,6 +177,11 @@ public class Donnee {
     	this.estMaintenuData.add(new estMaintenu(materielData.get(3), maintenanceData.get(2)));
     	this.estMaintenuData.add(new estMaintenu(materielData.get(3), maintenanceData.get(0)));
     }
+    
+    private void remplirComposantData(){
+    	this.composantData.add(new Composant(new SimpleIntegerProperty(1),"trucNull","pas vraiment bien",fabricantData.get(0)));
+    	this.composantData.add(new Composant(new SimpleIntegerProperty(2), "machinNull", "pas super top", fabricantData.get(1)));
+    }
 
     public Type getTypeByNom(String nom)
     {
@@ -229,6 +235,15 @@ public class Donnee {
         for(Maintenance m : maintenanceData){
             if(value.equals(m.getObjetMaintenance()+" "+m.getdateMaintenanceStringProperty().getValue())){
                 return m;
+            }
+        }
+        return null;
+    }
+    
+    public Composant getComposant2(String value) {
+        for(Composant c : composantData){
+            if(value.equals(c.getNomComposant()+" "+c.getFabricantComposant().getNomFabricantString())){
+                return c;
             }
         }
         return null;

@@ -10,13 +10,13 @@ import javafx.beans.property.StringProperty;
 public class Composant {
     private IntegerProperty idComposant;
     private StringProperty nomComposant;
-    private StringProperty cheminImageComposant;
+    private StringProperty caracteristiqueComposant;
     private Fabricant fabricantComposant;
 
-    public Composant(IntegerProperty idComposant, String nomComposant, String cheminImageComposant, Fabricant fabricantComposant) {
+    public Composant(IntegerProperty idComposant, String nomComposant, String caracteristiqueComposant, Fabricant fabricantComposant) {
         this.idComposant = idComposant;
         this.nomComposant = new SimpleStringProperty(nomComposant);
-        this.cheminImageComposant = new SimpleStringProperty(cheminImageComposant);
+        this.caracteristiqueComposant = new SimpleStringProperty(caracteristiqueComposant);
         this.fabricantComposant = fabricantComposant;
     }
 
@@ -44,16 +44,16 @@ public class Composant {
         this.nomComposant.set(nomComposant);
     }
 
-    public String getCheminImageComposant() {
-        return cheminImageComposant.get();
+    public String getcaracteristiqueComposant() {
+        return caracteristiqueComposant.get();
     }
 
-    public StringProperty cheminImageComposantProperty() {
-        return cheminImageComposant;
+    public StringProperty caracteristiqueComposantProperty() {
+        return caracteristiqueComposant;
     }
 
-    public void setCheminImageComposant(String cheminImageComposant) {
-        this.cheminImageComposant.set(cheminImageComposant);
+    public void setcaracteristiqueComposant(String caracteristiqueComposant) {
+        this.caracteristiqueComposant.set(caracteristiqueComposant);
     }
 
     public Fabricant getFabricantComposant() {

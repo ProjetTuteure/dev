@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Composant;
+import gpi.metier.Facture;
 import gpi.metier.Maintenance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,31 +78,34 @@ public class modifierComposant {
 	@FXML
 	private void handlechange1() {
 		choix1 = true;
-		Composant selected = donnee.getMaintenance(comboboxobj.getValue());
-		listdate = FXCollections.observableArrayList();
+		Composant selected = donnee.getComposant(comboboxnom.getValue());
+		listcarac = FXCollections.observableArrayList();
 
-		for (Maintenance m : donnee.getMaintenanceData()) {
-			if (m.getObjetMaintenance().equals(selected.getObjetMaintenance())) {
-				listdate.add(selected.getdateMaintenanceStringProperty().getValue());
+		for (Composant c : donnee.getComposantData()) {
+			if (c.getNomComposant().equals(selected.getNomComposant())) {
+				listcarac.add(selected.getFabricantComposant().getNomFabricant().getValue());
 			}
 		}
-		comboboxdate.setItems(listdate);
+		comboboxcarac.setItems(listcarac);
 	}
 
 	@FXML
 	private void handlechange2() {
 		try {
 			if (choix1 = true) {
-
-				String test = comboboxobj.getValue() + " "
-						+ comboboxdate.getValue();
-				Maintenance selected2 = donnee.getMaintenance2(test);
-				System.out.println(selected2.getObjetMaintenance());
-				System.out.println(selected2.getDescriptionMaintenance());
-				objfield.setText(selected2.getObjetMaintenance());
-				datefield.setPromptText(selected2.getdateMaintenanceStringProperty().getValue());
-				descfield.setText(selected2.getDescriptionMaintenance());
-				coutfield.setText(selected2.getCoutMaintenanceString());
+				listfabr = FXCollections.observableArrayList();
+				String test = comboboxnom.getValue() + " "
+						+ comboboxcarac.getValue();
+				Composant selected2 = donnee.getComposant2(test);
+				nomfield.setText(selected2.getNomComposant());
+				caracfield.setText(selected2.getcaracteristiqueComposant());
+				
+				for (Composant co : donnee.getComposantData()) {
+					listfabr.add(co.getFabricantComposant().getNomFabricant().getValue());
+				}
+				comboboxfabr.setItems(listfabr);
+				comboboxfabr.setPromptText(selected2.getFabricantComposant().getNomFabricant().getValue());
+				
 			}
 		} catch (NullPointerException e) {
 
