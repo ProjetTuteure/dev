@@ -51,6 +51,9 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
+                  <ComboBox fx:id="comboboxSiteAvanceOverview" promptText="Selectionner par site" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="comboboxAncienneteAvanceOverview" promptText="Selectionner par ancienneté" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="comboboxTypeAvanceOverview" promptText="Selectionner par type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="utilisateur" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -81,9 +84,6 @@
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <ComboBox fx:id="comboboxSiteAvanceOverview" promptText="Selectionner par site" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="comboboxAncienneteAvanceOverview" promptText="Selectionner par ancienneté" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="comboboxTypeAvanceOverview" promptText="Selectionner par type" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </center>
