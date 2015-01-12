@@ -16,7 +16,6 @@ public class addFabrDialogController {
 
 	@FXML
 	private void initialize() {
-
 	}
 
 	public void setDialogStage(Stage dialogStage) {
