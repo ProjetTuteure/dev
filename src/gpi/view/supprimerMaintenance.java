@@ -33,7 +33,7 @@ public class supprimerMaintenance {
 		listobj = FXCollections.observableArrayList();
 
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			listobj.add(m.getObjet());
+			listobj.add(m.getObjetMaintenance());
 		}
 		comboboxobj.setItems(listobj);
 	}
@@ -78,8 +78,8 @@ public class supprimerMaintenance {
 
 		listdate = FXCollections.observableArrayList();
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			if (m.getObjet().equals(selected.getObjet())) {
-				listdate.add(selected.getDateMaintStringProperty().getValue());
+			if (m.getObjetMaintenance().equals(selected.getObjetMaintenance())) {
+				listdate.add(selected.getdateMaintenanceStringProperty().getValue());
 			}
 		}
 		comboboxdate.setItems(listdate);

@@ -12,74 +12,74 @@ import java.util.Date;
  * Created by thibault on 22/11/14.
  */
 public class Maintenance {
-    private int idMaint;
-    private LocalDate dateMaint;
-    private String objet;
-    private String description;
-    private float cout;
+    private int idMaintenance;
+    private LocalDate dateMaintenance;
+    private String objetMaintenance;
+    private String descriptionMaintenance;
+    private float coutMaintenance;
 
-    public Maintenance(int idMaint, LocalDate dateMaint, String objet, String description, float cout) {
-        this.idMaint = idMaint;
-        this.dateMaint = dateMaint;
-        this.objet = objet;
-        this.description = description;
-        this.cout = cout;
+    public Maintenance(int idMaintenance, LocalDate dateMaintenance, String objetMaintenance, String descriptionMaintenance, float coutMaintenance) {
+        this.idMaintenance = idMaintenance;
+        this.dateMaintenance = dateMaintenance;
+        this.objetMaintenance = objetMaintenance;
+        this.descriptionMaintenance = descriptionMaintenance;
+        this.coutMaintenance = coutMaintenance;
     }
 
-    public int getIdMaint() {
-        return idMaint;
+    public int getIdMaintenance() {
+        return idMaintenance;
     }
 
-    public void setIdMaint(int idMaint) {
-        this.idMaint = idMaint;
+    public void setIdMaintenance(int idMaintenance) {
+        this.idMaintenance = idMaintenance;
     }
 
-    public float getCout() {
-        return cout;
+    public float getCoutMaintenance() {
+        return coutMaintenance;
     }
     
-    public String getCoutString() {
-        return ""+this.getCout();
+    public String getCoutMaintenanceString() {
+        return ""+this.getCoutMaintenance();
     }
 
-    public void setCout(float cout) {
-        this.cout = cout;
+    public void setCoutMaintenance(float coutMaintenance) {
+        this.coutMaintenance = coutMaintenance;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionMaintenance() {
+        return descriptionMaintenance;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionMaintenance(String descriptionMaintenance) {
+        this.descriptionMaintenance = descriptionMaintenance;
     }
 
-    public String getObjet() {
-        return objet;
+    public String getObjetMaintenance() {
+        return objetMaintenance;
     }
 
-    public void setObjet(String objet) {
-        this.objet = objet;
+    public void setObjetMaintenance(String objetMaintenance) {
+        this.objetMaintenance = objetMaintenance;
     }
 
-    public LocalDate getDateMaint() {
-        return dateMaint;
+    public LocalDate getdateMaintenance() {
+        return dateMaintenance;
     }
 
-    public StringProperty getDateMaintStringProperty() {
+    public StringProperty getdateMaintenanceStringProperty() {
         String chaine1="";
         String chaine2="";
-        if(dateMaint.getDayOfMonth()<10){
+        if(dateMaintenance.getDayOfMonth()<10){
             chaine1="0";
         }
-        if(dateMaint.getMonthValue()<10){
+        if(dateMaintenance.getMonthValue()<10){
             chaine2="0";
         }
-        String dateFacture=chaine1+this.dateMaint.getDayOfMonth()+"/"+chaine2+this.dateMaint.getMonthValue()+"/"+this.dateMaint.getYear();
+        String dateFacture=chaine1+this.dateMaintenance.getDayOfMonth()+"/"+chaine2+this.dateMaintenance.getMonthValue()+"/"+this.dateMaintenance.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 
-    public void setDateMaint(LocalDate dateMaint) {
-        this.dateMaint = dateMaint;
+    public void setdateMaintenance(LocalDate dateMaintenance) {
+        this.dateMaintenance = dateMaintenance;
     }
 }

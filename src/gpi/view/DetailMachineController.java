@@ -180,11 +180,11 @@ public class DetailMachineController implements Initializable{
 		int i=1;
 		for(Maintenance m : listMaintenanceMateriel){
 			list.add("\nMaintenance "+i+" : \n");
-			list.add("\t Id : "+String.valueOf(m.getIdMaint())+"\n");
-			list.add("\t Date : "+m.getDateMaint()+"\n");
-			list.add("\t Objet : "+m.getObjet()+"\n");
-			list.add("\t Description : "+m.getDescription()+"\n");
-			list.add("\t Cout : "+String.valueOf(m.getCout())+"\n");
+			list.add("\t Id : "+String.valueOf(m.getIdMaintenance())+"\n");
+			list.add("\t Date : "+m.getdateMaintenance()+"\n");
+			list.add("\t Objet : "+m.getObjetMaintenance()+"\n");
+			list.add("\t Description : "+m.getDescriptionMaintenance()+"\n");
+			list.add("\t Cout : "+String.valueOf(m.getCoutMaintenance())+"\n");
 			i++;
 		}
 		return list;

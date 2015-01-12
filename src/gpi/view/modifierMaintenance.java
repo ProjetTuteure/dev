@@ -48,7 +48,7 @@ public class modifierMaintenance {
 		listobj = FXCollections.observableArrayList();
 
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			listobj.add(m.getObjet());
+			listobj.add(m.getObjetMaintenance());
 		}
 		comboboxobj.setItems(listobj);
 	}
@@ -81,8 +81,8 @@ public class modifierMaintenance {
 		listdate = FXCollections.observableArrayList();
 
 		for (Maintenance m : donnee.getMaintenanceData()) {
-			if (m.getObjet().equals(selected.getObjet())) {
-				listdate.add(selected.getDateMaintStringProperty().getValue());
+			if (m.getObjetMaintenance().equals(selected.getObjetMaintenance())) {
+				listdate.add(selected.getdateMaintenanceStringProperty().getValue());
 			}
 		}
 		comboboxdate.setItems(listdate);
@@ -96,12 +96,12 @@ public class modifierMaintenance {
 				String test = comboboxobj.getValue() + " "
 						+ comboboxdate.getValue();
 				Maintenance selected2 = donnee.getMaintenance2(test);
-				System.out.println(selected2.getObjet());
-				System.out.println(selected2.getDescription());
-				objfield.setText(selected2.getObjet());
-				datefield.setPromptText(selected2.getDateMaintStringProperty().getValue());
-				descfield.setText(selected2.getDescription());
-				coutfield.setText(selected2.getCoutString());
+				System.out.println(selected2.getObjetMaintenance());
+				System.out.println(selected2.getDescriptionMaintenance());
+				objfield.setText(selected2.getObjetMaintenance());
+				datefield.setPromptText(selected2.getdateMaintenanceStringProperty().getValue());
+				descfield.setText(selected2.getDescriptionMaintenance());
+				coutfield.setText(selected2.getCoutMaintenanceString());
 			}
 		} catch (NullPointerException e) {
 
