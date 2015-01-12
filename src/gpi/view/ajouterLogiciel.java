@@ -22,14 +22,14 @@ public class AjouterLogiciel {
 	@FXML
 	private ComboBox<String> comboboxfact;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeLog = new Donnee();
 
 	private ObservableList<String> listfact;
 
 	@FXML
 	private void initialize() {
 		listfact = FXCollections.observableArrayList();
-		for (Facture fac : donneesite.getFactureData()) {
+		for (Facture fac : donneeLog.getFactureData()) {
 			listfact.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listfact);

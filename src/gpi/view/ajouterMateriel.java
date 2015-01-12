@@ -33,7 +33,7 @@ public class AjouterMateriel {
 	@FXML
 	private ComboBox<String> comboboxsite;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeMat = new Donnee();
 
 	private ObservableList<String> listNom1;
 	private ObservableList<String> listNom2;
@@ -52,17 +52,17 @@ public class AjouterMateriel {
 		}
 		comboboxetat.setItems(listNom1);
 
-		for (Fabricant fab : donneesite.getFabricantData()) {
-			listNom2.add(fab.getNomFabString());
+		for (Fabricant fab : donneeMat.getFabricantData()) {
+			listNom2.add(fab.getNomFab().getValue());
 		}
 		comboboxfabr.setItems(listNom2);
 
-		for (Facture fac : donneesite.getFactureData()) {
+		for (Facture fac : donneeMat.getFactureData()) {
 			listNom3.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listNom3);
 
-		for (Site site : donneesite.getSiteData()) {
+		for (Site site : donneeMat.getSiteData()) {
 			listNom4.add(site.getNomSte());
 		}
 		comboboxsite.setItems(listNom4);

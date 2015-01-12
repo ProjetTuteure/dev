@@ -24,7 +24,7 @@ public class ModifierFacture {
 	@FXML
 	private ComboBox<String> comboboxfact;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeFact = new Donnee();
 
 	private ObservableList<String> listfact;
 
@@ -41,7 +41,7 @@ public class ModifierFacture {
 	private void initialize() {
 		listfact = FXCollections.observableArrayList();
 
-		for (Facture fact : donneesite.getFactureData()) {
+		for (Facture fact : donneeFact.getFactureData()) {
 			listfact.add(fact.getNumFac());
 		}
 		comboboxfact.setItems(listfact);
@@ -70,7 +70,7 @@ public class ModifierFacture {
 
 	@FXML
 	private void handlechange() {
-		Facture selected = donneesite.getFacture(comboboxfact.getValue());
+		Facture selected = donneeFact.getFacture(comboboxfact.getValue());
 		numfield.setText(selected.getNumFac());
 		montantfield.setText(selected.getMontantFacString());
 		datefield.setPromptText(selected.getDateFac().getValue());

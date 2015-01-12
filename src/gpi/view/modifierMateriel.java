@@ -99,7 +99,7 @@ public class ModifierMateriel {
 		Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
 
 		nomfield.setText(selected.getNom().getValue());
-		typefield.setText(selected.getType().getNomString());
+		typefield.setText(selected.getType().getNom().getValue());
 		immofield.setText(selected.getNumImmobMat().getValue());
 		datefield
 				.setPromptText(selected.getDateExpirationGarantie().getValue());
@@ -108,16 +108,16 @@ public class ModifierMateriel {
 			listEtat.add(etat.name());
 		}
 		comboboxetat.setItems(listEtat);
-		comboboxetat.setPromptText(selected.getEtatString());
+		comboboxetat.setPromptText(selected.getEtat().name());
 
 		for (Facture fac : donneesite.getFactureData()) {
 			listFact.add(fac.getNumFac());
 		}
 		comboboxfact.setItems(listFact);
-		comboboxfact.setPromptText(selected.getFactureString());
+		comboboxfact.setPromptText(selected.getFacture().getNumFac());
 
 		for (Fabricant fb : donneesite.getFabricantData()) {
-			listFabr.add(fb.getNomFabString());
+			listFabr.add(fb.getNomFab().getValue());
 		}
 		comboboxfab.setItems(listFabr);
 		comboboxfab.setPromptText(selected.getFabricantString());
@@ -126,7 +126,7 @@ public class ModifierMateriel {
 			listSite.add(st.getNomSte());
 		}
 		comboboxsite.setItems(listEtat);
-		comboboxsite.setPromptText(selected.getSiteString());
+		comboboxsite.setPromptText(selected.getSite().getNomSte());
 
 	}
 

@@ -22,7 +22,7 @@ public class ModifierFabricant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeFabr = new Donnee();
 
 	private ObservableList<String> listFabr;
 
@@ -37,7 +37,7 @@ public class ModifierFabricant {
 	private void initialize() {
 		listFabr = FXCollections.observableArrayList();
 
-		for (Fabricant fab : donneesite.getFabricantData()) {
+		for (Fabricant fab : donneeFabr.getFabricantData()) {
 			listFabr.add(fab.getNomFab().getValue());
 		}
 		comboboxfabr.setItems(listFabr);
@@ -81,7 +81,7 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handlechange() {
-		Fabricant selected = donneesite.getFabricant(comboboxfabr.getValue());
+		Fabricant selected = donneeFabr.getFabricant(comboboxfabr.getValue());
 		nomfield.setText(selected.getNomFab().getValue());
 		telfield.setText(selected.getTelFab().getValue());
 		adrfield.setText(selected.getAdresseFab().getValue());

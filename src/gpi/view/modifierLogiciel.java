@@ -38,7 +38,7 @@ public class ModifierLogiciel {
 	@FXML
 	private ComboBox<String> comboboxfact;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeLog = new Donnee();
 
 	private ObservableList<String> listlog;
 	private ObservableList<String> listvers;
@@ -48,7 +48,7 @@ public class ModifierLogiciel {
 	private void initialize() {
 		listlog = FXCollections.observableArrayList();
 		listfact = FXCollections.observableArrayList();
-		for (Logiciel log : donneesite.getLogicielData()) {
+		for (Logiciel log : donneeLog.getLogicielData()) {
 			listlog.add(log.getNomLog().getValue());
 		}
 		comboboxlog.setItems(listlog);
@@ -79,10 +79,10 @@ public class ModifierLogiciel {
 	private void handlechange1() {
 		choix1 = true;
 
-		Logiciel selected = donneesite.getLogiciel(comboboxlog.getValue());
+		Logiciel selected = donneeLog.getLogiciel(comboboxlog.getValue());
 
 		listvers = FXCollections.observableArrayList();
-		for (Logiciel log : donneesite.getLogicielData()) {
+		for (Logiciel log : donneeLog.getLogicielData()) {
 			if (log.getNomLog().getValue()
 					.equals(selected.getNomLog().getValue())) {
 				listvers.add(selected.getVersion().getValue());
@@ -98,14 +98,14 @@ public class ModifierLogiciel {
 				listvers = FXCollections.observableArrayList();
 				String test = comboboxlog.getValue() + " "
 						+ comboboxvers.getValue();
-				Logiciel selected2 = donneesite.getLogiciel2(test);
+				Logiciel selected2 = donneeLog.getLogiciel2(test);
 
 				nomfield.setText(selected2.getNomLog().getValue());
 				versfield.setText(selected2.getVersion().getValue());
 				datefield.setPromptText(selected2.getDateExpiration()
 						.getValue());
 
-				for (Facture fac : donneesite.getFactureData()) {
+				for (Facture fac : donneeLog.getFactureData()) {
 					listfact.add(fac.getNumFac());
 				}
 				comboboxfact.setItems(listfact);
