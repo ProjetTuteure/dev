@@ -53,6 +53,9 @@ public class EtatController implements Initializable{
 	public EtatController() {
     }
 	
+	/**
+	 * Initialise les données  et ajoute les évènements aux différents composants
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -78,6 +81,10 @@ public class EtatController implements Initializable{
 		});
 	}
 
+	/**
+	 * Ajoute les données à la TableView suite aux checkBox cochées
+	 * @param materiel la liste de materiel à ajouter à la TableView
+	 */
 	public void actionOnCheckBox(ObservableList<Materiel> materiel){
 		boolean checkEnService=checkBoxEnService.selectedProperty().getValue();
 		boolean checkEnReparation=checkBoxEnReparation.selectedProperty().getValue();
@@ -85,6 +92,13 @@ public class EtatController implements Initializable{
 		addDonneeRestrictTableView(materiel,checkEnService,checkEnReparation,checkHorsService);
 	}
 	
+	/**
+	 * Ajoute les données dans la tableView en fonction des checkBox cochées
+	 * @param materiel la liste des materiels à ajouter dans les tableView
+	 * @param checkEnService est vrai si la checkBox enService est cochée faux sinon
+	 * @param checkEnReparation est vrai si la checkBox enReparation est cochée faux sinon
+	 * @param checkHorsService est vrai si la checkBox horsService est cochée faux sinon
+	 */
 	private void addDonneeRestrictTableView(ObservableList<Materiel> materiel,boolean checkEnService, boolean checkEnReparation,boolean checkHorsService) {
 		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();
 		
@@ -105,6 +119,10 @@ public class EtatController implements Initializable{
 		addDonneeTableView(restrictedMateriel);
 	}
 
+	/**
+	 * Ajoute les données relatives à la liste des materiels dans les cases de la tableView
+	 * @param materiel la liste des materiels à ajouter dans les cases de la tableView
+	 */
 	private void addDonneeTableView(ObservableList<Materiel> materiel) {
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
@@ -112,34 +130,11 @@ public class EtatController implements Initializable{
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());
 		
 		ObservableList<String> listMaintenanceMateriel = FXCollections.observableArrayList();
-//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//		Date date;
-//		for(Materiel m : materiel){
-//			date=null;
-//			for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
-//				if(em.getMateriel().getNumImmobMat().equals(m.getNumImmobMat())){
-//					try {
-//						if(date==null || date.before(sdf.parse(em.getMaintenance().getDateMaint()))){
-//							date=sdf.parse(em.getMaintenance().getDateMaint());
-//						}
-//					} catch (ParseException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//				if(date==null){
-//					listMaintenanceMateriel.add("Aucune maintenance sur ce materiel");
-//				}else{
-//					listMaintenanceMateriel.add(date.toString());
-//				}
-//			}
-//		}
 		etatDepuisDateMateriel.setCellValueFactory(new Callback<CellDataFeatures<Materiel, String>, ObservableValue<String>>() {
 		     public ObservableValue<String> call(CellDataFeatures<Materiel, String> p) {
 		         return new ReadOnlyObjectWrapper("[TODO] Recherche derniere maintenance");
 		     }
 		  });
-		//etatDepuisDateMateriel.setCellValueFactory(cellData -> cellData.getValue().getLastMaintenance(materiel));
-		
 	}
 
 }
