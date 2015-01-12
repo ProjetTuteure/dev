@@ -55,6 +55,9 @@ public class AvanceController implements Initializable {
             "moins de sept ans", "plus de sept ans");
     ObservableList<Type> list3 = donnee.getTypeData();
 
+    /**
+     * Initialise les combobox
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboboxSiteAvanceOverview.setItems(getNomSite(list1));
@@ -62,6 +65,10 @@ public class AvanceController implements Initializable {
         comboboxTypeAvanceOverview.setItems(getNomType(list3));
     }
 
+    /**
+     * Permet d'afficher les résultats de la recherche avancée.
+     * @param event
+     */
     @FXML
     private void goToScreen2(ActionEvent event) {
         MainApp.setCritere(noImmobilisation.getText());
@@ -82,6 +89,11 @@ public class AvanceController implements Initializable {
         MainApp.changerTab("ResultatAvance");
     }
 
+    /**
+     * Permet de récupérer les sites et les ajouter les noms des sites dans une liste
+     * @param sites la liste de sites 
+     * @return la liste composée des noms des sites passés en paramètre
+     */
     public ObservableList<String> getNomSite(List<Site> sites){
         ObservableList<String> list=FXCollections.observableArrayList();
         for(Site site:sites){
@@ -90,6 +102,11 @@ public class AvanceController implements Initializable {
         return list;
     }
 
+    /**
+     * Permet de récupérer les sites et les ajouter les noms des sites dans une liste
+     * @param types la liste de types
+     * @return la liste des noms des types passés en paramètre
+     */
     public ObservableList<String> getNomType(List<Type> types){
         ObservableList<String> list=FXCollections.observableArrayList();
         for(Type type:types){
