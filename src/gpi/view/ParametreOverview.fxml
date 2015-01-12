@@ -28,6 +28,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label prefHeight="14.0" prefWidth="80.0" text="Dossier Drivers" />
@@ -72,6 +74,14 @@
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="Gérer les composants" GridPane.rowIndex="11" />
+            <Label text="Gérer les composition mat/comp" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handleaddComposant" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handleaddCompose" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handlemodComposant" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handlemodCompose" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Button mnemonicParsing="false" onAction="#handlesuppComposant" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <Button mnemonicParsing="false" onAction="#handlesuppCompose" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="12" />
          </children>
       </GridPane>
    </children>

@@ -407,6 +407,132 @@ public class ParametreController implements Initializable {
 
 		}
 	}
+	
+	@FXML
+	private void handleaddUtilisateur(ActionEvent event) {
+		Utilisateur user = new Utilisateur(0, null, null, null);
+		boolean okClicked = MainApp.showAddUtilisateurDialog(user);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier type
+	 */
+	@FXML
+	private void handlemodUtilisateur(ActionEvent event) {
+		boolean okClicked = MainApp.showModUtilisateurDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer type
+	 */
+	@FXML
+	private void handlesuppUtilisateur(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppUtilisateurDialog();
+		if (okClicked) {
+
+		}
+	}
+	
+
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter type
+	 */
+	@FXML
+	private void handleaddComposant(ActionEvent event) {
+		//Pas de type Type, mais de type compose => pas encore créé
+		Type type = new Type(null, null);
+		boolean okClicked = MainApp.showAddComposantDialog(type);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier type
+	 */
+	@FXML
+	private void handlemodComposant(ActionEvent event) {
+		boolean okClicked = MainApp.showModComposantDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer type
+	 */
+	@FXML
+	private void handlesuppComposant(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppComposantDialog();
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter type
+	 */
+	@FXML
+	private void handleaddCompose(ActionEvent event) {
+		//Pas de type Type, mais de type compose => pas encore créé
+		Type type = new Type(null, null);
+		boolean okClicked = MainApp.showAddComposeDialog(type);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier type
+	 */
+	@FXML
+	private void handlemodCompose(ActionEvent event) {
+		boolean okClicked = MainApp.showModComposeDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer type
+	 */
+	@FXML
+	private void handlesuppCompose(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppComposeDialog();
+		if (okClicked) {
+
+		}
+	}
 
 	/**
 	 * Initialise les donnï¿½es
