@@ -408,6 +408,12 @@ public class ParametreController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter Utilisateur
+	 */
 	@FXML
 	private void handleaddUtilisateur(ActionEvent event) {
 		Utilisateur user = new Utilisateur(0, null, null, null);
@@ -421,7 +427,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton modifier type
+	 *            un evenement sur le bouton modifier Utilisateur
 	 */
 	@FXML
 	private void handlemodUtilisateur(ActionEvent event) {
@@ -435,7 +441,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton supprimer type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton supprimer type
+	 *            un evenement sur le bouton supprimer Utilisateur
 	 */
 	@FXML
 	private void handlesuppUtilisateur(ActionEvent event) {
@@ -450,7 +456,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton ajouter type
+	 *            un evenement sur le bouton ajouter composant
 	 */
 	@FXML
 	private void handleaddComposant(ActionEvent event) {
@@ -466,7 +472,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton modifier type
+	 *            un evenement sur le bouton modifier composant
 	 */
 	@FXML
 	private void handlemodComposant(ActionEvent event) {
@@ -480,7 +486,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton supprimer type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton supprimer type
+	 *            un evenement sur le bouton supprimer composant
 	 */
 	@FXML
 	private void handlesuppComposant(ActionEvent event) {
@@ -494,7 +500,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton ajouter type
+	 *            un evenement sur le bouton ajouter Compose
 	 */
 	@FXML
 	private void handleaddCompose(ActionEvent event) {
@@ -510,7 +516,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton modifier type
+	 *            un evenement sur le bouton modifier Compose
 	 */
 	@FXML
 	private void handlemodCompose(ActionEvent event) {
@@ -524,7 +530,7 @@ public class ParametreController implements Initializable {
 	 * Action lorsqu'un le bouton supprimer type est clique
 	 * 
 	 * @param event
-	 *            un evenement sur le bouton supprimer type
+	 *            un evenement sur le bouton supprimer Compose
 	 */
 	@FXML
 	private void handlesuppCompose(ActionEvent event) {
@@ -534,6 +540,94 @@ public class ParametreController implements Initializable {
 		}
 	}
 
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter intervention
+	 */
+	@FXML
+	private void handleaddIntervention(ActionEvent event) {
+		estIntervenu inter = new estIntervenu(null, null, null);
+		boolean okClicked = MainApp.showAddInterventionDialog(inter);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier intervention
+	 */
+	@FXML
+	private void handlemodIntervention(ActionEvent event) {
+		boolean okClicked = MainApp.showModInterventionDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer intervention
+	 */
+	@FXML
+	private void handlesuppIntervention(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppInterventionDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter uitilisation
+	 */
+	@FXML
+	private void handleaddUtilisation(ActionEvent event) {
+		Utilise util = new Utilise(null, null);
+		boolean okClicked = MainApp.showAddUtilisationDialog(util);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier uitilisation
+	 */
+	@FXML
+	private void handlemodUtilisation(ActionEvent event) {
+		boolean okClicked = MainApp.showModUtilisationDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer uitilisation
+	 */
+	@FXML
+	private void handlesuppUtilisation(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppUtilisationDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	
 	/**
 	 * Initialise les donn�es
 	 */

@@ -1000,4 +1000,35 @@ public class MainApp extends Application {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public static boolean showAddInterventionDialog(estIntervenu inter) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showModInterventionDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showSuppInterventionDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showAddUtilisationDialog(Utilise util) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showModUtilisationDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showSuppUtilisationDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
