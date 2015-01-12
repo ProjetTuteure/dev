@@ -274,7 +274,7 @@ public class Donnee {
     {
     	for(Facture fact:this.factureData)
     	{
-    		if(value==fact.getNumFac())
+    		if(value==fact.getNumFacture())
     		{
     			return fact;
     		}

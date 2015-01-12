@@ -132,9 +132,9 @@ public class DetailMachineController implements Initializable{
 	 */
 	private ObservableList<String> donneesFactureToList(Facture facture) {
 		ObservableList<String> list= FXCollections.observableArrayList();
-		list.add("Num Facture : "+facture.getNumFac()+"\n");
+		list.add("Num Facture : "+facture.getNumFacture()+"\n");
 		list.add("Date facture : "+facture.getDateFacStringProperty().getValue()+"\n");
-		list.add("Montant facture : "+facture.getMontantFac().getValue());
+		list.add("Montant facture : "+facture.getMontantFacture().getValue());
 		return list;
 	}
 	

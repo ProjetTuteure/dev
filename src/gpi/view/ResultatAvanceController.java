@@ -52,7 +52,7 @@ public class ResultatAvanceController implements Initializable {
             boolean estContenu=false;
             GregorianCalendar calendar = new java.util.GregorianCalendar();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            LocalDate date = materiel.getFacture().getDateFac();
+            LocalDate date = materiel.getFacture().getDateFacture();
 
             if(MainApp.getCritere(3).equals("moins d'un ans") || MainApp.getCritere(3).equals("")){
                 if(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusYears(1).isBefore(date)){
@@ -103,7 +103,7 @@ public class ResultatAvanceController implements Initializable {
                     (materiel.getType().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
                     (estUtilise || MainApp.getCritere(5).equals("") )&&
                     //(materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
-                    (materiel.getFacture().getNumFac().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
+                    (materiel.getFacture().getNumFacture().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
                     (materiel.getFacture().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
                     (materiel.getFabricant().getNomFabricant().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals("")) &&
                     (materiel.getModele().equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))

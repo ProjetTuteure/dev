@@ -26,14 +26,14 @@ public class supprimerFacture {
 	private ObservableList<String> listNum;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNum = FXCollections.observableArrayList();
 
 		for (Facture fac : donneesite.getFactureData()) {
-			listNum.add(fac.getNumFac());
+			listNum.add(fac.getNumFacture());
 		}
 		comboboxfact.setItems(listNum);
 	}

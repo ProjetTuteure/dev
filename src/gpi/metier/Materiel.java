@@ -133,7 +133,7 @@ public class Materiel {
     }
     
     public String getFactureString(){
-    	return facture.getNumFac();
+    	return facture.getNumFacture();
     }
     
     public Fabricant getFabricant() {

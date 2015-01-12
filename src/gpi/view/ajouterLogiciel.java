@@ -27,13 +27,13 @@ public class ajouterLogiciel {
 	private ObservableList<String> listfact;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listfact = FXCollections.observableArrayList();
 		for (Facture fac : donneeLog.getFactureData()) {
-			listfact.add(fac.getNumFac());
+			listfact.add(fac.getNumFacture());
 		}
 		comboboxfact.setItems(listfact);
 	}

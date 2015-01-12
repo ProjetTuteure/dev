@@ -61,7 +61,7 @@ public class ajouterMateriel {
 		comboboxfabr.setItems(listNom2);
 
 		for (Facture fac : donneeMat.getFactureData()) {
-			listNom3.add(fac.getNumFac());
+			listNom3.add(fac.getNumFacture());
 		}
 		comboboxfact.setItems(listNom3);
 

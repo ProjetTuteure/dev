@@ -111,10 +111,10 @@ public class modifierMateriel {
 		comboboxetat.setPromptText(selected.getEtat().name());
 
 		for (Facture fac : donneesite.getFactureData()) {
-			listFact.add(fac.getNumFac());
+			listFact.add(fac.getNumFacture());
 		}
 		comboboxfact.setItems(listFact);
-		comboboxfact.setPromptText(selected.getFacture().getNumFac());
+		comboboxfact.setPromptText(selected.getFacture().getNumFacture());
 
 		for (Fabricant fb : donneesite.getFabricantData()) {
 			listFabr.add(fb.getNomFabricant().getValue());

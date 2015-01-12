@@ -105,10 +105,10 @@ public class modifierLogiciel {
 				datefield.setPromptText(selected2.getDateExpirationStringProperty().getValue());
 
 				for (Facture fac : donneeLog.getFactureData()) {
-					listfact.add(fac.getNumFac());
+					listfact.add(fac.getNumFacture());
 				}
 				comboboxfact.setItems(listfact);
-				comboboxfact.setPromptText(selected2.getFacture().getNumFac());
+				comboboxfact.setPromptText(selected2.getFacture().getNumFacture());
 			}
 		} catch (NullPointerException e) {
 

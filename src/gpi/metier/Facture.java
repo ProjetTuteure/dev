@@ -11,66 +11,66 @@ import java.time.LocalDate;
  * Created by thibault on 22/11/14.
  */
 public class Facture {
-    private StringProperty numFac;
-    private LocalDate dateFac;
-    private FloatProperty montantFac;
+    private StringProperty numFacture;
+    private LocalDate dateFacture;
+    private FloatProperty montantFacture;
     private Revendeur revendeur;
 
 
     public Facture(String numFac, LocalDate dateFac, float montantFac, Revendeur revendeur) {
-        this.numFac = new SimpleStringProperty(numFac);
-        this.dateFac= dateFac;
-        this.montantFac= new SimpleFloatProperty(montantFac);
+        this.numFacture = new SimpleStringProperty(numFac);
+        this.dateFacture= dateFac;
+        this.montantFacture= new SimpleFloatProperty(montantFac);
         this.revendeur = revendeur;
     }
 
     public StringProperty getDateFacStringProperty() {
         String chaine1="";
         String chaine2="";
-        if(dateFac.getDayOfMonth()<10){
+        if(dateFacture.getDayOfMonth()<10){
             chaine1="0";
         }
-        if(dateFac.getMonthValue()<10){
+        if(dateFacture.getMonthValue()<10){
             chaine2="0";
         }
-        String dateFacture=chaine1+this.dateFac.getDayOfMonth()+"/"+chaine2+this.dateFac.getMonthValue()+"/"+this.dateFac.getYear();
+        String dateFacture=chaine1+this.dateFacture.getDayOfMonth()+"/"+chaine2+this.dateFacture.getMonthValue()+"/"+this.dateFacture.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 
-    public String getNumFac() {
-        return numFac.get();
+    public String getNumFacture() {
+        return numFacture.get();
     }
 
-    public StringProperty numFacProperty() {
-        return numFac;
+    public StringProperty numFactureProperty() {
+        return numFacture;
     }
 
-    public void setNumFac(String numFac) {
-        this.numFac.set(numFac);
+    public void setNumFacture(String numFac) {
+        this.numFacture.set(numFac);
     }
 
-    public FloatProperty montantFacProperty() {
-        return montantFac;
+    public FloatProperty montantFactureProperty() {
+        return montantFacture;
     }
 
-    public LocalDate getDateFac() {
-        return dateFac;
+    public LocalDate getDateFacture() {
+        return dateFacture;
     }
 
-    public void setDateFac(LocalDate dateFac) {
-        this.dateFac=(dateFac);
+    public void setDateFacture(LocalDate dateFac) {
+        this.dateFacture=(dateFac);
     }
 
-    public FloatProperty getMontantFac() {
-        return montantFac;
+    public FloatProperty getMontantFacture() {
+        return montantFacture;
     }
     
-    public String getMontantFacString() {
-        return ""+this.getMontantFac().floatValue();
+    public String getMontantFactureString() {
+        return ""+this.getMontantFacture().floatValue();
     }
 
-    public void setMontantFac(float montantFac) {
-        this.montantFac.set(montantFac);
+    public void setMontantFacture(float montantFac) {
+        this.montantFacture.set(montantFac);
     }
 
     public Revendeur getRevendeur() {
