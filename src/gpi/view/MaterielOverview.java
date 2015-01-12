@@ -66,7 +66,7 @@ public class MaterielOverview {
 		Type type;
 		type=(Type)mainApp.getCritere(1);
 		this.materiel=donnees.rechercher(site,type);
-		this.setLabelMaterielVille(site.getNomSite()+" -> "+type.getNom().getValue());
+		this.setLabelMaterielVille(site.getNomSite()+" -> "+type.getNomType().getValue());
 		this.sp_materiel.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterMaterielGridPane(materiel);
 		this.ajouterActionBouton(b_retour);
@@ -111,7 +111,7 @@ public class MaterielOverview {
 		String cheminImage;
 		for(int i=0;i<this.getNbMateriel();i++)
 		{
-			cheminImage=materiel.get(i).getTypeMateriel().getCheminImage().getValue();
+			cheminImage=materiel.get(i).getTypeMateriel().getCheminImageType().getValue();
 			ImageView image=new ImageView();
 			image.setImage(new Image(cheminImage));
 			image.setFitHeight(100);

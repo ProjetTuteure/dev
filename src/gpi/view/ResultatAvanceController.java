@@ -100,7 +100,7 @@ public class ResultatAvanceController implements Initializable {
                     (materiel.getNomMateriel().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
                     (materiel.getSiteMateriel().getNomSite().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
                     (estContenu || MainApp.getCritere(3).equals("")) &&
-                    (materiel.getTypeMateriel().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
+                    (materiel.getTypeMateriel().getNomType().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
                     (estUtilise || MainApp.getCritere(5).equals("") )&&
                     //(materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
                     (materiel.getFactureMateriel().getNumFacture().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&

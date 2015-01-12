@@ -8,31 +8,31 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Type {
-    private StringProperty nom;
-    private StringProperty cheminImage;
+    private StringProperty nomType;
+    private StringProperty cheminImageType;
 
-    public Type(String nom, String cheminImage) {
-        this.nom = new SimpleStringProperty(nom);
-        this.cheminImage = new SimpleStringProperty(cheminImage);
+    public Type(String nomType, String cheminImageType) {
+        this.nomType = new SimpleStringProperty(nomType);
+        this.cheminImageType = new SimpleStringProperty(cheminImageType);
     }
     
-    public StringProperty getNom() {
-        return nom;
+    public StringProperty getNomType() {
+        return nomType;
     }
 
-    public void setNom(String nom) {
-        this.nom.setValue(nom);
+    public void setNomType(String nomType) {
+        this.nomType.setValue(nomType);
     }
     
-    public String getNomString(){
-    	return this.nom.get();
+    public String getNomTypeString(){
+    	return this.nomType.get();
     }
 
-    public StringProperty getCheminImage() {
-        return cheminImage;
+    public StringProperty getCheminImageType() {
+        return cheminImageType;
     }
 
-    public void setCheminImage(String cheminImage) {
-        this.cheminImage.setValue(cheminImage);
+    public void setCheminImageType(String cheminImageType) {
+        this.cheminImageType.setValue(cheminImageType);
     }
 }

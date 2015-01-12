@@ -142,7 +142,7 @@ public class AncienneteController implements Initializable {
 		}
 		listSite.add("Tous");
 		for(Type t : type){
-			listType.add(t.getNomString());
+			listType.add(t.getNomTypeString());
 		}
 		listType.add("Tous");
 		
@@ -168,7 +168,7 @@ public class AncienneteController implements Initializable {
 				}
 			}
 			if(selectedType!="Tous"){
-				if(m.getTypeMateriel().getNomString()!=selectedType){
+				if(m.getTypeMateriel().getNomTypeString()!=selectedType){
 					isOk=false;
 				}
 			}

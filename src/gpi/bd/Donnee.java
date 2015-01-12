@@ -175,7 +175,7 @@ public class Donnee {
     {
     	for(Type type:typeData)
     	{
-    		if(nom.equals(type.getNom().getValue()))
+    		if(nom.equals(type.getNomType().getValue()))
     		{
     			return type;
     		}
@@ -262,7 +262,7 @@ public class Donnee {
     {
     	for(Type type:this.typeData)
     	{
-    		if(value==type.getNomString())
+    		if(value==type.getNomTypeString())
     		{
     			return type;
     		}
@@ -309,7 +309,7 @@ public class Donnee {
     public ObservableList<Materiel> rechercher(Site site, Type type){
         ObservableList<Materiel> resultat = FXCollections.observableArrayList();
         for(Materiel mat : materielData){
-            if(site.getIdSite() == mat.getSiteMateriel().getIdSite() && type.getNom().getValue().equals(mat.getTypeMateriel().getNom().getValue())){
+            if(site.getIdSite() == mat.getSiteMateriel().getIdSite() && type.getNomType().getValue().equals(mat.getTypeMateriel().getNomType().getValue())){
                 resultat.add(mat);
             }
         }

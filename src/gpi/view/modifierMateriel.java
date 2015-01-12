@@ -99,7 +99,7 @@ public class modifierMateriel {
 		Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
 
 		nomfield.setText(selected.getNomMateriel().getValue());
-		typefield.setText(selected.getTypeMateriel().getNom().getValue());
+		typefield.setText(selected.getTypeMateriel().getNomType().getValue());
 		immofield.setText(selected.getNumImmobMateriel().getValue());
 		datefield
 				.setPromptText(selected.getDateExpirationGarantieMaterielStringProperty().getValue());

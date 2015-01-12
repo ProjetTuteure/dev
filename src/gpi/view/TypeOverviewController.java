@@ -153,13 +153,13 @@ public class TypeOverviewController {
 		String cheminImage;
 		for(int i=0;i<this.getNbType();i++)
 		{
-			cheminImage=types.get(i).getCheminImage().getValue();
+			cheminImage=types.get(i).getCheminImageType().getValue();
 			ImageView image=new ImageView();
 			image.setImage(new Image(cheminImage));
 			image.setFitHeight(100);
 			image.setFitWidth(100);
 			Label label=new Label();
-			label.setText(types.get(i).getNomString());
+			label.setText(types.get(i).getNomTypeString());
 			label.setFont(new Font("Arial",20));
 			BorderPane bp_type=new BorderPane();
 			bp_type.setCenter(image);

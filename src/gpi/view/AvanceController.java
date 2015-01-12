@@ -110,7 +110,7 @@ public class AvanceController implements Initializable {
     public ObservableList<String> getNomType(List<Type> types){
         ObservableList<String> list=FXCollections.observableArrayList();
         for(Type type:types){
-            list.add(type.getNom().getValue());
+            list.add(type.getNomType().getValue());
         }
         return list;
     }

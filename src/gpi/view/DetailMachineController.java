@@ -99,7 +99,7 @@ public class DetailMachineController implements Initializable{
 				colorCircle.setFill(Color.ORANGE);;
 				break;
 		}
-		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImage().getValue()));
+		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
 		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
 		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
 		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
@@ -117,7 +117,7 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Num Immo : "+materiel.getNumImmobMateriel().getValueSafe()+"\n");
 		list.add("Nom : "+materiel.getNomMateriel().getValueSafe()+"\n");
-		list.add("Type : "+materiel.getTypeMateriel().getNom().getValueSafe()+"\n");
+		list.add("Type : "+materiel.getTypeMateriel().getNomType().getValueSafe()+"\n");
 		list.add("Etat : "+materiel.getEtatMaterielString()+"\n");
 		list.add("Fin de garantie : "+materiel.getDateExpirationGarantieMaterielStringProperty().getValueSafe()+"\n");
 		list.add("Repertoire drivers : "+materiel.getRepertoireDriverMateriel().getValueSafe()+"\n");

@@ -35,14 +35,14 @@ public class modifierType {
 	private TextField typefield;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
 		for (Type type : donneetype.getTypeData()) {
-			listNom.add(type.getNomString());
+			listNom.add(type.getNomTypeString());
 		}
 		comboboxTypeMod.setItems(listNom);
 	}
@@ -113,7 +113,7 @@ public class modifierType {
 	private void handlechange() {
 		Type selected = donneetype.gettype(comboboxTypeMod.getValue());
 
-		typefield.setText(selected.getNom().getValue());
+		typefield.setText(selected.getNomType().getValue());
 	}
 
 }

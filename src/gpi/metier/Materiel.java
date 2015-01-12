@@ -156,7 +156,7 @@ public class Materiel {
     public String toString() {
         return nomMateriel.getValue() +
                 ", numImmobMat=" + numImmobMateriel.getValue()+
-                ", type=" + typeMateriel.getNomString() +
+                ", type=" + typeMateriel.getNomTypeString() +
                 ", etat=" + etatMateriel.name() +
                 ", dateExpirationGarantie=" + getDateExpirationGarantieMaterielStringProperty().getValue() +
                 ", site=" + siteMateriel.getNomSite() +
