@@ -8,57 +8,57 @@ import javafx.beans.property.StringProperty;
  */
 public class Prestataire {
 
-    private int idPrest;
-    private StringProperty nomPrest;
-    private StringProperty prenomPrest;
-    private StringProperty telPrest;
-    private StringProperty societee;
+    private int idPrestataire;
+    private StringProperty nomPrestataire;
+    private StringProperty prenomPrestataire;
+    private StringProperty telPrestataire;
+    private StringProperty societeePrestataire;
 
-    public Prestataire(int idPrest, String nomPrest, String prenomPrest, String telPrest, String societee) {
-        this.idPrest = idPrest;
-        this.nomPrest = new SimpleStringProperty(nomPrest);
-        this.prenomPrest = new SimpleStringProperty(prenomPrest);
-        this.telPrest = new SimpleStringProperty(telPrest);
-        this.societee = new SimpleStringProperty(societee);
+    public Prestataire(int idPrestataire, String nomPrestataire, String prenomPrestataire, String telPrestataire, String societeePrestataire) {
+        this.idPrestataire = idPrestataire;
+        this.nomPrestataire = new SimpleStringProperty(nomPrestataire);
+        this.prenomPrestataire = new SimpleStringProperty(prenomPrestataire);
+        this.telPrestataire = new SimpleStringProperty(telPrestataire);
+        this.societeePrestataire = new SimpleStringProperty(societeePrestataire);
     }
 
-    public int getIdPrest() {
-        return idPrest;
+    public int getIdPrestataire() {
+        return idPrestataire;
     }
 
-    public void setIdPrest(int idPrest) {
-        this.idPrest = idPrest;
+    public void setIdPrestataire(int idPrestataire) {
+        this.idPrestataire = idPrestataire;
     }
 
-    public StringProperty getPrenomPrest() {
-        return prenomPrest;
+    public StringProperty getPrenomPrestataire() {
+        return prenomPrestataire;
     }
 
-    public void setPrenomPrest(String prenomPrest) {
-        this.prenomPrest.setValue(prenomPrest);
+    public void setPrenomPrestataire(String prenomPrestataire) {
+        this.prenomPrestataire.setValue(prenomPrestataire);
     }
 
-    public StringProperty getNomPrest() {
-        return nomPrest;
+    public StringProperty getNomPrestataire() {
+        return nomPrestataire;
     }
 
-    public void setNomPrest(String nomPrest) {
-        this.nomPrest.setValue(nomPrest);
+    public void setNomPrestataire(String nomPrestataire) {
+        this.nomPrestataire.setValue(nomPrestataire);
     }
 
-    public StringProperty getTelPrest() {
-        return telPrest;
+    public StringProperty getTelPrestataire() {
+        return telPrestataire;
     }
 
-    public void setTelPrest(String telPrest) {
-        this.telPrest.setValue(telPrest);
+    public void setTelPrestataire(String telPrestataire) {
+        this.telPrestataire.setValue(telPrestataire);
     }
 
-    public StringProperty getSocietee() {
-        return societee;
+    public StringProperty getsocieteePrestataire() {
+        return societeePrestataire;
     }
 
-    public void setSocietee(String societee) {
-        this.societee.setValue(societee);
+    public void setsocieteePrestataire(String societeePrestataire) {
+        this.societeePrestataire.setValue(societeePrestataire);
     }
 }

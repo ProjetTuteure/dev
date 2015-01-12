@@ -41,14 +41,14 @@ public class modifierPrestataire {
 	private ObservableList<String> listprenom;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
 
 		for (Prestataire pr : donnee.getPrestataireData()) {
-			listnom.add(pr.getNomPrest().getValue());
+			listnom.add(pr.getNomPrestataire().getValue());
 		}
 		comboboxnom.setItems(listnom);
 	}
@@ -95,7 +95,7 @@ public class modifierPrestataire {
 
 	/**
 	 * Cette methode permet de pre remplir le combobox avec les prenoms afin
-	 * d'avoir un seul et unique prestataire ciblé
+	 * d'avoir un seul et unique prestataire ciblï¿½
 	 */
 	@FXML
 	private void handlechange1() {
@@ -104,9 +104,9 @@ public class modifierPrestataire {
 		listprenom = FXCollections.observableArrayList();
 
 		for (Prestataire pr : donnee.getPrestataireData()) {
-			if (pr.getNomPrest().getValue()
-					.equals(selected.getNomPrest().getValue())) {
-				listprenom.add(pr.getPrenomPrest().getValue());
+			if (pr.getNomPrestataire().getValue()
+					.equals(selected.getNomPrestataire().getValue())) {
+				listprenom.add(pr.getPrenomPrestataire().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);
@@ -114,7 +114,7 @@ public class modifierPrestataire {
 
 	/**
 	 * Cette methode permet de pre remplir les champs lorsqu'un prestataire est
-	 * selectionne avec son prénom et son nom
+	 * selectionne avec son prï¿½nom et son nom
 	 */
 	@FXML
 	private void handlechange2() {
@@ -124,10 +124,10 @@ public class modifierPrestataire {
 						+ comboboxprenom.getValue();
 				Prestataire selected2 = donnee.getPrestaire2(test);
 
-				nomfield.setText(selected2.getNomPrest().getValue());
-				prenomfield.setText(selected2.getPrenomPrest().getValue());
-				telfield.setText(selected2.getTelPrest().getValue());
-				socfield.setText(selected2.getSocietee().getValue());
+				nomfield.setText(selected2.getNomPrestataire().getValue());
+				prenomfield.setText(selected2.getPrenomPrestataire().getValue());
+				telfield.setText(selected2.getTelPrestataire().getValue());
+				socfield.setText(selected2.getsocieteePrestataire().getValue());
 			}
 		} catch (NullPointerException e) {
 

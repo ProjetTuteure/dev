@@ -221,7 +221,7 @@ public class Donnee {
     
     public Prestataire getPrestaire(String value) {
         for(Prestataire pr : prestataireData){
-            if(value == pr.getNomPrest().getValue()){
+            if(value == pr.getNomPrestataire().getValue()){
                 return pr;
             }
         }
@@ -230,7 +230,7 @@ public class Donnee {
     
     public Prestataire getPrestaire2(String value) {
         for(Prestataire pr : prestataireData){
-            if(value.equals(pr.getNomPrest().getValue()+" "+pr.getPrenomPrest().getValue())){
+            if(value.equals(pr.getNomPrestataire().getValue()+" "+pr.getPrenomPrestataire().getValue())){
                 return pr;
             }
         }

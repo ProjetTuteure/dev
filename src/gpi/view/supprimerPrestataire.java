@@ -29,14 +29,14 @@ public class supprimerPrestataire {
 	private ObservableList<String> listprenom;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
 
 		for (Prestataire pr : donneesite.getPrestataireData()) {
-			listnom.add(pr.getNomPrest().getValue());
+			listnom.add(pr.getNomPrestataire().getValue());
 		}
 		comboboxnom.setItems(listnom);
 	}
@@ -82,9 +82,9 @@ public class supprimerPrestataire {
 
 		listprenom = FXCollections.observableArrayList();
 		for (Prestataire pr : donneesite.getPrestataireData()) {
-			if (pr.getNomPrest().getValue()
-					.equals(selected.getNomPrest().getValue())) {
-				listprenom.add(selected.getPrenomPrest().getValue());
+			if (pr.getNomPrestataire().getValue()
+					.equals(selected.getNomPrestataire().getValue())) {
+				listprenom.add(selected.getPrenomPrestataire().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);
