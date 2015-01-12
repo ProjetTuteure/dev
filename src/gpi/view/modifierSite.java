@@ -17,7 +17,7 @@ import java.io.File;
  * Created by Kevin
  */
 
-public class modifierSite {
+public class ModifierSite {
 	@FXML
 	private TextField NameSiteField;
 

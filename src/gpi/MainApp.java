@@ -218,7 +218,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterSite controller = loader.getController();
+			AjouterSite controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -245,7 +245,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerSite controller = loader.getController();
+			SupprimerSite controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -272,7 +272,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierSite controller = loader.getController();
+			ModifierSite controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -299,7 +299,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterType controller = loader.getController();
+			AjouterType controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -326,7 +326,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierType controller = loader.getController();
+			ModifierType controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -353,7 +353,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerType controller = loader.getController();
+			SupprimerType controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -380,7 +380,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterFacture controller = loader.getController();
+			AjouterFacture controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -407,7 +407,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierFacture controller = loader.getController();
+			ModifierFacture controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -434,7 +434,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerFacture controller = loader.getController();
+			SupprimerFacture controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -461,7 +461,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterFabricant controller = loader.getController();
+			AjouterFabricant controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -488,7 +488,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierFabricant controller = loader.getController();
+			ModifierFabricant controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -515,7 +515,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerFabricant controller = loader.getController();
+			SupprimerFabricant controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -542,7 +542,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterLogiciel controller = loader.getController();
+			AjouterLogiciel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -569,7 +569,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierLogiciel controller = loader.getController();
+			ModifierLogiciel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -596,7 +596,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerLogiciel controller = loader.getController();
+			SupprimerLogiciel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -623,7 +623,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterMaintenance controller = loader.getController();
+			AjouterMaintenance controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -650,7 +650,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierMaintenance controller = loader.getController();
+			ModifierMaintenance controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -677,7 +677,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerMaintenance controller = loader.getController();
+			SupprimerMaintenance controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -704,7 +704,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterMateriel controller = loader.getController();
+			AjouterMateriel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -731,7 +731,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierMateriel controller = loader.getController();
+			ModifierMateriel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -758,7 +758,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerMateriel controller = loader.getController();
+			SupprimerMateriel controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -785,7 +785,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterPrestataire controller = loader.getController();
+			AjouterPrestataire controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -812,7 +812,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierPrestataire controller = loader.getController();
+			ModifierPrestataire controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 
@@ -839,7 +839,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerPrestataire controller = loader.getController();
+			SupprimerPrestataire controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -866,7 +866,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			ajouterRevendeur controller = loader.getController();
+			AjouterRevendeur controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -893,7 +893,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			modifierRevendeur controller = loader.getController();
+			ModifierRevendeur controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();
@@ -920,7 +920,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			supprimerRevendeur controller = loader.getController();
+			SupprimerRevendeur controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 
 			dialogStage.showAndWait();

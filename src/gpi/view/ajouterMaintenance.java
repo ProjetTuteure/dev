@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class ajouterMaintenance {
+public class AjouterMaintenance {
 	@FXML
 	private Stage dialogStage;
 

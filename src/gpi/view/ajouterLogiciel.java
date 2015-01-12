@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class ajouterLogiciel {
+public class AjouterLogiciel {
 	@FXML
 	private Stage dialogStage;
 
