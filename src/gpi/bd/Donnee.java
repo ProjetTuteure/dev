@@ -26,6 +26,7 @@ public class Donnee {
     private ObservableList<Type> typeData = FXCollections.observableArrayList();
     private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
     private ObservableList<Utilise> utiliseData = FXCollections.observableArrayList();
+    private ObservableList<Composant> composantData = FXCollections.observableArrayList();
 
     public Donnee(){
         remplirSiteData();
@@ -84,6 +85,10 @@ public class Donnee {
     
     public ObservableList<Logiciel> getLogicielData() {
         return logicielData;
+    }
+    
+    public ObservableList<Composant> getComposantData() {
+        return composantData;
     }
     
     private void remplirFabricantData() {
@@ -206,6 +211,15 @@ public class Donnee {
         for(Maintenance m : maintenanceData){
             if(value == m.getObjetMaintenance()){
                 return m;
+            }
+        }
+        return null;
+    }
+    
+    public Composant getComposant(String value) {
+        for(Composant c : composantData){
+            if(value == c.getNomComposant()){
+                return c;
             }
         }
         return null;
