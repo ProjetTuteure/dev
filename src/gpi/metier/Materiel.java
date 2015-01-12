@@ -1,15 +1,18 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by thibault on 22/11/14.
  */
 public class Materiel {
-    private int idMateriel;
+    private IntegerProperty idMateriel;
     private StringProperty numImmobMateriel;
     private StringProperty nomMateriel;
     private Type typeMateriel;
@@ -20,8 +23,9 @@ public class Materiel {
     private Site siteMateriel;
     private Fabricant fabricantMateriel;
     private String modeleMateriel;
+    private List<Composant> listComposantMateriel;
 
-    public Materiel(int idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
+    public Materiel(IntegerProperty idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
         this.idMateriel=idMateriel;
         this.numImmobMateriel = new SimpleStringProperty(numImmobMateriel);
         this.nomMateriel= new SimpleStringProperty(nomMateriel);
@@ -33,13 +37,15 @@ public class Materiel {
         this.siteMateriel = siteMateriel;
         this.fabricantMateriel = fabricantMateriel;
         this.modeleMateriel=modeleMateriel;
+        this.listComposantMateriel=new ArrayList<Composant>();
+
     }
 
-    public int getIdMateriel() {
+    public IntegerProperty getIdMateriel() {
         return idMateriel;
     }
 
-    public void setIdMateriel(int idMateriel) {
+    public void setIdMateriel(IntegerProperty idMateriel) {
         this.idMateriel = idMateriel;
     }
 
@@ -151,6 +157,23 @@ public class Materiel {
     public String getModeleMateriel() {
         return modeleMateriel;
     }
+
+    public List<Composant> getListComposantMateriel() {
+        return listComposantMateriel;
+    }
+
+    public void setListComposantMateriel(List<Composant> listComposantMateriel){
+        this.listComposantMateriel=listComposantMateriel;
+    }
+
+    public void ajouterComposantListComposantMateriel(Composant composant){
+        this.listComposantMateriel.add(composant);
+    }
+
+    public void ajouterListComposantListComposantMateriel(List<Composant> listComposantMateriel){
+        this.listComposantMateriel.addAll(listComposantMateriel);
+    }
+
 
     @Override
     public String toString() {

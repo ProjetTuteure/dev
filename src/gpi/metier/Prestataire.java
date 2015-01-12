@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -7,26 +8,25 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Prestataire {
-
-    private int idPrestataire;
+    private IntegerProperty idPrestataire;
     private StringProperty nomPrestataire;
     private StringProperty prenomPrestataire;
     private StringProperty telPrestataire;
-    private StringProperty societeePrestataire;
+    private StringProperty societePrestataire;
 
-    public Prestataire(int idPrestataire, String nomPrestataire, String prenomPrestataire, String telPrestataire, String societeePrestataire) {
+    public Prestataire(IntegerProperty idPrestataire, String nomPrestataire, String prenomPrestataire, String telPrestataire, String societePrestataire) {
         this.idPrestataire = idPrestataire;
         this.nomPrestataire = new SimpleStringProperty(nomPrestataire);
         this.prenomPrestataire = new SimpleStringProperty(prenomPrestataire);
         this.telPrestataire = new SimpleStringProperty(telPrestataire);
-        this.societeePrestataire = new SimpleStringProperty(societeePrestataire);
+        this.societePrestataire = new SimpleStringProperty(societePrestataire);
     }
 
-    public int getIdPrestataire() {
+    public IntegerProperty getIdPrestataire() {
         return idPrestataire;
     }
 
-    public void setIdPrestataire(int idPrestataire) {
+    public void setIdPrestataire(IntegerProperty idPrestataire) {
         this.idPrestataire = idPrestataire;
     }
 
@@ -55,10 +55,10 @@ public class Prestataire {
     }
 
     public StringProperty getSocieteePrestataire() {
-        return societeePrestataire;
+        return societePrestataire;
     }
 
-    public void setSocieteePrestataire(String societeePrestataire) {
-        this.societeePrestataire.setValue(societeePrestataire);
+    public void setSocietePrestataire(String societePrestataire) {
+        this.societePrestataire.setValue(societePrestataire);
     }
 }

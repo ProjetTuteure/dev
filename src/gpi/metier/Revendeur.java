@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -7,23 +8,23 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Revendeur {
-    private int idRevendeur;
+    private IntegerProperty idRevendeur;
     private StringProperty nomRevendeur;
     private StringProperty telRevendeur;
     private StringProperty adresseRevendeur;
 
-    public Revendeur(int idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur) {
+    public Revendeur(IntegerProperty idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur) {
         this.idRevendeur = idRevendeur;
         this.nomRevendeur= new SimpleStringProperty(nomRevendeur);
         this.telRevendeur = new SimpleStringProperty(telRevendeur);
         this.adresseRevendeur = new SimpleStringProperty(adresseRevendeur);
     }
 
-    public int getIdRevendeur() {
+    public IntegerProperty getIdRevendeur() {
         return idRevendeur;
     }
 
-    public void setIdRevendeur(int idRevendeur) {
+    public void setIdRevendeur(IntegerProperty idRevendeur) {
         this.idRevendeur = idRevendeur;
     }
 

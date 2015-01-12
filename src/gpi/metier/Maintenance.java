@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,13 +13,13 @@ import java.util.Date;
  * Created by thibault on 22/11/14.
  */
 public class Maintenance {
-    private int idMaintenance;
+    private IntegerProperty idMaintenance;
     private LocalDate dateMaintenance;
     private String objetMaintenance;
     private String descriptionMaintenance;
     private float coutMaintenance;
 
-    public Maintenance(int idMaintenance, LocalDate dateMaintenance, String objetMaintenance, String descriptionMaintenance, float coutMaintenance) {
+    public Maintenance(IntegerProperty idMaintenance, LocalDate dateMaintenance, String objetMaintenance, String descriptionMaintenance, float coutMaintenance) {
         this.idMaintenance = idMaintenance;
         this.dateMaintenance = dateMaintenance;
         this.objetMaintenance = objetMaintenance;
@@ -26,11 +27,11 @@ public class Maintenance {
         this.coutMaintenance = coutMaintenance;
     }
 
-    public int getIdMaintenance() {
+    public IntegerProperty getIdMaintenance() {
         return idMaintenance;
     }
 
-    public void setIdMaintenance(int idMaintenance) {
+    public void setIdMaintenance(IntegerProperty idMaintenance) {
         this.idMaintenance = idMaintenance;
     }
 

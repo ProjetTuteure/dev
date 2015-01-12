@@ -26,7 +26,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddFabr(ActionEvent event) {
-		Fabricant fabricant = new Fabricant(0, null, null, null);
+		Fabricant fabricant = new Fabricant(null, null, null, null);
 		boolean okClicked = MainApp.showAddFabrDialog(fabricant);
 		if (okClicked) {
 
@@ -112,7 +112,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddLog(ActionEvent event) {
-		Logiciel logiciel = new Logiciel(0, null, null, null, null);
+		Logiciel logiciel = new Logiciel(null, null, null, null, null);
 		boolean okClicked = MainApp.showAddLogDialog(logiciel);
 		if (okClicked) {
 
@@ -155,7 +155,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddMaint(ActionEvent event) {
-		Maintenance maintenance = new Maintenance(0, null, null, null, 0);
+		Maintenance maintenance = new Maintenance(null, null, null, null, 0);
 		boolean okClicked = MainApp.showAddMaintDialog(maintenance);
 		if (okClicked) {
 
@@ -198,7 +198,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddMat(ActionEvent event) {
-		Materiel materiel = new Materiel(0,null, null, null, null, null, null,
+		Materiel materiel = new Materiel(null,null, null, null, null, null, null,
 				null, null, null, null);
 		boolean okClicked = MainApp.showAddMatDialog(materiel);
 		if (okClicked) {
@@ -242,7 +242,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddPrest(ActionEvent event) {
-		Prestataire prest = new Prestataire(0, null, null, null, null);
+		Prestataire prest = new Prestataire(null, null, null, null, null);
 		boolean okClicked = MainApp.showAddPrestDialog(prest);
 		if (okClicked) {
 
@@ -285,7 +285,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddRev(ActionEvent event) {
-		Revendeur rev = new Revendeur(0, null, null, null);
+		Revendeur rev = new Revendeur(null, null, null, null);
 		boolean okClicked = MainApp.showAddRevDialog(rev);
 		if (okClicked) {
 
@@ -416,7 +416,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddUtilisateur(ActionEvent event) {
-		Utilisateur user = new Utilisateur(0, null, null, null);
+		Utilisateur user = new Utilisateur(null, null, null, null);
 		boolean okClicked = MainApp.showAddUtilisateurDialog(user);
 		if (okClicked) {
 
@@ -460,7 +460,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddComposant(ActionEvent event) {
-		//Pas de type Type, mais de type compose => pas encore créé
+		//Pas de type Type, mais de type compose => pas encore crï¿½ï¿½
 		Type type = new Type(null, null);
 		boolean okClicked = MainApp.showAddComposantDialog(type);
 		if (okClicked) {
@@ -504,7 +504,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddCompose(ActionEvent event) {
-		//Pas de type Type, mais de type compose => pas encore créé
+		//Pas de type Type, mais de type compose => pas encore crï¿½ï¿½
 		Type type = new Type(null, null);
 		boolean okClicked = MainApp.showAddComposeDialog(type);
 		if (okClicked) {

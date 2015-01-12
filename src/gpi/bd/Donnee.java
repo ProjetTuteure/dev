@@ -1,6 +1,7 @@
 package gpi.bd;
 
 import gpi.metier.*;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -86,23 +87,23 @@ public class Donnee {
     }
     
     private void remplirFabricantData() {
-        fabricantData.add(new Fabricant(1, "DELL","05.55.66.77.88" , "2 route perdu 87000"));
-        fabricantData.add(new Fabricant(2, "HP","05.55.66.77.88" , "2 route perdu 87000"));
+        fabricantData.add(new Fabricant(new SimpleIntegerProperty(1), "DELL","05.55.66.77.88" , "2 route perdu 87000"));
+        fabricantData.add(new Fabricant(new SimpleIntegerProperty(1), "HP","05.55.66.77.88" , "2 route perdu 87000"));
     }
     
     private void remplirPrestaraireData() {
-        prestataireData.add(new Prestataire(1, "Caillou", "Pierre", "05.55.69.87.23", "Caillou et Co."));
-        prestataireData.add(new Prestataire(2, "Noel", "Papa", "00.36.65.65.65", "Pole Nord"));
+        prestataireData.add(new Prestataire(new SimpleIntegerProperty(1), "Caillou", "Pierre", "05.55.69.87.23", "Caillou et Co."));
+        prestataireData.add(new Prestataire(new SimpleIntegerProperty(2), "Noel", "Papa", "00.36.65.65.65", "Pole Nord"));
     }
 
     private void remplirMaterielData() {
-        materielData.add(new Materiel(1,"1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0),"XXX1"));
-        materielData.add(new Materiel(2,"2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1),"XXX2"));
-		materielData.add(new Materiel(3,"3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-12-31"), "", factureData.get(0), siteData.get(0), fabricantData.get(0),"XXX3"));
-		materielData.add(new Materiel(4,"4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2015-12-31"), "", factureData.get(0), siteData.get(1), fabricantData.get(0),"XXX4"));
-		materielData.add(new Materiel(5,"5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-02-05"), "", factureData.get(1), siteData.get(2), fabricantData.get(0),"XXX5"));
-		materielData.add(new Materiel(6,"6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE,LocalDate.parse("2017-02-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX6"));
-		materielData.add(new Materiel(7,"7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE,LocalDate.parse("2012-03-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX7<"));
+        materielData.add(new Materiel(new SimpleIntegerProperty(1),"1IMMO","pc-martine",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-martine",factureData.get(0),siteData.get(0),fabricantData.get(0),"XXX1"));
+        materielData.add(new Materiel(new SimpleIntegerProperty(2),"2IMMO","pc-gertrude",typeData.get(0),Etat.EN_MARCHE,LocalDate.parse("2012-11-11"),"/driver/pc-gertrude",factureData.get(0),siteData.get(0),fabricantData.get(1),"XXX2"));
+		materielData.add(new Materiel(new SimpleIntegerProperty(3),"3IMMO", "PC1", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-12-31"), "", factureData.get(0), siteData.get(0), fabricantData.get(0),"XXX3"));
+		materielData.add(new Materiel(new SimpleIntegerProperty(4),"4IMMO", "PC2", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2015-12-31"), "", factureData.get(0), siteData.get(1), fabricantData.get(0),"XXX4"));
+		materielData.add(new Materiel(new SimpleIntegerProperty(5),"5IMMO", "PC3", typeData.get(0), Etat.EN_MARCHE,LocalDate.parse("2014-02-05"), "", factureData.get(1), siteData.get(2), fabricantData.get(0),"XXX5"));
+		materielData.add(new Materiel(new SimpleIntegerProperty(6),"6IMMO", "Routeur1", typeData.get(1), Etat.EN_MARCHE,LocalDate.parse("2017-02-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX6"));
+		materielData.add(new Materiel(new SimpleIntegerProperty(7),"7IMMO", "Routeur2", typeData.get(1), Etat.EN_PANNE,LocalDate.parse("2012-03-14"), "", factureData.get(1), siteData.get(3), fabricantData.get(0),"XXX7<"));
 	    }
 
     private void remplirFactureData() {
@@ -111,8 +112,8 @@ public class Donnee {
     }
 
     private void remplirRevendeurData() {
-        revendeurData.add(new Revendeur(1,"Darty","05.55.21.36.54","4 rue n'importe ou"));
-        revendeurData.add(new Revendeur(2,"Fnac","05.55.68.57.41","5 rue je sais pas ou "));
+        revendeurData.add(new Revendeur(new SimpleIntegerProperty(1),"Darty","05.55.21.36.54","4 rue n'importe ou"));
+        revendeurData.add(new Revendeur(new SimpleIntegerProperty(2),"Fnac","05.55.68.57.41","5 rue je sais pas ou "));
     }
 
     private void remplirTypeData() {
@@ -136,14 +137,14 @@ public class Donnee {
 
 
     private void remplirLogicielData() {
-        this.logicielData.add(new Logiciel(1,"Microsoft Office 2012","1.0",LocalDate.parse("2014-10-01"),this.factureData.get(1)));
+        this.logicielData.add(new Logiciel(new SimpleIntegerProperty(1),"Microsoft Office 2012","1.0",LocalDate.parse("2014-10-01"),this.factureData.get(1)));
     }
 
     private void remplirUtilisateurData(){
-    	this.utilisateurData.add(new Utilisateur(1, "Bon", "Jean", "055212354"));
-    	this.utilisateurData.add(new Utilisateur(2, "Leroy", "Arthur", "055684515"));
-    	this.utilisateurData.add(new Utilisateur(3, "Fury", "Johanna", "0556519819"));
-    	this.utilisateurData.add(new Utilisateur(4, "Garves", "Eddy", "058749841"));
+    	this.utilisateurData.add(new Utilisateur(new SimpleIntegerProperty(1), "Bon", "Jean", "055212354"));
+    	this.utilisateurData.add(new Utilisateur(new SimpleIntegerProperty(2), "Leroy", "Arthur", "055684515"));
+    	this.utilisateurData.add(new Utilisateur(new SimpleIntegerProperty(3), "Fury", "Johanna", "0556519819"));
+    	this.utilisateurData.add(new Utilisateur(new SimpleIntegerProperty(4), "Garves", "Eddy", "058749841"));
     }
     
     private void remplirUtiliseData(){
@@ -156,10 +157,10 @@ public class Donnee {
     }
     
     private void remplirMaintenanceData(){
-    	this.maintenanceData.add(new Maintenance(1, LocalDate.parse("2014-10-01"), "erreur", "une erreur inconnue est survenue", 10));
-    	this.maintenanceData.add(new Maintenance(2, LocalDate.parse("2012-02-27"), "orage", "tout a grille", 5000));
-    	this.maintenanceData.add(new Maintenance(3, LocalDate.parse("2014-04-10"), "neige", "il a neige dans la salle des serveurs", 999));
-    	this.maintenanceData.add(new Maintenance(4, LocalDate.parse("2011-11-11"), "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense que ca suffira", 1));
+    	this.maintenanceData.add(new Maintenance(new SimpleIntegerProperty(1), LocalDate.parse("2014-10-01"), "erreur", "une erreur inconnue est survenue", 10));
+    	this.maintenanceData.add(new Maintenance(new SimpleIntegerProperty(2), LocalDate.parse("2012-02-27"), "orage", "tout a grille", 5000));
+    	this.maintenanceData.add(new Maintenance(new SimpleIntegerProperty(3), LocalDate.parse("2014-04-10"), "neige", "il a neige dans la salle des serveurs", 999));
+    	this.maintenanceData.add(new Maintenance(new SimpleIntegerProperty(4), LocalDate.parse("2011-11-11"), "utilisateur", "j'ai besoin d'une grosse description pour voir ce que ca donne alors je cherche des trucs a ecrire mais comme je trouve pas grand chose je continue a dire n'importe quoi voila la je pense que ca suffira", 1));
     }
     
     private void remplirEstMaintenuData(){
