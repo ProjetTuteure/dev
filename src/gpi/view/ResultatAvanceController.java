@@ -28,6 +28,9 @@ public class ResultatAvanceController implements Initializable {
     @FXML
     private ListView<Materiel> listMateriel;
 
+    /**
+     * Initialise les données
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         materielObservableList=donnee.getMaterielData();
@@ -43,7 +46,7 @@ public class ResultatAvanceController implements Initializable {
                 }
             }
 
-            //Pour connaitre l'anciennetÃ©
+            //Pour connaitre l'ancienneté
             boolean estContenu=false;
             GregorianCalendar calendar = new java.util.GregorianCalendar();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
