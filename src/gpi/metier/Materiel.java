@@ -9,6 +9,7 @@ import java.time.LocalDate;
  * Created by thibault on 22/11/14.
  */
 public class Materiel {
+    private int idMateriel;
     private StringProperty numImmobMat;
     private StringProperty nom;
     private Type type;
@@ -20,7 +21,8 @@ public class Materiel {
     private Fabricant fabricant;
     private String modele;
 
-    public Materiel(String numImmobMat, String nom, Type type, Etat etat, LocalDate dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
+    public Materiel(int idMateriel,String numImmobMat, String nom, Type type, Etat etat, LocalDate dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
+        this.idMateriel=idMateriel;
         this.numImmobMat = new SimpleStringProperty(numImmobMat);
         this.nom= new SimpleStringProperty(nom);
         this.type = type;
@@ -31,6 +33,14 @@ public class Materiel {
         this.site = site;
         this.fabricant = fabricant;
         this.modele=modele;
+    }
+
+    public int getIdMateriel() {
+        return idMateriel;
+    }
+
+    public void setIdMateriel(int idMateriel) {
+        this.idMateriel = idMateriel;
     }
 
     public Site getSite() {
