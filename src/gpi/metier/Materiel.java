@@ -10,29 +10,29 @@ import java.time.LocalDate;
  */
 public class Materiel {
     private int idMateriel;
-    private StringProperty numImmobMat;
-    private StringProperty nom;
-    private Type type;
-    private Etat etat;
-    private LocalDate dateExpirationGarantie;
-    private StringProperty repertoireDriver;
-    private Facture facture;
-    private Site site;
-    private Fabricant fabricant;
-    private String modele;
+    private StringProperty numImmobMateriel;
+    private StringProperty nomMateriel;
+    private Type typeMateriel;
+    private Etat etatMateriel;
+    private LocalDate dateExpirationGarantieMateriel;
+    private StringProperty repertoireDriverMateriel;
+    private Facture factureMateriel;
+    private Site siteMateriel;
+    private Fabricant fabricantMateriel;
+    private String modeleMateriel;
 
-    public Materiel(int idMateriel,String numImmobMat, String nom, Type type, Etat etat, LocalDate dateExpirationGarantie, String repertoireDriver, Facture facture, Site site, Fabricant fabricant,String modele) {
+    public Materiel(int idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
         this.idMateriel=idMateriel;
-        this.numImmobMat = new SimpleStringProperty(numImmobMat);
-        this.nom= new SimpleStringProperty(nom);
-        this.type = type;
-        this.etat = etat;
-        this.dateExpirationGarantie=dateExpirationGarantie;
-        this.repertoireDriver = new SimpleStringProperty(repertoireDriver);
-        this.facture = facture;
-        this.site = site;
-        this.fabricant = fabricant;
-        this.modele=modele;
+        this.numImmobMateriel = new SimpleStringProperty(numImmobMateriel);
+        this.nomMateriel= new SimpleStringProperty(nomMateriel);
+        this.typeMateriel = typeMateriel;
+        this.etatMateriel = etatMateriel;
+        this.dateExpirationGarantieMateriel=dateExpirationGarantieMateriel;
+        this.repertoireDriverMateriel = new SimpleStringProperty(repertoireDriverMateriel);
+        this.factureMateriel = factureMateriel;
+        this.siteMateriel = siteMateriel;
+        this.fabricantMateriel = fabricantMateriel;
+        this.modeleMateriel=modeleMateriel;
     }
 
     public int getIdMateriel() {
@@ -43,124 +43,124 @@ public class Materiel {
         this.idMateriel = idMateriel;
     }
 
-    public Site getSite() {
-        return site;
+    public Site getSiteMateriel() {
+        return siteMateriel;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setSiteMateriel(Site siteMateriel) {
+        this.siteMateriel = siteMateriel;
     }
     
-    public String getSiteString(){
-    	return site.getNomSte();
+    public String getSiteMaterielString(){
+    	return siteMateriel.getNomSte();
     }
 
-    public StringProperty getNumImmobMat() {
-        return numImmobMat;
+    public StringProperty getNumImmobMateriel() {
+        return numImmobMateriel;
     }
 
-    public void setNumImmobMat(String numImmobMat) {
-        this.numImmobMat.setValue(numImmobMat);
+    public void setNumImmobMateriel(String numImmobMateriel) {
+        this.numImmobMateriel.setValue(numImmobMateriel);
     }
 
     
-    public StringProperty getNom() {
-        return nom;
+    public StringProperty getNomMateriel() {
+        return nomMateriel;
     }
 
-    public void setNom(String nom) {
-        this.nom.set(nom);
+    public void setNomMateriel(String nomMateriel) {
+        this.nomMateriel.set(nomMateriel);
     }
 
-    public Type getType() {
-        return type;
+    public Type getTypeMateriel() {
+        return typeMateriel;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setTypeMateriel(Type typeMateriel) {
+        this.typeMateriel = typeMateriel;
     }
 
-    public Etat getEtat() {
-        return etat;
+    public Etat getEtatMateriel() {
+        return etatMateriel;
     }
 
-    public void setEtat(Etat etat) {
-        this.etat = etat;
+    public void setEtatMateriel(Etat etatMateriel) {
+        this.etatMateriel = etatMateriel;
     }
     
-    public String getEtatString(){
-    	return etat.name();
+    public String getEtatMaterielString(){
+    	return etatMateriel.name();
     }
 
-    public StringProperty getEtatStringProperty(){
-    	return new SimpleStringProperty(etat.name());
+    public StringProperty getEtatMaterielStringProperty(){
+    	return new SimpleStringProperty(etatMateriel.name());
     }
     public LocalDate getDateExpirationGarantie() {
-        return dateExpirationGarantie;
+        return dateExpirationGarantieMateriel;
     }
 
-    public StringProperty getDateExpirationGarantieStringProperty() {
+    public StringProperty getDateExpirationGarantieMaterielStringProperty() {
         String chaine1="";
         String chaine2="";
-        if(dateExpirationGarantie.getDayOfMonth()<10){
+        if(dateExpirationGarantieMateriel.getDayOfMonth()<10){
             chaine1="0";
         }
-        if(dateExpirationGarantie.getMonthValue()<10){
+        if(dateExpirationGarantieMateriel.getMonthValue()<10){
             chaine2="0";
         }
-        String dateFacture=chaine1+this.dateExpirationGarantie.getDayOfMonth()+"/"+chaine2+this.dateExpirationGarantie.getMonthValue()+"/"+this.dateExpirationGarantie.getYear();
+        String dateFacture=chaine1+this.dateExpirationGarantieMateriel.getDayOfMonth()+"/"+chaine2+this.dateExpirationGarantieMateriel.getMonthValue()+"/"+this.dateExpirationGarantieMateriel.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 
-    public void setDateExpirationGarantie(LocalDate dateExpirationGarantie) {
-        this.dateExpirationGarantie=dateExpirationGarantie;
+    public void setDateExpirationGarantieMateriel(LocalDate dateExpirationGarantieMateriel) {
+        this.dateExpirationGarantieMateriel=dateExpirationGarantieMateriel;
     }
 
-    public StringProperty getRepertoireDriver() {
-        return repertoireDriver;
+    public StringProperty getRepertoireDriverMateriel() {
+        return repertoireDriverMateriel;
     }
 
-    public void setRepertoireDriver(String repertoireDriver) {
-        this.repertoireDriver.setValue(repertoireDriver);
+    public void setRepertoireDriverMateriel(String repertoireDriverMateriel) {
+        this.repertoireDriverMateriel.setValue(repertoireDriverMateriel);
     }
 
-    public Facture getFacture() {
-        return facture;
+    public Facture getFactureMateriel() {
+        return factureMateriel;
     }
 
-    public void setFacture(Facture facture) {
-        this.facture = facture;
+    public void setFactureMateriel(Facture factureMateriel) {
+        this.factureMateriel = factureMateriel;
     }
     
-    public String getFactureString(){
-    	return facture.getNumFacture();
+    public String getFactureStringMateriel(){
+    	return factureMateriel.getNumFacture();
     }
     
-    public Fabricant getFabricant() {
-        return fabricant;
+    public Fabricant getFabricantMateriel() {
+        return fabricantMateriel;
     }
 
-    public void setFabricant(Fabricant fabricant) {
-        this.fabricant = fabricant;
+    public void setFabricantMateriel(Fabricant fabricantMateriel) {
+        this.fabricantMateriel = fabricantMateriel;
     }
     
-    public String getFabricantString(){
-    	return fabricant.getNomFabricant().getValue();
+    public String getFabricantMaterielString(){
+    	return fabricantMateriel.getNomFabricant().getValue();
     }
 
-    public String getModele() {
-        return modele;
+    public String getModeleMateriel() {
+        return modeleMateriel;
     }
 
     @Override
     public String toString() {
-        return nom.getValue() +
-                ", numImmobMat=" + numImmobMat.getValue()+
-                ", type=" + type.getNomString() +
-                ", etat=" + etat.name() +
-                ", dateExpirationGarantie=" + getDateExpirationGarantieStringProperty().getValue() +
-                ", site=" + site.getNomSte() +
-                ", fabricant=" + fabricant.getNomFabricant().getValue()
+        return nomMateriel.getValue() +
+                ", numImmobMat=" + numImmobMateriel.getValue()+
+                ", type=" + typeMateriel.getNomString() +
+                ", etat=" + etatMateriel.name() +
+                ", dateExpirationGarantie=" + getDateExpirationGarantieMaterielStringProperty().getValue() +
+                ", site=" + siteMateriel.getNomSte() +
+                ", fabricant=" + fabricantMateriel.getNomFabricant().getValue()
                 ;
     }
 
@@ -174,47 +174,47 @@ public class Materiel {
 		if (getClass() != obj.getClass())
 			return false;
 		Materiel other = (Materiel) obj;
-		if (dateExpirationGarantie == null) {
-			if (other.dateExpirationGarantie != null)
+		if (dateExpirationGarantieMateriel == null) {
+			if (other.dateExpirationGarantieMateriel != null)
 				return false;
-		} else if (!dateExpirationGarantie.equals(other.dateExpirationGarantie))
+		} else if (!dateExpirationGarantieMateriel.equals(other.dateExpirationGarantieMateriel))
 			return false;
-		if (etat != other.etat)
+		if (etatMateriel != other.etatMateriel)
 			return false;
-		if (fabricant == null) {
-			if (other.fabricant != null)
+		if (fabricantMateriel == null) {
+			if (other.fabricantMateriel != null)
 				return false;
-		} else if (!fabricant.equals(other.fabricant))
+		} else if (!fabricantMateriel.equals(other.fabricantMateriel))
 			return false;
-		if (facture == null) {
-			if (other.facture != null)
+		if (factureMateriel == null) {
+			if (other.factureMateriel != null)
 				return false;
-		} else if (!facture.equals(other.facture))
+		} else if (!factureMateriel.equals(other.factureMateriel))
 			return false;
-		if (nom == null) {
-			if (other.nom != null)
+		if (nomMateriel == null) {
+			if (other.nomMateriel != null)
 				return false;
-		} else if (!nom.equals(other.nom))
+		} else if (!nomMateriel.equals(other.nomMateriel))
 			return false;
-		if (numImmobMat == null) {
-			if (other.numImmobMat != null)
+		if (numImmobMateriel == null) {
+			if (other.numImmobMateriel != null)
 				return false;
-		} else if (!numImmobMat.equals(other.numImmobMat))
+		} else if (!numImmobMateriel.equals(other.numImmobMateriel))
 			return false;
-		if (repertoireDriver == null) {
-			if (other.repertoireDriver != null)
+		if (repertoireDriverMateriel == null) {
+			if (other.repertoireDriverMateriel != null)
 				return false;
-		} else if (!repertoireDriver.equals(other.repertoireDriver))
+		} else if (!repertoireDriverMateriel.equals(other.repertoireDriverMateriel))
 			return false;
-		if (site == null) {
-			if (other.site != null)
+		if (siteMateriel == null) {
+			if (other.siteMateriel != null)
 				return false;
-		} else if (!site.equals(other.site))
+		} else if (!siteMateriel.equals(other.siteMateriel))
 			return false;
-		if (type == null) {
-			if (other.type != null)
+		if (typeMateriel == null) {
+			if (other.typeMateriel != null)
 				return false;
-		} else if (!type.equals(other.type))
+		} else if (!typeMateriel.equals(other.typeMateriel))
 			return false;
 		return true;
 	}

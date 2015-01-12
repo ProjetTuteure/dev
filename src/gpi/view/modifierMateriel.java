@@ -53,7 +53,7 @@ public class modifierMateriel {
 		listimmo = FXCollections.observableArrayList();
 
 		for (Materiel materiel : donneesite.getMaterielData()) {
-			listimmo.add(materiel.getNumImmobMat().getValue());
+			listimmo.add(materiel.getNumImmobMateriel().getValue());
 		}
 		comboboximmo.setItems(listimmo);
 	}
@@ -98,35 +98,35 @@ public class modifierMateriel {
 
 		Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
 
-		nomfield.setText(selected.getNom().getValue());
-		typefield.setText(selected.getType().getNom().getValue());
-		immofield.setText(selected.getNumImmobMat().getValue());
+		nomfield.setText(selected.getNomMateriel().getValue());
+		typefield.setText(selected.getTypeMateriel().getNom().getValue());
+		immofield.setText(selected.getNumImmobMateriel().getValue());
 		datefield
-				.setPromptText(selected.getDateExpirationGarantieStringProperty().getValue());
+				.setPromptText(selected.getDateExpirationGarantieMaterielStringProperty().getValue());
 
 		for (Etat etat : Etat.values()) {
 			listEtat.add(etat.name());
 		}
 		comboboxetat.setItems(listEtat);
-		comboboxetat.setPromptText(selected.getEtat().name());
+		comboboxetat.setPromptText(selected.getEtatMateriel().name());
 
 		for (Facture fac : donneesite.getFactureData()) {
 			listFact.add(fac.getNumFacture());
 		}
 		comboboxfact.setItems(listFact);
-		comboboxfact.setPromptText(selected.getFacture().getNumFacture());
+		comboboxfact.setPromptText(selected.getFactureMateriel().getNumFacture());
 
 		for (Fabricant fb : donneesite.getFabricantData()) {
 			listFabr.add(fb.getNomFabricant().getValue());
 		}
 		comboboxfab.setItems(listFabr);
-		comboboxfab.setPromptText(selected.getFabricantString());
+		comboboxfab.setPromptText(selected.getFabricantMaterielString());
 
 		for (Site st : donneesite.getSiteData()) {
 			listSite.add(st.getNomSte());
 		}
 		comboboxsite.setItems(listEtat);
-		comboboxsite.setPromptText(selected.getSite().getNomSte());
+		comboboxsite.setPromptText(selected.getSiteMateriel().getNomSte());
 
 	}
 

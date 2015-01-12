@@ -84,9 +84,9 @@ public class DetailMachineController implements Initializable{
 				break;
 		}
 		Materiel materiel=(Materiel)mainApp.getCritere(index);
-		textSiteNomMachine.setText(materiel.getSite().getNomSteProperty().getValue()+" --> "+materiel.getNom().getValueSafe());
-		textCheminDossierDrivers.setText(materiel.getRepertoireDriver().getValueSafe());
-		switch(materiel.getEtat().toString()){
+		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
+		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
+		switch(materiel.getEtatMateriel().toString()){
 			case "EN_MARCHE":
 				colorCircle.setFill(Color.GREEN);;
 				break;
@@ -99,11 +99,11 @@ public class DetailMachineController implements Initializable{
 				colorCircle.setFill(Color.ORANGE);;
 				break;
 		}
-		imageType.setImage(new Image(materiel.getType().getCheminImage().getValue()));
+		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImage().getValue()));
 		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
-		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFacture()));
-		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricant()));
-		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFacture().getRevendeur()));
+		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
+		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
+		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeur()));
 		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
 		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 	}
@@ -115,13 +115,13 @@ public class DetailMachineController implements Initializable{
 	 */
 	private ObservableList<String> donneesMaterielToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
-		list.add("Num Immo : "+materiel.getNumImmobMat().getValueSafe()+"\n");
-		list.add("Nom : "+materiel.getNom().getValueSafe()+"\n");
-		list.add("Type : "+materiel.getType().getNom().getValueSafe()+"\n");
-		list.add("Etat : "+materiel.getEtatString()+"\n");
-		list.add("Fin de garantie : "+materiel.getDateExpirationGarantieStringProperty().getValueSafe()+"\n");
-		list.add("Repertoire drivers : "+materiel.getRepertoireDriver().getValueSafe()+"\n");
-		list.add("Site : "+materiel.getSiteString());
+		list.add("Num Immo : "+materiel.getNumImmobMateriel().getValueSafe()+"\n");
+		list.add("Nom : "+materiel.getNomMateriel().getValueSafe()+"\n");
+		list.add("Type : "+materiel.getTypeMateriel().getNom().getValueSafe()+"\n");
+		list.add("Etat : "+materiel.getEtatMaterielString()+"\n");
+		list.add("Fin de garantie : "+materiel.getDateExpirationGarantieMaterielStringProperty().getValueSafe()+"\n");
+		list.add("Repertoire drivers : "+materiel.getRepertoireDriverMateriel().getValueSafe()+"\n");
+		list.add("Site : "+materiel.getSiteMaterielString());
 		return list;
 	}
 

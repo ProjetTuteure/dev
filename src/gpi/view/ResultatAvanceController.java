@@ -52,7 +52,7 @@ public class ResultatAvanceController implements Initializable {
             boolean estContenu=false;
             GregorianCalendar calendar = new java.util.GregorianCalendar();
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            LocalDate date = materiel.getFacture().getDateFacture();
+            LocalDate date = materiel.getFactureMateriel().getDateFacture();
 
             if(MainApp.getCritere(3).equals("moins d'un ans") || MainApp.getCritere(3).equals("")){
                 if(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusYears(1).isBefore(date)){
@@ -96,17 +96,17 @@ public class ResultatAvanceController implements Initializable {
             }
 
 
-            if((materiel.getNumImmobMat().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
-                    (materiel.getNom().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
-                    (materiel.getSite().getNomSte().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
+            if((materiel.getNumImmobMateriel().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
+                    (materiel.getNomMateriel().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
+                    (materiel.getSiteMateriel().getNomSte().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
                     (estContenu || MainApp.getCritere(3).equals("")) &&
-                    (materiel.getType().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
+                    (materiel.getTypeMateriel().getNom().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
                     (estUtilise || MainApp.getCritere(5).equals("") )&&
                     //(materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
-                    (materiel.getFacture().getNumFacture().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
-                    (materiel.getFacture().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
-                    (materiel.getFabricant().getNomFabricant().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals("")) &&
-                    (materiel.getModele().equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))
+                    (materiel.getFactureMateriel().getNumFacture().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
+                    (materiel.getFactureMateriel().getRevendeur().getNomRev().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
+                    (materiel.getFabricantMateriel().getNomFabricant().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals("")) &&
+                    (materiel.getModeleMateriel().equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))
                     ){
                 listMateriel.getItems().add(materiel);
             }

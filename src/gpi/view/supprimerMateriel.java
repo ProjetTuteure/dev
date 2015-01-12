@@ -25,14 +25,14 @@ public class supprimerMateriel {
 	private ObservableList<String> listmat;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listmat = FXCollections.observableArrayList();
 
 		for (Materiel mat : donneesite.getMaterielData()) {
-			listmat.add(mat.getNumImmobMat().getValue());
+			listmat.add(mat.getNumImmobMateriel().getValue());
 		}
 		comboboxmat.setItems(listmat);
 	}

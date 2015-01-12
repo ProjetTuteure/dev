@@ -239,7 +239,7 @@ public class Donnee {
     
     public Materiel getMateriel(String value) {
         for(Materiel mat : materielData){
-            if(value == mat.getNumImmobMat().getValue()){
+            if(value == mat.getNumImmobMateriel().getValue()){
                 return mat;
             }
         }
@@ -309,7 +309,7 @@ public class Donnee {
     public ObservableList<Materiel> rechercher(Site site, Type type){
         ObservableList<Materiel> resultat = FXCollections.observableArrayList();
         for(Materiel mat : materielData){
-            if(site.getIdSite() == mat.getSite().getIdSite() && type.getNom().getValue().equals(mat.getType().getNom().getValue())){
+            if(site.getIdSite() == mat.getSiteMateriel().getIdSite() && type.getNom().getValue().equals(mat.getTypeMateriel().getNom().getValue())){
                 resultat.add(mat);
             }
         }

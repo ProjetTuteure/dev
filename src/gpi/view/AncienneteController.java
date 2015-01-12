@@ -116,13 +116,13 @@ public class AncienneteController implements Initializable {
 	 */
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
 		materielTable.setItems(materiel);
-		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
-		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getDateFacStringProperty());
-		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatStringProperty());
-		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieStringProperty());
-		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFacture().getRevendeur().getNomRev());
-		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricant().getNomFabricant());
-		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());	
+		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
+		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getDateFacStringProperty());
+		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatMaterielStringProperty());
+		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
+		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeur().getNomRev());
+		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
+		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSteProperty());
 	}
 	
 	/**
@@ -163,12 +163,12 @@ public class AncienneteController implements Initializable {
 		for(Materiel m : materiel){
 			isOk=true;
 			if(selectedSite!="Tous"){
-				if(m.getSiteString()!=selectedSite){
+				if(m.getSiteMaterielString()!=selectedSite){
 					isOk=false;
 				}
 			}
 			if(selectedType!="Tous"){
-				if(m.getType().getNomString()!=selectedType){
+				if(m.getTypeMateriel().getNomString()!=selectedType){
 					isOk=false;
 				}
 			}

@@ -54,7 +54,7 @@ public class EtatController implements Initializable{
     }
 	
 	/**
-	 * Initialise les données  et ajoute les évènements aux différents composants
+	 * Initialise les donnï¿½es  et ajoute les ï¿½vï¿½nements aux diffï¿½rents composants
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -82,8 +82,8 @@ public class EtatController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les données à la TableView suite aux checkBox cochées
-	 * @param materiel la liste de materiel à ajouter à la TableView
+	 * Ajoute les donnï¿½es ï¿½ la TableView suite aux checkBox cochï¿½es
+	 * @param materiel la liste de materiel ï¿½ ajouter ï¿½ la TableView
 	 */
 	public void actionOnCheckBox(ObservableList<Materiel> materiel){
 		boolean checkEnService=checkBoxEnService.selectedProperty().getValue();
@@ -93,11 +93,11 @@ public class EtatController implements Initializable{
 	}
 	
 	/**
-	 * Ajoute les données dans la tableView en fonction des checkBox cochées
-	 * @param materiel la liste des materiels à ajouter dans les tableView
-	 * @param checkEnService est vrai si la checkBox enService est cochée faux sinon
-	 * @param checkEnReparation est vrai si la checkBox enReparation est cochée faux sinon
-	 * @param checkHorsService est vrai si la checkBox horsService est cochée faux sinon
+	 * Ajoute les donnï¿½es dans la tableView en fonction des checkBox cochï¿½es
+	 * @param materiel la liste des materiels ï¿½ ajouter dans les tableView
+	 * @param checkEnService est vrai si la checkBox enService est cochï¿½e faux sinon
+	 * @param checkEnReparation est vrai si la checkBox enReparation est cochï¿½e faux sinon
+	 * @param checkHorsService est vrai si la checkBox horsService est cochï¿½e faux sinon
 	 */
 	private void addDonneeRestrictTableView(ObservableList<Materiel> materiel,boolean checkEnService, boolean checkEnReparation,boolean checkHorsService) {
 		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();
@@ -105,11 +105,11 @@ public class EtatController implements Initializable{
 		boolean isOk;
 		for(Materiel m : materiel){
 			isOk=false;
-			if(m.getEtat()==Etat.EN_MARCHE && checkEnService){
+			if(m.getEtatMateriel()==Etat.EN_MARCHE && checkEnService){
 				isOk=true;
-			}else if(m.getEtat()==Etat.EN_PANNE && checkEnReparation){
+			}else if(m.getEtatMateriel()==Etat.EN_PANNE && checkEnReparation){
 				isOk=true;
-			}else if(m.getEtat()==Etat.HS && checkHorsService){
+			}else if(m.getEtatMateriel()==Etat.HS && checkHorsService){
 				isOk=true;
 			}
 			if(isOk){
@@ -120,14 +120,14 @@ public class EtatController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les données relatives à la liste des materiels dans les cases de la tableView
-	 * @param materiel la liste des materiels à ajouter dans les cases de la tableView
+	 * Ajoute les donnï¿½es relatives ï¿½ la liste des materiels dans les cases de la tableView
+	 * @param materiel la liste des materiels ï¿½ ajouter dans les cases de la tableView
 	 */
 	private void addDonneeTableView(ObservableList<Materiel> materiel) {
 		materielTable.setItems(materiel);
-		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNom());
-		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatStringProperty());
-		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSite().getNomSteProperty());
+		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
+		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatMaterielStringProperty());
+		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSteProperty());
 		
 		ObservableList<String> listMaintenanceMateriel = FXCollections.observableArrayList();
 		etatDepuisDateMateriel.setCellValueFactory(new Callback<CellDataFeatures<Materiel, String>, ObservableValue<String>>() {

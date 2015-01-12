@@ -57,7 +57,7 @@ public class MaterielOverview {
 	}
 	
 	/**
-	 * Initialise les données et ajoute les materiels dans le gridPane
+	 * Initialise les donnï¿½es et ajoute les materiels dans le gridPane
 	 */
 	@FXML
 	private void initialize() {
@@ -88,9 +88,9 @@ public class MaterielOverview {
 	}
 	
 	/**
-	 * Permet de créer la police ainsi que de changer le label
-	 * nomVille située en haut à gauche de la fenêtre.
-	 * @param elements le nom à mettre dans le matériel ville
+	 * Permet de crï¿½er la police ainsi que de changer le label
+	 * nomVille situï¿½e en haut ï¿½ gauche de la fenï¿½tre.
+	 * @param elements le nom ï¿½ mettre dans le matï¿½riel ville
 	 */
 	private void setLabelMaterielVille(String elements)
 	{
@@ -111,14 +111,14 @@ public class MaterielOverview {
 		String cheminImage;
 		for(int i=0;i<this.getNbMateriel();i++)
 		{
-			cheminImage=materiel.get(i).getType().getCheminImage().getValue();
+			cheminImage=materiel.get(i).getTypeMateriel().getCheminImage().getValue();
 			ImageView image=new ImageView();
 			image.setImage(new Image(cheminImage));
 			image.setFitHeight(100);
 			image.setFitWidth(100);
 			Label label=new Label();
-			label.setText(materiel.get(i).getNom().getValue());
-            label.setId(materiel.get(i).getNumImmobMat().getValue());
+			label.setText(materiel.get(i).getNomMateriel().getValue());
+            label.setId(materiel.get(i).getNumImmobMateriel().getValue());
 			label.setFont(new Font("Arial",20));
 			BorderPane bp_type=new BorderPane();
 			bp_type.setCenter(image);
@@ -168,11 +168,11 @@ public class MaterielOverview {
 	}
 	
 	/**
-	 * Permet de calculer le nombre de ligne nécessaire 
+	 * Permet de calculer le nombre de ligne nï¿½cessaire 
 	 * pour le gridPane.
-	 * @param materiel la liste de type de matériel que l'on doit ajouter
+	 * @param materiel la liste de type de matï¿½riel que l'on doit ajouter
 	 * au GridPane
-	 * @return le nombre de ligne nécessaire pour pouvoir afficher tous les types
+	 * @return le nombre de ligne nï¿½cessaire pour pouvoir afficher tous les types
 	 */
 	private int getNbLigne(ObservableList<Materiel> materiel)
 	{
