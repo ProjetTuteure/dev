@@ -933,4 +933,71 @@ public class MainApp extends Application {
 			return false;
 		}
 	}
+
+	public static boolean showAddUtilisateurDialog(Utilisateur user) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/ajouterUtilisateur.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter un utilisateur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			ajouterUtilisateur controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static boolean showModUtilisateurDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showSuppUtilisateurDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showModComposeDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showSuppComposeDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showAddComposeDialog(Type type) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showSuppComposantDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showModComposantDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static boolean showAddComposantDialog(Type type) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
