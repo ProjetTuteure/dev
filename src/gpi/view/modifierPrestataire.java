@@ -127,7 +127,7 @@ public class modifierPrestataire {
 				nomfield.setText(selected2.getNomPrestataire().getValue());
 				prenomfield.setText(selected2.getPrenomPrestataire().getValue());
 				telfield.setText(selected2.getTelPrestataire().getValue());
-				socfield.setText(selected2.getsocieteePrestataire().getValue());
+				socfield.setText(selected2.getSocieteePrestataire().getValue());
 			}
 		} catch (NullPointerException e) {
 

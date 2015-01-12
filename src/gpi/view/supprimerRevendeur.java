@@ -26,14 +26,14 @@ public class supprimerRevendeur {
 	private ObservableList<String> listNom;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
 		for (Revendeur rv : donneesite.getRevendeurData()) {
-			listNom.add(rv.getNomRev().getValue());
+			listNom.add(rv.getNomRevendeur().getValue());
 		}
 		comboboxrev.setItems(listNom);
 	}

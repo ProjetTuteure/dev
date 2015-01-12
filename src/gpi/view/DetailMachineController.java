@@ -158,9 +158,9 @@ public class DetailMachineController implements Initializable{
 	 */
 	private ObservableList<String> donneesRevendeurToList(Revendeur revendeur) {
 		ObservableList<String> list= FXCollections.observableArrayList();
-		list.add("Nom revendeur : "+revendeur.getNomRev().getValueSafe()+"\n");
-		list.add("Telephone revendeur : "+revendeur.getTelRev().getValueSafe()+"\n");
-		list.add("Adresse revendeur : "+revendeur.getAdresse().getValueSafe());
+		list.add("Nom revendeur : "+revendeur.getNomRevendeur().getValueSafe()+"\n");
+		list.add("Telephone revendeur : "+revendeur.getTelRevendeur().getValueSafe()+"\n");
+		list.add("Adresse revendeur : "+revendeur.getAdresseRevendeur().getValueSafe());
 		return list;
 	}
 	

@@ -54,11 +54,11 @@ public class Prestataire {
         this.telPrestataire.setValue(telPrestataire);
     }
 
-    public StringProperty getsocieteePrestataire() {
+    public StringProperty getSocieteePrestataire() {
         return societeePrestataire;
     }
 
-    public void setsocieteePrestataire(String societeePrestataire) {
+    public void setSocieteePrestataire(String societeePrestataire) {
         this.societeePrestataire.setValue(societeePrestataire);
     }
 }

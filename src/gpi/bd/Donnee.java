@@ -194,7 +194,7 @@ public class Donnee {
     
     public Revendeur getRevendeur(String value) {
         for(Revendeur rev : revendeurData){
-            if(value == rev.getNomRev().getValue()){
+            if(value == rev.getNomRevendeur().getValue()){
                 return rev;
             }
         }

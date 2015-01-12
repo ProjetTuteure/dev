@@ -7,47 +7,47 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Revendeur {
-    private int idRev;
-    private StringProperty nomRev;
-    private StringProperty telRev;
-    private StringProperty adresse;
+    private int idRevendeur;
+    private StringProperty nomRevendeur;
+    private StringProperty telRevendeur;
+    private StringProperty adresseRevendeur;
 
-    public Revendeur(int idRev, String nomRev, String telRev, String adresse) {
-        this.idRev = idRev;
-        this.nomRev= new SimpleStringProperty(nomRev);
-        this.telRev = new SimpleStringProperty(telRev);
-        this.adresse = new SimpleStringProperty(adresse);
+    public Revendeur(int idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur) {
+        this.idRevendeur = idRevendeur;
+        this.nomRevendeur= new SimpleStringProperty(nomRevendeur);
+        this.telRevendeur = new SimpleStringProperty(telRevendeur);
+        this.adresseRevendeur = new SimpleStringProperty(adresseRevendeur);
     }
 
-    public int getIdRev() {
-        return idRev;
+    public int getIdRevendeur() {
+        return idRevendeur;
     }
 
-    public void setIdRev(int idRev) {
-        this.idRev = idRev;
+    public void setIdRevendeur(int idRevendeur) {
+        this.idRevendeur = idRevendeur;
     }
 
-    public StringProperty getNomRev() {
-        return this.nomRev;
+    public StringProperty getNomRevendeur() {
+        return this.nomRevendeur;
     }
 
-    public void setNomRev(String nomRev) {
-        this.nomRev.set(nomRev);
+    public void setNomRevendeur(String nomRevendeur) {
+        this.nomRevendeur.set(nomRevendeur);
     }
 
-    public StringProperty getTelRev() {
-        return telRev;
+    public StringProperty getTelRevendeur() {
+        return telRevendeur;
     }
 
-    public void setTelRev(String telRev) {
-        this.telRev.setValue(telRev);
+    public void setTelRevendeur(String telRevendeur) {
+        this.telRevendeur.setValue(telRevendeur);
     }
 
-    public StringProperty getAdresse() {
-        return adresse;
+    public StringProperty getAdresseRevendeur() {
+        return adresseRevendeur;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse.setValue(adresse);
+    public void setAdresseRevendeur(String adresseRevendeur) {
+        this.adresseRevendeur.setValue(adresseRevendeur);
     }
 }

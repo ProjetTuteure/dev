@@ -35,14 +35,14 @@ public class modifierRevendeur {
 	private ObservableList<String> listrev;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listrev = FXCollections.observableArrayList();
 
 		for (Revendeur rev : donneesite.getRevendeurData()) {
-			listrev.add(rev.getNomRev().getValue());
+			listrev.add(rev.getNomRevendeur().getValue());
 		}
 		comboboxrev.setItems(listrev);
 	}
@@ -95,9 +95,9 @@ public class modifierRevendeur {
 	private void handlechange() {
 
 		Revendeur selected = donneesite.getRevendeur(comboboxrev.getValue());
-		nomfield.setText(selected.getNomRev().getValue());
-		telfield.setText(selected.getTelRev().getValue());
-		adrfield.setText(selected.getAdresse().getValue());
+		nomfield.setText(selected.getNomRevendeur().getValue());
+		telfield.setText(selected.getTelRevendeur().getValue());
+		adrfield.setText(selected.getAdresseRevendeur().getValue());
 	}
 
 }

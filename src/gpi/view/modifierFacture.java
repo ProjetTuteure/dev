@@ -74,6 +74,6 @@ public class modifierFacture {
 		numfield.setText(selected.getNumFacture());
 		montantfield.setText(selected.getMontantFactureString());
 		datefield.setPromptText(selected.getDateFacStringProperty().getValue());
-		revfield.setText(selected.getRevendeur().getNomRev().getValue());
+		revfield.setText(selected.getRevendeur().getNomRevendeur().getValue());
 	}
 }
