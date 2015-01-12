@@ -12,6 +12,7 @@ import gpi.metier.Utilise;
 import gpi.metier.estMaintenu;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -59,6 +60,10 @@ public class DetailMachineController implements Initializable{
 	public DetailMachineController() {
     }
 	
+	/**
+	 * Initialise les données et affecte l'index en fonction de la page
+	 * courante
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		int index = 0;
@@ -103,6 +108,11 @@ public class DetailMachineController implements Initializable{
 		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 	}
 
+	/**
+	 * Ajoute les données d'un materiel dans une liste
+	 * @param materiel le materiel a
+	 * @return la liste des informations concernant le materiel passé en paramètre
+	 */
 	private ObservableList<String> donneesMaterielToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Num Immo : "+materiel.getNumImmobMat().getValueSafe()+"\n");
@@ -115,6 +125,11 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 
+	/**
+	 * Ajoute les données d'une facture dans une liste de chaîne de caractère
+	 * @param facture la facture dont on veut mettre les données dans la chaîne
+	 * @return la liste des données relatives à la facture passée en paramètre
+	 */
 	private ObservableList<String> donneesFactureToList(Facture facture) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Num Facture : "+facture.getNumFac()+"\n");
@@ -123,6 +138,11 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 	
+	/**
+	 * Ajoute les données relatives à un fabricant dans une liste de chaîne de caractère
+	 * @param fabricant le fabricant dont on veut mettre les données dans la chaîne
+	 * @return la liste des données relatives au fabricant passé en paramètre
+	 */
 	private ObservableList<String> donneesFabricantToList(Fabricant fabricant) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Nom fabricant : "+fabricant.getNomFabString()+"\n");
@@ -131,6 +151,11 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 	
+	/**
+	 * Ajoute les données relatives à un revendeur dans une liste de chaîne de caractère
+	 * @param revendeur le revendeur dont on veut ajouter les données dans la chaîne
+	 * @return la liste des données relatives au revendeur passé en paramètre
+	 */
 	private ObservableList<String> donneesRevendeurToList(Revendeur revendeur) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		list.add("Nom revendeur : "+revendeur.getNomRev().getValueSafe()+"\n");
@@ -139,6 +164,11 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 	
+	/**
+	 * Ajoute les données relatives à une maintenance dans une liste de chaîne de caractère
+	 * @param materiel le materiel concerné par la maintenance à ajouter
+	 * @return la liste des données relatives à la maintenance du materiel passé en paramètre
+	 */
 	private ObservableList<String> donneesMaintenanceToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Maintenance> listMaintenanceMateriel = FXCollections.observableArrayList();
@@ -160,6 +190,11 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 	
+	/**
+	 * Ajoute les données relatives à un utilisateur dans une liste de chaîne de caractère
+	 * @param materiel le materiel appartenant à l'utilisateur 
+	 * @return la liste des données relatives à l'utilisateur utilisant le materiel passé en paramètre
+	 */
 	private ObservableList<String> donneesUtilisateurToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Utilisateur> listUtilisateurMateriel = FXCollections.observableArrayList();
@@ -177,6 +212,10 @@ public class DetailMachineController implements Initializable{
 		return list;
 	}
 	
+	/**
+	 * Permet le retour sur les pages précédentes
+	 * @param event 
+	 */
 	@FXML
     private void goBack(ActionEvent event) {
 		switch(MainApp.getActiveTab()){
