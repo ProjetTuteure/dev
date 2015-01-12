@@ -28,6 +28,9 @@ public class supprimerPrestataire {
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
 
+	/**
+	 * Initialise les données Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
@@ -38,26 +41,41 @@ public class supprimerPrestataire {
 		comboboxnom.setItems(listnom);
 	}
 
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
+	/**
+	 * Cette methode permet de savoir si le bouton SUPPRIMER est clique ou pas
+	 * 
+	 * @return vrai si le bouton SUPPRIMER est clique, faux sinon
+	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton SUPPRIMER
+	 * est clique
+	 */
 	@FXML
 	private void handleOk() {
+
 		okClicked = true;
 		dialogStage.close();
 
 	}
 
-	@FXML
-	private void handleCancel() {
-		dialogStage.close();
-	}
-
+	/**
+	 * Cette methode permet de pre remplir le combobox du prenom du prestataire
+	 * lorsqu'un nom du prestataire est selectionne
+	 */
 	@FXML
 	private void handlechange() {
 		Prestataire selected = donneesite.getPrestaire(comboboxnom.getValue());

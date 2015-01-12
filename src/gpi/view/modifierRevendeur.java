@@ -58,16 +58,16 @@ public class modifierRevendeur {
 	}
 
 	/**
-	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
+	 * Cette methode permet de savoir si le bouton MODIFIER est clique ou pas
 	 * 
-	 * @return vrai si le bouton AJOUTER est clique, faux sinon
+	 * @return vrai si le bouton MODIFIER est clique, faux sinon
 	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton MODIFIER
 	 * est clique
 	 */
 	@FXML

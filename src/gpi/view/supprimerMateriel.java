@@ -24,6 +24,9 @@ public class supprimerMateriel {
 
 	private ObservableList<String> listmat;
 
+	/**
+	 * Initialise les données Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listmat = FXCollections.observableArrayList();
@@ -34,21 +37,41 @@ public class supprimerMateriel {
 		comboboxmat.setItems(listmat);
 	}
 
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
+	/**
+	 * Cette methode permet de savoir si le bouton SUPPRIMER est clique ou pas
+	 * 
+	 * @return vrai si le bouton SUPPRIMER est clique, faux sinon
+	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton SUPPRIMER
+	 * est clique
+	 */
 	@FXML
 	private void handleOk() {
+
 		okClicked = true;
 		dialogStage.close();
 
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
+	 * est clique
+	 */
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
