@@ -40,6 +40,10 @@ public class ajouterMateriel {
 	private ObservableList<String> listNom3;
 	private ObservableList<String> listNom4;
 
+	/**
+	 * Initialise les données
+	 * Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listNom1 = FXCollections.observableArrayList();
@@ -69,14 +73,27 @@ public class ajouterMateriel {
 
 	}
 
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * @param dialogStage la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
+	/**
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
+	 * 
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
+	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * est clique
+	 */
 	@FXML
 	private void handleOk() {
 
@@ -85,11 +102,18 @@ public class ajouterMateriel {
 
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
+	 * est clique
+	 */
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
 	}
 
+	/**
+	 * Cette methode permet de pre remplir les champs lorsqu'un Materiel est selectionne
+	 */
 	@FXML
 	private void handleChoose() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
