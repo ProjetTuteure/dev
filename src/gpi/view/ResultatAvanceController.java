@@ -41,8 +41,8 @@ public class ResultatAvanceController implements Initializable {
 
             boolean estUtilise=false;
             for(Utilise utilise :utilises){
-                if(utilise.getUtilisateur().getNomUtilisateur().getValue().equals(MainApp.getCritere(5))&&
-                        utilise.getMateriel().equals(materiel)
+                if(utilise.getutilisateurUtilise().getNomUtilisateur().getValue().equals(MainApp.getCritere(5))&&
+                        utilise.getmaterielUtilise().equals(materiel)
                         ){
                     estUtilise=true;
                 }

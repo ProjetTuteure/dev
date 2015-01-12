@@ -4,27 +4,27 @@ package gpi.metier;
  * Created by thibault on 22/11/14.
  */
 public class Utilise {
-    private Utilisateur utilisateur;
-    private Materiel materiel;
+    private Utilisateur utilisateurUtilise;
+    private Materiel materielUtilise;
 
-    public Utilise(Utilisateur utilisateur, Materiel materiel) {
-        this.utilisateur = utilisateur;
-        this.materiel = materiel;
+    public Utilise(Utilisateur utilisateurUtilise, Materiel materielUtilise) {
+        this.utilisateurUtilise = utilisateurUtilise;
+        this.materielUtilise = materielUtilise;
     }
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public Utilisateur getutilisateurUtilise() {
+        return utilisateurUtilise;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setutilisateurUtilise(Utilisateur utilisateurUtilise) {
+        this.utilisateurUtilise = utilisateurUtilise;
     }
 
-    public Materiel getMateriel() {
-        return materiel;
+    public Materiel getmaterielUtilise() {
+        return materielUtilise;
     }
 
-    public void setMateriel(Materiel materiel) {
-        this.materiel = materiel;
+    public void setmaterielUtilise(Materiel materielUtilise) {
+        this.materielUtilise = materielUtilise;
     }
 }

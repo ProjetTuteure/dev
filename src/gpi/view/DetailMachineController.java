@@ -199,8 +199,8 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Utilisateur> listUtilisateurMateriel = FXCollections.observableArrayList();
 		for(Utilise u : mainApp.donnee.getUtiliseData()){
-			if(u.getMateriel().toString().equals(materiel.toString())){
-				listUtilisateurMateriel.add(u.getUtilisateur());
+			if(u.getmaterielUtilise().toString().equals(materiel.toString())){
+				listUtilisateurMateriel.add(u.getutilisateurUtilise());
 			}
 		}
 		for(Utilisateur u : listUtilisateurMateriel){
