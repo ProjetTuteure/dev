@@ -66,7 +66,7 @@ public class AvanceController implements Initializable {
     }
 
     /**
-     * Permet d'afficher les résultats de la recherche avancée.
+     * Permet d'afficher les rï¿½sultats de la recherche avancï¿½e.
      * @param event
      */
     @FXML
@@ -90,22 +90,22 @@ public class AvanceController implements Initializable {
     }
 
     /**
-     * Permet de récupérer les sites et les ajouter les noms des sites dans une liste
+     * Permet de rï¿½cupï¿½rer les sites et les ajouter les noms des sites dans une liste
      * @param sites la liste de sites 
-     * @return la liste composée des noms des sites passés en paramètre
+     * @return la liste composï¿½e des noms des sites passï¿½s en paramï¿½tre
      */
     public ObservableList<String> getNomSite(List<Site> sites){
         ObservableList<String> list=FXCollections.observableArrayList();
         for(Site site:sites){
-            list.add(site.getNomSte());
+            list.add(site.getNomSite());
         }
         return list;
     }
 
     /**
-     * Permet de récupérer les sites et les ajouter les noms des sites dans une liste
+     * Permet de rï¿½cupï¿½rer les sites et les ajouter les noms des sites dans une liste
      * @param types la liste de types
-     * @return la liste des noms des types passés en paramètre
+     * @return la liste des noms des types passï¿½s en paramï¿½tre
      */
     public ObservableList<String> getNomType(List<Type> types){
         ObservableList<String> list=FXCollections.observableArrayList();

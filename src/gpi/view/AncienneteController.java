@@ -122,7 +122,7 @@ public class AncienneteController implements Initializable {
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
 		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeur().getNomRevendeur());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
-		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSteProperty());
+		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
 	}
 	
 	/**
@@ -138,7 +138,7 @@ public class AncienneteController implements Initializable {
 		setItemsTableMateriel(materiel);
 		
 		for(Site s : site){
-			listSite.add(s.getNomSte());
+			listSite.add(s.getNomSite());
 		}
 		listSite.add("Tous");
 		for(Type t : type){

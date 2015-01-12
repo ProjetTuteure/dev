@@ -36,14 +36,14 @@ public class modifierSite {
 	private ObservableList<String> listNom;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
 		for (Site site : donneesite.getSiteData()) {
-			listNom.add(site.getNomSte());
+			listNom.add(site.getNomSite());
 		}
 		comboboxSiteMod.setItems(listNom);
 	}

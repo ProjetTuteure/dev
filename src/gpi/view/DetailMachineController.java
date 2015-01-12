@@ -84,7 +84,7 @@ public class DetailMachineController implements Initializable{
 				break;
 		}
 		Materiel materiel=(Materiel)mainApp.getCritere(index);
-		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
+		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		switch(materiel.getEtatMateriel().toString()){
 			case "EN_MARCHE":

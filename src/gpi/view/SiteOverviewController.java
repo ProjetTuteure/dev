@@ -54,7 +54,7 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Initialise les données
+	 * Initialise les donnï¿½es
 	 * Ajoute les villes dans le GridPane
 	 */
 	@FXML
@@ -65,7 +65,7 @@ public class SiteOverviewController {
 
 	/**
 	 * Ajoute les villes dans le gridPane
-	 * @param sites la liste de sites à ajouter dans le gridPane
+	 * @param sites la liste de sites ï¿½ ajouter dans le gridPane
 	 */
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {
@@ -75,8 +75,8 @@ public class SiteOverviewController {
 			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
 				BorderPane tempo = new BorderPane();
 				ImageView image = new ImageView(sites.get((i * 4) + j)
-                        .getCheminImage());
-                Label label = new Label(sites.get((i * 4) + j).getNomSte());
+                        .getCheminImageSite());
+                Label label = new Label(sites.get((i * 4) + j).getNomSite());
                 label.setId(""+((i * 4) + j));
 				image.setFitHeight(75);
 				image.setFitWidth(75);
@@ -103,7 +103,7 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Permet de setter le nombre de lignes nécessaires pour afficher toutes les villes
+	 * Permet de setter le nombre de lignes nï¿½cessaires pour afficher toutes les villes
 	 * dans le gridPane 
 	 */
 	private void setRow() {
@@ -115,7 +115,7 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Permet de setter le nombre de colonnes nécessaires pour afficher toutes les villes
+	 * Permet de setter le nombre de colonnes nï¿½cessaires pour afficher toutes les villes
 	 * dans le gridPane 
 	 */
     public void setColumn(){
@@ -128,7 +128,7 @@ public class SiteOverviewController {
 
     /**
      * Retourne le nombre de lignes en fonction du nombre de site
-     * @return le nombre de lignes nécessaires à l'ajout des sites dans le gridPane
+     * @return le nombre de lignes nï¿½cessaires ï¿½ l'ajout des sites dans le gridPane
      */
 	public int getNbLigne() {
 		if (this.getNbSite() % 4 == 0) {
@@ -139,7 +139,7 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Retourne le numéro d'onglet courant
+	 * Retourne le numï¿½ro d'onglet courant
 	 * @return
 	 */
     public int getOnglet(){

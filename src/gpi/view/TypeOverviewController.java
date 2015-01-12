@@ -81,22 +81,22 @@ public class TypeOverviewController {
 	}
 
 	/**
-	 * Permet de créer et insérer les éléments dans
-	 * la fenêtre
+	 * Permet de crï¿½er et insï¿½rer les ï¿½lï¿½ments dans
+	 * la fenï¿½tre
 	 */
 	@FXML
 	private void initialize() {
 		Site site;
 		site=(Site)(mainApp.getCritere(0));
 		this.types=donnees.getTypeData();
-		this.setLabelNomVille(site.getNomSte());
+		this.setLabelNomVille(site.getNomSite());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
 		this.ajouterActionBouton(b_type);
 	}
 	
 	/**
-	 * Ajoute un action Listener au bouton passé en paramètre
+	 * Ajoute un action Listener au bouton passï¿½ en paramï¿½tre
 	 * @param bouton le bouton dont on veut ajouter un action listener
 	 */
 	private void ajouterActionBouton(Button bouton)
@@ -111,8 +111,8 @@ public class TypeOverviewController {
 	}
 	
 	/**
-	 * Permet de créer la police ainsi que de changer le label
-	 * nomVille situé en haut à gauche de la fenêtre.
+	 * Permet de crï¿½er la police ainsi que de changer le label
+	 * nomVille situï¿½ en haut ï¿½ gauche de la fenï¿½tre.
 	 * @param nomVille
 	 */
 	private void setLabelNomVille(String nomVille)
@@ -122,11 +122,11 @@ public class TypeOverviewController {
 	}
 	
 	/**
-	 * Permet de calculer le nombre de ligne nécessaire 
+	 * Permet de calculer le nombre de ligne nï¿½cessaire 
 	 * pour le gridPane.
-	 * @param types la liste de type de matériel que l'on doit ajouter
+	 * @param types la liste de type de matï¿½riel que l'on doit ajouter
 	 * au GridPane
-	 * @return le nombre de ligne nécessaire pour pouvoir afficher tous les types
+	 * @return le nombre de ligne nï¿½cessaire pour pouvoir afficher tous les types
 	 */
 	private int getNbLigne(ObservableList<Type> types)
 	{
@@ -142,7 +142,7 @@ public class TypeOverviewController {
 	
 	/**
 	 * Permet d'ajouter les types dans le gridPane
-	 * @param types la liste des types à ajouter dans le gridPane
+	 * @param types la liste des types ï¿½ ajouter dans le gridPane
 	 */
 	@FXML
 	public void ajouterTypeGridPane(ObservableList<Type> types) {

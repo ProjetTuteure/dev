@@ -10,19 +10,19 @@ import javafx.beans.property.StringProperty;
  */
 public class Site {
     private IntegerProperty idSite;
-    private StringProperty nomSte;
-    private StringProperty cheminImage;
+    private StringProperty nomSite;
+    private StringProperty cheminImageSite;
 
-    public String getNomSte() {
-        return this.nomSte.get();
+    public String getNomSite() {
+        return this.nomSite.get();
     }
 
-    public StringProperty getNomSteProperty()
+    public StringProperty getNomSiteProperty()
     {
-    	return this.nomSte;
+    	return this.nomSite;
     }
-    public void setNomSte(String nomSte) {
-        this.nomSte.set(nomSte);
+    public void setNomSite(String nomSite) {
+        this.nomSite.set(nomSite);
     }
 
     public IntegerProperty getIdSiteProperty() {
@@ -38,22 +38,22 @@ public class Site {
         this.idSite.set(idSite);
     }
 
-    public String getCheminImage() {
-        return cheminImage.get();
+    public String getCheminImageSite() {
+        return cheminImageSite.get();
     }
     
-    public StringProperty getCheminImageProperty()
+    public StringProperty getCheminImageSiteProperty()
     {
-    	return this.cheminImage;
+    	return this.cheminImageSite;
     }
 
-    public void setCheminImage(String cheminImage) {
-        this.cheminImage.set(cheminImage);
+    public void setCheminImageSite(String cheminImageSite) {
+        this.cheminImageSite.set(cheminImageSite);
     }
     
-    public Site(int idSite, String nomSte, String cheminImage) {
+    public Site(int idSite, String nomSite, String cheminImageSite) {
         this.idSite = new SimpleIntegerProperty(idSite);
-        this.nomSte=new SimpleStringProperty(nomSte);
-        this.cheminImage=new SimpleStringProperty(cheminImage);
+        this.nomSite=new SimpleStringProperty(nomSite);
+        this.cheminImageSite=new SimpleStringProperty(cheminImageSite);
     }
 }
