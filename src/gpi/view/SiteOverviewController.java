@@ -32,6 +32,9 @@ public class SiteOverviewController {
 	@FXML
 	private MainApp mainApp;
 
+	/**
+	 * Constructeur
+	 */
 	public SiteOverviewController() {
 		this.sites = mainApp.donnee.getSiteData();
 		this.gp_site = new GridPane();
@@ -42,16 +45,28 @@ public class SiteOverviewController {
 		}
 	}
 
+	/**
+	 * Retourne le nombre de site
+	 * @return
+	 */
 	public int getNbSite() {
 		return this.sites.size();
 	}
 
+	/**
+	 * Initialise les données
+	 * Ajoute les villes dans le GridPane
+	 */
 	@FXML
 	private void initialize() {
 		MainApp.donnee = new Donnee();
 		this.ajouterVilleGridPane(this.mainApp.donnee.getSiteData());
 	}
 
+	/**
+	 * Ajoute les villes dans le gridPane
+	 * @param sites la liste de sites à ajouter dans le gridPane
+	 */
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {
         setColumn();
@@ -87,6 +102,10 @@ public class SiteOverviewController {
 		this.mainApp = mainApp;
 	}
 
+	/**
+	 * Permet de setter le nombre de lignes nécessaires pour afficher toutes les villes
+	 * dans le gridPane 
+	 */
 	private void setRow() {
 		for (int i = 0; i < getNbLigne(); i++) {
 			RowConstraints row = new RowConstraints();
@@ -95,6 +114,10 @@ public class SiteOverviewController {
 		}
 	}
 
+	/**
+	 * Permet de setter le nombre de colonnes nécessaires pour afficher toutes les villes
+	 * dans le gridPane 
+	 */
     public void setColumn(){
         for(int i = 0; i<4;i++){
             ColumnConstraints col = new ColumnConstraints();
@@ -103,6 +126,10 @@ public class SiteOverviewController {
         }
     }
 
+    /**
+     * Retourne le nombre de lignes en fonction du nombre de site
+     * @return le nombre de lignes nécessaires à l'ajout des sites dans le gridPane
+     */
 	public int getNbLigne() {
 		if (this.getNbSite() % 4 == 0) {
 			return this.getNbSite() / 4;
@@ -111,6 +138,10 @@ public class SiteOverviewController {
 		}
 	}
 
+	/**
+	 * Retourne le numéro d'onglet courant
+	 * @return
+	 */
     public int getOnglet(){
         return 0;
     }
