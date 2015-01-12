@@ -29,14 +29,14 @@ public class supprimerLogiciel {
 	private ObservableList<String> listvers;
 
 	/**
-	 * Initialise les données Ajoute les données aux combobox
+	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listlog = FXCollections.observableArrayList();
 
 		for (Logiciel log : donneesite.getLogicielData()) {
-			listlog.add(log.getNomLog().getValue());
+			listlog.add(log.getNomLogiciel().getValue());
 		}
 		comboboxlog.setItems(listlog);
 	}
@@ -91,9 +91,9 @@ public class supprimerLogiciel {
 
 		listvers = FXCollections.observableArrayList();
 		for (Logiciel log : donneesite.getLogicielData()) {
-			if (log.getNomLog().getValue()
-					.equals(selected.getNomLog().getValue())) {
-				listvers.add(selected.getVersion().getValue());
+			if (log.getNomLogiciel().getValue()
+					.equals(selected.getNomLogiciel().getValue())) {
+				listvers.add(selected.getVersionLogiciel().getValue());
 			}
 		}
 		comboboxvers.setItems(listvers);

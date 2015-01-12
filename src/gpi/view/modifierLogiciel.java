@@ -49,7 +49,7 @@ public class modifierLogiciel {
 		listlog = FXCollections.observableArrayList();
 		listfact = FXCollections.observableArrayList();
 		for (Logiciel log : donneeLog.getLogicielData()) {
-			listlog.add(log.getNomLog().getValue());
+			listlog.add(log.getNomLogiciel().getValue());
 		}
 		comboboxlog.setItems(listlog);
 	}
@@ -83,9 +83,9 @@ public class modifierLogiciel {
 
 		listvers = FXCollections.observableArrayList();
 		for (Logiciel log : donneeLog.getLogicielData()) {
-			if (log.getNomLog().getValue()
-					.equals(selected.getNomLog().getValue())) {
-				listvers.add(selected.getVersion().getValue());
+			if (log.getNomLogiciel().getValue()
+					.equals(selected.getNomLogiciel().getValue())) {
+				listvers.add(selected.getVersionLogiciel().getValue());
 			}
 		}
 		comboboxvers.setItems(listvers);
@@ -100,15 +100,15 @@ public class modifierLogiciel {
 						+ comboboxvers.getValue();
 				Logiciel selected2 = donneeLog.getLogiciel2(test);
 
-				nomfield.setText(selected2.getNomLog().getValue());
-				versfield.setText(selected2.getVersion().getValue());
-				datefield.setPromptText(selected2.getDateExpirationStringProperty().getValue());
+				nomfield.setText(selected2.getNomLogiciel().getValue());
+				versfield.setText(selected2.getVersionLogiciel().getValue());
+				datefield.setPromptText(selected2.getDateExpirationLogicielStringProperty().getValue());
 
 				for (Facture fac : donneeLog.getFactureData()) {
 					listfact.add(fac.getNumFacture());
 				}
 				comboboxfact.setItems(listfact);
-				comboboxfact.setPromptText(selected2.getFacture().getNumFacture());
+				comboboxfact.setPromptText(selected2.getFactureLogiciel().getNumFacture());
 			}
 		} catch (NullPointerException e) {
 

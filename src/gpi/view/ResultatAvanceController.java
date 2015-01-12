@@ -41,8 +41,8 @@ public class ResultatAvanceController implements Initializable {
 
             boolean estUtilise=false;
             for(Utilise utilise :utilises){
-                if(utilise.getutilisateurUtilise().getNomUtilisateur().getValue().equals(MainApp.getCritere(5))&&
-                        utilise.getmaterielUtilise().equals(materiel)
+                if(utilise.getUtilisateurUtilise().getNomUtilisateur().getValue().equals(MainApp.getCritere(5))&&
+                        utilise.getMaterielUtilise().equals(materiel)
                         ){
                     estUtilise=true;
                 }
@@ -104,7 +104,7 @@ public class ResultatAvanceController implements Initializable {
                     (estUtilise || MainApp.getCritere(5).equals("") )&&
                     //(materiel.getFacture().getDateFac().getValue().equals(MainApp.getCritere(6)) || MainApp.getCritere(6).equals("")) &&
                     (materiel.getFactureMateriel().getNumFacture().equals(MainApp.getCritere(7)) || MainApp.getCritere(7).equals("")) &&
-                    (materiel.getFactureMateriel().getRevendeur().getNomRevendeur().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
+                    (materiel.getFactureMateriel().getRevendeurFacture().getNomRevendeur().getValue().equals(MainApp.getCritere(8)) || MainApp.getCritere(8).equals("")) &&
                     (materiel.getFabricantMateriel().getNomFabricant().getValue().equals(MainApp.getCritere(9)) || MainApp.getCritere(9).equals("")) &&
                     (materiel.getModeleMateriel().equals(MainApp.getCritere(10)) || MainApp.getCritere(10).equals(""))
                     ){

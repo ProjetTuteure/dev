@@ -12,19 +12,19 @@ public class estMaintenu {
         this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }
 
-    public Materiel getmaterielEstMaintenu() {
+    public Materiel getMaterielEstMaintenu() {
         return materielEstMaintenu;
     }
 
-    public void setmaterielEstMaintenu(Materiel materielEstMaintenu) {
+    public void setMaterielEstMaintenu(Materiel materielEstMaintenu) {
         this.materielEstMaintenu = materielEstMaintenu;
     }
 
-    public Maintenance getmaintenanceEstMaintenu() {
+    public Maintenance getMaintenanceEstMaintenu() {
         return maintenanceEstMaintenu;
     }
 
-    public void setmaintenanceEstMaintenu(Maintenance maintenanceEstMaintenu) {
+    public void setMaintenanceEstMaintenu(Maintenance maintenanceEstMaintenu) {
         this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }
 }

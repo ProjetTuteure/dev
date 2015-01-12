@@ -9,70 +9,70 @@ import java.time.LocalDate;
  * Created by thibault on 22/11/14.
  */
 public class Logiciel {
-    private int idLog;
-    private StringProperty nomLog;
-    private StringProperty version;
-    private LocalDate dateExpiration;
-    private Facture facture;
+    private int idLogiciel;
+    private StringProperty nomLogiciel;
+    private StringProperty versionLogiciel;
+    private LocalDate dateExpirationLogiciel;
+    private Facture factureLogiciel;
 
-    public Logiciel(int idLog, String nomLog, String version, LocalDate dateExpiration, Facture facture) {
-        this.idLog = idLog;
-        this.nomLog = new SimpleStringProperty(nomLog);
-        this.version = new SimpleStringProperty(version);
-        this.dateExpiration = dateExpiration;
-        this.facture = facture;
+    public Logiciel(int idLogiciel, String nomLogiciel, String versionLogiciel, LocalDate dateExpirationLogiciel, Facture factureLogiciel) {
+        this.idLogiciel = idLogiciel;
+        this.nomLogiciel = new SimpleStringProperty(nomLogiciel);
+        this.versionLogiciel = new SimpleStringProperty(versionLogiciel);
+        this.dateExpirationLogiciel = dateExpirationLogiciel;
+        this.factureLogiciel = factureLogiciel;
     }
 
-    public int getIdLog() {
-        return idLog;
+    public int getIdLogiciel() {
+        return idLogiciel;
     }
 
-    public void setIdLog(int idLog) {
-        this.idLog = idLog;
+    public void setIdLogiciel(int idLogiciel) {
+        this.idLogiciel = idLogiciel;
     }
 
-    public StringProperty getNomLog() {
-        return nomLog;
+    public StringProperty getNomLogiciel() {
+        return nomLogiciel;
     }
 
-    public void setNomLog(String nomLog) {
-        this.nomLog.setValue(nomLog);
+    public void setNomLogiciel(String nomLogiciel) {
+        this.nomLogiciel.setValue(nomLogiciel);
     }
 
-    public StringProperty getVersion() {
-        return version;
+    public StringProperty getVersionLogiciel() {
+        return versionLogiciel;
     }
 
-    public void setVersion(String version) {
-        this.version.setValue(version);
+    public void setVersionLogiciel(String versionLogiciel) {
+        this.versionLogiciel.setValue(versionLogiciel);
     }
 
-    public LocalDate getDateExpiration() {
-        return dateExpiration;
+    public LocalDate getDateExpirationLogiciel() {
+        return dateExpirationLogiciel;
     }
 
-    public StringProperty getDateExpirationStringProperty() {
+    public StringProperty getDateExpirationLogicielStringProperty() {
         String chaine1="";
         String chaine2="";
-        if(dateExpiration.getDayOfMonth()<10){
+        if(dateExpirationLogiciel.getDayOfMonth()<10){
             chaine1="0";
         }
-        if(dateExpiration.getMonthValue()<10){
+        if(dateExpirationLogiciel.getMonthValue()<10){
             chaine2="0";
         }
-        String dateFacture=chaine1+this.dateExpiration.getDayOfMonth()+"/"+chaine2+this.dateExpiration.getMonthValue()+"/"+this.dateExpiration.getYear();
+        String dateFacture=chaine1+this.dateExpirationLogiciel.getDayOfMonth()+"/"+chaine2+this.dateExpirationLogiciel.getMonthValue()+"/"+this.dateExpirationLogiciel.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 
-    public void setDateExpiration(LocalDate dateExpiration) {
-        this.dateExpiration=dateExpiration;
+    public void setDateExpirationLogiciel(LocalDate dateExpiration) {
+        this.dateExpirationLogiciel=dateExpiration;
     }
 
-    public Facture getFacture() {
-        return facture;
+    public Facture getFactureLogiciel() {
+        return factureLogiciel;
     }
 
-    public void setFacture(Facture facture) {
-        this.facture = facture;
+    public void setFactureLogiciel(Facture factureLogiciel) {
+        this.factureLogiciel = factureLogiciel;
     }
 }

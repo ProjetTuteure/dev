@@ -14,14 +14,14 @@ public class Facture {
     private StringProperty numFacture;
     private LocalDate dateFacture;
     private FloatProperty montantFacture;
-    private Revendeur revendeur;
+    private Revendeur revendeurFacture;
 
 
-    public Facture(String numFac, LocalDate dateFac, float montantFac, Revendeur revendeur) {
-        this.numFacture = new SimpleStringProperty(numFac);
-        this.dateFacture= dateFac;
-        this.montantFacture= new SimpleFloatProperty(montantFac);
-        this.revendeur = revendeur;
+    public Facture(String numFacture, LocalDate dateFacture, float montantFacture, Revendeur revendeurFacture) {
+        this.numFacture = new SimpleStringProperty(numFacture);
+        this.dateFacture= dateFacture;
+        this.montantFacture= new SimpleFloatProperty(montantFacture);
+        this.revendeurFacture = revendeurFacture;
     }
 
     public StringProperty getDateFacStringProperty() {
@@ -45,8 +45,8 @@ public class Facture {
         return numFacture;
     }
 
-    public void setNumFacture(String numFac) {
-        this.numFacture.set(numFac);
+    public void setNumFacture(String numFacture) {
+        this.numFacture.set(numFacture);
     }
 
     public FloatProperty montantFactureProperty() {
@@ -57,8 +57,8 @@ public class Facture {
         return dateFacture;
     }
 
-    public void setDateFacture(LocalDate dateFac) {
-        this.dateFacture=(dateFac);
+    public void setDateFacture(LocalDate dateFacture) {
+        this.dateFacture=(dateFacture);
     }
 
     public FloatProperty getMontantFacture() {
@@ -69,15 +69,15 @@ public class Facture {
         return ""+this.getMontantFacture().floatValue();
     }
 
-    public void setMontantFacture(float montantFac) {
-        this.montantFacture.set(montantFac);
+    public void setMontantFacture(float montantFacture) {
+        this.montantFacture.set(montantFacture);
     }
 
-    public Revendeur getRevendeur() {
-        return revendeur;
+    public Revendeur getRevendeurFacture() {
+        return revendeurFacture;
     }
 
-    public void setRevendeur(Revendeur revendeur) {
-        this.revendeur = revendeur;
+    public void setRevendeurFacture(Revendeur revendeurFacture) {
+        this.revendeurFacture = revendeurFacture;
     }
 }

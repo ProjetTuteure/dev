@@ -284,7 +284,7 @@ public class Donnee {
     
     public Logiciel getLogiciel(String value) {
         for(Logiciel log : logicielData){
-            if(value == log.getNomLog().getValue()){
+            if(value == log.getNomLogiciel().getValue()){
                 return log;
             }
         }
@@ -293,7 +293,7 @@ public class Donnee {
     
     public Logiciel getLogiciel2(String value) {
         for(Logiciel log : logicielData){
-            if(value.equals(log.getNomLog().getValue()+" "+log.getVersion().getValue())){
+            if(value.equals(log.getNomLogiciel().getValue()+" "+log.getVersionLogiciel().getValue())){
                 return log;
             }
         }

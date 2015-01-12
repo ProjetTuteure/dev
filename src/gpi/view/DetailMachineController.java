@@ -103,7 +103,7 @@ public class DetailMachineController implements Initializable{
 		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
 		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
 		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
-		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeur()));
+		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
 		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
 		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 	}
@@ -173,8 +173,8 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Maintenance> listMaintenanceMateriel = FXCollections.observableArrayList();
 		for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
-			if(em.getmaterielEstMaintenu().toString().equals(materiel.toString())){
-				listMaintenanceMateriel.add(em.getmaintenanceEstMaintenu());
+			if(em.getMaterielEstMaintenu().toString().equals(materiel.toString())){
+				listMaintenanceMateriel.add(em.getMaintenanceEstMaintenu());
 			}
 		}
 		int i=1;
@@ -199,8 +199,8 @@ public class DetailMachineController implements Initializable{
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Utilisateur> listUtilisateurMateriel = FXCollections.observableArrayList();
 		for(Utilise u : mainApp.donnee.getUtiliseData()){
-			if(u.getmaterielUtilise().toString().equals(materiel.toString())){
-				listUtilisateurMateriel.add(u.getutilisateurUtilise());
+			if(u.getMaterielUtilise().toString().equals(materiel.toString())){
+				listUtilisateurMateriel.add(u.getUtilisateurUtilise());
 			}
 		}
 		for(Utilisateur u : listUtilisateurMateriel){

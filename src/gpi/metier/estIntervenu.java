@@ -4,37 +4,37 @@ package gpi.metier;
  * Created by thibault on 22/11/14.
  */
 public class estIntervenu {
-    private Facture facture;
-    private Maintenance maintenance;
-    private Prestataire prestataire;
+    private Facture factureEstIntervenu;
+    private Maintenance maintenanceEstIntervenu;
+    private Prestataire prestataireEstIntervenu;
 
-    public estIntervenu(Facture facture, Maintenance maintenance, Prestataire prestataire) {
-        this.facture = facture;
-        this.maintenance = maintenance;
-        this.prestataire = prestataire;
+    public estIntervenu(Facture factureEstIntervenu, Maintenance maintenanceEstIntervenu, Prestataire prestataireEstIntervenu) {
+        this.factureEstIntervenu = factureEstIntervenu;
+        this.maintenanceEstIntervenu = maintenanceEstIntervenu;
+        this.prestataireEstIntervenu = prestataireEstIntervenu;
     }
 
-    public Facture getFacture() {
-        return facture;
+    public Facture getFactureEstIntervenu() {
+        return factureEstIntervenu;
     }
 
-    public void setFacture(Facture facture) {
-        this.facture = facture;
+    public void setFactureEstIntervenu(Facture factureEstIntervenu) {
+        this.factureEstIntervenu = factureEstIntervenu;
     }
 
-    public Maintenance getMaintenance() {
-        return maintenance;
+    public Maintenance getMaintenanceEstIntervenu() {
+        return maintenanceEstIntervenu;
     }
 
-    public void setMaintenance(Maintenance maintenance) {
-        this.maintenance = maintenance;
+    public void setMaintenanceEstIntervenu(Maintenance maintenanceEstIntervenu) {
+        this.maintenanceEstIntervenu = maintenanceEstIntervenu;
     }
 
-    public Prestataire getPrestataire() {
-        return prestataire;
+    public Prestataire getPrestataireEstIntervenu() {
+        return prestataireEstIntervenu;
     }
 
-    public void setPrestataire(Prestataire prestataire) {
-        this.prestataire = prestataire;
+    public void setPrestataireEstIntervenu(Prestataire prestataireEstIntervenu) {
+        this.prestataireEstIntervenu = prestataireEstIntervenu;
     }
 }

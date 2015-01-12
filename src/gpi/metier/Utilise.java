@@ -12,19 +12,19 @@ public class Utilise {
         this.materielUtilise = materielUtilise;
     }
 
-    public Utilisateur getutilisateurUtilise() {
+    public Utilisateur getUtilisateurUtilise() {
         return utilisateurUtilise;
     }
 
-    public void setutilisateurUtilise(Utilisateur utilisateurUtilise) {
+    public void setUtilisateurUtilise(Utilisateur utilisateurUtilise) {
         this.utilisateurUtilise = utilisateurUtilise;
     }
 
-    public Materiel getmaterielUtilise() {
+    public Materiel getMaterielUtilise() {
         return materielUtilise;
     }
 
-    public void setmaterielUtilise(Materiel materielUtilise) {
+    public void setMaterielUtilise(Materiel materielUtilise) {
         this.materielUtilise = materielUtilise;
     }
 }
