@@ -34,6 +34,9 @@ public class modifierType {
 	@FXML
 	private TextField typefield;
 
+	/**
+	 * Initialise les données Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
@@ -44,14 +47,29 @@ public class modifierType {
 		comboboxTypeMod.setItems(listNom);
 	}
 
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
+	/**
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
+	 * 
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
+	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * est clique
+	 */
 	@FXML
 	private void handleOk() {
 
@@ -60,11 +78,22 @@ public class modifierType {
 
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
+	 * est clique
+	 */
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
 	}
 
+	/**
+	 * Cette methode permet de faire apparaitre un Filechooser lorsqu'on clique
+	 * sur "choisir l'image"
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton "choisir l'image"
+	 */
 	@FXML
 	private void handleChoose(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
@@ -76,6 +105,10 @@ public class modifierType {
 
 	}
 
+	/**
+	 * Cette methode permet de pre remplir les champs lorsqu'un type est
+	 * selectionne
+	 */
 	@FXML
 	private void handlechange() {
 		Type selected = donneetype.gettype(comboboxTypeMod.getValue());

@@ -40,6 +40,9 @@ public class modifierPrestataire {
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
 
+	/**
+	 * Initialise les données Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
@@ -50,25 +53,50 @@ public class modifierPrestataire {
 		comboboxnom.setItems(listnom);
 	}
 
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
+	/**
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
+	 * 
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
+	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * est clique
+	 */
 	@FXML
 	private void handleOk() {
+
 		okClicked = true;
 		dialogStage.close();
+
 	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
+	 * est clique
+	 */
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
 	}
 
+	/**
+	 * Cette methode permet de pre remplir le combobox avec les prenoms afin
+	 * d'avoir un seul et unique prestataire ciblé
+	 */
 	@FXML
 	private void handlechange1() {
 		choix1 = true;
@@ -84,6 +112,10 @@ public class modifierPrestataire {
 		comboboxprenom.setItems(listprenom);
 	}
 
+	/**
+	 * Cette methode permet de pre remplir les champs lorsqu'un prestataire est
+	 * selectionne avec son prénom et son nom
+	 */
 	@FXML
 	private void handlechange2() {
 		try {

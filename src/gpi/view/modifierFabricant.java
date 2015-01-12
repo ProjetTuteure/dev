@@ -33,6 +33,9 @@ public class modifierFabricant {
 	@FXML
 	private TextField telfield;
 
+	/**
+	 * Initialise les données Ajoute les données aux combobox
+	 */
 	@FXML
 	private void initialize() {
 		listFabr = FXCollections.observableArrayList();
@@ -43,13 +46,19 @@ public class modifierFabricant {
 		comboboxfabr.setItems(listFabr);
 	}
 
-
+	/**
+	 * Cette methode permet de mettre en fenetre active le popup
+	 * 
+	 * @param dialogStage
+	 *            la fenetre active
+	 */
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton MODIFIER est clique
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton MODIFIER
+	 * est clique
 	 */
 	@FXML
 	private void handleOk() {
@@ -58,9 +67,10 @@ public class modifierFabricant {
 		dialogStage.close();
 
 	}
-	
+
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER est clique
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
+	 * est clique
 	 */
 	@FXML
 	private void handleCancel() {
@@ -69,15 +79,16 @@ public class modifierFabricant {
 
 	/**
 	 * Cette methode permet de savoir si le bouton MODIFIER est clique ou pas
+	 * 
 	 * @return vrai si le bouton MODIFIER est clique, faux sinon
 	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
-	
 	/**
-	 * Cette methode permet de pre remplir les champs lorsqu'un Fabricant est selectionne
+	 * Cette methode permet de pre remplir les champs lorsqu'un Fabricant est
+	 * selectionne
 	 */
 	@FXML
 	private void handlechange() {

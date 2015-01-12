@@ -417,8 +417,8 @@ public class ParametreController implements Initializable {
 	}
 
 	/**
-	 * Action lorsqu'un le bouton
-	 * "Changer le chemin d'acces au repertoire driver" est clique
+	 * Cette methode permet de faire apparaitre un DirectoryChooser lorsqu'on
+	 * clique sur "Changer le chemin d'acces au repertoire driver"
 	 * 
 	 * @param event
 	 *            un evenement sur le bouton
