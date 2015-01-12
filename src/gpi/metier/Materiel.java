@@ -90,7 +90,15 @@ public class Materiel {
     }
 
     public StringProperty getDateExpirationGarantieStringProperty() {
-        String dateFacture=dateExpirationGarantie.getDayOfMonth()+"/"+dateExpirationGarantie.getMonthValue()+"/"+dateExpirationGarantie.getYear();
+        String chaine1="";
+        String chaine2="";
+        if(dateExpirationGarantie.getDayOfMonth()<10){
+            chaine1="0";
+        }
+        if(dateExpirationGarantie.getMonthValue()<10){
+            chaine2="0";
+        }
+        String dateFacture=chaine1+this.dateExpirationGarantie.getDayOfMonth()+"/"+chaine2+this.dateExpirationGarantie.getMonthValue()+"/"+this.dateExpirationGarantie.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 

@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Created by thibault on 22/11/14.
@@ -66,7 +67,15 @@ public class Maintenance {
     }
 
     public StringProperty getDateMaintStringProperty() {
-        String dateFacture=this.dateMaint.getDayOfMonth()+"/"+this.dateMaint.getMonthValue()+"/"+this.dateMaint.getYear();
+        String chaine1="";
+        String chaine2="";
+        if(dateMaint.getDayOfMonth()<10){
+            chaine1="0";
+        }
+        if(dateMaint.getMonthValue()<10){
+            chaine2="0";
+        }
+        String dateFacture=chaine1+this.dateMaint.getDayOfMonth()+"/"+chaine2+this.dateMaint.getMonthValue()+"/"+this.dateMaint.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 

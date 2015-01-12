@@ -52,7 +52,15 @@ public class Logiciel {
     }
 
     public StringProperty getDateExpirationStringProperty() {
-        String dateFacture=this.dateExpiration.getDayOfMonth()+"/"+this.dateExpiration.getMonthValue()+"/"+this.dateExpiration.getYear();
+        String chaine1="";
+        String chaine2="";
+        if(dateExpiration.getDayOfMonth()<10){
+            chaine1="0";
+        }
+        if(dateExpiration.getMonthValue()<10){
+            chaine2="0";
+        }
+        String dateFacture=chaine1+this.dateExpiration.getDayOfMonth()+"/"+chaine2+this.dateExpiration.getMonthValue()+"/"+this.dateExpiration.getYear();
         return new SimpleStringProperty(dateFacture);
     }
 
