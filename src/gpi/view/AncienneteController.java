@@ -54,7 +54,9 @@ public class AncienneteController implements Initializable {
     }
 	
 	/**
-	 * @see javadoc super classe
+	 * Initialise les données
+	 * ajoute les données dans la tableView
+	 * ajoute les actions aux combobox
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
