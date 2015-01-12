@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class AjouterType {
+public class ajouterType {
 
 	@FXML
 	private Stage dialogStage;
