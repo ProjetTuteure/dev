@@ -40,7 +40,7 @@ CREATE TABLE LOGICIEL(
 
 CREATE TABLE MATERIEL(
 	idMateriel int PRIMARY KEY,
-	numImmotMateriel varchar(20) NOT NULL,
+	numImmobMateriel varchar(20) NOT NULL,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
