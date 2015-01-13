@@ -1205,8 +1205,30 @@ public class MainApp extends Application {
 	}
 
 	public static boolean showModInterventionDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modifierIntervention.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier une intervention");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			ModifierIntervention controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showSuppInterventionDialog() {
