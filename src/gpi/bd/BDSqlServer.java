@@ -63,23 +63,27 @@ public class BDSqlServer implements IBD{
 	 * @return une list d'objet contenant le resultat de la requete
 	 */
 	@Override
-	public List Querry(String requete) {
+	public List Querry(String type ,String requete) {
 		List<Object> result = new ArrayList<Object>();
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
 		try {
 			Statement state = this.connexion.createStatement();
 			resultat = state.executeQuery(requete);
-		
-			resultMeta = resultat.getMetaData();
-			while(resultat.next()){         
-		        for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-						result.add(resultat.getObject(i));
-		    }
+			
+			if(type.toUpperCase().equals("SELECT")){
+				resultMeta = resultat.getMetaData();
+				while(resultat.next()){         
+		        	for(int i = 1; i <= resultMeta.getColumnCount(); i++)
+		        		result.add(resultat.getObject(i));
+				}
+			}else{
+				result = null;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		return null;
+		return result;
 	}
 	
 	

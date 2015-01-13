@@ -26,12 +26,16 @@ public class Site {
 	}
 	/**
 	 * String get le nom du site
-	 * @return
+	 * @return le nom du site
 	 */
 	public String getNomSiteString() {
 		return this.nomSite.get();
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public StringProperty getNomSiteProperty() {
 		return this.nomSite;
 	}

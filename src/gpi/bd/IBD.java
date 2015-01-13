@@ -16,7 +16,7 @@ public interface IBD {
 	 * @parma requete la requete à effectuer sur la base
 	 * @return une list d'objet contenant le resultat de la requete
 	 */
-	public List Querry(String requete);
+	public List Querry(String type, String requete);
 	
 	/**
 	 * fonction qui permet de se deconnecter de la base
