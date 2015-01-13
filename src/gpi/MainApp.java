@@ -989,8 +989,30 @@ public class MainApp extends Application {
 	}
 
 	public static boolean showSuppUtilisateurDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/supprimerUtilisateur.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer un utilisateur");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			SupprimerUtilisateur controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showModComposeDialog() {
