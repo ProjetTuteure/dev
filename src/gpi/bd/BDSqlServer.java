@@ -26,7 +26,7 @@ public class BDSqlServer implements IBD{
 	 * @param user l'identifiant de connexion
 	 * @param mdp le mot de passe de connexion
 	 */
-	public BDSqlServer(String adresse, String bd, int port, String user, String mdp){
+	public BDSqlServer(String adresse, int port,String bd, String user, String mdp){
 		this.url = "jdbc:sqlserver://"+adresse+":"+port+";databaseName="+bd+";";
 		this.mdp = mdp;
 		this.user = user;
@@ -39,7 +39,7 @@ public class BDSqlServer implements IBD{
 	 * @return vrai si la connexion s'est bien passee faux sinon
 	 */
 	public boolean connexion(){
-		return connexion(this.url);
+		return connexion(this.url,user,mdp);
 	}
 	
 	/**
@@ -48,9 +48,9 @@ public class BDSqlServer implements IBD{
 	 * @return vrai si la connexion s'est bien passee faux sinon
 	 */
 	@Override
-	public boolean connexion(String url) {
+	public boolean connexion(String url,String user,String mdp) {
 		try {
-			this.connexion= DriverManager.getConnection(url);
+			this.connexion= DriverManager.getConnection(url,user,mdp);
 		} catch (SQLException e) {
 			return false;
 		}
@@ -63,7 +63,7 @@ public class BDSqlServer implements IBD{
 	 * @return une list d'objet contenant le resultat de la requete
 	 */
 	@Override
-	public List Querry(String type ,String requete) {
+	public List query(String type ,String requete) {
 		List<Object> result = new ArrayList<Object>();
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
@@ -81,7 +81,6 @@ public class BDSqlServer implements IBD{
 				result = null;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} 
 		return result;
 	}
