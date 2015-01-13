@@ -505,8 +505,8 @@ public class ParametreController implements Initializable {
 	@FXML
 	private void handleaddCompose(ActionEvent event) {
 		//Pas de type Type, mais de type compose => pas encore cr��
-		Type type = new Type(null, null);
-		boolean okClicked = MainApp.showAddComposeDialog(type);
+		Composant comp = new Composant(null, null, null, null);
+		boolean okClicked = MainApp.showAddComposeDialog(comp);
 		if (okClicked) {
 
 		}

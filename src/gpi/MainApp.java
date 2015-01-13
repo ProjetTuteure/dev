@@ -981,9 +981,31 @@ public class MainApp extends Application {
 		return false;
 	}
 
-	public static boolean showAddComposeDialog(Type type) {
-		// TODO Auto-generated method stub
-		return false;
+	public static boolean showAddComposeDialog(Composant comp) {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/ajouterCompose.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter une composition");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			AjouterCompose controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showSuppComposantDialog() {
