@@ -6,9 +6,9 @@ package gpi.metier;
 public class Utilise {
     private Utilisateur utilisateurUtilise;
     private Materiel materielUtilise;
-
+    
     public Utilise(Utilisateur utilisateurUtilise, Materiel materielUtilise) {
-        this.utilisateurUtilise = utilisateurUtilise;
+        this.utilisateurUtilise = utilisateurUtilise;	
         this.materielUtilise = materielUtilise;
     }
 

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class ajouterSite {
+public class AjouterSite {
 	@FXML
 	private TextField NameSiteField;
 	@FXML

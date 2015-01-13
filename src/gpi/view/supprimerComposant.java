@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class supprimerComposant {
+public class SupprimerComposant {
 	@FXML
 	private Stage dialogStage;
 	@FXML

@@ -17,7 +17,7 @@ import java.io.File;
  * Created by Kevin
  */
 
-public class modifierType {
+public class ModifierType {
 
 	@FXML
 	private Stage dialogStage;

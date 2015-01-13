@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class ajouterRevendeur {
+public class AjouterRevendeur {
 	@FXML
 	private Stage dialogStage;
 

@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class modifierComposant {
+public class ModifierComposant {
 
 	@FXML
 	private Stage dialogStage;

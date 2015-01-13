@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class modifierRevendeur {
+public class ModifierRevendeur {
 	@FXML
 	private Stage dialogStage;
 
