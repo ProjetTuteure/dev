@@ -1,5 +1,95 @@
 package gpi.metier;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class SiteDAO {
 
+	public SiteDAO(){}
+	
+	//ajouter/modifier/supprimer/recuperer
+	
+	public int ajouterSite(Site site){
+		Connection connection;
+		int resultat;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE VALUES (?,?,?);");
+			
+			prep.setInt(1, site.getIdSite());
+			prep.setString(2, site.getNomSiteString());
+			prep.setString(3, site.getCheminImageSiteProperty().toString());
+			
+			resultat=prep.executeUpdate();
+			return resultat;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+	}
+	
+	public int modifierSite(Site site){
+		Connection connection;
+		int resultat;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("UPDATE SITE SET nomSite=?, cheminImageSite=? WHERE idSite=?;");
+			
+			prep.setString(1, site.getNomSiteString());
+			prep.setString(2, site.getCheminImageSiteProperty().toString());
+			prep.setInt(3, site.getIdSite());
+			
+			resultat=prep.executeUpdate();
+			return resultat;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+	}
+	
+	public int supprimerSite(Site site){
+		Connection connection;
+		int resultat;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("DELETE FROM SITE WHERE idSite=?;");
+			
+			prep.setInt(1, site.getIdSite());
+			
+			resultat=prep.executeUpdate();
+			return resultat;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+	}
+	
+	public Site recupererSiteParId(int idSite){
+		Connection connection;
+		ResultSet resultat;
+		String nomSite,cheminImageSite;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE WHERE idSite=?;");
+			
+			prep.setInt(1, idSite);
+			
+			resultat=prep.executeQuery();
+			nomSite=resultat.getString(1);
+			cheminImageSite=resultat.getString(2);
+			
+			return new Site(idSite,nomSite,cheminImageSite);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			connection.close();
+		}
+	}
+	
+	
 }
