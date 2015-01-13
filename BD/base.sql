@@ -90,6 +90,7 @@ CREATE TABLE ESTMAINTENU(
 CREATE TABLE UTILISATEUR(
 	idUtilisateur int PRIMARY KEY,
 	nomUtilisateur varchar(20) NOT NULL,
+	prenomUtilisateur varchar(20) NOT NULL,
 	telUtilisateur varchar(20))
 
 CREATE TABLE UTILISE(
