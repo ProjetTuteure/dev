@@ -61,7 +61,7 @@ public class DetailMachineController implements Initializable{
     }
 	
 	/**
-	 * Initialise les donnï¿½es et affecte l'index en fonction de la page
+	 * Initialise les données et affecte l'index en fonction de la page
 	 * courante
 	 */
 	@Override
