@@ -43,7 +43,7 @@ public class ModifierSite {
 		listNom = FXCollections.observableArrayList();
 
 		for (Site site : donneesite.getSiteData()) {
-			listNom.add(site.getNomSite());
+			listNom.add(site.getNomSiteString());
 		}
 		comboboxSiteMod.setItems(listNom);
 	}

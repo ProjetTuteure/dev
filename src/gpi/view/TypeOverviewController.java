@@ -89,7 +89,7 @@ public class TypeOverviewController {
 		Site site;
 		site=(Site)(mainApp.getCritere(0));
 		this.types=donnees.getTypeData();
-		this.setLabelNomVille(site.getNomSite());
+		this.setLabelNomVille(site.getNomSiteString());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
 		this.ajouterActionBouton(b_type);

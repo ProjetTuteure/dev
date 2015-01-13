@@ -58,7 +58,7 @@ public class Materiel {
     }
     
     public String getSiteMaterielString(){
-    	return siteMateriel.getNomSite();
+    	return siteMateriel.getNomSiteString();
     }
 
     public StringProperty getNumImmobMateriel() {
@@ -182,7 +182,7 @@ public class Materiel {
                 ", type=" + typeMateriel.getNomTypeString() +
                 ", etat=" + etatMateriel.name() +
                 ", dateExpirationGarantie=" + getDateExpirationGarantieMaterielStringProperty().getValue() +
-                ", site=" + siteMateriel.getNomSite() +
+                ", site=" + siteMateriel.getNomSiteString() +
                 ", fabricant=" + fabricantMateriel.getNomFabricant().getValue()
                 ;
     }

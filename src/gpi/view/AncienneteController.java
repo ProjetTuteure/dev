@@ -138,7 +138,7 @@ public class AncienneteController implements Initializable {
 		setItemsTableMateriel(materiel);
 		
 		for(Site s : site){
-			listSite.add(s.getNomSite());
+			listSite.add(s.getNomSiteString());
 		}
 		listSite.add("Tous");
 		for(Type t : type){

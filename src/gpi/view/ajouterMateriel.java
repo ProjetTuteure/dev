@@ -66,7 +66,7 @@ public class AjouterMateriel {
 		comboboxfact.setItems(listNom3);
 
 		for (Site site : donneeMat.getSiteData()) {
-			listNom4.add(site.getNomSite());
+			listNom4.add(site.getNomSiteString());
 		}
 		comboboxsite.setItems(listNom4);
 

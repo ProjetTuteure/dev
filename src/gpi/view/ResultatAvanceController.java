@@ -98,7 +98,7 @@ public class ResultatAvanceController implements Initializable {
 
             if((materiel.getNumImmobMateriel().getValue().equals(MainApp.getCritere(0)) || MainApp.getCritere(0).equals("")) &&
                     (materiel.getNomMateriel().getValue().equals(MainApp.getCritere(1)) || MainApp.getCritere(1).equals("")) &&
-                    (materiel.getSiteMateriel().getNomSite().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
+                    (materiel.getSiteMateriel().getNomSiteString().equals(MainApp.getCritere(2)) || MainApp.getCritere(2)==null) &&
                     (estContenu || MainApp.getCritere(3).equals("")) &&
                     (materiel.getTypeMateriel().getNomType().getValue().equals(MainApp.getCritere(4)) || MainApp.getCritere(4)==null) &&
                     (estUtilise || MainApp.getCritere(5).equals("") )&&

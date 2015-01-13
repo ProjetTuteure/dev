@@ -66,7 +66,7 @@ public class MaterielOverview {
 		Type type;
 		type=(Type)mainApp.getCritere(1);
 		this.materiel=donnees.rechercher(site,type);
-		this.setLabelMaterielVille(site.getNomSite()+" -> "+type.getNomType().getValue());
+		this.setLabelMaterielVille(site.getNomSiteString()+" -> "+type.getNomType().getValue());
 		this.sp_materiel.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterMaterielGridPane(materiel);
 		this.ajouterActionBouton(b_retour);

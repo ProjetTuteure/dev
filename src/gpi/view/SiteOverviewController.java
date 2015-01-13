@@ -76,7 +76,7 @@ public class SiteOverviewController {
 				BorderPane tempo = new BorderPane();
 				ImageView image = new ImageView(sites.get((i * 4) + j)
                         .getCheminImageSite());
-                Label label = new Label(sites.get((i * 4) + j).getNomSite());
+                Label label = new Label(sites.get((i * 4) + j).getNomSiteString());
                 label.setId(""+((i * 4) + j));
 				image.setFitHeight(75);
 				image.setFitWidth(75);

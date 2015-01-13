@@ -123,10 +123,10 @@ public class ModifierMateriel {
 		comboboxfab.setPromptText(selected.getFabricantMaterielString());
 
 		for (Site st : donneesite.getSiteData()) {
-			listSite.add(st.getNomSite());
+			listSite.add(st.getNomSiteString());
 		}
 		comboboxsite.setItems(listEtat);
-		comboboxsite.setPromptText(selected.getSiteMateriel().getNomSite());
+		comboboxsite.setPromptText(selected.getSiteMateriel().getNomSiteString());
 
 	}
 

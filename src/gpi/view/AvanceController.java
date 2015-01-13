@@ -97,7 +97,7 @@ public class AvanceController implements Initializable {
     public ObservableList<String> getNomSite(List<Site> sites){
         ObservableList<String> list=FXCollections.observableArrayList();
         for(Site site:sites){
-            list.add(site.getNomSite());
+            list.add(site.getNomSiteString());
         }
         return list;
     }
