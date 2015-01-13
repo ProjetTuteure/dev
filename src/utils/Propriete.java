@@ -18,9 +18,9 @@ public class Propriete {
 	}
 	
 	private Propriete() {
-	Properties properties = new Properties();
+	this.pro= new Properties();
 		try {
-			properties.load(new FileInputStream("C:\\Program Files\\Gpi\\Configuration.properties"));
+			pro.load(new FileInputStream("C:\\Program Files\\Gpi\\Configuration.properties"));
 		} catch (IOException e) {
 			
 		}

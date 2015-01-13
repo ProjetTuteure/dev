@@ -17,13 +17,29 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import utils.MaConnexion;
+
 public class testbd {
 	public static final String PASS = "123";
 
 	public static void main(String[] args) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException, SQLException {
 		
-		String chaine="";
+		Connection connexion = MaConnexion.getInstance().getConnexion();
+		ResultSet resultat;
+		ResultSetMetaData resultMeta;
+		try {
+			Statement state = connexion.createStatement();
+			resultat = state.executeQuery("SELECT * from SITE");
+			resultMeta = resultat.getMetaData();
+			while(resultat.next()){         
+		       	for(int i = 1; i <= resultMeta.getColumnCount(); i++)
+		       		System.out.println(resultat.getObject(i));
+			}
+		} catch (SQLException e) {
+		} 
+
+		/*String chaine="";
 		String fichier ="C:\\Program Files\\Gpi\\Configuration.ini";
 		String ipBD="Localhost";
 		int port=0;
@@ -69,6 +85,6 @@ public class testbd {
 		}
 
 		bd.deconnexion();
-
+		*/
 	}
 }

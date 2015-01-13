@@ -21,8 +21,8 @@ public class MaConnexion {
 	}
 	
 	private MaConnexion(){
-		Properties p = Propriete.getInstance().getProperties();
 		
+		Properties p = Propriete.getInstance().getProperties();
 		String url = "jdbc:sqlserver://"+p.getProperty("ipBD")+":"+p.getProperty("port")+";databaseName="+p.getProperty("base")+";";
 		String mdp = p.getProperty("mdp");
 		String user= p.getProperty("user");
