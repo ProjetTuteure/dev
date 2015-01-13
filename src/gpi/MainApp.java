@@ -999,8 +999,30 @@ public class MainApp extends Application {
 	}
 
 	public static boolean showSuppComposeDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/supprimerCompose.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer une composition");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			SupprimerCompose controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showAddComposeDialog(Composant comp) {
