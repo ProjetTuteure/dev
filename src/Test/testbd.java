@@ -3,7 +3,11 @@ package Test;
 import gpi.bd.BDSqlServer;
 import gpi.bd.IBD;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,8 +23,38 @@ public class testbd {
 	public static void main(String[] args) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException, SQLException {
 		
+		String chaine="";
+		String fichier ="C:\\Program Files\\Gpi\\Configuration.ini";
+		String ipBD="Localhost";
+		int port=0;
+		String base = "test"; 
 		
-		IBD bd = new BDSqlServer("192.168.137.169", 1433, "ProjetTutore",
+		//lecture du fichier texte	
+		try{
+			InputStream ips=new FileInputStream(fichier); 
+			InputStreamReader ipsr=new InputStreamReader(ips);
+			BufferedReader br=new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne=br.readLine())!=null){
+				String[] parts = ligne.split(">");
+				switch(parts[0]){
+					case "Adresse_BD":
+						ipBD=parts[1];
+						break;
+					case "Port" : 
+						port=Integer.parseInt(parts[1]);
+						break;
+					case "Base" :
+						base=parts[1];
+						break;	
+				}
+			}
+			br.close(); 
+		}		
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
+		IBD bd = new BDSqlServer(ipBD, port, base,
 				"test3", "test");
 		boolean estconnecter = ((BDSqlServer) bd).connexion();
 		List result = bd.query("select", "SELECT * FROM PRESTATAIRE;");
