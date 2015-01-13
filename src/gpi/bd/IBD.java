@@ -13,7 +13,8 @@ public interface IBD {
 	
 	/**
 	 * Fonction qui effectue une requete sur la base de donnee
-	 * @parma requete la requete à effectuer sur la base
+	 * @param requete la requete à effectuer sur la base
+	 * @param type le type de la requete : SELECT, INSERT, UPDATE
 	 * @return une list d'objet contenant le resultat de la requete
 	 */
 	public List Querry(String type, String requete);
