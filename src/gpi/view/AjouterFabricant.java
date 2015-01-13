@@ -1,41 +1,25 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
-import gpi.metier.Facture;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
  * Created by Kevin
  */
 
-public class AjouterLogiciel {
+public class AjouterFabricant {
 	@FXML
 	private Stage dialogStage;
 
 	@FXML
 	private boolean okClicked = false;
 
-	@FXML
-	private ComboBox<String> comboboxfact;
-
-	private Donnee donneeLog = new Donnee();
-
-	private ObservableList<String> listfact;
-
 	/**
-	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
+	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-		listfact = FXCollections.observableArrayList();
-		for (Facture fac : donneeLog.getFactureData()) {
-			listfact.add(fac.getNumFacture());
-		}
-		comboboxfact.setItems(listfact);
+
 	}
 
 	/**
@@ -77,5 +61,4 @@ public class AjouterLogiciel {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
 }

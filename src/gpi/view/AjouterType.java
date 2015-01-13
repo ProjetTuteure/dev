@@ -1,13 +1,18 @@
 package gpi.view;
 
+import java.io.File;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
  * Created by Kevin
  */
 
-public class AjouterFacture {
+public class AjouterType {
+
 	@FXML
 	private Stage dialogStage;
 
@@ -60,6 +65,16 @@ public class AjouterFacture {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+
+	@FXML
+	private void handleChoose(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open File");
+		File file = fileChooser.showOpenDialog(null);
+		if (file != null) {
+		}
+
 	}
 
 }

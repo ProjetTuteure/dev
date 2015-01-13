@@ -1,7 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Fabricant;
+import gpi.metier.Facture;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,30 +12,30 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class SupprimerFabricant {
+public class AjouterLogiciel {
 	@FXML
 	private Stage dialogStage;
+
 	@FXML
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxfabr;
+	private ComboBox<String> comboboxfact;
 
-	private Donnee donneesite = new Donnee();
+	private Donnee donneeLog = new Donnee();
 
-	private ObservableList<String> listNom;
+	private ObservableList<String> listfact;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
-		for (Fabricant fb : donneesite.getFabricantData()) {
-			listNom.add(fb.getNomFabricantString());
+		listfact = FXCollections.observableArrayList();
+		for (Facture fac : donneeLog.getFactureData()) {
+			listfact.add(fac.getNumFacture());
 		}
-		comboboxfabr.setItems(listNom);
+		comboboxfact.setItems(listfact);
 	}
 
 	/**
@@ -49,16 +49,16 @@ public class SupprimerFabricant {
 	}
 
 	/**
-	 * Cette methode permet de savoir si le bouton SUPPRIMER est clique ou pas
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
 	 * 
-	 * @return vrai si le bouton SUPPRIMER est clique, faux sinon
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
 	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton SUPPRIMER
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
 	 * est clique
 	 */
 	@FXML

@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class AjouterUtilisateur {
+public class AjouterPrestataire {
 
 	@FXML
 	private Stage dialogStage;
@@ -34,9 +34,9 @@ public class AjouterUtilisateur {
 	}
 
 	/**
-	 * Cette methode permet de savoir si le bouton AJOUTER est clique
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
 	 * 
-	 * @return vrai si le bouton AJOUTER est clique
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
 	 */
 	public boolean isOkClicked() {
 		return okClicked;

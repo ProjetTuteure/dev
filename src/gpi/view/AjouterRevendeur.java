@@ -1,40 +1,25 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
-import gpi.metier.Site;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
  * Created by Kevin
  */
 
-public class SupprimerSite {
+public class AjouterRevendeur {
 	@FXML
 	private Stage dialogStage;
+
 	@FXML
 	private boolean okClicked = false;
-	@FXML
-	private ComboBox<String> comboboxSiteSupp;
-
-	private Donnee donneesite = new Donnee();
-
-	private ObservableList<String> listNom;
 
 	/**
-	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
+	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
 
-		for (Site site : donneesite.getSiteData()) {
-			listNom.add(site.getNomSiteString());
-		}
-		comboboxSiteSupp.setItems(listNom);
 	}
 
 	/**
@@ -48,16 +33,16 @@ public class SupprimerSite {
 	}
 
 	/**
-	 * Cette methode permet de savoir si le bouton SUPPRIMER est clique ou pas
+	 * Cette methode permet de savoir si le bouton AJOUTER est clique ou pas
 	 * 
-	 * @return vrai si le bouton SUPPRIMER est clique, faux sinon
+	 * @return vrai si le bouton AJOUTER est clique, faux sinon
 	 */
 	public boolean isOkClicked() {
 		return okClicked;
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton SUPPRIMER
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
 	 * est clique
 	 */
 	@FXML
