@@ -102,7 +102,6 @@ public class ComposantDAO {
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
 		try {
-			connexion = MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connexion
 					.prepareStatement("SELECT * from COMPOSANT WHERE idcomposant=?");
 
@@ -134,7 +133,6 @@ public class ComposantDAO {
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
 		try {
-			connexion = MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connexion
 					.prepareStatement("SELECT * from COMPOSANT");
 			resultat = prep.executeQuery();
