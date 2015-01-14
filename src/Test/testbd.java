@@ -41,8 +41,9 @@ public class testbd {
 		ResultSetMetaData resultMeta;
 		MaterielDAO mdao=new MaterielDAO();
 		RevendeurDAO rdao=new RevendeurDAO();
-		Revendeur revendeur=new Revendeur(new SimpleIntegerProperty(0),"CDiscount","05.53.05.63.25","4 avenue du discount");
-		rdao.ajouterRevendeur(revendeur);
+		Revendeur revendeur=new Revendeur(new SimpleIntegerProperty(3),"CDiscountDeChien","05.53.05.63.24","4 avenue du discount");
+		rdao.modifierRevendeur(revendeur);
+		rdao.supprimerRevendeur(revendeur);
 		try {
 			Statement state = connexion.createStatement();
 			resultat = state.executeQuery("SELECT * from SITE");
