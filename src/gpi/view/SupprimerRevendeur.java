@@ -1,7 +1,12 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
 import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,19 +28,25 @@ public class SupprimerRevendeur {
 
 	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listNom;
+	private ObservableList<String> listrev;
+	
+	private List<Revendeur> listeRevendeur;
+	
+	private RevendeurDAO revendeurDAO=new RevendeurDAO();
 
 	/**
 	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
-		for (Revendeur rv : donneesite.getRevendeurData()) {
-			listNom.add(rv.getNomRevendeur().getValue());
+		listrev = FXCollections.observableArrayList();
+		listeRevendeur=new ArrayList<Revendeur>();
+		listeRevendeur=revendeurDAO.getAllRevendeur();
+		for(Revendeur revendeur : listeRevendeur)
+		{
+			listrev.add(revendeur.getNomRevendeur().getValue());
 		}
-		comboboxrev.setItems(listNom);
+		comboboxrev.setItems(listrev);
 	}
 
 	/**
@@ -63,10 +74,17 @@ public class SupprimerRevendeur {
 	 */
 	@FXML
 	private void handleOk() {
-
-		okClicked = true;
-		dialogStage.close();
-
+		if(comboboxrev.getValue()==null)
+		{
+			new Popup("Veuillez choisir un revendeur");
+		}
+		else
+		{
+			Revendeur revendeur=listeRevendeur.get(comboboxrev.getSelectionModel().getSelectedIndex());
+			revendeurDAO.supprimerRevendeur(revendeur);
+			new Popup("Revendeur supprimé !");
+			dialogStage.close();
+		}
 	}
 
 	/**
