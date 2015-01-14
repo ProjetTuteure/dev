@@ -82,9 +82,9 @@ public class TypeDAO {
         try{
             connection= MaConnexion.getInstance().getConnexion();
             Statement statement = connection.createStatement();
-            resultat=statement.executeQuery("SELECT * FROM SITE");
+            resultat=statement.executeQuery("SELECT * FROM TYPE");
             while(resultat.next()){
-                typeList.add(new Type(resultat.getString(1),resultat.getString(2)));
+                typeList.add(new Type(resultat.getString("nomType"),resultat.getString("cheminImageType")));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -100,18 +100,14 @@ public class TypeDAO {
 
     public Type recupererTypeParId(String nomType){
         ResultSet resultat;
-        String cheminImageType;
         Type type=null;
         try{
             //connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM SITE WHERE nomType=?;");
-
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TYPE WHERE nomType=?;");
             preparedStatement.setString(1, nomType);
-
             resultat=preparedStatement.executeQuery();
-            cheminImageType=resultat.getString(1);
 
-            type=new Type(nomType,cheminImageType);
+            type=new Type(nomType,resultat.getString("cheminImageType"));
         }catch(SQLException e){
             e.printStackTrace();
         }finally{
