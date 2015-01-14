@@ -35,7 +35,7 @@ public class Popup {
 		});
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage.setScene(new Scene(VBoxBuilder.create().
-		    children(new Text(textAAfficher),buttonOk).
+		    children(new Text(texteAAfficher),buttonOk).
 		    alignment(Pos.CENTER).padding(new Insets(5)).build()));
 		dialogStage.show();
 	}
