@@ -3,6 +3,7 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Popup;
 import gpi.bd.Donnee;
 import gpi.metier.Prestataire;
 import gpi.metier.Revendeur;
@@ -96,10 +97,21 @@ public class ModifierUtilisateur {
 	 */
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
-		dialogStage.close();
-
+		if(nomfield.getText().equals(""))
+		{
+			new Popup("Le champ \"Nom du revendeur\" doit être rempli");
+		}
+		else
+		{
+			int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+			Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
+			utilisateur.setNomUtilisateur(nomfield.getText());
+			utilisateur.setPrenomUtilisateur(prenomfield.getText());
+			utilisateur.setTelUtilisateur(telfield.getText());
+			utilisateurDAO.modifierUtilisateur(utilisateur);
+			dialogStage.close();
+		}
 	}
 
 	/**

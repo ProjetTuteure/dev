@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import utils.MaConnexion;
 
@@ -90,23 +92,64 @@ public class FactureDAO {
 		return 0;
 	}
 	
-	public Site recupererFactureParNum(String numFacture){
+	public Facture recupererFactureParNum(String numFacture){
 		Connection connection=null;
 		ResultSet resultat;
-		LocalDate date;
+		LocalDate dateFacture;
 		float montantFacture;
 		int idRevendeur;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
+			RevendeurDAO revendeurDAO=new RevendeurDAO();
 			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE numFacture=?;");
 			
 			prep.setString(1, numFacture);
 			
 			resultat=prep.executeQuery();
-			date=LocalDate.parse(resultat.getString(1));
-			//montantFacture=resultat.getFloat(montantFacture);
+			dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
+			montantFacture=resultat.getFloat("montantFacture");
+			idRevendeur=resultat.getInt("idRevendeur");
 			
-			//return new Site(idSite,nomSite,cheminImageSite);
+			return new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	
+	public List<Facture> recupererAllFacture(){
+		Connection connection=null;
+		RevendeurDAO revendeurDAO=new RevendeurDAO();
+		List<Facture> listFacture=new ArrayList<Facture>();
+		ResultSet resultat;
+		String numFacture;
+		LocalDate dateFacture;
+		float montantFacture;
+		int idRevendeur;
+		Facture facture;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE;");
+			
+			
+			resultat=prep.executeQuery();
+			while(resultat.next()){
+				numFacture=resultat.getString("numFacture");
+				dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
+				montantFacture=resultat.getFloat("montantFacture");
+				idRevendeur=resultat.getInt("idRevendeur");
+				facture=new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
+				listFacture.add(facture);
+			}
+			return listFacture;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

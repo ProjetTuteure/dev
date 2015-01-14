@@ -40,7 +40,7 @@ public class ModifierSite {
 	private ComboBox<String> comboboxSiteMod;
 
 	private ObservableList<String> listSiteObservable;
-	ArrayList<Site> listSite;
+	List<Site> listSite;
 	
 
 	/**

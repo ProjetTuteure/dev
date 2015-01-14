@@ -88,4 +88,9 @@ public class PrestataireDAO {
 		}
 		return 0;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/master
 }
+	

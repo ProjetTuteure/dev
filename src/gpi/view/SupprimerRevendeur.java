@@ -41,7 +41,7 @@ public class SupprimerRevendeur {
 	private void initialize() {
 		listrev = FXCollections.observableArrayList();
 		listeRevendeur=new ArrayList<Revendeur>();
-		listeRevendeur=revendeurDAO.getAllRevendeur();
+		listeRevendeur=revendeurDAO.recupererAllRevendeur();
 		for(Revendeur revendeur : listeRevendeur)
 		{
 			listrev.add(revendeur.getNomRevendeur().getValue());

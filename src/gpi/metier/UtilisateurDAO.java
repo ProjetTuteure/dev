@@ -136,15 +136,20 @@ public class UtilisateurDAO {
 			PreparedStatement prep = connection
 					.prepareStatement("SELECT * FROM UTILISATEUR WHERE nomUtilisateur=?;");
 
-			prep.setString(1, nomUtilisateur);
+			prep.setString(1,nomUtilisateur);
 
 			resultat = prep.executeQuery();
-			idUtilisateur = resultat.getInt(1);
+		/*idUtilisateur = resultat.getInt(1);
 			prenomUtilisateur = resultat.getString(2);
-			telUtilisateur = resultat.getString(3);
+			telUtilisateur = resultat.getString(3);*/
 
 			while (resultat.next()){
-				list.add(new Utilisateur(new SimpleIntegerProperty(idUtilisateur), nomUtilisateur, prenomUtilisateur, telUtilisateur));
+				list=new ArrayList<Utilisateur>();
+				list.add(new Utilisateur(new SimpleIntegerProperty(resultat.getInt("idUtilisateur")),
+						resultat.getString("nomUtilisateur"),
+						resultat.getString("prenomUtilisateur"),
+						resultat.getString("telUtilisateur")));
+				//list.add(new Utilisateur(new SimpleIntegerProperty(idUtilisateur), nomUtilisateur, prenomUtilisateur, telUtilisateur));
 			}
 			return list;
 		} catch (SQLException e) {

@@ -116,9 +116,9 @@ public class SiteDAO {
 		return null;
 	}
 	
-	public ArrayList<Site> recupererAllSite(){
+	public List<Site> recupererAllSite(){
 		Connection connection=null;
-		ArrayList<Site> listSite=new ArrayList<Site>();
+		List<Site> listSite=new ArrayList<Site>();
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
 		int idSite;
