@@ -42,6 +42,15 @@ public class MaterielDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally
+		{
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void modifierMateriel(Materiel materiel)

@@ -2,6 +2,14 @@ package Test;
 
 import gpi.bd.BDSqlServer;
 import gpi.bd.IBD;
+import gpi.metier.Etat;
+import gpi.metier.Fabricant;
+import gpi.metier.Facture;
+import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
+import gpi.metier.Revendeur;
+import gpi.metier.Site;
+import gpi.metier.Type;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,8 +23,11 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.List;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import utils.MaConnexion;
 
 public class testbd {
@@ -28,6 +39,15 @@ public class testbd {
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
+		MaterielDAO mdao=new MaterielDAO();
+		Materiel materiel=new Materiel(new SimpleIntegerProperty(19), "1IMMO",
+				"pc-martine",new Type("unType", "unCheminImage"), Etat.EN_MARCHE,
+				LocalDate.parse("2012-11-11"), "/driver/pc-martine",
+				new Facture("1",LocalDate.parse("2012-11-11"),5,new Revendeur(new SimpleIntegerProperty(1),"nomRevendeur","tel","adresseRevendeur")),
+				new Site(1, "nomSite", "cheminImage"),
+				new Fabricant(new SimpleIntegerProperty(1), "nomFabricant", "telF", "adresseFabricant"),
+				"XXX1");
+		mdao.ajouterMateriel(materiel);
 		try {
 			Statement state = connexion.createStatement();
 			resultat = state.executeQuery("SELECT * from SITE");
