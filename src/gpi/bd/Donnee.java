@@ -116,9 +116,9 @@ public class Donnee {
 	}
 
 	private void remplirPrestaraireData() {
-		prestataireData.add(new Prestataire(new SimpleIntegerProperty(1),
+		prestataireData.add(new Prestataire(1,
 				"Caillou", "Pierre", "05.55.69.87.23", "Caillou et Co."));
-		prestataireData.add(new Prestataire(new SimpleIntegerProperty(2),
+		prestataireData.add(new Prestataire(2,
 				"Noel", "Papa", "00.36.65.65.65", "Pole Nord"));
 	}
 

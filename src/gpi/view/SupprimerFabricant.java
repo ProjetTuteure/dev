@@ -77,7 +77,6 @@ public class SupprimerFabricant {
 		fabricantDAO.supprimerFabricant(new Fabricant(id, null, null,null));
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**

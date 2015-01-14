@@ -1,6 +1,7 @@
 package gpi.metier;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -14,8 +15,8 @@ public class Prestataire {
     private StringProperty telPrestataire;
     private StringProperty societePrestataire;
 
-    public Prestataire(IntegerProperty idPrestataire, String nomPrestataire, String prenomPrestataire, String telPrestataire, String societePrestataire) {
-        this.idPrestataire = idPrestataire;
+    public Prestataire(int idPrestataire, String nomPrestataire, String prenomPrestataire, String telPrestataire, String societePrestataire) {
+        this.idPrestataire = new SimpleIntegerProperty(idPrestataire);
         this.nomPrestataire = new SimpleStringProperty(nomPrestataire);
         this.prenomPrestataire = new SimpleStringProperty(prenomPrestataire);
         this.telPrestataire = new SimpleStringProperty(telPrestataire);

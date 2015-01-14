@@ -1,29 +1,127 @@
 package gpi.metier;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import utils.MaConnexion;
 
 public class PrestataireDAO {
-	
+	private Connection connection;
+
 	public int ajouterPrestataire(Prestataire prestataire){
-		Connection connection=null;
-		int resultat;
+		int nombreLigneAffectee=0;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO PRESTATAIRE(nomPrestataire,prenomPrestataire, telPrestataire, societePrestataire) VALUES (?,?,?,?);");
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO PRESTATAIRE(nomPrestataire,prenomPrestataire, telPrestataire, societePrestataire) VALUES (?,?,?,?);");
 			
-			prep.setString(1, prestataire.getNomPrestataire().getValue());
-			prep.setString(2, prestataire.getPrenomPrestataire().getValue());
-			prep.setString(3, prestataire.getTelPrestataire().getValue());
-			prep.setString(4, prestataire.getSocieteePrestataire().getValue());
+			preparedStatement.setString(1, prestataire.getNomPrestataire().getValue());
+			preparedStatement.setString(2, prestataire.getPrenomPrestataire().getValue());
+			preparedStatement.setString(3, prestataire.getTelPrestataire().getValue());
+			preparedStatement.setString(4, prestataire.getSocieteePrestataire().getValue());
 			
-			resultat=prep.executeUpdate();
-			return resultat;
+			nombreLigneAffectee=preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return nombreLigneAffectee;
+	}
+
+	public int modifierPrestataire(Prestataire prestataire){
+		int nombreLigneAffectee=0;
+		try {
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement =connection.prepareStatement("UPDATE PRESTATAIRE SET nomPrestataire=?,prenomPrestataire=?,telPrestataire=?,societePrestataire=? WHERE idFabricant=?");
+			preparedStatement.setString(1,prestataire.getNomPrestataire().getValue());
+			preparedStatement.setString(2, prestataire.getPrenomPrestataire().getValue());
+			preparedStatement.setString(3, prestataire.getTelPrestataire().getValue());
+			preparedStatement.setString(4, prestataire.getSocieteePrestataire().getValue());
+			preparedStatement.setInt(5, prestataire.getIdPrestataire().getValue());
+			nombreLigneAffectee=preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return nombreLigneAffectee;
+	}
+
+	public int supprimerPrestataire(Prestataire prestataire){
+		int nombreLigneAffectee=0;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM PRESTATAIRE WHERE idPrestataire=?;");
+			preparedStatement.setInt(1, prestataire.getIdPrestataire().getValue());
+			nombreLigneAffectee=preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return nombreLigneAffectee;
+	}
+
+	public List<Prestataire> recupererAllPrestataire(){
+		List<Prestataire> prestataireList= new ArrayList<Prestataire>();
+		ResultSet resultat;
+		try{
+			connection= MaConnexion.getInstance().getConnexion();
+			Statement statement = connection.createStatement();
+			resultat=statement.executeQuery("SELECT * FROM FABRICANT");
+			while(resultat.next()){
+				prestataireList.add(new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestation"),resultat.getString("telPrestataire"),resultat.getString("adressePrestataire")));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return prestataireList;
+	}
+	
+	public ArrayList<Site> recupererAllSite(){
+		Connection connection=null;
+		ArrayList<Site> listSite=new ArrayList<Site>();
+		ResultSet resultat;
+		String nomSite,cheminImageSite;
+		int idSite;
+		Site site;
+		try{
+			connection=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
+			
+			
+			resultat=prep.executeQuery();
+			while(resultat.next()){
+				
+				idSite=resultat.getInt("idSite");
+				nomSite=resultat.getString("nomSite");
+				cheminImageSite=resultat.getString("cheminImageSite");
+				//System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
+				site=new Site(idSite,nomSite,cheminImageSite);
+				//System.out.println(site);
+				listSite.add(site);
+			}
+			return listSite;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -34,63 +132,6 @@ public class PrestataireDAO {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return null;
 	}
-	
-	public int modifierPrestaire(Prestataire prestataire){
-		Connection connection=null;
-		int resultat;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE PRESTATAIRE SET nomPrestataire=?, prenomPrestaire=?, telPrestataire=?, societePrestataire=?  WHERE idPrestataire=?;");
-			
-			prep.setString(1, prestataire.getNomPrestataire().getValue());
-			prep.setString(2, prestataire.getPrenomPrestataire().getValue());
-			prep.setString(3, prestataire.getTelPrestataire().getValue());
-			prep.setString(4, prestataire.getSocieteePrestataire().getValue());
-			prep.setInt(5, prestataire.getIdPrestataire().getValue());
-			
-			resultat=prep.executeUpdate();
-			return resultat;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}
-	
-	public int supprimerSite(Prestataire prestataire){
-		Connection connection=null;
-		int resultat;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM PRESTATAIRE WHERE idPrestataire=?;");
-			
-			prep.setInt(1, prestataire.getIdPrestataire().getValue());
-			
-			resultat=prep.executeUpdate();
-			return resultat;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> origin/master
 }
-	
