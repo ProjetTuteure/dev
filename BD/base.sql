@@ -25,7 +25,7 @@ CREATE TABLE REVENDEUR(
 	adresseRevendeur varchar(50))
 
 CREATE TABLE FACTURE(
-	idFacture int IDENTITY(1,1) PRIMARY KEY ,
+	numFacture varchar(10) IDENTITY(1,1) PRIMARY KEY ,
 	dateFacture DATE NOT NULL,
 	montantFacture float,
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))

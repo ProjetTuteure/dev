@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import utils.MaConnexion;
 
@@ -42,12 +44,12 @@ public class FactureDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET dateFacture=?, montantFacture=? , idRevendeur=? WHERE idFacture=? ;");
+			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET dateFacture=?, montantFacture=? , idRevendeur=? WHERE numFacture=? ;");
 			
 			prep.setString(1, facture.getDateFacture().toString());
 			prep.setFloat(2, facture.getMontantFacture().get());
 			prep.setInt(3, facture.getRevendeurFacture().getIdRevendeur().get());
-			prep.setInt(4, facture.getIdFacture());
+			prep.setString(4, facture.getNumFacture());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -69,9 +71,9 @@ public class FactureDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE idFacture=?;");
+			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE numFacture=?;");
 			
-			prep.setInt(1, facture.getIdFacture());
+			prep.setString(1, facture.getNumFacture());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -88,21 +90,23 @@ public class FactureDAO {
 		return 0;
 	}
 	
-	public Site recupererFactureParId(int idSite){
+	public Site recupererFactureParNum(String numFacture){
 		Connection connection=null;
 		ResultSet resultat;
-		String nomSite,cheminImageSite;
+		LocalDate date;
+		float montantFacture;
+		int idRevendeur;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE WHERE idSite=?;");
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE numFacture=?;");
 			
-			prep.setInt(1, idSite);
+			prep.setString(1, numFacture);
 			
 			resultat=prep.executeQuery();
-			nomSite=resultat.getString(1);
-			cheminImageSite=resultat.getString(2);
+			date=LocalDate.parse(resultat.getString(1));
+			//montantFacture=resultat.getFloat(montantFacture);
 			
-			return new Site(idSite,nomSite,cheminImageSite);
+			//return new Site(idSite,nomSite,cheminImageSite);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
