@@ -108,7 +108,7 @@ public class RevendeurDAO {
 		}
 	}
 	
-	public List<Revendeur> getAllRevendeur()
+	public List<Revendeur> recupererAllRevendeur()
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		List<Revendeur> listeRevendeur=new ArrayList<>();
@@ -145,7 +145,7 @@ public class RevendeurDAO {
 	 * @param idRevendeur l'id du revendeur à retourner
 	 * @return revendeur le revendeur correspondant à l'id passé en paramètre
 	 */
-	public Revendeur getRevendeurById(int idRevendeur)
+	public Revendeur recupererRevendeurParId(int idRevendeur)
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		Revendeur revendeurARetourner=null;

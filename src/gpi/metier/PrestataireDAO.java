@@ -89,7 +89,5 @@ public class PrestataireDAO {
 		return 0;
 	}
 	
-	}
-	
-	
 }
+	

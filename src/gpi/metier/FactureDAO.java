@@ -110,7 +110,7 @@ public class FactureDAO {
 			montantFacture=resultat.getFloat("montantFacture");
 			idRevendeur=resultat.getInt("idRevendeur");
 			
-			return null;//new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
+			return new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -127,6 +127,7 @@ public class FactureDAO {
 	
 	public List<Facture> recupererAllFacture(){
 		Connection connection=null;
+		RevendeurDAO revendeurDAO=new RevendeurDAO();
 		List<Facture> listFacture=new ArrayList<Facture>();
 		ResultSet resultat;
 		String numFacture;
@@ -145,8 +146,7 @@ public class FactureDAO {
 				dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
 				montantFacture=resultat.getFloat("montantFacture");
 				idRevendeur=resultat.getInt("idRevendeur");
-				//facture=new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
-				facture=null;
+				facture=new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
 				listFacture.add(facture);
 			}
 			return listFacture;
