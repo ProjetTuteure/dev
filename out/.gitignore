@@ -1,2 +1,13 @@
 /bin/
-/lib/
+/.gitignore
+/.idea/
+/BD/
+/Diagramme de gantt/
+/Executable/
+/Agilité.docx
+/Configuration.properties
+/Consignes_étudiants_ pour la soutenanceS3.docx
+/MPD/
+/Maquettes.pdf
+/.classpath
+/.project
