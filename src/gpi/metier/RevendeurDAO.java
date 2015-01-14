@@ -74,6 +74,10 @@ public class RevendeurDAO {
 		}
 	}
 	
+	/**
+	 * Permet de supprimer un revendeur
+	 * @param revendeur le revendeur à supprimer
+	 */
 	public void supprimerRevendeur(Revendeur revendeur)
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();

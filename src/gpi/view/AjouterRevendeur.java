@@ -1,6 +1,10 @@
 package gpi.view;
 
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -14,12 +18,21 @@ public class AjouterRevendeur {
 	@FXML
 	private boolean okClicked = false;
 
+	@FXML
+	private TextField nomRevendeur;
+	
+	@FXML
+	private TextField telRevendeur;
+	
+	@FXML
+	private TextField adresseRevendeur;
+	
+	RevendeurDAO rdao=new RevendeurDAO();
 	/**
 	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-
 	}
 
 	/**
@@ -42,15 +55,17 @@ public class AjouterRevendeur {
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
-	 * est clique
+	 * Cette procedure permet de fermer la fenetre et d'ajouter le revendeur dans la BD 
+	 * lorsque le bouton AJOUTER est clique
 	 */
 	@FXML
 	private void handleOk() {
-
+		Revendeur revendeurAAjouter;
+		
+		revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
+		rdao.ajouterRevendeur(revendeurAAjouter);
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**

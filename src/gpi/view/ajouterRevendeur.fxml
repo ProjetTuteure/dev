@@ -10,11 +10,11 @@
     <GridPane prefHeight="164.0" prefWidth="301.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label text="Nom du revendeur" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="nomRevendeur" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Telephone du revendeur" GridPane.rowIndex="1" />
             <Label text="Adresse du revendeur" GridPane.rowIndex="2" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="telRevendeur" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="adresseRevendeur" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="120.0" prefWidth="142.0" />
