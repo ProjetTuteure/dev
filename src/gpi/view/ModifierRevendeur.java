@@ -34,15 +34,11 @@ public class ModifierRevendeur {
 	@FXML
 	private ComboBox<String> comboboxrev;
 
-	private Donnee donneesite = new Donnee();
-
 	private ObservableList<String> listrev;
 	
 	private List<Revendeur> listeRevendeur;
 	
 	private RevendeurDAO revendeurDAO=new RevendeurDAO();
-	
-	private int indexRevendeur;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
