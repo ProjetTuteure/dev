@@ -89,68 +89,7 @@ public class PrestataireDAO {
 		return 0;
 	}
 	
-	public Site recupererSiteParId(int idSite){
-		Connection connection=null;
-		ResultSet resultat;
-		String nomSite,cheminImageSite;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE WHERE idSite=?;");
-			
-			prep.setInt(1, idSite);
-			
-			resultat=prep.executeQuery();
-			nomSite=resultat.getString(1);
-			cheminImageSite=resultat.getString(2);
-			
-			return new Site(idSite,nomSite,cheminImageSite);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
 	}
 	
-	public ArrayList<Prestataire> recupererAllPrestataire(){
-		Connection connection=null;
-		ArrayList<Prestataire> listSite=new ArrayList<Prestataire>();
-		ResultSet resultat;
-		String nomPrestataire,prenomPrestataire;
-		int idSite;
-		Site site;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM Prestataire;");
-			
-			
-			resultat=prep.executeQuery();
-			while(resultat.next()){
-				
-				idSite=resultat.getInt("idSite");
-				nomSite=resultat.getString("nomSite");
-				cheminImageSite=resultat.getString("cheminImageSite");
-				//System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
-				site=new Site(idSite,nomSite,cheminImageSite);
-				//System.out.println(site);
-				listSite.add(site);
-			}
-			return listSite;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+	
 }
