@@ -10,11 +10,11 @@
     <GridPane prefHeight="113.0" prefWidth="301.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label text="Nom de l'utilisateur" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="NameSiteField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Prénom de l'utilisateur" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="162.0" text="Téléphone de l'utilisateur" GridPane.rowIndex="2" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="prenomField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="telField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="143.0" prefWidth="143.0" />
