@@ -2,8 +2,11 @@ package gpi.metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import utils.MaConnexion;
 
 public class MaterielDAO {
@@ -12,8 +15,7 @@ public class MaterielDAO {
 	 * @param connexion
 	 */
 	public MaterielDAO()
-	{
-	}
+	{}
 	
 	/**
 	 * Permet d'ajouter un matériel dans la base de données
@@ -116,6 +118,41 @@ public class MaterielDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Permet de récupérer un materiel par son identifiant
+	 * @param idMateriel l'identifiant du matériel à récupérer
+	 */
+	/*public Materiel recupererMaterielParId(int idMateriel)
+	{
+		Materiel materielARetourner=null;
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try
+		{
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?");
+			ps.setInt(1, idMateriel);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				materielARetourner=new Materiel(new SimpleIntegerProperty(rs.getInt("idMateriel")),
+						rs.getString("numImmobMateriel"),rs.getString("nomMateriel"),, null, null, null, null, null, null, null);
+			}
+			return materielARetourner;
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		finally
+		{
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
 	}
 	
 	
