@@ -6,18 +6,18 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class MaConnexion {
-	static private MaConnexion mc;
-	static private Connection c;
+	static private MaConnexion maConnexion;
+	static private Connection connexion;
 	
 	public static synchronized MaConnexion getInstance(){
-		if(mc==null){
-			mc=new MaConnexion();
+		if(maConnexion==null){
+			maConnexion=new MaConnexion();
 		}
-		return mc;
+		return maConnexion;
 	}
 	
 	public Connection getConnexion(){
-		return this.c;
+		return this.connexion;
 	}
 	
 	private MaConnexion(){
@@ -27,7 +27,7 @@ public class MaConnexion {
 		String mdp = p.getProperty("mdp");
 		String user= p.getProperty("user");
 		try {
-			this.c = DriverManager.getConnection(url,user,mdp);
+			this.connexion = DriverManager.getConnection(url,user,mdp);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

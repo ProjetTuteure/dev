@@ -2,81 +2,39 @@ package gpi.metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import utils.MaConnexion;
 
 public class ComposantDAO {
 
-	public ComposantDAO(){}
-	
+	public ComposantDAO() {
+	}
 
-	public int ajouterComposant(Composant composant){
+	public int ajouterComposant(Composant composant) {
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
-		try{
-			connexion=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connexion.prepareStatement("INSERT INTO SITE VALUES (?,?,?,?);");
-			
-			prep.setInt(1, composant.getIdComposant() );
-			prep.setString(2, composant.getNomComposant());
-			prep.setString(3, composant.getcaracteristiqueComposant());
-			prep.setInt(4, composant.getFabricantComposant().getIdFabricant().getValue() );
-			
-			resultat = prep.executeUpdate();
-			return resultat;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connexion.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}
-	
-	public int suprimerComposant(Composant composant){
-		
-		Connection connexion = MaConnexion.getInstance().getConnexion();
-		int resultat;
-		try{
-			connexion=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connexion.prepareStatement("DELETE FROM COMPOSANT WHERE idComposant = ?;");
-			
-			prep.setInt(1, composant.getIdComposant() );
-			resultat = prep.executeUpdate();
-			return resultat;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connexion.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}
-	
-	public int  modifierComposant(Composant composant){
-		Connection connexion = MaConnexion.getInstance().getConnexion();
-		int resultat;
-		try{
-			connexion=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connexion.prepareStatement("UPDATE COMPOSANT SET nomComposant=?, caracteristiqueComposant=?, idFabricant=? WHERE idComposant=?");
-			
+		try {
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion
+					.prepareStatement("INSERT INTO SITE (nomComposant, caracteristiqueComposant, idFabricant)  VALUES (?,?,?);");
+
 			prep.setString(1, composant.getNomComposant());
 			prep.setString(2, composant.getcaracteristiqueComposant());
-			prep.setInt(3, composant.getFabricantComposant().getIdFabricant().getValue());
-			prep.setInt(4,composant.getIdComposant());
+			prep.setInt(3, composant.getFabricantComposant().getIdFabricant()
+					.getValue());
+
 			resultat = prep.executeUpdate();
 			return resultat;
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			try {
 				connexion.close();
 			} catch (SQLException e) {
@@ -84,31 +42,121 @@ public class ComposantDAO {
 			}
 		}
 		return 0;
-		
 	}
-	
-	/*public Composant recupererComposant(int idComposant){
+
+	public int suprimerComposant(Composant composant) {
+
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
-		try{
-			connexion=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connexion.prepareStatement("SELECT * from COMPOSANT WHERE idcomposant=?");
-			
-			prep.setInt(1, idComposant);
-			resultat = prep.execute();
-			resultMeta = resultat.getMetaData();
-			while(resultat.next()){         
-		       	for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-		       		System.out.println(resultat.getObject(i));
-			}
-		}catch(SQLException e){
+		try {
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion
+					.prepareStatement("DELETE FROM COMPOSANT WHERE idComposant = ?;");
+
+			prep.setInt(1, composant.getIdComposant());
+			resultat = prep.executeUpdate();
+			return resultat;
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			try {
 				connexion.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}	
-	}*/
+		}
+		return 0;
+	}
+
+	public int modifierComposant(Composant composant) {
+		Connection connexion = MaConnexion.getInstance().getConnexion();
+		int resultat;
+		try {
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion
+					.prepareStatement("UPDATE COMPOSANT SET nomComposant=?, caracteristiqueComposant=?, idFabricant=? WHERE idComposant=?");
+
+			prep.setString(1, composant.getNomComposant());
+			prep.setString(2, composant.getcaracteristiqueComposant());
+			prep.setInt(3, composant.getFabricantComposant().getIdFabricant()
+					.getValue());
+			prep.setInt(4, composant.getIdComposant());
+			resultat = prep.executeUpdate();
+			return resultat;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+
+	}
+
+	public Composant recupererComposantParId(int idComposant) {
+		FabricantDAO fabricantDAO = new FabricantDAO();
+		Connection connexion = MaConnexion.getInstance().getConnexion();
+		ResultSet resultat;
+		ResultSetMetaData resultMeta;
+		try {
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion
+					.prepareStatement("SELECT * from COMPOSANT WHERE idcomposant=?");
+
+			prep.setInt(1, idComposant);
+			resultat = prep.executeQuery();
+			resultMeta = resultat.getMetaData();
+			String nomComposant = resultat.getString(2);
+			String caracteristiqueComposant = resultat.getString(3);
+			int idFabricant = resultat.getInt(4);
+			return new Composant(new SimpleIntegerProperty(idComposant),
+					nomComposant, caracteristiqueComposant,
+					fabricantDAO.recupererFabricantParId(idFabricant));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	public List recupererAllComposant() {
+		List<Composant> listComposant = new ArrayList<Composant>();
+		FabricantDAO fabricantDAO = new FabricantDAO();
+		Connection connexion = MaConnexion.getInstance().getConnexion();
+		ResultSet resultat;
+		ResultSetMetaData resultMeta;
+		try {
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion
+					.prepareStatement("SELECT * from COMPOSANT");
+			resultat = prep.executeQuery();
+			resultMeta = resultat.getMetaData();
+			while (resultat.next()) {
+				int idComposant = resultat.getInt(1);
+				String nomComposant = resultat.getString(2);
+				String caracteristiqueComposant = resultat.getString(3);
+				int idFabricant = resultat.getInt(4);
+				listComposant.add(new Composant(new SimpleIntegerProperty(
+						idComposant), nomComposant, caracteristiqueComposant,
+						fabricantDAO.recupererFabricantParId(idFabricant)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listComposant;
+	}
 }
