@@ -15,7 +15,8 @@ CREATE TABLE COMPOSANT(
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant))
 
 CREATE TABLE TYPE(
-	nomType varchar(20) PRIMARY KEY,
+	idType int IDENTITY(1,1) PRIMARY KEY,
+	nomType varchar(20),
 	cheminImageType varchar(60))
 
 
@@ -68,7 +69,7 @@ CREATE TABLE PRESTATAIRE(
 	nomPrestataire varchar(20) PRIMARY KEY NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
-	adressePrestataire varchar(50)
+	societePrestataire varchar(50)
 	)
 	
 CREATE TABLE MAINTENANCE(
@@ -104,7 +105,7 @@ CREATE TABLE UTILISE(
 INSERT INTO FABRICANT VALUES ( 'DELL','05.55.66.77.88' , '2 route perdu 87000'),( 'HP','05.55.66.77.88' , '2 route troeuve 87000');
 
 INSERT INTO PRESTATAIRE VALUES ( 'Caillou', 'Pierre', '05.55.69.87.23', 'Caillou et Co.'),( 'Noel', 'Papa', '00.36.65.65.65', 'Pole Nord');
-INSERT INTO TYPE VALUES ('PC','sources/images/pc.jpg'),('Routeur','sources/images/routeur.png'),('Switch','sources/images/switch.jpg'),('Clef 3G','sources/images/cle3G.PNG');
+INSERT INTO TYPE VALUES (1,'PC','sources/images/pc.jpg'),(2,'Routeur','sources/images/routeur.png'),(3,'Switch','sources/images/switch.jpg'),(4,'Clef 3G','sources/images/cle3G.PNG');
 INSERT INTO SITE VALUES ('Agen', 'sources/images/logo-ville-agen0.png'),('Bordeaux', 'sources/images/bordeaux.jpg'),('Chateauroux', 'sources/images/chateauroux.jpg'),('Gueret', 'sources/images/Gueret.jpg'),('Limoges', 'sources/images/limoges.jpg'),('Montlucon', 'sources/images/montlucon.jpg'),('Saint-Agnant', 'sources/images/saintAgnan.png'),('Saint-Junien', 'sources/images/saintJunien.jpg');
 INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','4 rue nimporte ou'),('Fnac','05.55.68.57.41','5 rue je sais pas ou ');
 INSERT INTO FACTURE VALUES ('2011-11-11', 123.5,1),('2012-12-12', 99 ,2);
@@ -147,3 +148,12 @@ INSERT INTO ESTMAINTENU VALUES
 (3,3),
 (3,4),
 (1,4)
+
+CREATE TRIGGER SuppressionRevendeur on REVENDEUR
+AFTER DELETE
+AS BEGIN 
+	declare @idRevendeur int;
+	select @idRevendeur= idRevendeur FROM deleted;
+	delete from facture where idrevendeur = @idrevendeur
+END
+
