@@ -2,6 +2,8 @@ package gpi.view;
 
 import java.io.File;
 
+import javax.swing.JFileChooser;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -13,6 +15,7 @@ import javafx.stage.Stage;
  */
 
 public class AjouterSite {
+	String nomSite,cheminImageSite;
 	@FXML
 	private TextField NameSiteField;
 	@FXML
@@ -99,15 +102,33 @@ public class AjouterSite {
 
 	@FXML
 	private void handleChoose(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open File");
-		File file = fileChooser.showOpenDialog(null); // you could pass a stage
-														// reference here if you
-														// wanted.
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Open File");
+		fileChooser.showOpenDialog(null); // you could pass a stage
+		File file = fileChooser.getSelectedFile();												// reference here if you
+
 
 		if (file != null) {
+			setCheminImageSite(file.getAbsolutePath());
 		}// do something interesting with the file.
 
 	}
+
+	public String getNomSite() {
+		return nomSite;
+	}
+
+	public void setNomSite(String nomSite) {
+		this.nomSite = nomSite;
+	}
+
+	public String getCheminImageSite() {
+		return cheminImageSite;
+	}
+
+	public void setCheminImageSite(String cheminImageSite) {
+		this.cheminImageSite = cheminImageSite;
+	}
+
 
 }
