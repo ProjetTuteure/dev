@@ -81,9 +81,15 @@ public class SupprimerRevendeur {
 		else
 		{
 			Revendeur revendeur=listeRevendeur.get(comboboxrev.getSelectionModel().getSelectedIndex());
-			revendeurDAO.supprimerRevendeur(revendeur);
-			new Popup("Revendeur supprimé !");
-			dialogStage.close();
+			if(revendeurDAO.supprimerRevendeur(revendeur)==true)
+			{
+				dialogStage.close();
+				new Popup("Revendeur supprimé !");
+			}
+			else
+			{
+				new Popup("Echec lors de la suppression");
+			}
 		}
 	}
 

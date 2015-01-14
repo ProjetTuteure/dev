@@ -84,7 +84,7 @@ public class RevendeurDAO {
 	 * Permet de supprimer un revendeur
 	 * @param revendeur le revendeur à supprimer
 	 */
-	public void supprimerRevendeur(Revendeur revendeur)
+	public boolean supprimerRevendeur(Revendeur revendeur)
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -94,6 +94,7 @@ public class RevendeurDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		finally
 		{
@@ -103,9 +104,10 @@ public class RevendeurDAO {
 			}
 			catch(SQLException se)
 			{
-				se.printStackTrace();
+				return false;
 			}
 		}
+		return true;
 	}
 	
 	public List<Revendeur> recupererAllRevendeur()
