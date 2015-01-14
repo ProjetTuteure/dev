@@ -34,6 +34,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label prefHeight="14.0" prefWidth="80.0" text="Dossier Drivers" />
@@ -99,6 +100,11 @@
             <Button mnemonicParsing="false" onAction="#handlesuppUtilisateur" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="14" />
             <Button mnemonicParsing="false" onAction="#handlesuppIntervention" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="15" />
             <Button mnemonicParsing="false" onAction="#handlesuppUtilisation" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="16" />
+            <Label text="Gérer les opérations maintenance" GridPane.rowIndex="17" />
+            <Button mnemonicParsing="false" onAction="#handleaddEstMaintenu" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <Button mnemonicParsing="false" onAction="#handlemodEstMaintenu" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="17" />
+            <Button mnemonicParsing="false" onAction="#handlesuppEstMaintenu" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="17" />
+            <Button mnemonicParsing="false" onAction="#handleBD" text="Changer l'URL de la BD..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
