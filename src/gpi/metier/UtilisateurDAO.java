@@ -124,35 +124,32 @@ public class UtilisateurDAO {
 		}
 		return null;
 	}
-	
-	public ArrayList<Utilisateur> recupererAllUtilisateur(){
-		Connection connection=null;
-		ArrayList<Utilisateur> listUtilisateur=new ArrayList<Utilisateur>();
+
+	public List<Utilisateur> recupererUtilisateurParNom(String nomUtilisateur) {
+		Connection connection = null;
+		List<Utilisateur> list = null; 
 		ResultSet resultat;
-		String nomUtilisateur, prenomUtilisateur, telUtilisateur;
+		String prenomUtilisateur, telUtilisateur;
 		int idUtilisateur;
-		Utilisateur utilisateur;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM UTILISATEUR;");
-			
-			
-			resultat=prep.executeQuery();
-			while(resultat.next()){
-				
-				idUtilisateur=resultat.getInt("idUtilisateur");
-				nomUtilisateur=resultat.getString("nomUtilisateur");
-				prenomUtilisateur=resultat.getString("prenomUtilisateur");
-				telUtilisateur=resultat.getString("telUtilisateur");
-				//System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
-				utilisateur=new Utilisateur(new SimpleIntegerProperty(idUtilisateur),nomUtilisateur,prenomUtilisateur, telUtilisateur);
-				//System.out.println(site);
-				listUtilisateur.add(utilisateur);
+		try {
+			connection = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection
+					.prepareStatement("SELECT * FROM UTILISATEUR WHERE nomUtilisateur=?;");
+
+			prep.setString(1, nomUtilisateur);
+
+			resultat = prep.executeQuery();
+			idUtilisateur = resultat.getInt(1);
+			prenomUtilisateur = resultat.getString(2);
+			telUtilisateur = resultat.getString(3);
+
+			while (resultat.next()){
+				list.add(new Utilisateur(new SimpleIntegerProperty(idUtilisateur), nomUtilisateur, prenomUtilisateur, telUtilisateur));
 			}
-			return listUtilisateur;
-		}catch(SQLException e){
+			return list;
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
@@ -162,6 +159,45 @@ public class UtilisateurDAO {
 		}
 		return null;
 	}
-	
+
+	public ArrayList<Utilisateur> recupererAllUtilisateur() {
+		Connection connection = null;
+		ArrayList<Utilisateur> listUtilisateur = new ArrayList<Utilisateur>();
+		ResultSet resultat;
+		String nomUtilisateur, prenomUtilisateur, telUtilisateur;
+		int idUtilisateur;
+		Utilisateur utilisateur;
+		try {
+			connection = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connection
+					.prepareStatement("SELECT * FROM UTILISATEUR;");
+
+			resultat = prep.executeQuery();
+			while (resultat.next()) {
+
+				idUtilisateur = resultat.getInt("idUtilisateur");
+				nomUtilisateur = resultat.getString("nomUtilisateur");
+				prenomUtilisateur = resultat.getString("prenomUtilisateur");
+				telUtilisateur = resultat.getString("telUtilisateur");
+				// System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
+				utilisateur = new Utilisateur(new SimpleIntegerProperty(
+						idUtilisateur), nomUtilisateur, prenomUtilisateur,
+						telUtilisateur);
+				// System.out.println(site);
+				listUtilisateur.add(utilisateur);
+			}
+			return listUtilisateur;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 
 }

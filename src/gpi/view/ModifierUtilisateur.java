@@ -1,8 +1,16 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gpi.bd.Donnee;
 import gpi.metier.Prestataire;
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import gpi.metier.Utilisateur;
+import gpi.metier.UtilisateurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +23,9 @@ import javafx.stage.Stage;
  */
 
 public class ModifierUtilisateur {
+	int idUtilisateur;
+	String nomUtilisateur, prenomUtilisateur, telUtilisateur;
+
 	@FXML
 	private Stage dialogStage;
 	@FXML
@@ -38,16 +49,24 @@ public class ModifierUtilisateur {
 
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
+	
+	private List<Utilisateur> listeNom;
+	private List<Utilisateur> listePrenom;
+	
+	private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
+		
 		listnom = FXCollections.observableArrayList();
-
-		for (Utilisateur ut : donnee.getUtilisateurData()) {
-			listnom.add(ut.getNomUtilisateur().getValue());
+		listeNom=new ArrayList<Utilisateur>();
+		listeNom=utilisateurDAO.recupererAllUtilisateur();
+		for(Utilisateur utilisateur : listeNom)
+		{
+			listnom.add(utilisateur.getNomUtilisateur().getValue());
 		}
 		comboboxnom.setItems(listnom);
 	}
@@ -98,18 +117,19 @@ public class ModifierUtilisateur {
 	 */
 	@FXML
 	private void handlechange1() {
-		choix1 = true;
-		Utilisateur selected = donnee.getUtilisateur(comboboxnom.getValue());
 		listprenom = FXCollections.observableArrayList();
-
-		for (Utilisateur ut : donnee.getUtilisateurData()) {
-			if (ut.getNomUtilisateur().getValue()
-					.equals(selected.getNomUtilisateur().getValue())) {
+		int indexUtilisateurSelectionne=comboboxnom.getSelectionModel().getSelectedIndex();
+		listePrenom=utilisateurDAO.recupererUtilisateurParNom(listnom.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		Utilisateur selected = listeNom.get(indexUtilisateurSelectionne);
+		
+		
+		for(Utilisateur ut : listePrenom){
+			if(ut.getNomUtilisateur().getValue().equals(selected.getNomUtilisateur().getValue())){
 				listprenom.add(ut.getPrenomUtilisateur().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);
-	}
+		}
 
 	/**
 	 * Cette methode permet de pre remplir les champs lorsqu'un prestataire est
@@ -118,15 +138,12 @@ public class ModifierUtilisateur {
 	@FXML
 	private void handlechange2() {
 		try {
-			if (choix1 = true) {
-				String test = comboboxnom.getValue() + " "
-						+ comboboxprenom.getValue();
-				Utilisateur selected2 = donnee.getUtilisateur2(test);
+				int indexUtilisateurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+				Utilisateur selected2 = listePrenom.get(indexUtilisateurSelectionne);
 
 				nomfield.setText(selected2.getNomUtilisateur().getValue());
 				prenomfield.setText(selected2.getPrenomUtilisateur().getValue());
 				telfield.setText(selected2.getTelUtilisateur().getValue());
-			}
 		} catch (NullPointerException e) {
 
 		}
