@@ -1,16 +1,16 @@
 CREATE TABLE SITE(
-	idSite int PRIMARY KEY,
+	idSite int PRIMARY KEY AUTO_INCREMENT,
 	nomSite varchar(20) NOT NULL,
 	cheminImageSite varchar(60))
 
 CREATE TABLE FABRICANT(
-	idFabricant int PRIMARY KEY,
+	idFabricant int PRIMARY KEY AUTO_INCREMENT,
 	nomFabricant varchar(20) NOT NULL,
 	telFabricant varchar(20),
 	adresseFabricant varchar(50))
 
 CREATE TABLE COMPOSANT(
-	idComposant int PRIMARY KEY,
+	idComposant int PRIMARY KEY AUTO_INCREMENT,
 	nomComposant varchar(20) NOT NULL,
 	caracteristiqueComposant varchar(200),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant))
@@ -21,19 +21,19 @@ CREATE TABLE TYPE(
 	)
 
 CREATE TABLE REVENDEUR(
-	idRevendeur int PRIMARY KEY,
+	idRevendeur int PRIMARY KEY AUTO_INCREMENT,
 	nomRevendeur varchar(20) NOT NULL,
 	telRevendeur varchar(20),
 	adresseRevendeur varchar(50))
 
 CREATE TABLE FACTURE(
-	idFacture int PRIMARY KEY,
+	idFacture int PRIMARY KEY AUTO_INCREMENT,
 	dateFacture DATE NOT NULL,
 	montantFacture float,
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))
 
 CREATE TABLE LOGICIEL(
-	idLogiciel int PRIMARY KEY,
+	idLogiciel int PRIMARY KEY AUTO_INCREMENT,
 	nomLogiciel varchar(40) NOT NULL,
 	versionLogiciel varchar(20),
 	dateExpirationLogiciel DATE,
@@ -44,7 +44,7 @@ CREATE TABLE ETAT(
 )
 
 CREATE TABLE MATERIEL(
-	idMateriel int PRIMARY KEY,
+	idMateriel int PRIMARY KEY AUTO_INCREMENT,
 	numImmobMateriel varchar(20) NOT NULL,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
@@ -67,7 +67,7 @@ CREATE TABLE ESTINSTALLE(
 	PRIMARY KEY(idMateriel,idLogiciel))
 
 CREATE TABLE PRESTATAIRE(
-	idPrestataire int PRIMARY KEY,
+	idPrestataire int PRIMARY KEY AUTO_INCREMENT,
 	nomPrestataire varchar(20) NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
@@ -75,7 +75,7 @@ CREATE TABLE PRESTATAIRE(
 	)
 	
 CREATE TABLE MAINTENANCE(
-	idMaintenance int PRIMARY KEY,
+	idMaintenance int PRIMARY KEY AUTO_INCREMENT,
 	dateMaintenance DATE NOT NULL,
 	objetMaintenance varchar(30),
 	descriptionMaintenance varchar(400),
@@ -93,7 +93,7 @@ CREATE TABLE ESTMAINTENU(
 	PRIMARY KEY(idMaintenance,idMateriel))
 
 CREATE TABLE UTILISATEUR(
-	idUtilisateur int PRIMARY KEY,
+	idUtilisateur int PRIMARY KEY AUTO_INCREMENT,
 	nomUtilisateur varchar(20) NOT NULL,
 	prenomUtilisateur varchar(20) NOT NULL,
 	telUtilisateur varchar(20))

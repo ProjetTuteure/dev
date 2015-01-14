@@ -25,7 +25,7 @@ public class MaterielDAO {
 		try {
 			Connection connexion=MaConnexion.getInstance().getConnexion();
 			PreparedStatement ps=connexion.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
-					+ "repertoireDriver,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
+					+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1,materiel.getNumImmobMateriel().getValue());
 			ps.setString(2,materiel.getNomMateriel().getValue());
@@ -34,8 +34,8 @@ public class MaterielDAO {
 			ps.setString(5,materiel.getModeleMateriel());
 			ps.setString(6,materiel.getEtatMateriel().toString());
 			ps.setString(7,materiel.getFactureMateriel().getNumFacture());
-			ps.setString(8,materiel.getFabricantMateriel().getIdFabricant().toString());
-			ps.setString(9,materiel.getSiteMateriel().getIdSiteProperty().toString());
+			ps.setInt(8,materiel.getFabricantMateriel().getIdFabricant().getValue());
+			ps.setInt(9,materiel.getSiteMateriel().getIdSiteProperty().getValue());
 			ps.setString(10,materiel.getTypeMateriel().getNomType().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
