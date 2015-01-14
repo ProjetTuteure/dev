@@ -1,7 +1,11 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gpi.bd.Donnee;
 import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,6 +37,12 @@ public class ModifierRevendeur {
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listrev;
+	
+	private List<Revendeur> listeRevendeur;
+	
+	private RevendeurDAO revendeurDAO=new RevendeurDAO();
+	
+	private int indexRevendeur;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
@@ -40,9 +50,11 @@ public class ModifierRevendeur {
 	@FXML
 	private void initialize() {
 		listrev = FXCollections.observableArrayList();
-
-		for (Revendeur rev : donneesite.getRevendeurData()) {
-			listrev.add(rev.getNomRevendeur().getValue());
+		listeRevendeur=new ArrayList<Revendeur>();
+		listeRevendeur=revendeurDAO.getAllRevendeur();
+		for(Revendeur revendeur : listeRevendeur)
+		{
+			listrev.add(revendeur.getNomRevendeur().getValue());
 		}
 		comboboxrev.setItems(listrev);
 	}
@@ -72,10 +84,8 @@ public class ModifierRevendeur {
 	 */
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**
@@ -93,8 +103,9 @@ public class ModifierRevendeur {
 	 */
 	@FXML
 	private void handlechange() {
-
-		Revendeur selected = donneesite.getRevendeur(comboboxrev.getValue());
+		
+		int indexRevendeurSelectionne=comboboxrev.getSelectionModel().getSelectedIndex();
+		Revendeur selected = listeRevendeur.get(indexRevendeurSelectionne);
 		nomfield.setText(selected.getNomRevendeur().getValue());
 		telfield.setText(selected.getTelRevendeur().getValue());
 		adrfield.setText(selected.getAdresseRevendeur().getValue());
