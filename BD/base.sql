@@ -17,7 +17,8 @@ CREATE TABLE COMPOSANT(
 
 CREATE TABLE TYPE(
 	nomType varchar(20) PRIMARY KEY,
-	cheminImageType varchar(60))
+	cheminImageType varchar(60)
+	)
 
 CREATE TABLE REVENDEUR(
 	idRevendeur int PRIMARY KEY,
@@ -45,7 +46,7 @@ CREATE TABLE MATERIEL(
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
 	modeleMateriel varchar(20),
-	etat varchar(20),
+	etat varchar(20) FOREIGN KEY REFERENCES ETAT(etat),
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant),
 	idSite int FOREIGN KEY REFERENCES SITE(idSite),
@@ -97,6 +98,10 @@ CREATE TABLE UTILISE(
 	idMateriel int FOREIGN KEY REFERENCES MATERIEL(idMateriel),
 	idUtilisateur int FOREIGN KEY REFERENCES UTILISATEUR(idUtilisateur),
 	PRIMARY KEY(idMateriel,idUtilisateur))
+	
+CREATE TABLE ETAT(
+	etat varchar(20) PRIMARY KEY
+)
 
 
 INSERT INTO FABRICANT VALUES (1, 'DELL','05.55.66.77.88' , '2 route perdu 87000'),(2, 'HP','05.55.66.77.88' , '2 route troeuve 87000');
@@ -111,9 +116,9 @@ INSERT INTO MATERIEL VALUES (1,'1IMMO','pc-martine','2012-11-11','/driver/pc-mar
 (2,'2IMMO','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,'PC'),
 (3,'3IMMO','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,'PC'),
 (4,'4IMMO','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,'PC'),
-(5,'5IMMO','PC3','2014-02-05','/driver/PC3','XXX5','EN_MARCHE',2,1,3,'PC'),
+(5,'5IMMO','PC3','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,'PC'),
 (6,'6IMMO','Routeur1','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,'PC'),
-(7,'7IMMO','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_MARCHE',2,1,4,'PC')
+(7,'7IMMO','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,'PC')
 
 INSERT INTO LOGICIEL VALUES (1,'Microsoft Office 2012','1.0','2014-10-01',1)
 
