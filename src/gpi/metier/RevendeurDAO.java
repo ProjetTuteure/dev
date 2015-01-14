@@ -139,4 +139,43 @@ public class RevendeurDAO {
 		}
 		return listeRevendeur;
 	}
+	
+	/**
+	 * Retourne un revendeur par son id
+	 * @param idRevendeur l'id du revendeur à retourner
+	 * @return revendeur le revendeur correspondant à l'id passé en paramètre
+	 */
+	public Revendeur getRevendeurById(int idRevendeur)
+	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		Revendeur revendeurARetourner=null;
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM REVENDEUR WHERE idRevendeur=?");
+			ps.setInt(1,idRevendeur);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				revendeurARetourner=new Revendeur(new SimpleIntegerProperty(rs.getInt("idRevendeur")),
+						rs.getString("nomRevendeur"),
+						rs.getString("telRevendeur"),
+						rs.getString("adresseRevendeur"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+		}
+		return revendeurARetourner;
+	}
 }
