@@ -2,12 +2,18 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Kevin
@@ -24,7 +30,11 @@ public class ModifierFabricant {
 
 	private Donnee donneeFabr = new Donnee();
 
-	private ObservableList<String> listFabr;
+	private ObservableList<String> listFabricant;
+
+	private List<Integer> integerList;
+
+	private FabricantDAO fabricantDAO=new FabricantDAO();
 
 	@FXML
 	private TextField nomfield;
@@ -34,16 +44,16 @@ public class ModifierFabricant {
 	private TextField telfield;
 
 	/**
-	 * Initialise les donn�es Ajoute les donn�es aux combobox
+	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listFabr = FXCollections.observableArrayList();
-
-		for (Fabricant fab : donneeFabr.getFabricantData()) {
-			listFabr.add(fab.getNomFabricant().getValue());
+		listFabricant = FXCollections.observableArrayList();
+		for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+			listFabricant.add(fabricant.getNomFabricant().getValue());
+			integerList.add(fabricant.getIdFabricant().getValue());
 		}
-		comboboxfabr.setItems(listFabr);
+		comboboxfabr.setItems(listFabricant);
 	}
 
 	/**
@@ -92,7 +102,7 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handlechange() {
-		Fabricant selected = donneeFabr.getFabricant(comboboxfabr.getValue());
+		Fabricant selected=fabricantDAO.recupererFabricantParId(integerList.get(listFabricant.indexOf(comboboxfabr.getValue())));
 		nomfield.setText(selected.getNomFabricant().getValue());
 		telfield.setText(selected.getTelFabricant().getValue());
 		adrfield.setText(selected.getAdresseFabricant().getValue());
