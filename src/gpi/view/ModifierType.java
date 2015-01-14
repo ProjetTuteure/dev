@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Type;
+import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.File;
 
 /**
@@ -18,6 +20,10 @@ import java.io.File;
  */
 
 public class ModifierType {
+	private String nomType;
+	private String cheminImageType;
+
+
 
 	@FXML
 	private Stage dialogStage;
@@ -27,7 +33,7 @@ public class ModifierType {
 	@FXML
 	private ComboBox<String> comboboxTypeMod;
 
-	private Donnee donneetype = new Donnee();
+	TypeDAO typeDAO=new TypeDAO();
 
 	private ObservableList<String> listNom;
 
@@ -40,8 +46,7 @@ public class ModifierType {
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
-
-		for (Type type : donneetype.getTypeData()) {
+		for (Type type : typeDAO.recupererAllType()) {
 			listNom.add(type.getNomTypeString());
 		}
 		comboboxTypeMod.setItems(listNom);
@@ -74,6 +79,9 @@ public class ModifierType {
 	private void handleOk() {
 
 		okClicked = true;
+		System.out.println(comboboxTypeMod.getValue());
+		System.out.println(typefield.getCharacters());
+		typeDAO.modifierType(new Type("Routeur",this.getCheminImageType()));
 		dialogStage.close();
 
 	}
@@ -96,11 +104,14 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handleChoose(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open File");
-		File file = fileChooser.showOpenDialog(null);
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Open File");
+		fileChooser.showOpenDialog(null); // you could pass a stage
+		File file = fileChooser.getSelectedFile();												// reference here if you
+
 
 		if (file != null) {
+			this.setCheminImageType(file.getAbsolutePath());
 		}
 
 	}
@@ -111,9 +122,24 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handlechange() {
-		Type selected = donneetype.gettype(comboboxTypeMod.getValue());
-
+		Type selected = typeDAO.recupererTypeParId(comboboxTypeMod.getValue());
 		typefield.setText(selected.getNomType().getValue());
+	}
+
+	public String getNomType() {
+		return nomType;
+	}
+
+	public void setNomType(String nomType) {
+		this.nomType = nomType;
+	}
+
+	public String getCheminImageType() {
+		return cheminImageType;
+	}
+
+	public void setCheminImageType(String cheminImageType) {
+		this.cheminImageType = cheminImageType;
 	}
 
 }

@@ -60,4 +60,12 @@ public class Type {
     public void setCheminImageType(String cheminImageType) {
         this.cheminImageType.setValue(cheminImageType);
     }
+
+    @Override
+    public String toString() {
+        return "Type{" +
+                "nomType=" + nomType +
+                ", cheminImageType=" + cheminImageType +
+                '}';
+    }
 }

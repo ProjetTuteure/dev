@@ -59,7 +59,7 @@ public class TypeDAO {
         int nombreLigneAffectee=0;
         try{
             connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TYPE WHERE idSite=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TYPE WHERE nomType=?;");
 
             preparedStatement.setString(1, type.getNomTypeString());
 
@@ -102,17 +102,16 @@ public class TypeDAO {
         ResultSet resultat;
         Type type=null;
         try{
-            //connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TYPE WHERE nomType=?;");
+            connection=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT nomType,cheminImageType FROM TYPE WHERE nomType=?;");
             preparedStatement.setString(1, nomType);
             resultat=preparedStatement.executeQuery();
-
+            resultat.next();
             type=new Type(nomType,resultat.getString("cheminImageType"));
         }catch(SQLException e){
             e.printStackTrace();
         }finally{
-            try {
-                connection.close();
+            try {connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
