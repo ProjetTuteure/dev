@@ -626,6 +626,63 @@ public class ParametreController implements Initializable {
 
 		}
 	}
+	
+	/**
+	 * Action lorsqu'un le bouton ajouter type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton ajouter uitilisation
+	 */
+	@FXML
+	private void handleaddEstMaintenu(ActionEvent event) {
+		estMaintenu mt = new estMaintenu(null, null);
+		boolean okClicked = MainApp.showAddEstMaintenuDialog(mt);
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier uitilisation
+	 */
+	@FXML
+	private void handlemodEstMaintenu(ActionEvent event) {
+		boolean okClicked = MainApp.showModEstMaintenuDialog();
+		if (okClicked) {
+
+		}
+	}
+
+	/**
+	 * Action lorsqu'un le bouton supprimer type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton supprimer uitilisation
+	 */
+	@FXML
+	private void handlesuppEstMaintenu(ActionEvent event) {
+		boolean okClicked = MainApp.showSuppEstMaintenuDialog();
+		if (okClicked) {
+
+		}
+	}
+	
+	/**
+	 * Action lorsqu'un le bouton modifier type est clique
+	 * 
+	 * @param event
+	 *            un evenement sur le bouton modifier uitilisation
+	 */
+	@FXML
+	private void handleBD(ActionEvent event) {
+		boolean okClicked = MainApp.showModBDDialog();
+		if (okClicked) {
+
+		}
+	}
 
 	
 	/**
