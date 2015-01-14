@@ -18,8 +18,8 @@ public class MaterielDAO {
 	{}
 	
 	/**
-	 * Permet d'ajouter un matériel dans la base de données
-	 * @param materiel le matériel à ajouter dans la base de données
+	 * Permet d'ajouter un matï¿½riel dans la base de donnï¿½es
+	 * @param materiel le matï¿½riel ï¿½ ajouter dans la base de donnï¿½es
 	 */
 	public void ajouterMateriel(Materiel materiel)
 	{
@@ -35,7 +35,7 @@ public class MaterielDAO {
 			ps.setString(5,materiel.getModeleMateriel());
 			ps.setString(6,materiel.getEtatMateriel().toString());
 			ps.setString(7,materiel.getFactureMateriel().getNumFacture());
-			ps.setInt(8,materiel.getFabricantMateriel().getIdFabricant().getValue());
+			//ps.setInt(8,materiel.getFabricantMateriel().getIdFabricant().getValue());
 			ps.setInt(9,materiel.getSiteMateriel().getIdSiteProperty().getValue());
 			ps.setString(10,materiel.getTypeMateriel().getNomType().getValue());
 			ps.executeUpdate();
@@ -56,7 +56,7 @@ public class MaterielDAO {
 	
 	/**
 	 * Permet de modifier un materiel
-	 * @param materiel le materiel à modifier
+	 * @param materiel le materiel ï¿½ modifier
 	 */
 	public void modifierMateriel(Materiel materiel)
 	{
@@ -72,7 +72,7 @@ public class MaterielDAO {
 			ps.setString(5,materiel.getModeleMateriel());
 			ps.setString(6,materiel.getEtatMateriel().toString());
 			ps.setString(7,materiel.getFactureMateriel().getNumFacture());
-			ps.setInt(8,materiel.getFabricantMateriel().getIdFabricant().getValue());
+			//ps.setInt(8,materiel.getFabricantMateriel().getIdFabricant().getValue());
 			ps.setInt(9,materiel.getSiteMateriel().getIdSiteProperty().getValue());
 			ps.setString(10,materiel.getTypeMateriel().getNomType().getValue());
 			ps.setInt(11, materiel.getIdMateriel().getValue());
@@ -94,7 +94,7 @@ public class MaterielDAO {
 	
 	/**
 	 * Permet de supprimer un materiel
-	 * @param materiel le materiel à supprimer
+	 * @param materiel le materiel ï¿½ supprimer
 	 */
 	public void supprimerMateriel(Materiel materiel)
 	{
@@ -121,8 +121,8 @@ public class MaterielDAO {
 	}
 	
 	/**
-	 * Permet de récupérer un materiel par son identifiant
-	 * @param idMateriel l'identifiant du matériel à récupérer
+	 * Permet de rï¿½cupï¿½rer un materiel par son identifiant
+	 * @param idMateriel l'identifiant du matï¿½riel ï¿½ rï¿½cupï¿½rer
 	 */
 	/*public Materiel recupererMaterielParId(int idMateriel)
 	{

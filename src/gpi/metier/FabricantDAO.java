@@ -17,12 +17,10 @@ public class FabricantDAO {
         int nombreLigneAffectee=0;
         try {
             connection= MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO FABRICANT (idFabricant, nomFabricant,telFabricant,adresseFabricant) VALUES(?,?,?,?)");
-
-            preparedStatement.setInt(1, fabricant.getIdFabricant().getValue());
-            preparedStatement.setString(2,fabricant.getNomFabricantString());
-            preparedStatement.setString(3,fabricant.getTelFabricant().getValue());
-            preparedStatement.setString(4,fabricant.getAdresseFabricant().getValue());
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO FABRICANT (nomFabricant,telFabricant,adresseFabricant) VALUES(?,?,?)");
+            preparedStatement.setString(1,fabricant.getNomFabricantString());
+            preparedStatement.setString(2,fabricant.getTelFabricant().getValue());
+            preparedStatement.setString(3,fabricant.getAdresseFabricant().getValue());
 
             nombreLigneAffectee=preparedStatement.executeUpdate();
         } catch (SQLException e) {

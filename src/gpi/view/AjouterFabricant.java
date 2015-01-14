@@ -1,6 +1,9 @@
 package gpi.view;
 
+import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -8,14 +11,28 @@ import javafx.stage.Stage;
  */
 
 public class AjouterFabricant {
+	private String nomFabricant;
+	private String telFabricant;
+	private String adresseFabricant;
+
 	@FXML
 	private Stage dialogStage;
 
 	@FXML
 	private boolean okClicked = false;
 
+	@FXML
+	private TextField nomFabricantField;
+
+	@FXML
+	private TextField telFabricantField;
+
+	@FXML
+	private TextField adresseFabricantField;
+
+	private FabricantDAO fabricantDAO=new FabricantDAO();
 	/**
-	 * Initialise les données
+	 * Initialise les donnï¿½es
 	 */
 	@FXML
 	private void initialize() {
@@ -47,10 +64,12 @@ public class AjouterFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-
+		this.setNomFabricant(nomFabricantField.getText());
+		this.setAdresseFabricant(adresseFabricantField.getText());
+		this.setTelFabricant(telFabricantField.getText());
+		fabricantDAO.ajouterFabricant(new Fabricant(null,this.getNomFabricant(),this.getAdresseFabricant(),this.getTelFabricant()));
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**
@@ -60,5 +79,29 @@ public class AjouterFabricant {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+
+	public String getNomFabricant() {
+		return nomFabricant;
+	}
+
+	public void setNomFabricant(String nomFabricant) {
+		this.nomFabricant = nomFabricant;
+	}
+
+	public String getTelFabricant() {
+		return telFabricant;
+	}
+
+	public void setTelFabricant(String telFabricant) {
+		this.telFabricant = telFabricant;
+	}
+
+	public String getAdresseFabricant() {
+		return adresseFabricant;
+	}
+
+	public void setAdresseFabricant(String adresseFabricant) {
+		this.adresseFabricant = adresseFabricant;
 	}
 }
