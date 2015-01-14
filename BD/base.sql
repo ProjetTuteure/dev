@@ -39,6 +39,10 @@ CREATE TABLE LOGICIEL(
 	dateExpirationLogiciel DATE,
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture))
 
+CREATE TABLE ETAT(
+	etat varchar(20) PRIMARY KEY
+)
+
 CREATE TABLE MATERIEL(
 	idMateriel int PRIMARY KEY,
 	numImmobMateriel varchar(20) NOT NULL,
@@ -99,10 +103,6 @@ CREATE TABLE UTILISE(
 	idUtilisateur int FOREIGN KEY REFERENCES UTILISATEUR(idUtilisateur),
 	PRIMARY KEY(idMateriel,idUtilisateur))
 	
-CREATE TABLE ETAT(
-	etat varchar(20) PRIMARY KEY
-)
-
 
 INSERT INTO FABRICANT VALUES (1, 'DELL','05.55.66.77.88' , '2 route perdu 87000'),(2, 'HP','05.55.66.77.88' , '2 route troeuve 87000');
 
@@ -111,6 +111,7 @@ INSERT INTO TYPE VALUES ('PC','sources/images/pc.jpg'),('Routeur','sources/image
 INSERT INTO SITE VALUES (1, 'Agen', 'sources/images/logo-ville-agen0.png'),(2, 'Bordeaux', 'sources/images/bordeaux.jpg'),(3, 'Chateauroux', 'sources/images/chateauroux.jpg'),(4, 'Gueret', 'sources/images/Gueret.jpg'),(5, 'Limoges', 'sources/images/limoges.jpg'),(6, 'Montlucon', 'sources/images/montlucon.jpg'),(7, 'Saint-Agnant', 'sources/images/saintAgnan.png'),(8, 'Saint-Junien', 'sources/images/saintJunien.jpg');
 INSERT INTO REVENDEUR VALUES (1,'Darty','05.55.21.36.54','4 rue nimporte ou'),(2,'Fnac','05.55.68.57.41','5 rue je sais pas ou ');
 INSERT INTO FACTURE VALUES (1, '2011-11-11', 123.5,1),(2, '2012-12-12', 99 ,2);
+INSERT INTO ETAT VALUES ('EN_MARCHE'),('HS'),('EN_PANNE')
 
 INSERT INTO MATERIEL VALUES (1,'1IMMO','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,'PC'),
 (2,'2IMMO','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,'PC'),
