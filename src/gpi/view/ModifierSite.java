@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,12 +13,19 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JFileChooser;
 
 /**
  * Created by Kevin
  */
 
 public class ModifierSite {
+	int idSite;
+	String nomSite,cheminImageSite;
 	@FXML
 	private TextField NameSiteField;
 
@@ -31,21 +39,24 @@ public class ModifierSite {
 	@FXML
 	private ComboBox<String> comboboxSiteMod;
 
-	private Donnee donneesite = new Donnee();
-
-	private ObservableList<String> listNom;
+	private ObservableList<String> listSiteObservable;
+	ArrayList<Site> listSite;
+	
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
-		for (Site site : donneesite.getSiteData()) {
-			listNom.add(site.getNomSiteString());
+		SiteDAO siteDAO=new SiteDAO();
+		
+		listSite=new ArrayList<Site>();
+		listSiteObservable = FXCollections.observableArrayList();
+		listSite=siteDAO.recupererAllSite();
+		for (Site site : listSite){
+			listSiteObservable.add(site.getIdSite()+"-"+site.getNomSiteString());
 		}
-		comboboxSiteMod.setItems(listNom);
+		comboboxSiteMod.setItems(listSiteObservable);
 	}
 
 	/**
@@ -84,7 +95,9 @@ public class ModifierSite {
 		// a voir pour la suite
 		// if (isInputValid()) {
 		// site.setNomSte(NameSiteField.getText());
-
+		SiteDAO siteDAO=new SiteDAO();
+		setNomSite(NameSiteField.getText());
+		siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
 		okClicked = true;
 		dialogStage.close();
 		// }
@@ -127,14 +140,15 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handleChoose(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open File");
-		File file = fileChooser.showOpenDialog(null); // you could pass a stage
-														// reference here if you
-														// wanted.
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Open File");
+		fileChooser.showOpenDialog(null); // you could pass a stage
+		File file = fileChooser.getSelectedFile();												// reference here if you
+
 
 		if (file != null) {
-		}// do something interesting with the file.
+			setCheminImageSite(file.getAbsolutePath());
+		}
 
 	}
 
@@ -144,7 +158,43 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handlechange(ActionEvent event) {
-		NameSiteField.setText(comboboxSiteMod.getValue());
+		String selected=comboboxSiteMod.getValue();
+		String[] donnees=selected.split("-");
+		String nom=donnees[1];
+		NameSiteField.setText(nom);
+		int id=Integer.parseInt(donnees[0]);
+		setIdSite(id);
+		setNomSite(nom);
+		
+		for(Site site : listSite){
+			if(site.getIdSite()==id){
+				setCheminImageSite(site.getCheminImageSite());
+			}
+		}
+	}
+
+	public int getIdSite() {
+		return idSite;
+	}
+
+	public void setIdSite(int idSite) {
+		this.idSite = idSite;
+	}
+
+	public String getNomSite() {
+		return nomSite;
+	}
+
+	public void setNomSite(String nomSite) {
+		this.nomSite = nomSite;
+	}
+
+	public String getCheminImageSite() {
+		return cheminImageSite;
+	}
+
+	public void setCheminImageSite(String cheminImageSite) {
+		this.cheminImageSite = cheminImageSite;
 	}
 
 }

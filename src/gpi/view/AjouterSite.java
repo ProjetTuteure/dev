@@ -1,5 +1,8 @@
 package gpi.view;
 
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
+
 import java.io.File;
 
 import javax.swing.JFileChooser;
@@ -65,12 +68,11 @@ public class AjouterSite {
 	 */
 	@FXML
 	private void handleOk() {
+		SiteDAO siteDAO = new SiteDAO();
 		// if (isInputValid()) {
-		// site.setNomSte(NameSiteField.getText());
-
-		okClicked = true;
+		setNomSite(NameSiteField.getText());
+		siteDAO.ajouterSite(new Site(0,getNomSite(),getCheminImageSite()));
 		dialogStage.close();
-		// }
 	}
 
 	/**

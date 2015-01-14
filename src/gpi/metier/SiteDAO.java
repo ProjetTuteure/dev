@@ -23,7 +23,7 @@ public class SiteDAO {
 			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE(nomSite,cheminImageSite) VALUES (?,?);");
 			
 			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSiteProperty().toString());
+			prep.setString(2, site.getCheminImageSiteProperty().getValue());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -48,7 +48,7 @@ public class SiteDAO {
 			PreparedStatement prep = connection.prepareStatement("UPDATE SITE SET nomSite=?, cheminImageSite=? WHERE idSite=?;");
 			
 			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSiteProperty().toString());
+			prep.setString(2, site.getCheminImageSite());
 			prep.setInt(3, site.getIdSite());
 			
 			resultat=prep.executeUpdate();
@@ -120,10 +120,11 @@ public class SiteDAO {
 	
 	public ArrayList<Site> recupererAllSite(){
 		Connection connection=null;
-		List<Site> listSite=new ArrayList<Site>();
+		ArrayList<Site> listSite=new ArrayList<Site>();
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
 		int idSite;
+		Site site;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
@@ -135,8 +136,12 @@ public class SiteDAO {
 				idSite=resultat.getInt("idSite");
 				nomSite=resultat.getString("nomSite");
 				cheminImageSite=resultat.getString("cheminImageSite");
-				listSite.add(new Site(idSite,nomSite,cheminImageSite));
+				//System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
+				site=new Site(idSite,nomSite,cheminImageSite);
+				//System.out.println(site);
+				listSite.add(site);
 			}
+			return listSite;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

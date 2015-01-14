@@ -67,5 +67,10 @@ public class Site {
 	public void setCheminImageSite(String cheminImageSite) {
 		this.cheminImageSite.set(cheminImageSite);
 	}
+	@Override
+	public String toString() {
+		return "Site [idSite=" + idSite.getValue() + ", nomSite=" + nomSite.getValue()
+				+ ", cheminImageSite=" + cheminImageSite.getValue() + "]";
+	}
 
 }
