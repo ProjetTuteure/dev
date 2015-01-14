@@ -1232,13 +1232,57 @@ public class MainApp extends Application {
 	}
 
 	public static boolean showSuppInterventionDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/supprimerIntervention.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer une intervention");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			SupprimerIntervention controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showAddUtilisationDialog(Utilise util) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/ajouterUtilisation.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Ajouter une utilisation");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			AjouterUtilisation controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showModUtilisationDialog() {
