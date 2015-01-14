@@ -1,10 +1,21 @@
 package gpi.view;
 
+
+import utils.PopupErreur;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -61,11 +72,17 @@ public class AjouterRevendeur {
 	@FXML
 	private void handleOk() {
 		Revendeur revendeurAAjouter;
-		
-		revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
-		rdao.ajouterRevendeur(revendeurAAjouter);
-		okClicked = true;
-		dialogStage.close();
+		if(nomRevendeur.getText().equals(""))
+		{
+			new PopupErreur("Nom du revendeur");
+		}
+		else
+		{
+			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
+			rdao.ajouterRevendeur(revendeurAAjouter);
+			okClicked = true;
+			dialogStage.close();
+		}
 	}
 
 	/**
