@@ -1,7 +1,7 @@
 package gpi.view;
 
 
-import utils.PopupErreur;
+import utils.Popup;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -74,7 +74,7 @@ public class AjouterRevendeur {
 		Revendeur revendeurAAjouter;
 		if(nomRevendeur.getText().equals(""))
 		{
-			new PopupErreur("Nom du revendeur");
+			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 		}
 		else
 		{

@@ -2,8 +2,14 @@ package gpi.metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.MaConnexion;
 
 public class RevendeurDAO {
@@ -100,5 +106,37 @@ public class RevendeurDAO {
 				se.printStackTrace();
 			}
 		}
+	}
+	
+	public List<Revendeur> getAllRevendeur()
+	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		List<Revendeur> listeRevendeur=new ArrayList<>();
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM REVENDEUR");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				listeRevendeur.add(new Revendeur(new SimpleIntegerProperty(rs.getInt("idRevendeur")),
+						rs.getString("nomRevendeur"),
+						rs.getString("telRevendeur"),
+						rs.getString("adresseRevendeur")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+		}
+		return listeRevendeur;
 	}
 }
