@@ -87,7 +87,7 @@ public class FabricantDAO {
             Statement statement = connection.createStatement();
             resultat=statement.executeQuery("SELECT * FROM FABRICANT");
             while(resultat.next()){
-                fabricantList.add(new Fabricant(new SimpleIntegerProperty(resultat.getInt("idFabricant")),resultat.getString("nomFabricant"),resultat.getString("telFabricant"),resultat.getString("adresseFabricant")));
+                fabricantList.add(new Fabricant(resultat.getInt("idFabricant"),resultat.getString("nomFabricant"),resultat.getString("telFabricant"),resultat.getString("adresseFabricant")));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -105,12 +105,12 @@ public class FabricantDAO {
         ResultSet resultat;
         Fabricant fabricant=null;
         try{
-            //connection=MaConnexion.getInstance().getConnexion();
+            connection=MaConnexion.getInstance().getConnexion();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM FABRICANT WHERE idFabricant=?;");
             preparedStatement.setInt(1, idFabricant);
             resultat=preparedStatement.executeQuery();
-
-            fabricant=new Fabricant(new SimpleIntegerProperty(idFabricant),resultat.getString("nomFabricant"),resultat.getString("telFabricant"),resultat.getString("adresseFabricant"));
+            resultat.next();
+            fabricant=new Fabricant(idFabricant,resultat.getString("nomFabricant"),resultat.getString("telFabricant"),resultat.getString("adresseFabricant"));
         }catch(SQLException e){
             e.printStackTrace();
         }finally{

@@ -67,7 +67,7 @@ public class AjouterFabricant {
 		this.setNomFabricant(nomFabricantField.getText());
 		this.setAdresseFabricant(adresseFabricantField.getText());
 		this.setTelFabricant(telFabricantField.getText());
-		fabricantDAO.ajouterFabricant(new Fabricant(null,this.getNomFabricant(),this.getAdresseFabricant(),this.getTelFabricant()));
+		fabricantDAO.ajouterFabricant(new Fabricant(0,this.getNomFabricant(),this.getAdresseFabricant(),this.getTelFabricant()));
 		okClicked = true;
 		dialogStage.close();
 	}

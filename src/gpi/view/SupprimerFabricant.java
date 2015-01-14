@@ -2,11 +2,17 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kevin
@@ -21,21 +27,24 @@ public class SupprimerFabricant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 
-	private Donnee donneesite = new Donnee();
+	private FabricantDAO fabricantDAO=new FabricantDAO();
 
-	private ObservableList<String> listNom;
+	private ObservableList<String> listFabricantObservable;
+
+	private List<Fabricant> listFabricant;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
-		for (Fabricant fb : donneesite.getFabricantData()) {
-			listNom.add(fb.getNomFabricantString());
+		listFabricantObservable = FXCollections.observableArrayList();
+		listFabricant=new ArrayList<Fabricant>();
+		listFabricant=fabricantDAO.recupererAllFabricant();
+		for (Fabricant fabricant : listFabricant) {
+			listFabricantObservable.add(fabricant.getNomFabricantString());
 		}
-		comboboxfabr.setItems(listNom);
+		comboboxfabr.setItems(listFabricantObservable);
 	}
 
 	/**
@@ -63,7 +72,9 @@ public class SupprimerFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-
+		int selected=comboboxfabr.getSelectionModel().getSelectedIndex();
+		int id=listFabricant.get(selected).getIdFabricant().getValue();
+		fabricantDAO.supprimerFabricant(new Fabricant(id, null, null,null));
 		okClicked = true;
 		dialogStage.close();
 

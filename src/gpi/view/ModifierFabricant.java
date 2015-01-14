@@ -3,6 +3,7 @@ package gpi.view;
 import gpi.bd.Donnee;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import java.util.Map;
  */
 
 public class ModifierFabricant {
+	private int idFabriquant;
 
 	@FXML
 	private Stage dialogStage;
@@ -28,20 +30,17 @@ public class ModifierFabricant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 
-	private Donnee donneeFabr = new Donnee();
-
 	private ObservableList<String> listFabricant;
-
-	private List<Integer> integerList;
+	List<Fabricant> list;
 
 	private FabricantDAO fabricantDAO=new FabricantDAO();
 
 	@FXML
-	private TextField nomfield;
+	private TextField nomField;
 	@FXML
-	private TextField adrfield;
+	private TextField adresseField;
 	@FXML
-	private TextField telfield;
+	private TextField telField;
 
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
@@ -49,9 +48,9 @@ public class ModifierFabricant {
 	@FXML
 	private void initialize() {
 		listFabricant = FXCollections.observableArrayList();
-		for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+		list=fabricantDAO.recupererAllFabricant();
+		for (Fabricant fabricant : list) {
 			listFabricant.add(fabricant.getNomFabricant().getValue());
-			integerList.add(fabricant.getIdFabricant().getValue());
 		}
 		comboboxfabr.setItems(listFabricant);
 	}
@@ -72,7 +71,7 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-
+		fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomField.getText(),adresseField.getText(),telField.getText()));
 		okClicked = true;
 		dialogStage.close();
 
@@ -102,10 +101,19 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handlechange() {
-		Fabricant selected=fabricantDAO.recupererFabricantParId(integerList.get(listFabricant.indexOf(comboboxfabr.getValue())));
-		nomfield.setText(selected.getNomFabricant().getValue());
-		telfield.setText(selected.getTelFabricant().getValue());
-		adrfield.setText(selected.getAdresseFabricant().getValue());
+		this.setIdFabriquant(list.get(comboboxfabr.getSelectionModel().getSelectedIndex()).getIdFabricant().getValue());
+		Fabricant selected=fabricantDAO.recupererFabricantParId(this.getIdFabriquant());
+		nomField.setText(selected.getNomFabricant().getValue());
+		telField.setText(selected.getTelFabricant().getValue());
+		adresseField.setText(selected.getAdresseFabricant().getValue());
+	}
+
+	public int getIdFabriquant() {
+		return idFabriquant;
+	}
+
+	public void setIdFabriquant(int idFabriquant) {
+		this.idFabriquant = idFabriquant;
 	}
 
 }

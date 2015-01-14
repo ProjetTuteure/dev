@@ -109,9 +109,9 @@ public class Donnee {
 	}
 
 	private void remplirFabricantData() {
-		fabricantData.add(new Fabricant(new SimpleIntegerProperty(1), "DELL",
+		fabricantData.add(new Fabricant(1, "DELL",
 				"05.55.66.77.88", "2 route perdu 87000"));
-		fabricantData.add(new Fabricant(new SimpleIntegerProperty(1), "HP",
+		fabricantData.add(new Fabricant(1, "HP",
 				"05.55.66.77.88", "2 route perdu 87000"));
 	}
 

@@ -26,7 +26,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddFabr(ActionEvent event) {
-		Fabricant fabricant = new Fabricant(null, null, null, null);
+		Fabricant fabricant = new Fabricant(0, null, null, null);
 		boolean okClicked = MainApp.showAddFabrDialog(fabricant);
 		if (okClicked) {
 
