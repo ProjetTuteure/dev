@@ -96,6 +96,27 @@ public class MaterielDAO {
 	 */
 	public void supprimerMateriel(Materiel materiel)
 	{
-		
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try
+		{
+			PreparedStatement ps=connexion.prepareStatement("DELETE FROM MATERIEL WHERE idMateriel=?");
+			ps.setInt(1, materiel.getIdMateriel().getValue());
+			ps.executeUpdate();
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		finally
+		{
+			try {
+				connexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	
 }
