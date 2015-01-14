@@ -37,16 +37,18 @@ public class PrestataireDAO {
 		return 0;
 	}
 	
-	public int modifierSite(Site site){
+	public int modifierPrestaire(Prestataire prestataire){
 		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE SITE SET nomPrestataire=?, cheminImageSite=?,  WHERE idSite=?;");
+			PreparedStatement prep = connection.prepareStatement("UPDATE PRESTATAIRE SET nomPrestataire=?, prenomPrestaire=?, telPrestataire=?, societePrestataire=?  WHERE idPrestataire=?;");
 			
-			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSite());
-			prep.setInt(3, site.getIdSite());
+			prep.setString(1, prestataire.getNomPrestataire().getValue());
+			prep.setString(2, prestataire.getPrenomPrestataire().getValue());
+			prep.setString(3, prestataire.getTelPrestataire().getValue());
+			prep.setString(4, prestataire.getSocieteePrestataire().getValue());
+			prep.setInt(5, prestataire.getIdPrestataire().getValue());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -63,14 +65,14 @@ public class PrestataireDAO {
 		return 0;
 	}
 	
-	public int supprimerSite(Site site){
+	public int supprimerSite(Prestataire prestataire){
 		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM SITE WHERE idSite=?;");
+			PreparedStatement prep = connection.prepareStatement("DELETE FROM PRESTATAIRE WHERE idPrestataire=?;");
 			
-			prep.setInt(1, site.getIdSite());
+			prep.setInt(1, prestataire.getIdPrestataire().getValue());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -115,16 +117,16 @@ public class PrestataireDAO {
 		return null;
 	}
 	
-	public ArrayList<Site> recupererAllSite(){
+	public ArrayList<Prestataire> recupererAllPrestataire(){
 		Connection connection=null;
-		ArrayList<Site> listSite=new ArrayList<Site>();
+		ArrayList<Prestataire> listSite=new ArrayList<Prestataire>();
 		ResultSet resultat;
-		String nomSite,cheminImageSite;
+		String nomPrestataire,prenomPrestataire;
 		int idSite;
 		Site site;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM Prestataire;");
 			
 			
 			resultat=prep.executeQuery();
