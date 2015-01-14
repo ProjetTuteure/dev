@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * @author Cedric
  *
  */
-public class PopupErreur {
+public class Popup {
 	private Stage dialogStage;
 	private Button buttonOk;
 	
@@ -24,7 +24,7 @@ public class PopupErreur {
 	 * Construit une popup avec un message d'erreur et un bouton OK
 	 * @param nomChamp le champ qui n'a pas été rempli
 	 */
-	public PopupErreur(String nomChamp)
+	public Popup(String nomChamp)
 	{
 		this.dialogStage=new Stage();
 		this.buttonOk=new Button("Ok");
