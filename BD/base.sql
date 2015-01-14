@@ -17,8 +17,8 @@ CREATE TABLE COMPOSANT(
 
 CREATE TABLE TYPE(
 	nomType varchar(20) PRIMARY KEY,
-	cheminImageType varchar(60)
-	)
+	cheminImageType varchar(60))
+
 
 CREATE TABLE REVENDEUR(
 	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
@@ -50,7 +50,7 @@ CREATE TABLE MATERIEL(
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
 	modeleMateriel varchar(20),
-	etat varchar(20) FOREIGN KEY REFERENCES ETAT(etat),
+	etat varchar(20),
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant),
 	idSite int FOREIGN KEY REFERENCES SITE(idSite),

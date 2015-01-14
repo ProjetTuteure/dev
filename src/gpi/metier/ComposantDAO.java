@@ -148,6 +148,7 @@ public class ComposantDAO {
 						idComposant), nomComposant, caracteristiqueComposant,
 						fabricantDAO.recupererFabricantParId(idFabricant)));
 			}
+			return listComposant;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
