@@ -4,24 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import utils.MaConnexion;
 
-public class SiteDAO {
+public class FactureDAO {
 
-	public SiteDAO(){}
+	public FactureDAO(){}
 	
-	public int ajouterSite(Site site){
+	public int ajouterFacture(Facture facture){
 		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE(nomSite,cheminImageSite) VALUES (?,?);");
+			PreparedStatement prep = connection.prepareStatement("INSERT INTO FACTURE(dateFacture,montantFacture,idRevendeur) VALUES (?,?,?);");
 			
-			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSiteProperty().getValue());
+			prep.setString(1, facture.getDateFacture().toString());
+			prep.setFloat(2, facture.getMontantFacture().get());
+			prep.setInt(3, facture.getRevendeurFacture().getIdRevendeur().get());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -38,16 +37,17 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public int modifierSite(Site site){
+	public int modifierFacture(Facture facture){
 		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE SITE SET nomSite=?, cheminImageSite=? WHERE idSite=?;");
+			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET dateFacture=?, montantFacture=? , idRevendeur=? WHERE idFacture=? ;");
 			
-			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSite());
-			prep.setInt(3, site.getIdSite());
+			prep.setString(1, facture.getDateFacture().toString());
+			prep.setFloat(2, facture.getMontantFacture().get());
+			prep.setInt(3, facture.getRevendeurFacture().getIdRevendeur().get());
+			prep.setInt(4, facture.getIdFacture());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -64,14 +64,14 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public int supprimerSite(Site site){
+	public int supprimerFacture(Facture facture){
 		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM SITE WHERE idSite=?;");
+			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE idFacture=?;");
 			
-			prep.setInt(1, site.getIdSite());
+			prep.setInt(1, facture.getIdFacture());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -88,7 +88,7 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public Site recupererSiteParId(int idSite){
+	public Site recupererFactureParId(int idSite){
 		Connection connection=null;
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
@@ -115,43 +115,4 @@ public class SiteDAO {
 		}
 		return null;
 	}
-	
-	public ArrayList<Site> recupererAllSite(){
-		Connection connection=null;
-		ArrayList<Site> listSite=new ArrayList<Site>();
-		ResultSet resultat;
-		String nomSite,cheminImageSite;
-		int idSite;
-		Site site;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
-			
-			
-			resultat=prep.executeQuery();
-			while(resultat.next()){
-				
-				idSite=resultat.getInt("idSite");
-				nomSite=resultat.getString("nomSite");
-				cheminImageSite=resultat.getString("cheminImageSite");
-				//System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
-				site=new Site(idSite,nomSite,cheminImageSite);
-				//System.out.println(site);
-				listSite.add(site);
-			}
-			return listSite;
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-	
-	
 }

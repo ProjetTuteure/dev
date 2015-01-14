@@ -54,7 +54,7 @@ public class ModifierSite {
 		listSiteObservable = FXCollections.observableArrayList();
 		listSite=siteDAO.recupererAllSite();
 		for (Site site : listSite){
-			listSiteObservable.add(site.getIdSite()+"-"+site.getNomSiteString());
+			listSiteObservable.add(site.getNomSiteString());
 		}
 		comboboxSiteMod.setItems(listSiteObservable);
 	}
@@ -158,11 +158,10 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handlechange(ActionEvent event) {
-		String selected=comboboxSiteMod.getValue();
-		String[] donnees=selected.split("-");
-		String nom=donnees[1];
+		int selected=comboboxSiteMod.getSelectionModel().getSelectedIndex();
+		String nom=comboboxSiteMod.getValue();
+		int id=listSite.get(selected).getIdSite();
 		NameSiteField.setText(nom);
-		int id=Integer.parseInt(donnees[0]);
 		setIdSite(id);
 		setNomSite(nom);
 		

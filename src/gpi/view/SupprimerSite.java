@@ -1,7 +1,10 @@
 package gpi.view;
 
+import java.util.ArrayList;
+
 import gpi.bd.Donnee;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,19 +25,23 @@ public class SupprimerSite {
 
 	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listNom;
+	private ObservableList<String> listSiteObservable;
+	ArrayList<Site> listSite;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
-		for (Site site : donneesite.getSiteData()) {
-			listNom.add(site.getNomSiteString());
+		SiteDAO siteDAO=new SiteDAO();
+		
+		listSite=new ArrayList<Site>();
+		listSiteObservable = FXCollections.observableArrayList();
+		listSite=siteDAO.recupererAllSite();
+		for (Site site : listSite){
+			listSiteObservable.add(site.getNomSiteString());
 		}
-		comboboxSiteSupp.setItems(listNom);
+		comboboxSiteSupp.setItems(listSiteObservable);
 	}
 
 	/**
@@ -63,6 +70,10 @@ public class SupprimerSite {
 	@FXML
 	private void handleOk() {
 
+		SiteDAO siteDAO=new SiteDAO();
+		int selected=comboboxSiteSupp.getSelectionModel().getSelectedIndex();
+		int id=listSite.get(selected).getIdSite();
+		siteDAO.supprimerSite(new Site(id,null,null));
 		okClicked = true;
 		dialogStage.close();
 
