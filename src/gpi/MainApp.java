@@ -1286,13 +1286,57 @@ public class MainApp extends Application {
 	}
 
 	public static boolean showModUtilisationDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modifierUtilisation.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier une Utilisation");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			ModifierUtilisation controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static boolean showSuppUtilisationDialog() {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/supprimerUtilisation.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Supprimer une Utilisation");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			SupprimerUtilisation controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

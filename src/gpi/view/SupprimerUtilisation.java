@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * Created by Kevin
  */
 
-public class AjouterUtilisation {
+public class SupprimerUtilisation {
 	@FXML
 	private Stage dialogStage;
 
