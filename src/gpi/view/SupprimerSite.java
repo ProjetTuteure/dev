@@ -1,6 +1,7 @@
 package gpi.view;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import gpi.bd.Donnee;
 import gpi.metier.Site;
@@ -26,7 +27,7 @@ public class SupprimerSite {
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listSiteObservable;
-	ArrayList<Site> listSite;
+	List<Site> listSite;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
