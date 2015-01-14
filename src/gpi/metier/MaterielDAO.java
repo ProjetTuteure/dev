@@ -58,7 +58,8 @@ public class MaterielDAO {
 		try {
 			PreparedStatement ps=connexion.prepareStatement("UPDATE MATERIEL SET numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
 					+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType  "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?) WHERE idMateriel=?");
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

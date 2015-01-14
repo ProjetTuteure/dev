@@ -39,21 +39,22 @@ public class testbd {
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
 		MaterielDAO mdao=new MaterielDAO();
-		Materiel materiel=new Materiel(new SimpleIntegerProperty(0),"1IMMO",
+		/*Materiel materiel=new Materiel(new SimpleIntegerProperty(0),"1IMMO",
 				"pc-martine",new Type("PC", "unCheminImage"), Etat.EN_MARCHE,
 				LocalDate.parse("2012-11-11"), "/driver/pc-martine",
 				new Facture("1",LocalDate.parse("2012-11-11"),5,new Revendeur(new SimpleIntegerProperty(1),"nomRevendeur","tel","adresseRevendeur")),
 				new Site(2, "nomSite", "cheminImage"),
 				new Fabricant(new SimpleIntegerProperty(1), "nomFabricant", "telF", "adresseFabricant"),
 				"XXX1");
-		mdao.ajouterMateriel(materiel);
-		Materiel materiel2=new Materiel(new SimpleIntegerProperty(0),"1IMMO",
+		mdao.ajouterMateriel(materiel);*/
+		Materiel materiel2=new Materiel(new SimpleIntegerProperty(11),"1IMMO",
 				"pc-martine365",new Type("PC", "unCheminImageDeChien"), Etat.EN_MARCHE,
 				LocalDate.parse("2012-11-11"), "/driver/pc-martine2",
 				new Facture("1",LocalDate.parse("2012-11-11"),5,new Revendeur(new SimpleIntegerProperty(1),"nomRevendeur","tel","adresseRevendeur")),
 				new Site(2, "nomSite", "cheminImage"),
 				new Fabricant(new SimpleIntegerProperty(1), "nomFabricant", "telF", "adresseFabricant"),
 				"XXX1");
+		mdao.modifierMateriel(materiel2);
 		try {
 			Statement state = connexion.createStatement();
 			resultat = state.executeQuery("SELECT * from SITE");
