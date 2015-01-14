@@ -63,7 +63,6 @@ public class testbd {
 		       		System.out.println(resultat.getObject(i));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} 
 
 		/*String chaine="";
