@@ -1,26 +1,38 @@
 package gpi.view;
 
-import java.io.File;
 
+import gpi.metier.Type;
+import gpi.metier.TypeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.stage.FileChooser;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.io.File;
 
 /**
  * Created by Kevin
  */
 
 public class AjouterType {
+	private String nomType;
+
+	private String cheminImageType;
 
 	@FXML
 	private Stage dialogStage;
 
 	@FXML
+	private TextField nomTypeField;
+
+	@FXML
 	private boolean okClicked = false;
 
+	TypeDAO typeDAO=new TypeDAO();
+
 	/**
-	 * Initialise les données
+	 * Initialise les donnï¿½es
 	 */
 	@FXML
 	private void initialize() {
@@ -52,7 +64,8 @@ public class AjouterType {
 	 */
 	@FXML
 	private void handleOk() {
-
+		this.setNomType(nomTypeField.getText());
+		typeDAO.ajouterType(new Type(this.getNomType(),this.getCheminImageType()));
 		okClicked = true;
 		dialogStage.close();
 
@@ -69,12 +82,32 @@ public class AjouterType {
 
 	@FXML
 	private void handleChoose(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open File");
-		File file = fileChooser.showOpenDialog(null);
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Open File");
+		fileChooser.showOpenDialog(null); // you could pass a stage
+		File file = fileChooser.getSelectedFile();												// reference here if you
+
+
 		if (file != null) {
+			this.setCheminImageType(file.getAbsolutePath());
 		}
 
 	}
 
+
+	public String getCheminImageType() {
+		return cheminImageType;
+	}
+
+	public void setCheminImageType(String cheminImageType) {
+		this.cheminImageType = cheminImageType;
+	}
+
+	public String getNomType() {
+		return nomType;
+	}
+
+	public void setNomType(String nomType) {
+		this.nomType = nomType;
+	}
 }

@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.metier.Type;
+import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,14 +25,16 @@ public class SupprimerType {
 
 	private ObservableList<String> listNom;
 
+	TypeDAO typeDAO=new TypeDAO();
+
 	/**
-	 * Initialise les donn�es Ajoute les donn�es aux combobox
+	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
-		for (Type type : donneetype.getTypeData()) {
+		for (Type type : typeDAO.recupererAllType()) {
 			listNom.add(type.getNomTypeString());
 		}
 		comboboxtype.setItems(listNom);
@@ -63,7 +66,7 @@ public class SupprimerType {
 	 */
 	@FXML
 	private void handleOk() {
-
+		typeDAO.supprimerType(new Type(comboboxtype.getValue(),""));
 		okClicked = true;
 		dialogStage.close();
 

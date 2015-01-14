@@ -20,11 +20,7 @@ import java.io.File;
  */
 
 public class ModifierType {
-	private String nomType;
 	private String cheminImageType;
-
-
-
 	@FXML
 	private Stage dialogStage;
 	@FXML
@@ -124,14 +120,6 @@ public class ModifierType {
 	private void handlechange() {
 		Type selected = typeDAO.recupererTypeParId(comboboxTypeMod.getValue());
 		typefield.setText(selected.getNomType().getValue());
-	}
-
-	public String getNomType() {
-		return nomType;
-	}
-
-	public void setNomType(String nomType) {
-		this.nomType = nomType;
 	}
 
 	public String getCheminImageType() {
