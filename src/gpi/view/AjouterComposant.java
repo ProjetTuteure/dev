@@ -1,11 +1,21 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.metier.Composant;
+import gpi.metier.ComposantDAO;
 import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -20,6 +30,10 @@ public class AjouterComposant {
 	private boolean okClicked = false;
 	@FXML
 	private ComboBox<String> comboboxfabr;
+	@FXML
+	private TextField nom;
+	@FXML
+	private TextArea caracteristiques;
 
 	private Donnee donneeMat = new Donnee();
 
@@ -63,8 +77,14 @@ public class AjouterComposant {
 	 */
 	@FXML
 	private void handleOk() {
-
-		okClicked = true;
+		/*ComposantDAO composantDAO = new ComposantDAO();
+		FabricantDAO fabricantDAO = new FabricantDAO();
+		Fabricant fabricant = fabricantDAO.recupererFabricant((comboboxfabr
+				.getValue()));
+		composantDAO.ajouterComposant(new Composant(
+				new SimpleIntegerProperty(0), (this.nom).getText(),
+				this.caracteristiques.getText(), fabricant));
+		okClicked = true;*/
 		dialogStage.close();
 
 	}

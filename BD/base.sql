@@ -4,8 +4,7 @@ CREATE TABLE SITE(
 	cheminImageSite varchar(60))
 
 CREATE TABLE FABRICANT(
-	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
-	nomFabricant varchar(20) NOT NULL,
+	nomFabricant varchar(20) PRIMARY KEY NOT NULL,
 	telFabricant varchar(20),
 	adresseFabricant varchar(50))
 
@@ -21,8 +20,7 @@ CREATE TABLE TYPE(
 
 
 CREATE TABLE REVENDEUR(
-	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
-	nomRevendeur varchar(20) NOT NULL,
+	nomRevendeur varchar(20) PRIMARY KEY NOT NULL,
 	telRevendeur varchar(20),
 	adresseRevendeur varchar(50))
 
@@ -67,8 +65,7 @@ CREATE TABLE ESTINSTALLE(
 	PRIMARY KEY(idMateriel,idLogiciel))
 
 CREATE TABLE PRESTATAIRE(
-	idPrestataire int IDENTITY(1,1) PRIMARY KEY ,
-	nomPrestataire varchar(20) NOT NULL,
+	nomPrestataire varchar(20) PRIMARY KEY NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
 	adressePrestataire varchar(50)

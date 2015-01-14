@@ -3,6 +3,8 @@ package gpi.metier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import utils.MaConnexion;
 
@@ -56,6 +58,12 @@ public class UtiliseDAO {
 			}
 		}
 		return 0;
+	}
+	
+	public List<Utilise> recuperMaterielUtilise(int idutilisateur){
+		List<Utilise> listUtilise= new ArrayList<Utilise>();
+		
+		return listUtilise;
 	}
 	
 	
