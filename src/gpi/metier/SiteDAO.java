@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import utils.MaConnexion;
 
@@ -20,10 +18,11 @@ public class SiteDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE(nomSite,cheminImageSite) VALUES (?,?);");
+			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE VALUES (?,?,?);");
 			
-			prep.setString(1, site.getNomSiteString());
-			prep.setString(2, site.getCheminImageSiteProperty().toString());
+			prep.setInt(1, site.getIdSite());
+			prep.setString(2, site.getNomSiteString());
+			prep.setString(3, site.getCheminImageSiteProperty().toString());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -118,37 +117,5 @@ public class SiteDAO {
 		return null;
 	}
 	
-	
-	public ArrayList<Site> recupererAllSite(){
-		Connection connection=null;
-		List<Site> listSite=new ArrayList<Site>();
-		ResultSet resultat;
-		String nomSite,cheminImageSite;
-		int idSite;
-		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
-			
-			
-			resultat=prep.executeQuery();
-			while(resultat.next()){
-				
-				idSite=resultat.getInt("idSite");
-				nomSite=resultat.getString("nomSite");
-				cheminImageSite=resultat.getString("cheminImageSite");
-				listSite.add(new Site(idSite,nomSite,cheminImageSite));
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
 	
 }

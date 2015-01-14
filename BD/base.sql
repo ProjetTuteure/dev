@@ -1,30 +1,30 @@
 CREATE TABLE SITE(
 	idSite int IDENTITY(1,1) PRIMARY KEY ,
 	nomSite varchar(20) NOT NULL,
-	cheminImageSite varchar(200))
+	cheminImageSite varchar(60))
 
 CREATE TABLE FABRICANT(
 	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
 	nomFabricant varchar(20) NOT NULL,
 	telFabricant varchar(20),
-	adresseFabricant varchar(100))
+	adresseFabricant varchar(50))
 
 CREATE TABLE COMPOSANT(
 	idComposant int IDENTITY(1,1) PRIMARY KEY ,
 	nomComposant varchar(20) NOT NULL,
-	caracteristiqueComposant varchar(300),
+	caracteristiqueComposant varchar(200),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant))
 
 CREATE TABLE TYPE(
 	nomType varchar(20) PRIMARY KEY,
-	cheminImageType varchar(200))
+	cheminImageType varchar(60))
 
 
 CREATE TABLE REVENDEUR(
 	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
 	nomRevendeur varchar(20) NOT NULL,
 	telRevendeur varchar(20),
-	adresseRevendeur varchar(100))
+	adresseRevendeur varchar(50))
 
 CREATE TABLE FACTURE(
 	idFacture int IDENTITY(1,1) PRIMARY KEY ,
@@ -35,7 +35,7 @@ CREATE TABLE FACTURE(
 CREATE TABLE LOGICIEL(
 	idLogiciel int IDENTITY(1,1) PRIMARY KEY ,
 	nomLogiciel varchar(40) NOT NULL,
-	versionLogiciel varchar(50),
+	versionLogiciel varchar(20),
 	dateExpirationLogiciel DATE,
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture))
 
@@ -48,8 +48,8 @@ CREATE TABLE MATERIEL(
 	numImmobMateriel varchar(20) NOT NULL,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
-	repertoireDrivers varchar(200),
-	modeleMateriel varchar(50),
+	repertoireDrivers varchar(30),
+	modeleMateriel varchar(20),
 	etat varchar(20),
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant),
@@ -71,7 +71,7 @@ CREATE TABLE PRESTATAIRE(
 	nomPrestataire varchar(20) NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
-	adressePrestataire varchar(200)
+	adressePrestataire varchar(50)
 	)
 	
 CREATE TABLE MAINTENANCE(
