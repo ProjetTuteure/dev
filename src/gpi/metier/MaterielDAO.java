@@ -26,6 +26,15 @@ public class MaterielDAO {
 					+ "repertoireDriver,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1,materiel.getNumImmobMateriel().getValue());
+			ps.setString(2,materiel.getNomMateriel().getValue());
+			ps.setString(3,materiel.getDateExpirationGarantie().toString());
+			ps.setString(4,materiel.getRepertoireDriverMateriel().getValue());
+			ps.setString(5,materiel.getModeleMateriel());
+			ps.setString(6,materiel.getEtatMateriel().toString());
+			ps.setString(7,materiel.getFactureMateriel().getNumFacture());
+			ps.setString(8,materiel.getFabricantMateriel().getIdFabricant().toString());
+			ps.setString(9,materiel.getSiteMateriel().getIdSiteProperty().toString());
+			ps.setString(10,materiel.getTypeMateriel().getNomType().getValue());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
