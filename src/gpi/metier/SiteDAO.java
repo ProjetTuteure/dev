@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import utils.MaConnexion;
+
 public class SiteDAO {
 
 	public SiteDAO(){}
@@ -12,7 +14,7 @@ public class SiteDAO {
 	//ajouter/modifier/supprimer/recuperer
 	
 	public int ajouterSite(Site site){
-		Connection connection;
+		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
@@ -27,12 +29,18 @@ public class SiteDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			connection.close();
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return 0;
 	}
 	
 	public int modifierSite(Site site){
-		Connection connection;
+		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
@@ -47,12 +55,18 @@ public class SiteDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			connection.close();
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return 0;
 	}
 	
 	public int supprimerSite(Site site){
-		Connection connection;
+		Connection connection=null;
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
@@ -65,12 +79,18 @@ public class SiteDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			connection.close();
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return 0;
 	}
 	
 	public Site recupererSiteParId(int idSite){
-		Connection connection;
+		Connection connection=null;
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
 		try{
@@ -87,8 +107,14 @@ public class SiteDAO {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			connection.close();
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		return null;
 	}
 	
 	
