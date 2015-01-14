@@ -4,15 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import utils.MaConnexion;
+
 public class MaterielDAO {
 	private Connection connexion;
 	/**
 	 * Constructeur materielDAO
 	 * @param connexion
 	 */
-	public MaterielDAO(Connection connexion)
+	public MaterielDAO()
 	{
-		this.connexion=connexion;
 	}
 	
 	/**
@@ -22,6 +23,7 @@ public class MaterielDAO {
 	public void ajouterMateriel(Materiel materiel)
 	{
 		try {
+			Connection connexion=MaConnexion.getInstance().getConnexion();
 			PreparedStatement ps=connexion.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
 					+ "repertoireDriver,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
@@ -35,22 +37,11 @@ public class MaterielDAO {
 			ps.setString(8,materiel.getFabricantMateriel().getIdFabricant().toString());
 			ps.setString(9,materiel.getSiteMateriel().getIdSiteProperty().toString());
 			ps.setString(10,materiel.getTypeMateriel().getNomType().getValue());
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String requete="INSERT INTO MATERIEL (numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
-				+ "repertoireDriver,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
-				+ "VALUES("+materiel.getNumImmobMateriel()+","+materiel.getNomMateriel()+","
-				+ materiel.getDateExpirationGarantieMaterielStringProperty().getValue()+","
-				+ materiel.getRepertoireDriverMateriel().getValue()+","
-				+ materiel.getModeleMateriel()+","
-				+ materiel.getEtatMaterielString()+","
-				+ materiel.getFactureMateriel().getNumFacture()+","
-				+ materiel.getFabricantMateriel().getIdFabricant()+","
-				+ materiel.getSiteMateriel().getIdSite()+","
-				+ materiel.getTypeMateriel().getNomTypeString()
-				+")";
 	}
 	
 	public void modifierMateriel(Materiel materiel)
