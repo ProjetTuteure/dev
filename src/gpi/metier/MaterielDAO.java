@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import utils.MaConnexion;
 
 public class MaterielDAO {
-	private Connection connexion;
 	/**
 	 * Constructeur materielDAO
 	 * @param connexion
@@ -22,8 +21,8 @@ public class MaterielDAO {
 	 */
 	public void ajouterMateriel(Materiel materiel)
 	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
-			Connection connexion=MaConnexion.getInstance().getConnexion();
 			PreparedStatement ps=connexion.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
 					+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
@@ -55,6 +54,14 @@ public class MaterielDAO {
 	
 	public void modifierMateriel(Materiel materiel)
 	{
-		String requete="UPDATE MATERIEL";
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try {
+			PreparedStatement ps=connexion.prepareStatement("UPDATE MATERIEL SET numImmobMateriel,nomMateriel,dateExpirationGarantieMateriel,"
+					+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,nomType  "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?)");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

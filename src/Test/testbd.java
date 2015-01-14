@@ -33,18 +33,17 @@ import utils.MaConnexion;
 public class testbd {
 	public static final String PASS = "123";
 
-	public static void main(String[] args) throws InstantiationException,
-			IllegalAccessException, ClassNotFoundException, SQLException {
-		
+	public static void main(String[] args) throws InstantiationException,IllegalAccessException, ClassNotFoundException, SQLException 
+	{		
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;
 		MaterielDAO mdao=new MaterielDAO();
-		Materiel materiel=new Materiel(new SimpleIntegerProperty(19), "1IMMO",
-				"pc-martine",new Type("unType", "unCheminImage"), Etat.EN_MARCHE,
+		Materiel materiel=new Materiel(new SimpleIntegerProperty(0),"1IMMO",
+				"pc-martine",new Type("PC", "unCheminImage"), Etat.EN_MARCHE,
 				LocalDate.parse("2012-11-11"), "/driver/pc-martine",
 				new Facture("1",LocalDate.parse("2012-11-11"),5,new Revendeur(new SimpleIntegerProperty(1),"nomRevendeur","tel","adresseRevendeur")),
-				new Site(1, "nomSite", "cheminImage"),
+				new Site(2, "nomSite", "cheminImage"),
 				new Fabricant(new SimpleIntegerProperty(1), "nomFabricant", "telF", "adresseFabricant"),
 				"XXX1");
 		mdao.ajouterMateriel(materiel);
