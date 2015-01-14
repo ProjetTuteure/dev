@@ -24,7 +24,7 @@ public class Popup {
 	 * Construit une popup avec un message d'erreur et un bouton OK
 	 * @param nomChamp le champ qui n'a pas été rempli
 	 */
-	public Popup(String nomChamp)
+	public Popup(String texteAAfficher)
 	{
 		this.dialogStage=new Stage();
 		this.buttonOk=new Button("Ok");
@@ -35,7 +35,7 @@ public class Popup {
 		});
 		dialogStage.initModality(Modality.WINDOW_MODAL);
 		dialogStage.setScene(new Scene(VBoxBuilder.create().
-		    children(new Text("Le champ \""+nomChamp+"\" doit être rempli"),buttonOk).
+		    children(new Text(textAAfficher),buttonOk).
 		    alignment(Pos.CENTER).padding(new Insets(5)).build()));
 		dialogStage.show();
 	}
