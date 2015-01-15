@@ -84,20 +84,24 @@ public class AjouterMaintenance {
 		{
 			new Popup("L'objet de la maintenance doit faire au maximum "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
 		}
-		else if(!tf_coutMaintenance.getText().isEmpty())
-		{
-			if(Float.parseFloat(tf_coutMaintenance.getText())<0)
-			{
-				new Popup("La valeur du coût de la maintenance ne doit pas être négative");
-			}
-			coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
-		}
 		else if(ta_description.getText().length()>400)
 		{
 			new Popup("La description doit contenir au maximum "+Constante.LONGUEUR_DESCRIPTION_MAINTENANCE+" caractères");
 		}
 		else
 		{
+			if(!tf_coutMaintenance.getText().isEmpty())
+			{
+				if(tf_coutMaintenance.getText().contains(","))
+				{
+					tf_coutMaintenance.setText(tf_coutMaintenance.getText().replace(',','.'));
+				}
+				if(Float.parseFloat(tf_coutMaintenance.getText())<0)
+				{
+					new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+				}
+				coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
+			}
 			Maintenance maintenance=new Maintenance(0,dp_dateMaintenance.getValue(),
 					tf_objetMaintenance.getText(),
 					ta_description.getText(),
@@ -109,6 +113,7 @@ public class AjouterMaintenance {
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}*/
+			new Popup("Maintenance du "+maintenance.getdateMaintenanceStringProperty().getValue()+" ajoutée !");
 			dialogStage.close();
 		}
 	}
