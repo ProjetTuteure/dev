@@ -50,12 +50,12 @@ public class FactureDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET dateFacture=?, montantFacture=? , idRevendeur=? WHERE numFacture=? ;");
-			
-			prep.setString(1, facture.getDateFacture().toString());
-			prep.setFloat(2, facture.getMontantFacture().get());
-			prep.setInt(3, facture.getRevendeurFacture().getIdRevendeur().get());
-			prep.setString(4, facture.getNumFacture());
+			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET numFacture=?, dateFacture=?, montantFacture=? , idRevendeur=? WHERE idFacture=? ;");
+			prep.setString(1, facture.getNumFacture());
+			prep.setString(2, facture.getDateFacture().toString());
+			prep.setFloat(3, facture.getMontantFacture().get());
+			prep.setInt(4, facture.getRevendeurFacture().getIdRevendeur().getValue());
+			prep.setInt(5, facture.getIdFacture().getValue());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -77,9 +77,9 @@ public class FactureDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE numFacture=?;");
+			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE idFacture=?;");
 			
-			prep.setString(1, facture.getNumFacture());
+			prep.setInt(1, facture.getIdFacture().getValue());
 			
 			resultat=prep.executeUpdate();
 			return resultat;

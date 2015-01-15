@@ -77,11 +77,22 @@ public class ModifierFacture {
 	private void handleOk() {
 		FactureDAO factureDAO = new FactureDAO();
 		RevendeurDAO revendeurDAO = new RevendeurDAO();
+		Revendeur revendeur=null;
 		int indexRevendeur=NumRevendeur.getSelectionModel().getSelectedIndex();
+		if(indexRevendeur==-1){
+			revendeur=listObjetsFacture.get(ComboboxFacture.getSelectionModel().getSelectedIndex()).getRevendeurFacture();
+		}else{
+			try {
+				revendeur=revendeurDAO.recupererRevendeurParId(listRevendeurId.get(indexRevendeur));
+			} catch (ConnexionBDException e) {
+				// TODO Auto-generated catch block
+				new Popup(e.getMessage());
+			}
+		}
 		int indexFacture = ComboboxFacture.getSelectionModel().getSelectedIndex();
 		int idFacture=listObjetsFacture.get(indexFacture).getIdFacture().getValue();
 		try {
-			factureDAO.modifierFacture(new Facture(idFacture,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(indexRevendeur))));
+			factureDAO.modifierFacture(new Facture(idFacture,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeur));
 		} catch (NumberFormatException e) {
 			new Popup("Erreur de format. Format : 123.45");
 		} catch (ConnexionBDException e) {
