@@ -170,9 +170,5 @@ AS BEGIN
 	DELETE FROM COMPOSE WHERE idMateriel=@idMateriel
 END
 
-CREATE TRIGGER SuppressionPrestataire on PRESTATAIRE
-AFTER DELETE
-AS BEGIN
-	declare @idPrestataire int;
 
 
