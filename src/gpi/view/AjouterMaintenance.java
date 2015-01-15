@@ -1,8 +1,12 @@
 package gpi.view;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Constante;
+import utils.Popup;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Maintenance;
 import gpi.metier.MaintenanceDAO;
 import javafx.fxml.FXML;
@@ -65,15 +69,48 @@ public class AjouterMaintenance {
 	}
 
 	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * Permet d'ajouter la maintenance à la base de données
 	 * est clique
 	 */
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
-		dialogStage.close();
-
+		float coutMaintenance=0;
+		if(dp_dateMaintenance.getValue()==null)
+		{
+			new Popup("La date doit obligatoirement être remplie");
+		}
+		else if(tf_objetMaintenance.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
+		{
+			new Popup("L'objet de la maintenance doit faire au maximum "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
+		}
+		else if(!tf_coutMaintenance.getText().isEmpty())
+		{
+			if(Float.parseFloat(tf_coutMaintenance.getText())<0)
+			{
+				new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+			}
+			coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
+		}
+		else if(ta_description.getText().length()>400)
+		{
+			new Popup("La description doit contenir au maximum "+Constante.LONGUEUR_DESCRIPTION_MAINTENANCE+" caractères");
+		}
+		else
+		{
+			Maintenance maintenance=new Maintenance(0,dp_dateMaintenance.getValue(),
+					tf_objetMaintenance.getText(),
+					ta_description.getText(),
+					coutMaintenance);
+			System.out.println(maintenance.toString());
+			/*try {
+				maintenanceDAO.ajouterMaintenance(maintenance);
+				new Popup("Maintenance du"+maintenance.getdateMaintenanceStringProperty().getValue()+"ajoutée !");
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}*/
+			dialogStage.close();
+		}
 	}
 
 	/**

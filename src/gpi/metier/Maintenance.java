@@ -28,7 +28,7 @@ public class Maintenance {
         this.coutMaintenance = coutMaintenance;
     }
 
-    public IntegerProperty getIdMaintenance() {
+	public IntegerProperty getIdMaintenance() {
         return idMaintenance;
     }
 
@@ -84,4 +84,13 @@ public class Maintenance {
     public void setdateMaintenance(LocalDate dateMaintenance) {
         this.dateMaintenance = dateMaintenance;
     }
+    
+    @Override
+   	public String toString() {
+   		return "Maintenance [idMaintenance=" + idMaintenance
+   				+ ", dateMaintenance=" + dateMaintenance
+   				+ ", objetMaintenance=" + objetMaintenance
+   				+ ", descriptionMaintenance=" + descriptionMaintenance
+   				+ ", coutMaintenance=" + coutMaintenance + "]";
+   	}
 }
