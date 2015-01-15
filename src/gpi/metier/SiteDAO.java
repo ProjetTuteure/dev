@@ -99,8 +99,8 @@ public class SiteDAO {
 			prep.setInt(1, idSite);
 			
 			resultat=prep.executeQuery();
-			nomSite=resultat.getString(1);
-			cheminImageSite=resultat.getString(2);
+			nomSite=resultat.getString("nomSite");
+			cheminImageSite=resultat.getString("cheminImageSite");
 			
 			return new Site(idSite,nomSite,cheminImageSite);
 		}catch(SQLException e){

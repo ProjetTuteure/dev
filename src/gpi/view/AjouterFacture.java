@@ -1,6 +1,14 @@
 package gpi.view;
 
+import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
+import gpi.metier.RevendeurDAO;
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -10,7 +18,14 @@ import javafx.stage.Stage;
 public class AjouterFacture {
 	@FXML
 	private Stage dialogStage;
-
+	@FXML
+	private TextField NumFacture;
+	@FXML
+	private DatePicker DateFacture;
+	@FXML
+	private TextField MontantFacture;
+	@FXML
+	private ComboBox<String> NumRevendeur;
 	@FXML
 	private boolean okClicked = false;
 
@@ -47,7 +62,11 @@ public class AjouterFacture {
 	 */
 	@FXML
 	private void handleOk() {
-
+		FactureDAO factureDAO = new FactureDAO();
+		RevendeurDAO revendeurDAO = new RevendeurDAO();
+		// if (isInputValid()) {
+		
+		factureDAO.ajouterFacture(new Facture(NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(Integer.parseInt(NumRevendeur.getValue()))));
 		okClicked = true;
 		dialogStage.close();
 

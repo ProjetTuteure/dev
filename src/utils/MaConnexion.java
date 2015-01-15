@@ -1,11 +1,10 @@
 package utils;
 
-import gpi.exception.BDNonTrouveException;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.concurrent.Executors;
 
 
 public class MaConnexion {
@@ -26,7 +25,7 @@ public class MaConnexion {
 		String user= p.getProperty("user");
 		try {
 			connexion = DriverManager.getConnection(url,user,mdp);
-			//connexion.setNetworkTimeout(arg0, arg1);
+			connexion.setNetworkTimeout(null, 5000);
 		} catch (SQLException e) {
 			new Popup("Erreur d'acces a la BD");
 			e.printStackTrace();

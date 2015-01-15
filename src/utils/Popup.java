@@ -37,6 +37,7 @@ public class Popup {
 		dialogStage.setScene(new Scene(VBoxBuilder.create().
 		    children(new Text(texteAAfficher),buttonOk).
 		    alignment(Pos.CENTER).padding(new Insets(5)).build()));
+		dialogStage.setAlwaysOnTop(true);
 		dialogStage.show();
 	}
 	
