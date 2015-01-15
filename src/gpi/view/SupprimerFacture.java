@@ -1,7 +1,15 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
+import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,23 +27,29 @@ public class SupprimerFacture {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxfact;
+	private ComboBox<String> ComboboxFacture;
 
-	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listNum;
+	private ObservableList<String> listFacture;
+	List<Integer> listFactureId;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNum = FXCollections.observableArrayList();
-
-		for (Facture fac : donneesite.getFactureData()) {
-			listNum.add(fac.getNumFacture());
+		FactureDAO factureDAO = new FactureDAO();
+		listFacture = FXCollections.observableArrayList();
+		listFactureId=new ArrayList<Integer>();
+		try {
+			for (Facture facture : factureDAO.recupererAllFacture()) {
+				listFacture.add(facture.getNumFacture());
+				listFactureId.add(facture.getIdFacture().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfact.setItems(listNum);
+		ComboboxFacture.setItems(listFacture);
 	}
 
 	/**
@@ -64,9 +78,16 @@ public class SupprimerFacture {
 	@FXML
 	private void handleOk() {
 
+		FactureDAO factureDAO=new FactureDAO();
+		int selected=ComboboxFacture.getSelectionModel().getSelectedIndex();
+		int id=listFactureId.get(selected);
+		try {
+			factureDAO.supprimerFacture(new Facture(id,null,null,0,null));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**

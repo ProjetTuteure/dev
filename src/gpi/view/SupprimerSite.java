@@ -29,7 +29,7 @@ public class SupprimerSite {
 	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listSiteObservable;
-	List<Site> listSite;
+	List<Integer> listSiteId;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
@@ -38,15 +38,16 @@ public class SupprimerSite {
 	private void initialize() {
 		SiteDAO siteDAO=new SiteDAO();
 		
-		listSite=new ArrayList<Site>();
+		listSiteId=new ArrayList<Integer>();
 		listSiteObservable = FXCollections.observableArrayList();
+	
 		try {
-			listSite=siteDAO.recupererAllSite();
+			for (Site site : siteDAO.recupererAllSite()){
+				listSiteObservable.add(site.getNomSiteString());
+				listSiteId.add(site.getIdSite());
+			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
-		}
-		for (Site site : listSite){
-			listSiteObservable.add(site.getNomSiteString());
 		}
 		comboboxSiteSupp.setItems(listSiteObservable);
 	}
@@ -79,7 +80,7 @@ public class SupprimerSite {
 
 		SiteDAO siteDAO=new SiteDAO();
 		int selected=comboboxSiteSupp.getSelectionModel().getSelectedIndex();
-		int id=listSite.get(selected).getIdSite();
+		int id=listSiteId.get(selected);
 		try {
 			siteDAO.supprimerSite(new Site(id,null,null));
 		} catch (ConnexionBDException e) {
