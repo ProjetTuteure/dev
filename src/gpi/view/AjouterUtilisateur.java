@@ -1,8 +1,8 @@
 package gpi.view;
 
+import utils.Popup;
 import gpi.metier.Utilisateur;
 import gpi.metier.UtilisateurDAO;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -53,13 +53,21 @@ public class AjouterUtilisateur {
 	public boolean isOkClicked() {
 
 		UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-		// if (isInputValid()) {
-		setNomUtilisateur(nomField.getText());
-		setPrenomUtilisateur(prenomField.getText());
-		setTelUtilisateur(telField.getText());
-		utilisateurDAO.ajouterUtilisateur(new Utilisateur(null, getNomUtilisateur(), getPrenomUtilisateur(), getTelUtilisateur()));
-		dialogStage.close();
+		if (nomField.getText().equals("")) {
+			new Popup("Le champ \"Nom de l'Utilisateur\" doit être saisi");
+		} else if (prenomField.getText().equals("")) {
+			new Popup("Le champ \"Prenom de l'Utilisateur\" doit être saisi");
+		} else {
+			// if (isInputValid()) {
+			setNomUtilisateur(nomField.getText());
+			setPrenomUtilisateur(prenomField.getText());
+			setTelUtilisateur(telField.getText());
+			utilisateurDAO.ajouterUtilisateur(new Utilisateur(null,
+					getNomUtilisateur(), getPrenomUtilisateur(),
+					getTelUtilisateur()));
+			dialogStage.close();
 
+		}
 		return okClicked;
 	}
 
