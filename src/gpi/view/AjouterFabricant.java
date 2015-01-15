@@ -11,10 +11,6 @@ import javafx.stage.Stage;
  */
 
 public class AjouterFabricant {
-	private String nomFabricant;
-	private String telFabricant;
-	private String adresseFabricant;
-
 	@FXML
 	private Stage dialogStage;
 
@@ -64,10 +60,7 @@ public class AjouterFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-		this.setNomFabricant(nomFabricantField.getText());
-		this.setAdresseFabricant(adresseFabricantField.getText());
-		this.setTelFabricant(telFabricantField.getText());
-		fabricantDAO.ajouterFabricant(new Fabricant(0,this.getNomFabricant(),this.getAdresseFabricant(),this.getTelFabricant()));
+		fabricantDAO.ajouterFabricant(new Fabricant(0,nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
 		okClicked = true;
 		dialogStage.close();
 	}
@@ -81,27 +74,4 @@ public class AjouterFabricant {
 		dialogStage.close();
 	}
 
-	public String getNomFabricant() {
-		return nomFabricant;
-	}
-
-	public void setNomFabricant(String nomFabricant) {
-		this.nomFabricant = nomFabricant;
-	}
-
-	public String getTelFabricant() {
-		return telFabricant;
-	}
-
-	public void setTelFabricant(String telFabricant) {
-		this.telFabricant = telFabricant;
-	}
-
-	public String getAdresseFabricant() {
-		return adresseFabricant;
-	}
-
-	public void setAdresseFabricant(String adresseFabricant) {
-		this.adresseFabricant = adresseFabricant;
-	}
 }

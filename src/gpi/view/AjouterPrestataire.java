@@ -1,6 +1,9 @@
 package gpi.view;
 
+import gpi.metier.Prestataire;
+import gpi.metier.PrestataireDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -15,8 +18,22 @@ public class AjouterPrestataire {
 	@FXML
 	private boolean okClicked = false;
 
+	@FXML
+	private TextField nomPrestataireField;
+
+	@FXML
+	private TextField prenomPrestataireField;
+
+	@FXML
+	private TextField tesPrestataireField;
+
+	@FXML
+	private TextField adressePrestataireField;
+
+	private PrestataireDAO prestataireDAO=new PrestataireDAO();
+
 	/**
-	 * Initialise les données
+	 * Initialise les donnï¿½es
 	 */
 	@FXML
 	private void initialize() {
@@ -48,7 +65,7 @@ public class AjouterPrestataire {
 	 */
 	@FXML
 	private void handleOk() {
-
+		prestataireDAO.ajouterPrestataire(new Prestataire(0,nomPrestataireField.getText(),prenomPrestataireField.getText(),adressePrestataireField.getText(),tesPrestataireField.getText()));
 		okClicked = true;
 		dialogStage.close();
 

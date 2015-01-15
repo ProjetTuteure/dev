@@ -1,8 +1,14 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
-import gpi.metier.Prestataire;
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import gpi.metier.Utilisateur;
+import gpi.metier.UtilisateurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,10 +30,14 @@ public class SupprimerUtilisateur {
 	@FXML
 	private ComboBox<String> comboboxprenom;
 
-	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
+	
+	private List<Utilisateur> listeNom;
+	private List<Utilisateur> listePrenom;
+	
+	private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
 
 	/**
 	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
@@ -35,9 +45,11 @@ public class SupprimerUtilisateur {
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
-
-		for (Utilisateur ut : donneesite.getUtilisateurData()) {
-			listnom.add(ut.getNomUtilisateur().getValue());
+		listeNom=new ArrayList<Utilisateur>();
+		listeNom=utilisateurDAO.recupererAllUtilisateur();
+		for(Utilisateur utilisateur : listeNom)
+		{
+			listnom.add(utilisateur.getNomUtilisateur().getValue());
 		}
 		comboboxnom.setItems(listnom);
 	}
@@ -67,10 +79,37 @@ public class SupprimerUtilisateur {
 	 */
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
-		dialogStage.close();
-
+		
+//			int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+//			Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
+//			utilisateur.setNomUtilisateur(nomfield.getText());
+//			utilisateur.setPrenomUtilisateur(prenomfield.getText());
+//			utilisateur.setTelUtilisateur(telfield.getText());
+//			utilisateurDAO.modifierUtilisateur(utilisateur);
+//			dialogStage.close();
+			
+			
+			if(comboboxnom.getValue()==null)
+			{
+				new Popup("Veuillez choisir un nom d'utilisateur");
+			}
+			else if(comboboxprenom.getValue()==null){
+				new Popup("Veuillez choisir un prenom d'utilisateur");
+			} else
+			{
+				int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+				Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
+				if(utilisateurDAO.supprimerUtilisateur(utilisateur)==true)
+				{
+					dialogStage.close();
+					new Popup("Utilisateur supprimé !");
+				}
+				else
+				{
+					new Popup("Echec lors de la suppression");
+				}
+			}
 	}
 	
 	/**
@@ -88,13 +127,15 @@ public class SupprimerUtilisateur {
 	 */
 	@FXML
 	private void handlechange() {
-		Utilisateur selected = donneesite.getUtilisateur(comboboxnom.getValue());
-
 		listprenom = FXCollections.observableArrayList();
-		for (Utilisateur ut : donneesite.getUtilisateurData()) {
-			if (ut.getNomUtilisateur().getValue()
-					.equals(selected.getNomUtilisateur().getValue())) {
-				listprenom.add(selected.getPrenomUtilisateur().getValue());
+		int indexUtilisateurSelectionne=comboboxnom.getSelectionModel().getSelectedIndex();
+		listePrenom=utilisateurDAO.recupererUtilisateurParNom(listnom.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		Utilisateur selected = listeNom.get(indexUtilisateurSelectionne);
+		
+		
+		for(Utilisateur ut : listePrenom){
+			if(ut.getNomUtilisateur().getValue().equals(selected.getNomUtilisateur().getValue())){
+				listprenom.add(ut.getPrenomUtilisateur().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);

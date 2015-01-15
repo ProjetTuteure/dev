@@ -84,7 +84,7 @@ public class PrestataireDAO {
 			Statement statement = connection.createStatement();
 			resultat=statement.executeQuery("SELECT * FROM PRESTATAIRE");
 			while(resultat.next()){
-				prestataireList.add(new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestation"),resultat.getString("telPrestataire"),resultat.getString("adressePrestataire")));
+				prestataireList.add(new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestataire"),resultat.getString("telPrestataire"),resultat.getString("societePrestataire")));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -107,7 +107,7 @@ public class PrestataireDAO {
 			preparedStatement.setInt(1, idPrestataire);
 			resultat=preparedStatement.executeQuery();
 			resultat.next();
-			prestataire=new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestation"),resultat.getString("telPrestataire"),resultat.getString("adressePrestataire"));
+			prestataire=new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestataire"),resultat.getString("telPrestataire"),resultat.getString("societePrestataire"));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

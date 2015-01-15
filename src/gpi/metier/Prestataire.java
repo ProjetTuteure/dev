@@ -62,4 +62,15 @@ public class Prestataire {
     public void setSocietePrestataire(String societePrestataire) {
         this.societePrestataire.setValue(societePrestataire);
     }
+
+    @Override
+    public String toString() {
+        return "Prestataire{" +
+                "idPrestataire=" + idPrestataire +
+                ", nomPrestataire=" + nomPrestataire +
+                ", prenomPrestataire=" + prenomPrestataire +
+                ", telPrestataire=" + telPrestataire +
+                ", societePrestataire=" + societePrestataire +
+                '}';
+    }
 }
