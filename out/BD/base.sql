@@ -29,9 +29,9 @@ CREATE TABLE REVENDEUR(
 
 CREATE TABLE FACTURE(
 	idFacture int IDENTITY(1,1) PRIMARY KEY ,
-	numFacture varchar(10) NOT NULL,
+	numFacture varchar(30) NOT NULL,
 	dateFacture DATE NOT NULL,
-	montantFacture float,
+	montantFacture numeric(10,2),
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))
 
 CREATE TABLE LOGICIEL(
@@ -151,21 +151,3 @@ INSERT INTO ESTMAINTENU VALUES
 (3,3),
 (3,4),
 (1,4)
-
-CREATE TRIGGER SuppressionRevendeur on REVENDEUR
-AFTER DELETE
-AS BEGIN 
-	declare @idRevendeur int;
-	select @idRevendeur= idRevendeur FROM deleted;
-	delete from facture where idrevendeur = @idrevendeur;
-END
-
-CREATE TRIGGER SuppressionMateriel on MATERIEL
-AFTER DELETE
-AS BEGIN 
-	declare @idMateriel int;
-	SELECT @idMateriel=idMateriel FROM deleted
-	DELETE FROM UTILISE WHERE idMateriel=@idMateriel
-	DELETE FROM ESTMAINTENU WHERE idMateriel=@idMateriel
-	DELETE FROM COMPOSE WHERE idMateriel=@idMateriel
-END
