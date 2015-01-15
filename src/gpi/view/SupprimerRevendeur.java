@@ -49,6 +49,7 @@ public class SupprimerRevendeur {
 		catch(ConnexionBDException ce)
 		{
 			new Popup(ce.getMessage());
+			this.dialogStage.close();
 		}
 		for(Revendeur revendeur : listeRevendeur)
 		{
@@ -98,6 +99,7 @@ public class SupprimerRevendeur {
 			catch (ConnexionBDException e) 
 			{
 				new Popup(e.getMessage());
+				this.dialogStage.close();
 			}
 		}
 	}
