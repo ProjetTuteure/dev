@@ -25,7 +25,6 @@ public class MaintenanceDAO {
 			ps.setFloat(4,maintenance.getCoutMaintenance());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally
