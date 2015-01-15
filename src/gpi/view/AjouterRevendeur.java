@@ -1,6 +1,9 @@
 package gpi.view;
 
 
+import java.sql.SQLException;
+
+import utils.Constante;
 import utils.Popup;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
@@ -77,12 +80,25 @@ public class AjouterRevendeur {
 		{
 			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 		}
+		else if(telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		{
+			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+		}
+		else if(adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
+		}
+		else if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
+		}
 		else
 		{
 			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
 			try
 			{
 				rdao.ajouterRevendeur(revendeurAAjouter);
+				new Popup("Revendeur "+revendeurAAjouter.getNomRevendeur().getValue()+" ajouté !");
 			}
 			catch(ConnexionBDException ce)
 			{
