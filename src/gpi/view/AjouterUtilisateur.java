@@ -52,7 +52,15 @@ public class AjouterUtilisateur {
 	 * @return vrai si le bouton AJOUTER est clique
 	 */
 	public boolean isOkClicked() {
+		return okClicked;
+	}
 
+	/**
+	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
+	 * est clique
+	 */
+	@FXML
+	private void handleOk() {
 		UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 		if (nomField.getText().equals("")) {
 			new Popup("Le champ \"Nom de l'Utilisateur\" doit être saisi");
@@ -69,19 +77,7 @@ public class AjouterUtilisateur {
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}
-			dialogStage.close();
-
 		}
-		return okClicked;
-	}
-
-	/**
-	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
-	 * est clique
-	 */
-	@FXML
-	private void handleOk() {
-
 		okClicked = true;
 		dialogStage.close();
 
