@@ -1,5 +1,7 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -17,7 +19,7 @@ public class UtilisateurDAO {
 	public UtilisateurDAO() {
 	}
 
-	public void ajouterUtilisateur(Utilisateur utilisateur) {
+	public void ajouterUtilisateur(Utilisateur utilisateur) throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
@@ -44,7 +46,7 @@ public class UtilisateurDAO {
 		}
 	}
 
-	public void modifierUtilisateur(Utilisateur utilisateur) {
+	public void modifierUtilisateur(Utilisateur utilisateur) throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
 			PreparedStatement ps=connexion.prepareStatement("UPDATE UTILISATEUR SET nomUtilisateur=?,prenomUtilisateur=?,telUtilisateur=? "
@@ -71,7 +73,7 @@ public class UtilisateurDAO {
 		}
 	}
 		
-	public boolean supprimerUtilisateur(Utilisateur utilisateur) 
+	public boolean supprimerUtilisateur(Utilisateur utilisateur) throws ConnexionBDException 
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -97,7 +99,7 @@ public class UtilisateurDAO {
 		return true;
 	}
 
-	public Utilisateur recupererUtilisateurParId(int idUtilisateur) {
+	public Utilisateur recupererUtilisateurParId(int idUtilisateur) throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		Utilisateur utilisateurARetourner=null;
 		try {
@@ -131,7 +133,7 @@ public class UtilisateurDAO {
 	}
 
 
-	public List<Utilisateur> recupererUtilisateurParNom(String nomUtilisateur) {
+	public List<Utilisateur> recupererUtilisateurParNom(String nomUtilisateur) throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		List<Utilisateur> list = null;
 		try {
@@ -164,51 +166,8 @@ public class UtilisateurDAO {
 		}
 		return list;
 	}
-		
-		
-			
-		
-		/*
-		Connection connection = null;
-		List<Utilisateur> list = null; 
-		ResultSet resultat;
-		String prenomUtilisateur, telUtilisateur;
-		int idUtilisateur;
-		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("SELECT * FROM UTILISATEUR WHERE nomUtilisateur=?;");
 
-			prep.setString(1,nomUtilisateur);
-
-			resultat = prep.executeQuery();
-		idUtilisateur = resultat.getInt(1);
-			prenomUtilisateur = resultat.getString(2);
-			telUtilisateur = resultat.getString(3);
-
-			while (resultat.next()){
-				list=new ArrayList<Utilisateur>();
-				list.add(new Utilisateur(new SimpleIntegerProperty(resultat.getInt("idUtilisateur")),
-						resultat.getString("nomUtilisateur"),
-						resultat.getString("prenomUtilisateur"),
-						resultat.getString("telUtilisateur")));
-				//list.add(new Utilisateur(new SimpleIntegerProperty(idUtilisateur), nomUtilisateur, prenomUtilisateur, telUtilisateur));
-			}
-			return list;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-*/
-	public List<Utilisateur> recupererAllUtilisateur() {
+	public List<Utilisateur> recupererAllUtilisateur() throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		List<Utilisateur> listeUtilisateur=new ArrayList<>();
 		try {
