@@ -3,9 +3,9 @@ package gpi.metier;
 import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Julien on 15/01/2015.
@@ -35,15 +35,15 @@ public class EstMaintenuDAO {
 
     public int supprimerEstMaintenu(EstMaintenu estMaintenu) throws ConnexionBDException{
         Connection connection=null;
-        int resultat;
+        int nombreLigneAffectee=0;
         try{
             connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE numFacture=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
 
-            //prep.setString(1, estMaintenu.g());
+            preparedStatement.setInt(1, estMaintenu.getIdMaintenanceEstMaintenu());
+            preparedStatement.setInt(2, estMaintenu.getIdMaterielEstMaintenu());
 
-            resultat=prep.executeUpdate();
-            return resultat;
+            nombreLigneAffectee=preparedStatement.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
         }finally{
@@ -54,6 +54,6 @@ public class EstMaintenuDAO {
                 e.printStackTrace();
             }
         }
-        return 0;
+        return nombreLigneAffectee;
     }
 }

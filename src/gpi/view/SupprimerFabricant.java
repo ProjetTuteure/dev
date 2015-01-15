@@ -31,26 +31,26 @@ public class SupprimerFabricant {
 
 	private FabricantDAO fabricantDAO=new FabricantDAO();
 
-	private ObservableList<String> listFabricantObservable;
+	private ObservableList<String> listNomFabricant;
 
-	private List<Fabricant> listFabricant;
+	private List<Integer> listIdFabricant;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listFabricantObservable = FXCollections.observableArrayList();
-		listFabricant=new ArrayList<Fabricant>();
+		listNomFabricant = FXCollections.observableArrayList();
+		listIdFabricant=new ArrayList<Integer>();
 		try {
-			listFabricant=fabricantDAO.recupererAllFabricant();
+			for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+                listNomFabricant.add(fabricant.getNomFabricantString());
+				listIdFabricant.add(fabricant.getIdFabricant().getValue());
+            }
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		for (Fabricant fabricant : listFabricant) {
-			listFabricantObservable.add(fabricant.getNomFabricantString());
-		}
-		comboboxfabr.setItems(listFabricantObservable);
+		comboboxfabr.setItems(listNomFabricant);
 	}
 
 	/**
@@ -78,10 +78,8 @@ public class SupprimerFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-		int selected=comboboxfabr.getSelectionModel().getSelectedIndex();
-		int id=listFabricant.get(selected).getIdFabricant().getValue();
 		try {
-			fabricantDAO.supprimerFabricant(new Fabricant(id, null, null,null));
+			fabricantDAO.supprimerFabricant(new Fabricant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()), null, null,null));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -97,5 +95,4 @@ public class SupprimerFabricant {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
 }

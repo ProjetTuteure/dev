@@ -39,11 +39,11 @@ public class ModifierFabricant {
 	private FabricantDAO fabricantDAO=new FabricantDAO();
 
 	@FXML
-	private TextField nomField;
+	private TextField nomFabricantField;
 	@FXML
-	private TextField adresseField;
+	private TextField adresseFabricantField;
 	@FXML
-	private TextField telField;
+	private TextField telFabricantField;
 
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
@@ -80,7 +80,7 @@ public class ModifierFabricant {
 	@FXML
 	private void handleOk() {
 		try {
-			fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomField.getText(),adresseField.getText(),telField.getText()));
+			fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -120,9 +120,9 @@ public class ModifierFabricant {
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		nomField.setText(selected.getNomFabricant().getValue());
-		telField.setText(selected.getTelFabricant().getValue());
-		adresseField.setText(selected.getAdresseFabricant().getValue());
+		nomFabricantField.setText(selected.getNomFabricant().getValue());
+		telFabricantField.setText(selected.getTelFabricant().getValue());
+		adresseFabricantField.setText(selected.getAdresseFabricant().getValue());
 	}
 
 	public int getIdFabriquant() {

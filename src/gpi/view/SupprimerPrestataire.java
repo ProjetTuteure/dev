@@ -1,44 +1,60 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
+import gpi.metier.Fabricant;
 import gpi.metier.Prestataire;
+import gpi.metier.PrestataireDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import utils.Popup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kevin
  */
 
 public class SupprimerPrestataire {
+	private int idPrestataire;
+
 	@FXML
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxnom;
+	private ComboBox<String> comboboxNomPrestataire;
 	@FXML
-	private ComboBox<String> comboboxprenom;
+	private ComboBox<String> comboboxPrenomPrestataire;
 
-	private Donnee donneesite = new Donnee();
+	private PrestataireDAO prestataireDAO=new PrestataireDAO();
 
-	private ObservableList<String> listnom;
-	private ObservableList<String> listprenom;
+	private ObservableList<String> listNomPrestataire;
+	private ObservableList<String> listPrenomPrestataire;
+
+	private List<Integer> listIdPrestataire;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listnom = FXCollections.observableArrayList();
-
-		for (Prestataire pr : donneesite.getPrestataireData()) {
-			listnom.add(pr.getNomPrestataire().getValue());
+		listNomPrestataire = FXCollections.observableArrayList();
+		listIdPrestataire=new ArrayList<Integer>();
+		try {
+			for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
+                listNomPrestataire.add(prestataire.getNomPrestataire().getValue());
+				listIdPrestataire.add(prestataire.getIdPrestataire().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxnom.setItems(listnom);
+		comboboxNomPrestataire.setItems(listNomPrestataire);
 	}
 
 	/**
@@ -66,7 +82,11 @@ public class SupprimerPrestataire {
 	 */
 	@FXML
 	private void handleOk() {
-
+		try {
+			prestataireDAO.supprimerPrestataire(new Prestataire(listIdPrestataire.get(comboboxPrenomPrestataire.getSelectionModel().getSelectedIndex()), null, null,null,null));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
@@ -78,16 +98,39 @@ public class SupprimerPrestataire {
 	 */
 	@FXML
 	private void handlechange() {
-		Prestataire selected = donneesite.getPrestaire(comboboxnom.getValue());
-
-		listprenom = FXCollections.observableArrayList();
-		for (Prestataire pr : donneesite.getPrestataireData()) {
-			if (pr.getNomPrestataire().getValue()
-					.equals(selected.getNomPrestataire().getValue())) {
-				listprenom.add(selected.getPrenomPrestataire().getValue());
-			}
+		this.setIdPrestataire(listIdPrestataire.get(comboboxNomPrestataire.getSelectionModel().getSelectedIndex()));
+		Prestataire selected = null;
+		try {
+			selected = prestataireDAO.recupererPrestataireParId(this.getIdPrestataire());
+		} catch (ConnexionBDException e) {
+			e.printStackTrace();
 		}
-		comboboxprenom.setItems(listprenom);
+		listIdPrestataire=new ArrayList<Integer>();
+		listPrenomPrestataire = FXCollections.observableArrayList();
+		try {
+			for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
+                if (prestataire.getNomPrestataire().getValue().equals(selected.getNomPrestataire().getValue())) {
+                    listPrenomPrestataire.add(selected.getPrenomPrestataire().getValue());
+					listIdPrestataire.add(selected.getIdPrestataire().getValue());
+                }
+            }
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		comboboxPrenomPrestataire.setItems(listPrenomPrestataire);
+	}
+
+	@FXML
+	private void handleCancel() {
+		dialogStage.close();
+	}
+
+	public int getIdPrestataire() {
+		return idPrestataire;
+	}
+
+	public void setIdPrestataire(int idPrestataire) {
+		this.idPrestataire = idPrestataire;
 	}
 
 }
