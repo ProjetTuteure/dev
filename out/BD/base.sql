@@ -7,7 +7,7 @@ CREATE TABLE FABRICANT(
 	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
 	nomFabricant varchar(20) NOT NULL,
 	telFabricant varchar(20),
-	adresseFabricant varchar(50))
+	adresseFabricant varchar(100))
 
 CREATE TABLE COMPOSANT(
 	idComposant int IDENTITY(1,1) PRIMARY KEY ,
@@ -25,7 +25,7 @@ CREATE TABLE REVENDEUR(
 	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
 	nomRevendeur varchar(20) NOT NULL,
 	telRevendeur varchar(20),
-	adresseRevendeur varchar(50))
+	adresseRevendeur varchar(100))
 
 CREATE TABLE FACTURE(
 	idFacture int IDENTITY(1,1) PRIMARY KEY ,

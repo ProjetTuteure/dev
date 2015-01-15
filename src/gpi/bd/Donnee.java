@@ -157,9 +157,9 @@ public class Donnee {
 	}
 
 	private void remplirFactureData() {
-		factureData.add(new Facture("1", LocalDate.parse("2011-11-11"),
+		factureData.add(new Facture(1,"1", LocalDate.parse("2011-11-11"),
 				(float) 123.50, revendeurData.get(0)));
-		factureData.add(new Facture("2", LocalDate.parse("2012-12-12"),
+		factureData.add(new Facture(1,"2", LocalDate.parse("2012-12-12"),
 				(float) 99, revendeurData.get(1)));
 	}
 
