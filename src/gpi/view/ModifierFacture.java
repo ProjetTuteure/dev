@@ -93,7 +93,7 @@ public class ModifierFacture {
 		NumFacture.setText(listObjetsFacture.get(index).getNumFacture());
 		DateFacture.setValue(listObjetsFacture.get(index).getDateFacture());
 		MontantFacture.setText(listObjetsFacture.get(index).getMontantFactureString());
-		//String nomRevendeur=listObjetsFacture.get(index).getRevendeurFacture().getNomRevendeur().getValue();
+		String nomRevendeur=listObjetsFacture.get(index).getRevendeurFacture().getNomRevendeur().getValue();
 		listRevendeurId=new ArrayList<Integer>();
 		listRevendeurObservable = FXCollections.observableArrayList();
 		try {
@@ -106,6 +106,6 @@ public class ModifierFacture {
 			new Popup(e.getMessage());
 		}
 		NumRevendeur.setItems(listRevendeurObservable);
-		//NumRevendeur.selectionModelProperty().setValue(nomRevendeur);
+		NumRevendeur.setPromptText(nomRevendeur);
 	}
 }
