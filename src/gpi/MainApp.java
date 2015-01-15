@@ -1287,13 +1287,13 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public static boolean showAddEstMaintenuDialog(estMaintenu mt) {
+	public static boolean showAddEstMaintenuDialog(EstMaintenu mt) {
 		try {
 			FXMLLoader loader = new FXMLLoader(
 					MainApp.class.getResource("view/ajouterEstMaintenu.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Ajouter une opération de maintenance");
+			dialogStage.setTitle("Ajouter une opï¿½ration de maintenance");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			dialogStage.setResizable(false);
@@ -1321,7 +1321,7 @@ public class MainApp extends Application {
 					MainApp.class.getResource("view/supprimerEstMaintenu.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Supprimer une opération de maintenance");
+			dialogStage.setTitle("Supprimer une opï¿½ration de maintenance");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			dialogStage.setResizable(false);

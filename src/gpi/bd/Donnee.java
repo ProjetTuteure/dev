@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Donnee {
 	private ObservableList<estIntervenu> estIntervenuData = FXCollections
 			.observableArrayList();
-	private ObservableList<estMaintenu> estMaintenuData = FXCollections
+	private ObservableList<EstMaintenu> estMaintenuData = FXCollections
 			.observableArrayList();
 	private ObservableList<Etat> etatData = FXCollections.observableArrayList();
 	private ObservableList<Fabricant> fabricantData = FXCollections
@@ -88,7 +88,7 @@ public class Donnee {
 		return maintenanceData;
 	}
 
-	public ObservableList<estMaintenu> getEstMaintenuData() {
+	public ObservableList<EstMaintenu> getEstMaintenuData() {
 		return estMaintenuData;
 	}
 
@@ -243,17 +243,17 @@ public class Donnee {
 	}
 
 	private void remplirEstMaintenuData() {
-		this.estMaintenuData.add(new estMaintenu(materielData.get(0),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(0),
 				maintenanceData.get(0)));
-		this.estMaintenuData.add(new estMaintenu(materielData.get(0),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(0),
 				maintenanceData.get(1)));
-		this.estMaintenuData.add(new estMaintenu(materielData.get(1),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(1),
 				maintenanceData.get(3)));
-		this.estMaintenuData.add(new estMaintenu(materielData.get(2),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(2),
 				maintenanceData.get(2)));
-		this.estMaintenuData.add(new estMaintenu(materielData.get(3),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(3),
 				maintenanceData.get(2)));
-		this.estMaintenuData.add(new estMaintenu(materielData.get(3),
+		this.estMaintenuData.add(new EstMaintenu(materielData.get(3),
 				maintenanceData.get(0)));
 	}
 

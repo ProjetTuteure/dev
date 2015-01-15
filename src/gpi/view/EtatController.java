@@ -4,7 +4,6 @@ import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.metier.Etat;
 import gpi.metier.Materiel;
-import gpi.metier.estMaintenu;
 
 import java.net.URL;
 import java.text.ParseException;

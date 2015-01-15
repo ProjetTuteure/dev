@@ -611,7 +611,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddEstMaintenu(ActionEvent event) {
-		estMaintenu mt = new estMaintenu(null, null);
+		EstMaintenu mt = new EstMaintenu(null, null);
 		boolean okClicked = MainApp.showAddEstMaintenuDialog(mt);
 		if (okClicked) {
 

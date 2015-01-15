@@ -1,19 +1,23 @@
 package gpi.metier;
 
 /**
- * Created by thibault on 22/11/14.
+ * Created by Julien on 15/01/2015.
  */
-public class estMaintenu {
+public class EstMaintenu {
     private Materiel materielEstMaintenu;
     private Maintenance maintenanceEstMaintenu;
 
-    public estMaintenu(Materiel materielEstMaintenu, Maintenance maintenanceEstMaintenu) {
+    public EstMaintenu(Materiel materielEstMaintenu, Maintenance maintenanceEstMaintenu) {
         this.materielEstMaintenu = materielEstMaintenu;
         this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }
 
     public Materiel getMaterielEstMaintenu() {
-        return materielEstMaintenu;
+        return this.materielEstMaintenu;
+    }
+
+    public int getIdMaterielEstMaintenu() {
+        return this.materielEstMaintenu.getIdMateriel().getValue();
     }
 
     public void setMaterielEstMaintenu(Materiel materielEstMaintenu) {
@@ -21,7 +25,11 @@ public class estMaintenu {
     }
 
     public Maintenance getMaintenanceEstMaintenu() {
-        return maintenanceEstMaintenu;
+        return this.maintenanceEstMaintenu;
+    }
+
+    public int getIdMaintenanceEstMaintenu() {
+        return this.maintenanceEstMaintenu.getIdMaintenance().getValue();
     }
 
     public void setMaintenanceEstMaintenu(Maintenance maintenanceEstMaintenu) {

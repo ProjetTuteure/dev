@@ -2,14 +2,8 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.bd.Donnee;
-import gpi.metier.Fabricant;
-import gpi.metier.Facture;
-import gpi.metier.Maintenance;
-import gpi.metier.Materiel;
-import gpi.metier.Revendeur;
-import gpi.metier.Utilisateur;
-import gpi.metier.Utilise;
-import gpi.metier.estMaintenu;
+import gpi.metier.*;
+
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -61,7 +55,7 @@ public class DetailMachineController implements Initializable{
     }
 	
 	/**
-	 * Initialise les données et affecte l'index en fonction de la page
+	 * Initialise les donnï¿½es et affecte l'index en fonction de la page
 	 * courante
 	 */
 	@Override
@@ -172,7 +166,7 @@ public class DetailMachineController implements Initializable{
 	private ObservableList<String> donneesMaintenanceToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Maintenance> listMaintenanceMateriel = FXCollections.observableArrayList();
-		for(estMaintenu em : mainApp.donnee.getEstMaintenuData()){
+		for(EstMaintenu em : mainApp.donnee.getEstMaintenuData()){
 			if(em.getMaterielEstMaintenu().toString().equals(materiel.toString())){
 				listMaintenanceMateriel.add(em.getMaintenanceEstMaintenu());
 			}
