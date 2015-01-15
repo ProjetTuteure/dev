@@ -1,6 +1,9 @@
 package gpi.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -14,12 +17,24 @@ public class AjouterMaintenance {
 	@FXML
 	private boolean okClicked = false;
 
+	@FXML
+	private DatePicker dp_dateMaintenance;
+	
+	@FXML 
+	private TextField tf_coutMaintenance;
+	
+	@FXML
+	private TextField tf_objetMaintenance;
+	
+	@FXML
+	private TextArea ta_description;
+	
 	/**
 	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-
+		
 	}
 
 	/**
