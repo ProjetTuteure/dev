@@ -18,7 +18,7 @@ public class MaConnexion {
 		return maConnexion;
 	}
 	
-	public Connection getConnexion() throws BDNonTrouveException{
+	public Connection getConnexion(){
 		Connection connexion = null;
 		Properties p = Propriete.getInstance().getProperties();
 		String url = "jdbc:sqlserver://"+p.getProperty("ipBD")+":"+p.getProperty("port")+";databaseName="+p.getProperty("base")+";";
@@ -26,12 +26,9 @@ public class MaConnexion {
 		String user= p.getProperty("user");
 		try {
 			connexion = DriverManager.getConnection(url,user,mdp);
-			if(connexion==null)
-			{
-				throw new BDNonTrouveException("Connexion impossible");
-			}
+			//connexion.setNetworkTimeout(arg0, arg1);
 		} catch (SQLException e) {
-
+			new Popup("Erreur d'acces a la BD");
 			e.printStackTrace();
 		}
 		return connexion;
