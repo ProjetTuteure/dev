@@ -22,11 +22,11 @@ public class FactureDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO FACTURE(dateFacture,montantFacture,idRevendeur) VALUES (?,?,?);");
-			
-			prep.setString(1, facture.getDateFacture().toString());
-			prep.setFloat(2, facture.getMontantFacture().get());
-			prep.setInt(3, facture.getRevendeurFacture().getIdRevendeur().get());
+			PreparedStatement prep = connection.prepareStatement("INSERT INTO FACTURE(numFacture,dateFacture,montantFacture,idRevendeur) VALUES (?,?,?,?);");
+			prep.setString(1, facture.getNumFacture());
+			prep.setString(2, facture.getDateFacture().toString());
+			prep.setFloat(3, facture.getMontantFacture().get());
+			prep.setInt(4, facture.getRevendeurFacture().getIdRevendeur().get());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
