@@ -1,6 +1,7 @@
 package gpi.view;
 
 import utils.Popup;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Utilisateur;
 import gpi.metier.UtilisateurDAO;
 import javafx.fxml.FXML;
@@ -61,9 +62,13 @@ public class AjouterUtilisateur {
 			setNomUtilisateur(nomField.getText());
 			setPrenomUtilisateur(prenomField.getText());
 			setTelUtilisateur(telField.getText());
-			utilisateurDAO.ajouterUtilisateur(new Utilisateur(null,
-					getNomUtilisateur(), getPrenomUtilisateur(),
-					getTelUtilisateur()));
+			try {
+				utilisateurDAO.ajouterUtilisateur(new Utilisateur(null,
+						getNomUtilisateur(), getPrenomUtilisateur(),
+						getTelUtilisateur()));
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
 			dialogStage.close();
 
 		}

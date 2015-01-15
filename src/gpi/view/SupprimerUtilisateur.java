@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utils.Popup;
-import gpi.bd.Donnee;
-import gpi.metier.Revendeur;
-import gpi.metier.RevendeurDAO;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Utilisateur;
 import gpi.metier.UtilisateurDAO;
 import javafx.collections.FXCollections;
@@ -30,14 +28,13 @@ public class SupprimerUtilisateur {
 	@FXML
 	private ComboBox<String> comboboxprenom;
 
-
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
-	
+
 	private List<Utilisateur> listeNom;
 	private List<Utilisateur> listePrenom;
-	
-	private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
+
+	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
 	/**
 	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
@@ -45,10 +42,13 @@ public class SupprimerUtilisateur {
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
-		listeNom=new ArrayList<Utilisateur>();
-		listeNom=utilisateurDAO.recupererAllUtilisateur();
-		for(Utilisateur utilisateur : listeNom)
-		{
+		listeNom = new ArrayList<Utilisateur>();
+		try {
+			listeNom = utilisateurDAO.recupererAllUtilisateur();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		for (Utilisateur utilisateur : listeNom) {
 			listnom.add(utilisateur.getNomUtilisateur().getValue());
 		}
 		comboboxnom.setItems(listnom);
@@ -80,38 +80,38 @@ public class SupprimerUtilisateur {
 	@FXML
 	private void handleOk() {
 		okClicked = true;
-		
-//			int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
-//			Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
-//			utilisateur.setNomUtilisateur(nomfield.getText());
-//			utilisateur.setPrenomUtilisateur(prenomfield.getText());
-//			utilisateur.setTelUtilisateur(telfield.getText());
-//			utilisateurDAO.modifierUtilisateur(utilisateur);
-//			dialogStage.close();
-			
-			
-			if(comboboxnom.getValue()==null)
-			{
-				new Popup("Veuillez choisir un nom d'utilisateur");
-			}
-			else if(comboboxprenom.getValue()==null){
-				new Popup("Veuillez choisir un prenom d'utilisateur");
-			} else
-			{
-				int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
-				Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
-				if(utilisateurDAO.supprimerUtilisateur(utilisateur)==true)
-				{
+
+		// int
+		// indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+		// Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
+		// utilisateur.setNomUtilisateur(nomfield.getText());
+		// utilisateur.setPrenomUtilisateur(prenomfield.getText());
+		// utilisateur.setTelUtilisateur(telfield.getText());
+		// utilisateurDAO.modifierUtilisateur(utilisateur);
+		// dialogStage.close();
+
+		if (comboboxnom.getValue() == null) {
+			new Popup("Veuillez choisir un nom d'utilisateur");
+		} else if (comboboxprenom.getValue() == null) {
+			new Popup("Veuillez choisir un prenom d'utilisateur");
+		} else {
+			int indexRevendeurSelectionne = comboboxprenom.getSelectionModel()
+					.getSelectedIndex();
+			Utilisateur utilisateur = listePrenom
+					.get(indexRevendeurSelectionne);
+			try {
+				if (utilisateurDAO.supprimerUtilisateur(utilisateur) == true) {
 					dialogStage.close();
 					new Popup("Utilisateur supprimé !");
-				}
-				else
-				{
+				} else {
 					new Popup("Echec lors de la suppression");
 				}
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
 			}
+		}
 	}
-	
+
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
 	 * est clique
@@ -128,17 +128,22 @@ public class SupprimerUtilisateur {
 	@FXML
 	private void handlechange() {
 		listprenom = FXCollections.observableArrayList();
-		int indexUtilisateurSelectionne=comboboxnom.getSelectionModel().getSelectedIndex();
-		listePrenom=utilisateurDAO.recupererUtilisateurParNom(listnom.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		int indexUtilisateurSelectionne = comboboxnom.getSelectionModel()
+				.getSelectedIndex();
+		try {
+			listePrenom = utilisateurDAO.recupererUtilisateurParNom(listnom
+					.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		Utilisateur selected = listeNom.get(indexUtilisateurSelectionne);
-		
-		
-		for(Utilisateur ut : listePrenom){
-			if(ut.getNomUtilisateur().getValue().equals(selected.getNomUtilisateur().getValue())){
+
+		for (Utilisateur ut : listePrenom) {
+			if (ut.getNomUtilisateur().getValue()
+					.equals(selected.getNomUtilisateur().getValue())) {
 				listprenom.add(ut.getPrenomUtilisateur().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);
 	}
-
 }

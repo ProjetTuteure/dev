@@ -5,11 +5,7 @@ import java.util.List;
 
 import utils.Popup;
 import gpi.bd.Donnee;
-import gpi.metier.Prestataire;
-import gpi.metier.Revendeur;
-import gpi.metier.RevendeurDAO;
-import gpi.metier.Site;
-import gpi.metier.SiteDAO;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Utilisateur;
 import gpi.metier.UtilisateurDAO;
 import javafx.collections.FXCollections;
@@ -46,27 +42,28 @@ public class ModifierUtilisateur {
 	@FXML
 	private ComboBox<String> comboboxprenom;
 
-	private Donnee donnee = new Donnee();
-
 	private ObservableList<String> listnom;
 	private ObservableList<String> listprenom;
-	
+
 	private List<Utilisateur> listeNom;
 	private List<Utilisateur> listePrenom;
-	
-	private UtilisateurDAO utilisateurDAO=new UtilisateurDAO();
+
+	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
 	/**
 	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		
+
 		listnom = FXCollections.observableArrayList();
-		listeNom=new ArrayList<Utilisateur>();
-		listeNom=utilisateurDAO.recupererAllUtilisateur();
-		for(Utilisateur utilisateur : listeNom)
-		{
+		listeNom = new ArrayList<Utilisateur>();
+		try {
+			listeNom = utilisateurDAO.recupererAllUtilisateur();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		for (Utilisateur utilisateur : listeNom) {
 			listnom.add(utilisateur.getNomUtilisateur().getValue());
 		}
 		comboboxnom.setItems(listnom);
@@ -98,20 +95,23 @@ public class ModifierUtilisateur {
 	@FXML
 	private void handleOk() {
 		okClicked = true;
-		if(nomfield.getText().equals(""))
-		{
+		if (nomfield.getText().equals("")) {
 			new Popup("Le champ \"Nom du utilisateur\" doit être rempli");
-		}
-		else if(prenomfield.getText().equals("")){
+		} else if (prenomfield.getText().equals("")) {
 			new Popup("Le champ \"Prenom du utilisateur\" doit être rempli");
-		} else
-		{
-			int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
-			Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
+		} else {
+			int indexRevendeurSelectionne = comboboxprenom.getSelectionModel()
+					.getSelectedIndex();
+			Utilisateur utilisateur = listePrenom
+					.get(indexRevendeurSelectionne);
 			utilisateur.setNomUtilisateur(nomfield.getText());
 			utilisateur.setPrenomUtilisateur(prenomfield.getText());
 			utilisateur.setTelUtilisateur(telfield.getText());
-			utilisateurDAO.modifierUtilisateur(utilisateur);
+			try {
+				utilisateurDAO.modifierUtilisateur(utilisateur);
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
 			dialogStage.close();
 		}
 	}
@@ -132,18 +132,24 @@ public class ModifierUtilisateur {
 	@FXML
 	private void handlechange1() {
 		listprenom = FXCollections.observableArrayList();
-		int indexUtilisateurSelectionne=comboboxnom.getSelectionModel().getSelectedIndex();
-		listePrenom=utilisateurDAO.recupererUtilisateurParNom(listnom.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		int indexUtilisateurSelectionne = comboboxnom.getSelectionModel()
+				.getSelectedIndex();
+		try {
+			listePrenom = utilisateurDAO.recupererUtilisateurParNom(listnom
+					.get(comboboxnom.getSelectionModel().getSelectedIndex()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		Utilisateur selected = listeNom.get(indexUtilisateurSelectionne);
-		
-		
-		for(Utilisateur ut : listePrenom){
-			if(ut.getNomUtilisateur().getValue().equals(selected.getNomUtilisateur().getValue())){
+
+		for (Utilisateur ut : listePrenom) {
+			if (ut.getNomUtilisateur().getValue()
+					.equals(selected.getNomUtilisateur().getValue())) {
 				listprenom.add(ut.getPrenomUtilisateur().getValue());
 			}
 		}
 		comboboxprenom.setItems(listprenom);
-		}
+	}
 
 	/**
 	 * Cette methode permet de pre remplir les champs lorsqu'un prestataire est
@@ -152,12 +158,14 @@ public class ModifierUtilisateur {
 	@FXML
 	private void handlechange2() {
 		try {
-				int indexUtilisateurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
-				Utilisateur selected2 = listePrenom.get(indexUtilisateurSelectionne);
+			int indexUtilisateurSelectionne = comboboxprenom
+					.getSelectionModel().getSelectedIndex();
+			Utilisateur selected2 = listePrenom
+					.get(indexUtilisateurSelectionne);
 
-				nomfield.setText(selected2.getNomUtilisateur().getValue());
-				prenomfield.setText(selected2.getPrenomUtilisateur().getValue());
-				telfield.setText(selected2.getTelUtilisateur().getValue());
+			nomfield.setText(selected2.getNomUtilisateur().getValue());
+			prenomfield.setText(selected2.getPrenomUtilisateur().getValue());
+			telfield.setText(selected2.getTelUtilisateur().getValue());
 		} catch (NullPointerException e) {
 
 		}
