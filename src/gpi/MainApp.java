@@ -1204,32 +1204,6 @@ public class MainApp extends Application {
 		}
 	}
 
-	public static boolean showModInterventionDialog() {
-		try {
-			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modifierIntervention.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Modifier une intervention");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			dialogStage.setResizable(false);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			ModifierIntervention controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	public static boolean showSuppInterventionDialog() {
 		try {
@@ -1285,32 +1259,6 @@ public class MainApp extends Application {
 		}
 	}
 
-	public static boolean showModUtilisationDialog() {
-		try {
-			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modifierUtilisation.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Modifier une Utilisation");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			dialogStage.setResizable(false);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			ModifierUtilisation controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	public static boolean showSuppUtilisationDialog() {
 		try {
@@ -1366,32 +1314,6 @@ public class MainApp extends Application {
 		}
 	}
 
-	public static boolean showModEstMaintenuDialog() {
-		try {
-			FXMLLoader loader = new FXMLLoader(
-					MainApp.class.getResource("view/modifierEstMaintenu.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Modifier une opération de maintenance");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			dialogStage.setResizable(false);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			ModifierEstMaintenu controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	public static boolean showSuppEstMaintenuDialog() {
 		try {

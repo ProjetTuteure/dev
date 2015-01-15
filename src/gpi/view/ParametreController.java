@@ -555,19 +555,7 @@ public class ParametreController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Action lorsqu'un le bouton modifier type est clique
-	 * 
-	 * @param event
-	 *            un evenement sur le bouton modifier intervention
-	 */
-	@FXML
-	private void handlemodIntervention(ActionEvent event) {
-		boolean okClicked = MainApp.showModInterventionDialog();
-		if (okClicked) {
 
-		}
-	}
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
@@ -599,19 +587,7 @@ public class ParametreController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Action lorsqu'un le bouton modifier type est clique
-	 * 
-	 * @param event
-	 *            un evenement sur le bouton modifier uitilisation
-	 */
-	@FXML
-	private void handlemodUtilisation(ActionEvent event) {
-		boolean okClicked = MainApp.showModUtilisationDialog();
-		if (okClicked) {
 
-		}
-	}
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
@@ -642,19 +618,6 @@ public class ParametreController implements Initializable {
 		}
 	}
 	
-	/**
-	 * Action lorsqu'un le bouton modifier type est clique
-	 * 
-	 * @param event
-	 *            un evenement sur le bouton modifier uitilisation
-	 */
-	@FXML
-	private void handlemodEstMaintenu(ActionEvent event) {
-		boolean okClicked = MainApp.showModEstMaintenuDialog();
-		if (okClicked) {
-
-		}
-	}
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique

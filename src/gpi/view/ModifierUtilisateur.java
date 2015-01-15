@@ -100,9 +100,11 @@ public class ModifierUtilisateur {
 		okClicked = true;
 		if(nomfield.getText().equals(""))
 		{
-			new Popup("Le champ \"Nom du revendeur\" doit être rempli");
+			new Popup("Le champ \"Nom du utilisateur\" doit être rempli");
 		}
-		else
+		else if(prenomfield.getText().equals("")){
+			new Popup("Le champ \"Prenom du utilisateur\" doit être rempli");
+		} else
 		{
 			int indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
 			Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);

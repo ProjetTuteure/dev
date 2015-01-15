@@ -99,13 +99,10 @@
             <Button mnemonicParsing="false" onAction="#handlemodUtilisateur" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="14" />
             <Button mnemonicParsing="false" onAction="#handlesuppUtilisateur" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="14" />
             <Button mnemonicParsing="false" onAction="#handleaddIntervention" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <Button mnemonicParsing="false" onAction="#handlemodIntervention" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="15" />
             <Button mnemonicParsing="false" onAction="#handlesuppIntervention" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="15" />
             <Button mnemonicParsing="false" onAction="#handleaddUtilisation" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <Button mnemonicParsing="false" onAction="#handlemodUtilisation" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="16" />
             <Button mnemonicParsing="false" onAction="#handlesuppUtilisation" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="16" />
             <Button mnemonicParsing="false" onAction="#handleaddEstMaintenu" text="Ajouter..." GridPane.columnIndex="1" GridPane.rowIndex="17" />
-            <Button mnemonicParsing="false" onAction="#handlemodEstMaintenu" text="Modifier..." GridPane.columnIndex="2" GridPane.rowIndex="17" />
             <Button mnemonicParsing="false" onAction="#handlesuppEstMaintenu" text="Supprimer..." GridPane.columnIndex="3" GridPane.rowIndex="17" />
           
          </children>
