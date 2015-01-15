@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
 import java.sql.*;
@@ -12,7 +13,7 @@ public class TypeDAO {
 
     private Connection connection;
 
-    public int ajouterType(Type type){
+    public int ajouterType(Type type) throws ConnexionBDException {
         int nombreLigneAffectee=0;
         try {
             connection=MaConnexion.getInstance().getConnexion();
@@ -34,7 +35,7 @@ public class TypeDAO {
        return nombreLigneAffectee;
     }
 
-    public int modifierType(Type type){
+    public int modifierType(Type type) throws ConnexionBDException {
         int nombreLigneAffectee=0;
         try {
             connection=MaConnexion.getInstance().getConnexion();
@@ -55,7 +56,7 @@ public class TypeDAO {
         return nombreLigneAffectee;
     }
 
-    public int supprimerType(Type type){
+    public int supprimerType(Type type) throws ConnexionBDException {
         int nombreLigneAffectee=0;
         try{
             connection=MaConnexion.getInstance().getConnexion();
@@ -76,7 +77,7 @@ public class TypeDAO {
         return nombreLigneAffectee;
     }
 
-    public List<Type> recupererAllType(){
+    public List<Type> recupererAllType() throws ConnexionBDException {
         List<Type> typeList= new ArrayList<Type>();
         ResultSet resultat;
         try{
@@ -98,7 +99,7 @@ public class TypeDAO {
         return typeList;
     }
 
-    public Type recupererTypeParId(String nomType){
+    public Type recupererTypeParId(String nomType) throws ConnexionBDException {
         ResultSet resultat;
         Type type=null;
         try{

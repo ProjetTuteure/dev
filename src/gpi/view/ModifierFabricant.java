@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Popup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,9 +52,13 @@ public class ModifierFabricant {
 	private void initialize() {
 		listNomFabricant = FXCollections.observableArrayList();
 		listIdFabricant = new ArrayList<Integer>();
-		for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
-			listNomFabricant.add(fabricant.getNomFabricant().getValue());
-			listIdFabricant.add(fabricant.getIdFabricant().getValue());
+		try {
+			for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+                listNomFabricant.add(fabricant.getNomFabricant().getValue());
+                listIdFabricant.add(fabricant.getIdFabricant().getValue());
+            }
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		comboboxfabr.setItems(listNomFabricant);
 	}
@@ -73,7 +79,11 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-		fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomField.getText(),adresseField.getText(),telField.getText()));
+		try {
+			fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomField.getText(),adresseField.getText(),telField.getText()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
@@ -104,7 +114,12 @@ public class ModifierFabricant {
 	@FXML
 	private void handlechange() {
 		this.setIdFabriquant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()));
-		Fabricant selected=fabricantDAO.recupererFabricantParId(this.getIdFabriquant());
+		Fabricant selected= null;
+		try {
+			selected = fabricantDAO.recupererFabricantParId(this.getIdFabriquant());
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		nomField.setText(selected.getNomFabricant().getValue());
 		telField.setText(selected.getTelFabricant().getValue());
 		adresseField.setText(selected.getAdresseFabricant().getValue());

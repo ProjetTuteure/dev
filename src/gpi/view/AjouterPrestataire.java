@@ -1,10 +1,12 @@
 package gpi.view;
 
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Prestataire;
 import gpi.metier.PrestataireDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -65,7 +67,11 @@ public class AjouterPrestataire {
 	 */
 	@FXML
 	private void handleOk() {
-		prestataireDAO.ajouterPrestataire(new Prestataire(0,nomPrestataireField.getText(),prenomPrestataireField.getText(),adressePrestataireField.getText(),tesPrestataireField.getText()));
+		try {
+			prestataireDAO.ajouterPrestataire(new Prestataire(0,nomPrestataireField.getText(),prenomPrestataireField.getText(),adressePrestataireField.getText(),tesPrestataireField.getText()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 

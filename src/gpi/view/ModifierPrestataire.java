@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Prestataire;
 import gpi.metier.PrestataireDAO;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +60,14 @@ public class ModifierPrestataire {
 	private void initialize() {
 		listNomPrestataire = FXCollections.observableArrayList();
 		prestataireList=new ArrayList<Integer>();
-		for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
-			listNomPrestataire.add(prestataire.getNomPrestataire().getValue());
-			prestataireList.add(prestataire.getIdPrestataire().getValue());
+
+		try {
+			for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
+                listNomPrestataire.add(prestataire.getNomPrestataire().getValue());
+                prestataireList.add(prestataire.getIdPrestataire().getValue());
+            }
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		comboboxnom.setItems(listNomPrestataire);
 	}
@@ -90,7 +97,11 @@ public class ModifierPrestataire {
 	 */
 	@FXML
 	private void handleOk() {
-		prestataireDAO.modifierPrestataire(new Prestataire(this.getIdPrestataire(),nomPrestataireField.getText(),prenomPrestataireField.getText(),telPrestataireField.getText(),societePrestataireField.getText()));
+		try {
+			prestataireDAO.modifierPrestataire(new Prestataire(this.getIdPrestataire(),nomPrestataireField.getText(),prenomPrestataireField.getText(),telPrestataireField.getText(),societePrestataireField.getText()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
@@ -113,14 +124,23 @@ public class ModifierPrestataire {
 	private void handlechange1() {
 		choix1 = true;
 		int idPrestataire=prestataireList.get(comboboxnom.getSelectionModel().getSelectedIndex());
-		Prestataire selected = prestataireDAO.recupererPrestataireParId(idPrestataire);
+		Prestataire selected = null;
+		try {
+			selected = prestataireDAO.recupererPrestataireParId(idPrestataire);
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		listPrenomPrestataire = FXCollections.observableArrayList();
 		prestataireList=new ArrayList<Integer>();
-		for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
-			if (prestataire.getNomPrestataire().getValue().equals(selected.getNomPrestataire().getValue())) {
-				listPrenomPrestataire.add(prestataire.getPrenomPrestataire().getValue());
-				prestataireList.add(prestataire.getIdPrestataire().getValue());
-			}
+		try {
+			for (Prestataire prestataire : prestataireDAO.recupererAllPrestataire()) {
+                if (prestataire.getNomPrestataire().getValue().equals(selected.getNomPrestataire().getValue())) {
+                    listPrenomPrestataire.add(prestataire.getPrenomPrestataire().getValue());
+                    prestataireList.add(prestataire.getIdPrestataire().getValue());
+                }
+            }
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		comboboxprenom.setItems(listPrenomPrestataire);
 	}
@@ -134,7 +154,12 @@ public class ModifierPrestataire {
 		try {
 			if (choix1 = true) {
 				int idPrestataire=prestataireList.get(comboboxprenom.getSelectionModel().getSelectedIndex());
-				Prestataire selected2 = prestataireDAO.recupererPrestataireParId(idPrestataire);
+				Prestataire selected2 = null;
+				try {
+					selected2 = prestataireDAO.recupererPrestataireParId(idPrestataire);
+				} catch (ConnexionBDException e) {
+					new Popup(e.getMessage());
+				}
 				this.setIdPrestataire(selected2.getIdPrestataire().getValue());
 				nomPrestataireField.setText(selected2.getNomPrestataire().getValue());
 				prenomPrestataireField.setText(selected2.getPrenomPrestataire().getValue());

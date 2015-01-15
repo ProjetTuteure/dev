@@ -4,12 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
-public class PrestataireDAO {
+public class PrestataireDAO{
 	private Connection connection;
 
-	public int ajouterPrestataire(Prestataire prestataire){
+	public int ajouterPrestataire(Prestataire prestataire)  throws ConnexionBDException {
 		int nombreLigneAffectee=0;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
@@ -33,7 +34,7 @@ public class PrestataireDAO {
 		return nombreLigneAffectee;
 	}
 
-	public int modifierPrestataire(Prestataire prestataire){
+	public int modifierPrestataire(Prestataire prestataire)  throws ConnexionBDException {
 		int nombreLigneAffectee=0;
 		try {
 			connection=MaConnexion.getInstance().getConnexion();
@@ -57,7 +58,7 @@ public class PrestataireDAO {
 		return nombreLigneAffectee;
 	}
 
-	public int supprimerPrestataire(Prestataire prestataire){
+	public int supprimerPrestataire(Prestataire prestataire)  throws ConnexionBDException {
 		int nombreLigneAffectee=0;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
@@ -76,7 +77,7 @@ public class PrestataireDAO {
 		return nombreLigneAffectee;
 	}
 
-	public List<Prestataire> recupererAllPrestataire(){
+	public List<Prestataire> recupererAllPrestataire()  throws ConnexionBDException {
 		List<Prestataire> prestataireList= new ArrayList<Prestataire>();
 		ResultSet resultat;
 		try{
@@ -98,7 +99,7 @@ public class PrestataireDAO {
 		return prestataireList;
 	}
 
-	public Prestataire recupererPrestataireParId(int idPrestataire){
+	public Prestataire recupererPrestataireParId(int idPrestataire)  throws ConnexionBDException {
 		ResultSet resultat;
 		Prestataire prestataire=null;
 		try{
