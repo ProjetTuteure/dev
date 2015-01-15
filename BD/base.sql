@@ -4,7 +4,8 @@ CREATE TABLE SITE(
 	cheminImageSite varchar(60))
 
 CREATE TABLE FABRICANT(
-	nomFabricant varchar(20) PRIMARY KEY NOT NULL,
+	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
+	nomFabricant varchar(20) NOT NULL,
 	telFabricant varchar(20),
 	adresseFabricant varchar(50))
 
@@ -21,12 +22,13 @@ CREATE TABLE TYPE(
 
 
 CREATE TABLE REVENDEUR(
-	nomRevendeur varchar(20) PRIMARY KEY NOT NULL,
+	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
+	nomRevendeur varchar(20) NOT NULL,
 	telRevendeur varchar(20),
 	adresseRevendeur varchar(50))
 
 CREATE TABLE FACTURE(
-	numFacture varchar(10) IDENTITY(1,1) PRIMARY KEY ,
+	numFacture varchar(10) PRIMARY KEY ,
 	dateFacture DATE NOT NULL,
 	montantFacture float,
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))
@@ -66,7 +68,8 @@ CREATE TABLE ESTINSTALLE(
 	PRIMARY KEY(idMateriel,idLogiciel))
 
 CREATE TABLE PRESTATAIRE(
-	nomPrestataire varchar(20) PRIMARY KEY NOT NULL,
+	idrevendeur int IDENTITY(1,1) PRIMARY KEY,
+	nomPrestataire varchar(20) NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
 	societePrestataire varchar(50)
@@ -154,7 +157,7 @@ AFTER DELETE
 AS BEGIN 
 	declare @idRevendeur int;
 	select @idRevendeur= idRevendeur FROM deleted;
-	delete from facture where idrevendeur = @idrevendeur
+	delete from facture where idrevendeur = @idrevendeur;
 END
 
 CREATE TRIGGER SuppressionMateriel on MATERIEL
