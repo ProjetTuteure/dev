@@ -1,6 +1,8 @@
 package gpi.metier;
 
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,7 @@ public class FactureDAO {
 
 	public FactureDAO(){}
 	
-	public int ajouterFacture(Facture facture){
+	public int ajouterFacture(Facture facture) throws ConnexionBDException{
 		Connection connection=null;
 		int resultat;
 		try{
@@ -43,7 +45,7 @@ public class FactureDAO {
 		return 0;
 	}
 	
-	public int modifierFacture(Facture facture){
+	public int modifierFacture(Facture facture) throws ConnexionBDException{
 		Connection connection=null;
 		int resultat;
 		try{
@@ -70,7 +72,7 @@ public class FactureDAO {
 		return 0;
 	}
 	
-	public int supprimerFacture(Facture facture){
+	public int supprimerFacture(Facture facture) throws ConnexionBDException{
 		Connection connection=null;
 		int resultat;
 		try{
@@ -94,25 +96,27 @@ public class FactureDAO {
 		return 0;
 	}
 	
-	public Facture recupererFactureParNum(String numFacture){
+	public Facture recupererFactureParId(int idFacture) throws ConnexionBDException{
 		Connection connection=null;
 		ResultSet resultat;
 		LocalDate dateFacture;
+		String numFacture;
 		float montantFacture;
 		int idRevendeur;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
 			RevendeurDAO revendeurDAO=new RevendeurDAO();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE numFacture=?;");
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE idFacture?;");
 			
-			prep.setString(1, numFacture);
+			prep.setInt(1, idFacture);
 			
 			resultat=prep.executeQuery();
+			numFacture=resultat.getString("numFacture");
 			dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
 			montantFacture=resultat.getFloat("montantFacture");
 			idRevendeur=resultat.getInt("idRevendeur");
 			
-			return new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
+			return new Facture(idFacture,numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -127,13 +131,14 @@ public class FactureDAO {
 	}
 	
 	
-	public List<Facture> recupererAllFacture(){
+	public List<Facture> recupererAllFacture() throws ConnexionBDException{
 		Connection connection=null;
 		RevendeurDAO revendeurDAO=new RevendeurDAO();
 		List<Facture> listFacture=new ArrayList<Facture>();
 		ResultSet resultat;
 		String numFacture;
 		LocalDate dateFacture;
+		int idFacture;
 		float montantFacture;
 		int idRevendeur;
 		Facture facture;
@@ -144,11 +149,12 @@ public class FactureDAO {
 			
 			resultat=prep.executeQuery();
 			while(resultat.next()){
+				idFacture=resultat.getInt("idFacture");
 				numFacture=resultat.getString("numFacture");
 				dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
 				montantFacture=resultat.getFloat("montantFacture");
 				idRevendeur=resultat.getInt("idRevendeur");
-				facture=new Facture(numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
+				facture=new Facture(idFacture,numFacture,dateFacture,montantFacture,revendeurDAO.recupererRevendeurParId(idRevendeur));
 				listFacture.add(facture);
 			}
 			return listFacture;

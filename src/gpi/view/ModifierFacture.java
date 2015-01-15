@@ -1,7 +1,15 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,29 +30,39 @@ public class ModifierFacture {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxfact;
+	private ComboBox<String> ComboboxFacture;
 
 	private Donnee donneeFact = new Donnee();
 
-	private ObservableList<String> listfact;
+	private ObservableList<String> listFacture;
 
 	@FXML
-	private TextField numfield;
+	private TextField NumFacture;
 	@FXML
-	private TextField revfield;
+	private DatePicker DateFacture;
 	@FXML
-	private TextField montantfield;
+	private TextField MontantFacture;
 	@FXML
-	private DatePicker datefield;
+	private ComboBox<String> NumRevendeur;
+	List<Facture> listObjetsFacture;
+	private ObservableList<String> listRevendeurObservable;
+	List<Integer> listRevendeurId;
 
 	@FXML
 	private void initialize() {
-		listfact = FXCollections.observableArrayList();
-
-		for (Facture fact : donneeFact.getFactureData()) {
-			listfact.add(fact.getNumFacture());
+		listFacture = FXCollections.observableArrayList();
+		listObjetsFacture=new ArrayList<Facture>();
+		FactureDAO factureDAO = new FactureDAO();
+		try{
+			listObjetsFacture=factureDAO.recupererAllFacture();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfact.setItems(listfact);
+		for (Facture facture : listObjetsFacture) {
+			listFacture.add(facture.getNumFacture());
+		}
+		
+		ComboboxFacture.setItems(listFacture);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -70,10 +88,24 @@ public class ModifierFacture {
 
 	@FXML
 	private void handlechange() {
-		Facture selected = donneeFact.getFacture(comboboxfact.getValue());
-		numfield.setText(selected.getNumFacture());
-		montantfield.setText(selected.getMontantFactureString());
-		datefield.setPromptText(selected.getDateFacStringProperty().getValue());
-		revfield.setText(selected.getRevendeurFacture().getNomRevendeur().getValue());
+		RevendeurDAO revendeurDAO=new RevendeurDAO();
+		int index = ComboboxFacture.getSelectionModel().getSelectedIndex();
+		NumFacture.setText(listObjetsFacture.get(index).getNumFacture());
+		DateFacture.setValue(listObjetsFacture.get(index).getDateFacture());
+		MontantFacture.setText(listObjetsFacture.get(index).getMontantFactureString());
+		//String nomRevendeur=listObjetsFacture.get(index).getRevendeurFacture().getNomRevendeur().getValue();
+		listRevendeurId=new ArrayList<Integer>();
+		listRevendeurObservable = FXCollections.observableArrayList();
+		try {
+			for (Revendeur revendeur : revendeurDAO.recupererAllRevendeur()){
+				listRevendeurObservable.add(revendeur.getNomRevendeur().getValue());
+				listRevendeurId.add(revendeur.getIdRevendeur().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			// TODO Auto-generated catch block
+			new Popup(e.getMessage());
+		}
+		NumRevendeur.setItems(listRevendeurObservable);
+		//NumRevendeur.selectionModelProperty().setValue(nomRevendeur);
 	}
 }

@@ -3,6 +3,8 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Popup;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
 import gpi.metier.FactureDAO;
 import gpi.metier.Revendeur;
@@ -45,9 +47,14 @@ public class AjouterFacture {
 		RevendeurDAO revendeurDAO=new RevendeurDAO();
 		listRevendeurId=new ArrayList<Integer>();
 		listRevendeurObservable = FXCollections.observableArrayList();
-		for (Revendeur revendeur : revendeurDAO.recupererAllRevendeur()){
-			listRevendeurObservable.add(revendeur.getNomRevendeur().getValue());
-			listRevendeurId.add(revendeur.getIdRevendeur().getValue());
+		try {
+			for (Revendeur revendeur : revendeurDAO.recupererAllRevendeur()){
+				listRevendeurObservable.add(revendeur.getNomRevendeur().getValue());
+				listRevendeurId.add(revendeur.getIdRevendeur().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			// TODO Auto-generated catch block
+			new Popup(e.getMessage());
 		}
 		NumRevendeur.setItems(listRevendeurObservable);
 	}
@@ -81,7 +88,13 @@ public class AjouterFacture {
 		FactureDAO factureDAO = new FactureDAO();
 		RevendeurDAO revendeurDAO = new RevendeurDAO();
 		int index=NumRevendeur.getSelectionModel().getSelectedIndex();
-		factureDAO.ajouterFacture(new Facture(NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(index))));
+		try {
+			factureDAO.ajouterFacture(new Facture(0,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(index))));
+		} catch (NumberFormatException e) {
+			new Popup("Erreur de format. Format : 123.45");
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 

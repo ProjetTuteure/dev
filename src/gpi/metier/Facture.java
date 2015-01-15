@@ -1,7 +1,9 @@
 package gpi.metier;
 
 import javafx.beans.property.FloatProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -11,13 +13,15 @@ import java.time.LocalDate;
  * Created by thibault on 22/11/14.
  */
 public class Facture {
+	private IntegerProperty idFacture;
     private StringProperty numFacture;
     private LocalDate dateFacture;
     private FloatProperty montantFacture;
     private Revendeur revendeurFacture;
 
 
-    public Facture(String numFacture, LocalDate dateFacture, float montantFacture, Revendeur revendeurFacture) {
+    public Facture(int idFacture,String numFacture, LocalDate dateFacture, float montantFacture, Revendeur revendeurFacture) {
+    	this.idFacture= new SimpleIntegerProperty(idFacture);
         this.numFacture = new SimpleStringProperty(numFacture);
         this.dateFacture= dateFacture;
         this.montantFacture= new SimpleFloatProperty(montantFacture);
@@ -80,4 +84,12 @@ public class Facture {
     public void setRevendeurFacture(Revendeur revendeurFacture) {
         this.revendeurFacture = revendeurFacture;
     }
+
+	public IntegerProperty getIdFacture() {
+		return idFacture;
+	}
+
+	public void setIdFacture(int idFacture) {
+		this.idFacture = new SimpleIntegerProperty(idFacture);
+	}
 }
