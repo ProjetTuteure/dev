@@ -1,10 +1,18 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Constante;
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Composant;
 import gpi.metier.ComposantDAO;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
 import javafx.beans.property.IntegerProperty;
@@ -34,22 +42,35 @@ public class AjouterComposant {
 	private TextField nom;
 	@FXML
 	private TextArea caracteristiques;
+	
+	ComposantDAO composantdao=new ComposantDAO();
+	FabricantDAO fabricantDAO=new FabricantDAO();
 
-	private Donnee donneeMat = new Donnee();
-
-	private ObservableList<String> listNom1;
+	private ObservableList<String> listFabricant;
+	
+	private List<Fabricant> listeFabricant;
 
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom1 = FXCollections.observableArrayList();
-
-		for (Fabricant fab : donneeMat.getFabricantData()) {
-			listNom1.add(fab.getNomFabricant().getValue());
+		listFabricant = FXCollections.observableArrayList();
+		listeFabricant=new ArrayList<Fabricant>();
+		try
+		{
+			listeFabricant=fabricantDAO.recupererAllFabricant();
 		}
-		comboboxfabr.setItems(listNom1);
+		catch(ConnexionBDException ce)
+		{
+			new Popup(ce.getMessage());
+			this.dialogStage.close();
+		}
+		
+		for (Fabricant fab : listeFabricant) {
+			listFabricant.add(fab.getNomFabricant().getValue());
+		}
+		comboboxfabr.setItems(listFabricant);
 	}
 
 	/**
@@ -77,16 +98,35 @@ public class AjouterComposant {
 	 */
 	@FXML
 	private void handleOk() {
-		/*ComposantDAO composantDAO = new ComposantDAO();
-		FabricantDAO fabricantDAO = new FabricantDAO();
-		Fabricant fabricant = fabricantDAO.recupererFabricant((comboboxfabr
-				.getValue()));
-		composantDAO.ajouterComposant(new Composant(
-				new SimpleIntegerProperty(0), (this.nom).getText(),
-				this.caracteristiques.getText(), fabricant));
-		okClicked = true;*/
-		dialogStage.close();
-
+		Composant composantAAjouter;
+		if(nom.getText().equals(""))
+		{
+			new Popup("Le champ \"Nom du composant\" doit être rempli");
+		}
+		else if(nom.getText().length()>Constante.LONGUEUR_NOM_COMPOSANT)
+		{
+			new Popup("Le nom du composant doit etre inférieur à "+Constante.LONGUEUR_NOM_COMPOSANT+" caractères");
+		}
+		else if(caracteristiques.getText().length()>Constante.LONGUEUR_ADRESSE)
+		{
+			new Popup("Les caractéristiques ne peuvent pas dépasser "+Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT+" caractères");
+		}
+		else
+		{
+			Fabricant fabricant = listeFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex());		
+			composantAAjouter=new Composant(new SimpleIntegerProperty(0),nom.getText(),caracteristiques.getText(), fabricant);
+			try
+			{
+				composantdao.ajouterComposant(composantAAjouter);;
+				new Popup("Revendeur "+composantAAjouter.getNomComposant()+" ajouté !");
+			}
+			catch(ConnexionBDException ce)
+			{
+				new Popup(ce.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
+		}
 	}
 
 	/**

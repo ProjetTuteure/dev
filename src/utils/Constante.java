@@ -10,4 +10,6 @@ public class Constante {
 	public static final int LONGUEUR_NUM_TELEPHONE=20;
 	public static final int LONGUEUR_ADRESSE=100;
 	public static final int LONGUEUR_NOM_REVENDEUR=20;
+	public static final int LONGUEUR_CARACTERISTIQUE_COMPOSANT=200;
+	public static final int LONGUEUR_NOM_COMPOSANT=20;
 }
