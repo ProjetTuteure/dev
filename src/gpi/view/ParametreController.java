@@ -69,7 +69,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddFact(ActionEvent event) {
-		Facture facture = new Facture(null, null, 0, null);
+		Facture facture = new Facture(0,null, null, 0, null);
 		boolean okClicked = MainApp.showAddFactDialog(facture);
 		if (okClicked) {
 
