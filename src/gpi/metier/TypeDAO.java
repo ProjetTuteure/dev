@@ -1,8 +1,6 @@
 package gpi.metier;
 
-import gpi.exception.BDNonTrouveException;
 import utils.MaConnexion;
-import utils.Popup;
 
 import java.sql.*;
 import java.util.*;
@@ -26,8 +24,6 @@ public class TypeDAO {
             nombreLigneAffectee=preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch(BDNonTrouveException bdNonTrouveException){
-            new Popup("La connexion à la base impossible");
         } finally {
             try {
                 connection.close();
@@ -49,8 +45,6 @@ public class TypeDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch(BDNonTrouveException bdNonTrouveException){
-            new Popup("La connexion à la base impossible");
         } finally {
             try {
                 connection.close();
@@ -70,11 +64,9 @@ public class TypeDAO {
             preparedStatement.setString(1, type.getNomTypeString());
 
             nombreLigneAffectee=preparedStatement.executeUpdate();
-        } catch(SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
-        } catch(BDNonTrouveException bdNonTrouveException){
-            new Popup("La connexion à la base impossible");
-        } finally{
+        }finally{
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -94,11 +86,9 @@ public class TypeDAO {
             while(resultat.next()){
                 typeList.add(new Type(resultat.getString("nomType"),resultat.getString("cheminImageType")));
             }
-        } catch(SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
-        } catch(BDNonTrouveException bdNonTrouveException){
-            new Popup("La connexion à la base impossible");
-        } finally{
+        }finally{
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -118,11 +108,9 @@ public class TypeDAO {
             resultat=preparedStatement.executeQuery();
             resultat.next();
             type=new Type(nomType,resultat.getString("cheminImageType"));
-        } catch(SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
-        } catch(BDNonTrouveException bdNonTrouveException){
-            new Popup("La connexion à la base impossible");
-        } finally{
+        }finally{
             try {connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
