@@ -58,7 +58,6 @@ public class AjouterUtilisateur {
 		} else if (prenomField.getText().equals("")) {
 			new Popup("Le champ \"Prenom de l'Utilisateur\" doit être saisi");
 		} else {
-			// if (isInputValid()) {
 			setNomUtilisateur(nomField.getText());
 			setPrenomUtilisateur(prenomField.getText());
 			setTelUtilisateur(telField.getText());
