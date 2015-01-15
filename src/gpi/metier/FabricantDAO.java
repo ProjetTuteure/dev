@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
 import javafx.beans.property.SimpleIntegerProperty;
 import utils.MaConnexion;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class FabricantDAO {
     private Connection connection;
 
-    public int ajouterFabricant(Fabricant fabricant){
+    public int ajouterFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try {
             connection= MaConnexion.getInstance().getConnexion();
@@ -35,7 +36,7 @@ public class FabricantDAO {
         return nombreLigneAffectee;
     }
 
-    public int modifierFabricant(Fabricant fabricant){
+    public int modifierFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try {
             connection=MaConnexion.getInstance().getConnexion();
@@ -58,7 +59,7 @@ public class FabricantDAO {
         return nombreLigneAffectee;
     }
 
-    public int supprimerFabricant(Fabricant fabricant){
+    public int supprimerFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try{
             connection=MaConnexion.getInstance().getConnexion();
@@ -79,7 +80,7 @@ public class FabricantDAO {
         return nombreLigneAffectee;
     }
 
-    public List<Fabricant> recupererAllFabricant(){
+    public List<Fabricant> recupererAllFabricant() throws ConnexionBDException{
         List<Fabricant> fabricantList= new ArrayList<Fabricant>();
         ResultSet resultat;
         try{
@@ -101,7 +102,7 @@ public class FabricantDAO {
         return fabricantList;
     }
 
-    public Fabricant recupererFabricantParId(int idFabricant){
+    public Fabricant recupererFabricantParId(int idFabricant) throws ConnexionBDException{
         ResultSet resultat;
         Fabricant fabricant=null;
         try{

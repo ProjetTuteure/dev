@@ -1,5 +1,7 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,7 @@ public class ComposantDAO {
 	public ComposantDAO() {
 	}
 
-	public int ajouterComposant(Composant composant) {
+	public int ajouterComposant(Composant composant) throws ConnexionBDException{
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
@@ -44,8 +46,8 @@ public class ComposantDAO {
 		return 0;
 	}
 
-	public int suprimerComposant(Composant composant) {
-
+	public int suprimerComposant(Composant composant) throws ConnexionBDException{
+		
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
@@ -68,7 +70,7 @@ public class ComposantDAO {
 		return 0;
 	}
 
-	public int modifierComposant(Composant composant) {
+	public int modifierComposant(Composant composant) throws ConnexionBDException{
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
@@ -96,7 +98,7 @@ public class ComposantDAO {
 
 	}
 
-	public Composant recupererComposantParId(int idComposant) {
+	public Composant recupererComposantParId(int idComposant) throws ConnexionBDException{
 		FabricantDAO fabricantDAO = new FabricantDAO();
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		ResultSet resultat;
@@ -126,7 +128,7 @@ public class ComposantDAO {
 		return null;
 	}
 
-	public List recupererAllComposant() {
+	public List recupererAllComposant() throws ConnexionBDException{
 		List<Composant> listComposant = new ArrayList<Composant>();
 		FabricantDAO fabricantDAO = new FabricantDAO();
 		Connection connexion = MaConnexion.getInstance().getConnexion();
