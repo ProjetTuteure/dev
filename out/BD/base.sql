@@ -4,8 +4,7 @@ CREATE TABLE SITE(
 	cheminImageSite varchar(60))
 
 CREATE TABLE FABRICANT(
-	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
-	nomFabricant varchar(20) NOT NULL,
+	nomFabricant varchar(20) PRIMARY KEY NOT NULL,
 	telFabricant varchar(20),
 	adresseFabricant varchar(50))
 
@@ -22,14 +21,12 @@ CREATE TABLE TYPE(
 
 
 CREATE TABLE REVENDEUR(
-	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
-	nomRevendeur varchar(20) NOT NULL,
+	nomRevendeur varchar(20) PRIMARY KEY NOT NULL,
 	telRevendeur varchar(20),
 	adresseRevendeur varchar(50))
 
 CREATE TABLE FACTURE(
-	idFacture int IDENTITY(1,1) PRIMARY KEY ,
-	numFacture varchar(10) NOT NULL,
+	numFacture varchar(10) IDENTITY(1,1) PRIMARY KEY ,
 	dateFacture DATE NOT NULL,
 	montantFacture float,
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))
@@ -56,7 +53,7 @@ CREATE TABLE MATERIEL(
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant),
 	idSite int FOREIGN KEY REFERENCES SITE(idSite),
-	idType int FOREIGN KEY REFERENCES TYPE(idType))
+	nomType varchar(20) FOREIGN KEY REFERENCES TYPE(nomType))
 
 CREATE TABLE COMPOSE(
 	idComposant int IDENTITY(1,1) FOREIGN KEY REFERENCES COMPOSANT(idComposant),
@@ -69,8 +66,7 @@ CREATE TABLE ESTINSTALLE(
 	PRIMARY KEY(idMateriel,idLogiciel))
 
 CREATE TABLE PRESTATAIRE(
-	idPrestataire int IDENTITY(1,1) PRIMARY KEY,
-	nomPrestataire varchar(20) NOT NULL,
+	nomPrestataire varchar(20) PRIMARY KEY NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
 	societePrestataire varchar(50)
@@ -109,18 +105,19 @@ CREATE TABLE UTILISE(
 INSERT INTO FABRICANT VALUES ( 'DELL','05.55.66.77.88' , '2 route perdu 87000'),( 'HP','05.55.66.77.88' , '2 route troeuve 87000');
 
 INSERT INTO PRESTATAIRE VALUES ( 'Caillou', 'Pierre', '05.55.69.87.23', 'Caillou et Co.'),( 'Noel', 'Papa', '00.36.65.65.65', 'Pole Nord');
-INSERT INTO TYPE VALUES ('PC','sources/images/pc.jpg'),('Routeur','sources/images/routeur.png'),('Switch','sources/images/switch.jpg'),('Clef 3G','sources/images/cle3G.PNG');
+INSERT INTO TYPE VALUES (1,'PC','sources/images/pc.jpg'),(2,'Routeur','sources/images/routeur.png'),(3,'Switch','sources/images/switch.jpg'),(4,'Clef 3G','sources/images/cle3G.PNG');
 INSERT INTO SITE VALUES ('Agen', 'sources/images/logo-ville-agen0.png'),('Bordeaux', 'sources/images/bordeaux.jpg'),('Chateauroux', 'sources/images/chateauroux.jpg'),('Gueret', 'sources/images/Gueret.jpg'),('Limoges', 'sources/images/limoges.jpg'),('Montlucon', 'sources/images/montlucon.jpg'),('Saint-Agnant', 'sources/images/saintAgnan.png'),('Saint-Junien', 'sources/images/saintJunien.jpg');
 INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','4 rue nimporte ou'),('Fnac','05.55.68.57.41','5 rue je sais pas ou ');
-INSERT INTO FACTURE VALUES (1,'2011-11-11', 123.5,1),(2,'2012-12-12', 99 ,2);
+INSERT INTO FACTURE VALUES ('2011-11-11', 123.5,1),('2012-12-12', 99 ,2);
+INSERT INTO ETAT VALUES ('EN_MARCHE'),('HS'),('EN_PANNE')
 
-INSERT INTO MATERIEL VALUES ('1IMMO','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
-('2IMMO','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
-('3IMMO','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
-('4IMMO','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
-('5IMMO','PC3','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,1),
-('6IMMO','Routeur1','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,1),
-('7IMMO','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,1)
+INSERT INTO MATERIEL VALUES ('1IMMO','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,'PC'),
+('2IMMO','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,'PC'),
+('3IMMO','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,'PC'),
+('4IMMO','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,'PC'),
+('5IMMO','PC3','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,'PC'),
+('6IMMO','Routeur1','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,'PC'),
+('7IMMO','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,'PC')
 
 INSERT INTO LOGICIEL VALUES ('Microsoft Office 2012','1.0','2014-10-01',1)
 
@@ -157,7 +154,7 @@ AFTER DELETE
 AS BEGIN 
 	declare @idRevendeur int;
 	select @idRevendeur= idRevendeur FROM deleted;
-	delete from facture where idrevendeur = @idrevendeur;
+	delete from facture where idrevendeur = @idrevendeur
 END
 
 CREATE TRIGGER SuppressionMateriel on MATERIEL
@@ -169,3 +166,6 @@ AS BEGIN
 	DELETE FROM ESTMAINTENU WHERE idMateriel=@idMateriel
 	DELETE FROM COMPOSE WHERE idMateriel=@idMateriel
 END
+
+
+
