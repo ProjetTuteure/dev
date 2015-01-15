@@ -4,9 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import gpi.exception.BDNonTrouveException;
 import utils.MaConnexion;
-import utils.Popup;
 
 public class PrestataireDAO {
 	private Connection connection;
@@ -23,11 +21,9 @@ public class PrestataireDAO {
 			preparedStatement.setString(4, prestataire.getSocieteePrestataire().getValue());
 			
 			nombreLigneAffectee=preparedStatement.executeUpdate();
-		} catch(SQLException sqlException){
-			sqlException.printStackTrace();
-		} catch(BDNonTrouveException bdNonTrouveException){
-			new Popup("La connexion à la base impossible");
-		} finally{
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
 			try {
 				connection.close();
 			} catch (SQLException e) {
@@ -51,8 +47,6 @@ public class PrestataireDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch(BDNonTrouveException bdNonTrouveException){
-			new Popup("La connexion à la base impossible");
 		} finally {
 			try {
 				connection.close();
@@ -72,8 +66,6 @@ public class PrestataireDAO {
 			nombreLigneAffectee=preparedStatement.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
-		}catch(BDNonTrouveException bdNonTrouveException){
-			new Popup("La connexion à la base impossible");
 		}finally{
 			try {
 				connection.close();
@@ -96,8 +88,6 @@ public class PrestataireDAO {
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
-		}catch(BDNonTrouveException bdNonTrouveException){
-			new Popup("La connexion à la base impossible");
 		}finally{
 			try {
 				connection.close();
@@ -120,8 +110,6 @@ public class PrestataireDAO {
 			prestataire=new Prestataire(resultat.getInt("idPrestataire"),resultat.getString("nomPrestataire"),resultat.getString("prenomPrestation"),resultat.getString("telPrestataire"),resultat.getString("adressePrestataire"));
 		}catch(SQLException e){
 			e.printStackTrace();
-		}catch(BDNonTrouveException bdNonTrouveException){
-			new Popup("La connexion à la base impossible");
 		}finally{
 			try {
 				connection.close();
