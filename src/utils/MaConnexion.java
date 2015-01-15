@@ -25,7 +25,6 @@ public class MaConnexion {
 		String user= p.getProperty("user");
 		try {
 			connexion = DriverManager.getConnection(url,user,mdp);
-			connexion.setNetworkTimeout(null, 5000);
 		} catch (SQLException e) {
 			new Popup("Erreur d'acces a la BD");
 			e.printStackTrace();
