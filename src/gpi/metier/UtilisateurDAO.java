@@ -17,115 +17,158 @@ public class UtilisateurDAO {
 	public UtilisateurDAO() {
 	}
 
-	public int ajouterUtilisateur(Utilisateur ut) {
-		Connection connection = null;
+	public void ajouterUtilisateur(Utilisateur utilisateur) {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("INSERT INTO UTILISATEUR(nomUtilisateur,prenomUtilisateur,telUtilisateur) VALUES (?,?,?);");
-
-			prep.setString(1, ut.getNomUtilisateur().getValue());
-			prep.setString(2, ut.getPrenomUtilisateur().getValue());
-			prep.setString(3, ut.getTelUtilisateur().getValue());
-
-			resultat = prep.executeUpdate();
-			return resultat;
+			PreparedStatement ps=connexion.prepareStatement("INSERT INTO UTILISATEUR (nomUtilisateur,prenomUtilisateur,telUtilisateur) "
+					+ "VALUES (?,?,?)");
+			ps.setString(1,utilisateur.getNomUtilisateur().getValue());
+			ps.setString(2,utilisateur.getPrenomUtilisateur().getValue());
+			ps.setString(3, utilisateur.getTelUtilisateur().getValue());
+			ps.executeUpdate();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
 			}
 		}
-		return 0;
 	}
 
-	public int modifierUtilisateur(Utilisateur ut) {
-		Connection connection = null;
-		int resultat;
+	public void modifierUtilisateur(Utilisateur utilisateur) {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("UPDATE UTILISATEUR SET nomUtilisateur=?, prenomUtilisateur=?, telUtilisateur=? WHERE idUtilisateur=?;");
-
-			prep.setString(1, ut.getNomUtilisateur().getValue());
-			prep.setString(2, ut.getPrenomUtilisateur().getValue());
-			prep.setString(3, ut.getTelUtilisateur().getValue());
-			prep.setInt(4, ut.getIdUtilisateur().get());
-
-			resultat = prep.executeUpdate();
-			return resultat;
+			PreparedStatement ps=connexion.prepareStatement("UPDATE UTILISATEUR SET nomUtilisateur=?,prenomUtilisateur=?,telUtilisateur=? "
+					+ "WHERE idUtilisateur=?");
+			ps.setString(1,utilisateur.getNomUtilisateur().getValue());
+			ps.setString(2,utilisateur.getPrenomUtilisateur().getValue());
+			ps.setString(3,utilisateur.getTelUtilisateur().getValue());
+			ps.setInt(4,utilisateur.getIdUtilisateur().getValue());
+			ps.executeUpdate();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
 			}
 		}
-		return 0;
 	}
-
-	public int supprimerUtilisateur(Utilisateur ut) {
-		Connection connection = null;
-		int resultat;
+		
+	public boolean supprimerUtilisateur(Utilisateur utilisateur) 
+	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("DELETE FROM SITE WHERE idUtilisateur=?;");
-
-			prep.setInt(1, ut.getIdUtilisateur().get());
-
-			resultat = prep.executeUpdate();
-			return resultat;
+			PreparedStatement ps=connexion.prepareStatement("DELETE FROM UTILISATEUR WHERE idUtilisateur=?");
+			ps.setInt(1,utilisateur.getIdUtilisateur().getValue());
+			ps.executeUpdate();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			return false;
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				return false;
 			}
 		}
-		return 0;
+		return true;
 	}
 
 	public Utilisateur recupererUtilisateurParId(int idUtilisateur) {
-		Connection connection = null;
-		ResultSet resultat;
-		String nomUtilisateur, prenomUtilisateur, telUtilisateur;
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		Utilisateur utilisateurARetourner=null;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("SELECT * FROM UTILISATEUR WHERE idUtilisateur=?;");
-
-			prep.setInt(1, idUtilisateur);
-
-			resultat = prep.executeQuery();
-			nomUtilisateur = resultat.getString(1);
-			prenomUtilisateur = resultat.getString(2);
-			telUtilisateur = resultat.getString(3);
-
-			return new Utilisateur(new SimpleIntegerProperty(idUtilisateur),
-					nomUtilisateur, prenomUtilisateur, telUtilisateur);
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM UTILISATEUR WHERE idUtilisateur=?");
+			ps.setInt(1,idUtilisateur);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				utilisateurARetourner=new Utilisateur(new SimpleIntegerProperty(rs.getInt("idUtilisateur")),
+						rs.getString("nomUtilisateur"),
+						rs.getString("prenomUtilisateur"),
+						rs.getString("telUtilisateur"));
+				
+			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
 			}
 		}
-		return null;
+		return utilisateurARetourner;
 	}
 
+
 	public List<Utilisateur> recupererUtilisateurParNom(String nomUtilisateur) {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		List<Utilisateur> list = null;
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM UTILISATEUR WHERE nomUtilisateur=?");
+			ps.setString(1,nomUtilisateur);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				list=new ArrayList<Utilisateur>();
+				list.add(new Utilisateur(new SimpleIntegerProperty(rs.getInt("idUtilisateur")),
+						rs.getString("nomUtilisateur"),
+						rs.getString("prenomUtilisateur"),
+						rs.getString("telUtilisateur")));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+		}
+		return list;
+	}
+		
+		
+			
+		
+		/*
 		Connection connection = null;
 		List<Utilisateur> list = null; 
 		ResultSet resultat;
@@ -139,9 +182,9 @@ public class UtilisateurDAO {
 			prep.setString(1,nomUtilisateur);
 
 			resultat = prep.executeQuery();
-		/*idUtilisateur = resultat.getInt(1);
+		idUtilisateur = resultat.getInt(1);
 			prenomUtilisateur = resultat.getString(2);
-			telUtilisateur = resultat.getString(3);*/
+			telUtilisateur = resultat.getString(3);
 
 			while (resultat.next()){
 				list=new ArrayList<Utilisateur>();
@@ -164,45 +207,36 @@ public class UtilisateurDAO {
 		}
 		return null;
 	}
-
-	public ArrayList<Utilisateur> recupererAllUtilisateur() {
-		Connection connection = null;
-		ArrayList<Utilisateur> listUtilisateur = new ArrayList<Utilisateur>();
-		ResultSet resultat;
-		String nomUtilisateur, prenomUtilisateur, telUtilisateur;
-		int idUtilisateur;
-		Utilisateur utilisateur;
+*/
+	public List<Utilisateur> recupererAllUtilisateur() {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		List<Utilisateur> listeUtilisateur=new ArrayList<>();
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection
-					.prepareStatement("SELECT * FROM UTILISATEUR;");
-
-			resultat = prep.executeQuery();
-			while (resultat.next()) {
-
-				idUtilisateur = resultat.getInt("idUtilisateur");
-				nomUtilisateur = resultat.getString("nomUtilisateur");
-				prenomUtilisateur = resultat.getString("prenomUtilisateur");
-				telUtilisateur = resultat.getString("telUtilisateur");
-				// System.out.println(idSite+" "+nomSite+" "+cheminImageSite);
-				utilisateur = new Utilisateur(new SimpleIntegerProperty(
-						idUtilisateur), nomUtilisateur, prenomUtilisateur,
-						telUtilisateur);
-				// System.out.println(site);
-				listUtilisateur.add(utilisateur);
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM UTILISATEUR");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				listeUtilisateur.add(new Utilisateur(new SimpleIntegerProperty(rs.getInt("idUtilisateur")),
+						rs.getString("nomUtilisateur"),
+						rs.getString("prenomUtilisateur"),
+						rs.getString("telUtilisateur")));
 			}
-			return listUtilisateur;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
 			}
 		}
-		return null;
+		return listeUtilisateur;
 	}
 
 }
