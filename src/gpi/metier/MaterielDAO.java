@@ -1,5 +1,7 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +23,7 @@ public class MaterielDAO {
 	 * Permet d'ajouter un mat�riel dans la base de donn�es
 	 * @param materiel le mat�riel � ajouter dans la base de donn�es
 	 */
-	public void ajouterMateriel(Materiel materiel)
+	public void ajouterMateriel(Materiel materiel) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -58,7 +60,7 @@ public class MaterielDAO {
 	 * Permet de modifier un materiel
 	 * @param materiel le materiel � modifier
 	 */
-	public void modifierMateriel(Materiel materiel)
+	public void modifierMateriel(Materiel materiel) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -96,7 +98,7 @@ public class MaterielDAO {
 	 * Permet de supprimer un materiel
 	 * @param materiel le materiel � supprimer
 	 */
-	public void supprimerMateriel(Materiel materiel)
+	public void supprimerMateriel(Materiel materiel) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try
