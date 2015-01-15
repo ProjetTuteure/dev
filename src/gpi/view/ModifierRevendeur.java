@@ -5,6 +5,7 @@ import java.util.List;
 
 import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
@@ -48,7 +49,14 @@ public class ModifierRevendeur {
 	private void initialize() {
 		listrev = FXCollections.observableArrayList();
 		listeRevendeur=new ArrayList<Revendeur>();
-		listeRevendeur=revendeurDAO.recupererAllRevendeur();
+		try
+		{
+			listeRevendeur=revendeurDAO.recupererAllRevendeur();
+		}
+		catch(ConnexionBDException ce)
+		{
+			new Popup(ce.getMessage());
+		}
 		for(Revendeur revendeur : listeRevendeur)
 		{
 			listrev.add(revendeur.getNomRevendeur().getValue());
@@ -93,7 +101,14 @@ public class ModifierRevendeur {
 			revendeur.setNomRevendeur(nomfield.getText());
 			revendeur.setAdresseRevendeur(adrfield.getText());
 			revendeur.setTelRevendeur(telfield.getText());
-			revendeurDAO.modifierRevendeur(revendeur);
+			try
+			{
+				revendeurDAO.modifierRevendeur(revendeur);
+			}
+			catch(ConnexionBDException ce)
+			{
+				new Popup(ce.getMessage());
+			}
 			dialogStage.close();
 		}
 	}

@@ -2,6 +2,7 @@ package gpi.view;
 
 
 import utils.Popup;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -79,7 +80,14 @@ public class AjouterRevendeur {
 		else
 		{
 			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
-			rdao.ajouterRevendeur(revendeurAAjouter);
+			try
+			{
+				rdao.ajouterRevendeur(revendeurAAjouter);
+			}
+			catch(ConnexionBDException ce)
+			{
+				new Popup(ce.getMessage());
+			}
 			okClicked = true;
 			dialogStage.close();
 		}

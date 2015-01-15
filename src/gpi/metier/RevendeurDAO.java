@@ -1,5 +1,7 @@
 package gpi.metier;
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +23,7 @@ public class RevendeurDAO {
 	 * Permet d'ajouter un revendeur à la bd
 	 * @param revendeur le revendeur à ajouter à la base de données
 	 */
-	public void ajouterRevendeur(Revendeur revendeur)
+	public void ajouterRevendeur(Revendeur revendeur) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -52,7 +54,7 @@ public class RevendeurDAO {
 	 * Permet de modifier un revendeur
 	 * @param revendeur le revendeur à modifier
 	 */
-	public void modifierRevendeur(Revendeur revendeur)
+	public void modifierRevendeur(Revendeur revendeur) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -84,7 +86,7 @@ public class RevendeurDAO {
 	 * Permet de supprimer un revendeur
 	 * @param revendeur le revendeur à supprimer
 	 */
-	public boolean supprimerRevendeur(Revendeur revendeur)
+	public void supprimerRevendeur(Revendeur revendeur) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
@@ -94,7 +96,6 @@ public class RevendeurDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		}
 		finally
 		{
@@ -104,13 +105,12 @@ public class RevendeurDAO {
 			}
 			catch(SQLException se)
 			{
-				return false;
+				se.printStackTrace();
 			}
 		}
-		return true;
 	}
 	
-	public List<Revendeur> recupererAllRevendeur()
+	public List<Revendeur> recupererAllRevendeur() throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		List<Revendeur> listeRevendeur=new ArrayList<>();
@@ -147,7 +147,7 @@ public class RevendeurDAO {
 	 * @param idRevendeur l'id du revendeur à retourner
 	 * @return revendeur le revendeur correspondant à l'id passé en paramètre
 	 */
-	public Revendeur recupererRevendeurParId(int idRevendeur)
+	public Revendeur recupererRevendeurParId(int idRevendeur) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		Revendeur revendeurARetourner=null;

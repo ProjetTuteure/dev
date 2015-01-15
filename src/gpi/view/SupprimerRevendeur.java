@@ -5,6 +5,7 @@ import java.util.List;
 
 import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
@@ -41,7 +42,14 @@ public class SupprimerRevendeur {
 	private void initialize() {
 		listrev = FXCollections.observableArrayList();
 		listeRevendeur=new ArrayList<Revendeur>();
-		listeRevendeur=revendeurDAO.recupererAllRevendeur();
+		try
+		{
+			listeRevendeur=revendeurDAO.recupererAllRevendeur();
+		}
+		catch(ConnexionBDException ce)
+		{
+			new Popup(ce.getMessage());
+		}
 		for(Revendeur revendeur : listeRevendeur)
 		{
 			listrev.add(revendeur.getNomRevendeur().getValue());
@@ -81,14 +89,15 @@ public class SupprimerRevendeur {
 		else
 		{
 			Revendeur revendeur=listeRevendeur.get(comboboxrev.getSelectionModel().getSelectedIndex());
-			if(revendeurDAO.supprimerRevendeur(revendeur)==true)
+			try 
 			{
+				revendeurDAO.supprimerRevendeur(revendeur);
 				dialogStage.close();
 				new Popup("Revendeur supprimé !");
 			}
-			else
+			catch (ConnexionBDException e) 
 			{
-				new Popup("Echec lors de la suppression");
+				new Popup(e.getMessage());
 			}
 		}
 	}

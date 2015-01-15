@@ -1,5 +1,7 @@
 package utils;
 
+import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +19,7 @@ public class MaConnexion {
 		return maConnexion;
 	}
 	
-	public Connection getConnexion(){
+	public Connection getConnexion() throws ConnexionBDException{
 		Connection connexion = null;
 		Properties p = Propriete.getInstance().getProperties();
 		String url = "jdbc:sqlserver://"+p.getProperty("ipBD")+":"+p.getProperty("port")+";databaseName="+p.getProperty("base")+";";
@@ -26,8 +28,7 @@ public class MaConnexion {
 		try {
 			connexion = DriverManager.getConnection(url,user,mdp);
 		} catch (SQLException e) {
-			new Popup("Erreur d'acces a la BD");
-			e.printStackTrace();
+			throw new ConnexionBDException("Problème de connexion à la bd");
 		}
 		return connexion;
 	}

@@ -29,9 +29,9 @@ CREATE TABLE REVENDEUR(
 
 CREATE TABLE FACTURE(
 	idFacture int IDENTITY(1,1) PRIMARY KEY ,
-	numFacture varchar(10) NOT NULL,
+	numFacture varchar(30) NOT NULL,
 	dateFacture DATE NOT NULL,
-	montantFacture float,
+	montantFacture numeric(10,2),
 	idRevendeur int FOREIGN KEY REFERENCES REVENDEUR(idRevendeur))
 
 CREATE TABLE LOGICIEL(
