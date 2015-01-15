@@ -56,4 +56,57 @@ public class EstMaintenuDAO {
         }
         return nombreLigneAffectee;
     }
+
+    public List<EstMaintenu> recupererAllFabricant() throws ConnexionBDException{
+        List<EstMaintenu> estMaintenuList= new ArrayList<EstMaintenu>();
+        ResultSet resultat;
+        try{
+            connection= MaConnexion.getInstance().getConnexion();
+            Statement statement = connection.createStatement();
+            resultat=statement.executeQuery("SELECT * FROM ESTMAINTENU");
+            while(resultat.next()){
+                MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+                MaterielDAO materielDAO=new MaterielDAO();
+                Maintenance maintenance=null;
+                Materiel materiel=null;
+                estMaintenuList.add(new EstMaintenu(maintenance,materiel));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return estMaintenuList;
+    }
+
+    public EstMaintenu recupererFabricantParId(int idMaintenance,int idMateriel) throws ConnexionBDException{
+        ResultSet resultat;
+        EstMaintenu estMaintenu=null;
+        try{
+            connection=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
+            preparedStatement.setInt(1, idMaintenance);
+            preparedStatement.setInt(1, idMateriel);
+            resultat=preparedStatement.executeQuery();
+            resultat.next();
+            MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+            MaterielDAO materielDAO=new MaterielDAO();
+            Maintenance maintenance=null;
+            Materiel materiel=null;
+            estMaintenu=new EstMaintenu(maintenance,materiel);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return estMaintenu;
+    }
 }

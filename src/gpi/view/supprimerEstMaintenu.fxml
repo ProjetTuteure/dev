@@ -11,8 +11,8 @@
       <children>
         <Label text="Matériel ayant eu une opération de maintenance a supprimer" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Label text="Opération de maintenance sur le matériel  a supprimer" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboboxmat" onAction="#handleChange" prefWidth="200.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="comboboxmaint" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboboxMateriel" onAction="#handleChange" prefWidth="200.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxMaintenance" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="120.0" prefWidth="328.0" />

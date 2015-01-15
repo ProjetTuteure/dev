@@ -243,18 +243,12 @@ public class Donnee {
 	}
 
 	private void remplirEstMaintenuData() {
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(0),
-				maintenanceData.get(0)));
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(0),
-				maintenanceData.get(1)));
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(1),
-				maintenanceData.get(3)));
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(2),
-				maintenanceData.get(2)));
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(3),
-				maintenanceData.get(2)));
-		this.estMaintenuData.add(new EstMaintenu(materielData.get(3),
-				maintenanceData.get(0)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(0),materielData.get(0)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(1),materielData.get(0)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(3),materielData.get(1)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(2),materielData.get(2)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(2),materielData.get(3)));
+		this.estMaintenuData.add(new EstMaintenu(maintenanceData.get(0),materielData.get(3)));
 	}
 
 	private void remplirComposantData() {

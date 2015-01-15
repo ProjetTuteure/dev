@@ -7,7 +7,7 @@ public class EstMaintenu {
     private Materiel materielEstMaintenu;
     private Maintenance maintenanceEstMaintenu;
 
-    public EstMaintenu(Materiel materielEstMaintenu, Maintenance maintenanceEstMaintenu) {
+    public EstMaintenu(Maintenance maintenanceEstMaintenu,Materiel materielEstMaintenu) {
         this.materielEstMaintenu = materielEstMaintenu;
         this.maintenanceEstMaintenu = maintenanceEstMaintenu;
     }

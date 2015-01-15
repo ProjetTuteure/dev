@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -121,7 +123,15 @@ public class MaterielDAO {
 			}
 		}
 	}
-	
+
+	public Materiel recupererMaterielDAOParId() {
+		return null;
+	}
+
+	public List<Materiel> recupererAllMateriel() {
+		return new ArrayList<Materiel>();
+	}
+
 	/**
 	 * Permet de r�cup�rer un materiel par son identifiant
 	 * @param idMateriel l'identifiant du mat�riel � r�cup�rer

@@ -11,8 +11,8 @@
       <children>
         <Label text="Matériel ayant eu une opération de maintance" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Label text="Maintenance sur le matériel" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboboxmat" prefWidth="200.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="comboboxmaint" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboboxMateriel" prefWidth="200.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxMaintenance" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="120.0" prefWidth="249.0" />

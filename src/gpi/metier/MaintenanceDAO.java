@@ -17,8 +17,8 @@ public class MaintenanceDAO {
 	{}
 	
 	/**
-	 * Permet d'insérer une maintenance dans la BD
-	 * @param maintenance la maintenance à insérer dans la BD
+	 * Permet d'insï¿½rer une maintenance dans la BD
+	 * @param maintenance la maintenance ï¿½ insï¿½rer dans la BD
 	 */
 	public void ajouterMaintenance(Maintenance maintenance) throws ConnexionBDException
 	{
@@ -79,61 +79,10 @@ public class MaintenanceDAO {
 			}
 		}
 		return listeARetourner;
+
 	}
-	
-	public void modifierMaintenance(Maintenance maintenance) throws ConnexionBDException
-	{
-		Connection connexion=MaConnexion.getInstance().getConnexion();
-		try {
-			PreparedStatement ps=connexion.prepareStatement("UPDATE MAINTENANCE SET dateMaintenance=?,"
-					+ "objetMaintenance=?,"
-					+ "descriptionMaintenance=?,"
-					+ "coutMaintenance=?"
-					+ "WHERE idMaintenance=?");
-			ps.setString(1,maintenance.getdateMaintenanceStringProperty().getValue());
-			ps.setString(2,maintenance.getObjetMaintenance());
-			ps.setString(3, maintenance.getDescriptionMaintenance());
-			ps.setFloat(4,maintenance.getCoutMaintenance());
-			ps.setInt(5,maintenance.getIdMaintenance().getValue());
-			ps.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				connexion.close();
-			}
-			catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void supprimerMaintenance(Maintenance maintenance) throws ConnexionBDException
-	{
-		Connection connexion=MaConnexion.getInstance().getConnexion();
-		try {
-			PreparedStatement ps=connexion.prepareStatement("DELETE FROM MAINTENANCE WHERE idMaintenance=?");
-			ps.setInt(1,maintenance.getIdMaintenance().getValue());
-			ps.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				connexion.close();
-			}
-			catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+
+	public Maintenance recupererMaintenanceParId() {
+		return null;
 	}
 }

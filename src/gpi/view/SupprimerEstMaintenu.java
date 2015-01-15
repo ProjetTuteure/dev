@@ -1,13 +1,14 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
-import gpi.metier.Composant;
-import gpi.metier.Materiel;
+import gpi.exception.ConnexionBDException;
+import gpi.metier.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -20,21 +21,38 @@ public class SupprimerEstMaintenu {
 	@FXML
 	private boolean okClicked = false;
 	@FXML
-	private ComboBox<String> comboboxmaint;
+	private ComboBox<String> comboboxMaintenance;
 	@FXML
-	private ComboBox<String> comboboxmat;
+	private ComboBox<String> comboboxMateriel;
 
-	private Donnee donnee = new Donnee();
+	private EstMaintenuDAO estMaintenuDAO =new EstMaintenuDAO();
 
-	private ObservableList<String> list1;
-	private ObservableList<String> list2;
+	private ObservableList<String> listIdMateriel;
+	private ObservableList<String> listIdMaintenance;
 
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
+		MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+		listIdMaintenance = FXCollections.observableArrayList();
+		MaterielDAO materielDAO=new MaterielDAO();
+		listIdMateriel = FXCollections.observableArrayList();
 
+		try {
+			for (Maintenance maintenance : maintenanceDAO.recupererAllMaintenance()){
+				listIdMaintenance.add(String.valueOf(maintenance.getIdMaintenance().getValue()));
+			}
+			for (Materiel materiel : materielDAO.recupererAllMateriel()){
+				listIdMaintenance.add(String.valueOf(materiel));
+			}
+		} catch (ConnexionBDException e) {
+			// TODO Auto-generated catch block
+			new Popup(e.getMessage());
+		}
+		comboboxMaintenance.setItems(listIdMaintenance);
+		comboboxMateriel.setItems(listIdMateriel);
 	}
 
 	/**
