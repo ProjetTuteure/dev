@@ -1,4 +1,4 @@
-CREATE TRIGGER SuppressionPrestataire on Facture
+CREATE TRIGGER SuppressionPrestataire on PRESTATAIRE
 AFTER DELETE
 AS BEGIN 
 	declare @idPrestataire int;

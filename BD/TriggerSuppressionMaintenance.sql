@@ -1,4 +1,4 @@
-CREATE TRIGGER supprimerMaintenance on MAINTENACE
+CREATE TRIGGER supprimerMaintenance on MAINTENANCE
 AFTER DELETE
 AS BEGIN 
 	declare @idMaintenance int;
