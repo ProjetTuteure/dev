@@ -1,6 +1,5 @@
 package utils;
 
-import gpi.exception.BDNonTrouveException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
