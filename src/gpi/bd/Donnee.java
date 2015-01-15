@@ -45,7 +45,7 @@ public class Donnee {
 		remplirTypeData();
 		remplirRevendeurData();
 		remplirFabricantData();
-		remplirFactureData();
+	/*	remplirFactureData();*/
 		remplirMaterielData();
 		remplirLogicielData();
 		remplirUtilisateurData();
@@ -127,41 +127,41 @@ public class Donnee {
 				.add(new Materiel(new SimpleIntegerProperty(1), "1IMMO",
 						"pc-martine", typeData.get(0), Etat.EN_MARCHE,
 						LocalDate.parse("2012-11-11"), "/driver/pc-martine",
-						factureData.get(0), siteData.get(0), fabricantData
+						null, siteData.get(0), fabricantData
 								.get(0), "XXX1"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(2), "2IMMO",
 				"pc-gertrude", typeData.get(0), Etat.EN_MARCHE, LocalDate
 						.parse("2012-11-11"), "/driver/pc-gertrude",
-				factureData.get(0), siteData.get(0), fabricantData.get(1),
+				null, siteData.get(0), fabricantData.get(1),
 				"XXX2"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(3), "3IMMO",
 				"PC1", typeData.get(0), Etat.EN_MARCHE, LocalDate
-						.parse("2014-12-31"), "", factureData.get(0), siteData
+						.parse("2014-12-31"), "", null, siteData
 						.get(0), fabricantData.get(0), "XXX3"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(4), "4IMMO",
 				"PC2", typeData.get(0), Etat.EN_MARCHE, LocalDate
-						.parse("2015-12-31"), "", factureData.get(0), siteData
+						.parse("2015-12-31"), "", null, siteData
 						.get(1), fabricantData.get(0), "XXX4"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(5), "5IMMO",
 				"PC3", typeData.get(0), Etat.EN_MARCHE, LocalDate
-						.parse("2014-02-05"), "", factureData.get(1), siteData
+						.parse("2014-02-05"), "", null, siteData
 						.get(2), fabricantData.get(0), "XXX5"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(6), "6IMMO",
 				"Routeur1", typeData.get(1), Etat.EN_MARCHE, LocalDate
-						.parse("2017-02-14"), "", factureData.get(1), siteData
+						.parse("2017-02-14"), "", null, siteData
 						.get(3), fabricantData.get(0), "XXX6"));
 		materielData.add(new Materiel(new SimpleIntegerProperty(7), "7IMMO",
 				"Routeur2", typeData.get(1), Etat.EN_PANNE, LocalDate
-						.parse("2012-03-14"), "", factureData.get(1), siteData
+						.parse("2012-03-14"), "", null, siteData
 						.get(3), fabricantData.get(0), "XXX7<"));
 	}
 
-	private void remplirFactureData() {
+	/*private void remplirFactureData() {
 		factureData.add(new Facture("1", LocalDate.parse("2011-11-11"),
 				(float) 123.50, revendeurData.get(0)));
 		factureData.add(new Facture("2", LocalDate.parse("2012-12-12"),
 				(float) 99, revendeurData.get(1)));
-	}
+	}*/
 
 	private void remplirRevendeurData() {
 		revendeurData.add(new Revendeur(new SimpleIntegerProperty(1), "Darty",
@@ -195,7 +195,7 @@ public class Donnee {
 	private void remplirLogicielData() {
 		this.logicielData.add(new Logiciel(new SimpleIntegerProperty(1),
 				"Microsoft Office 2012", "1.0", LocalDate.parse("2014-10-01"),
-				this.factureData.get(1)));
+				null));
 	}
 
 	private void remplirUtilisateurData() {

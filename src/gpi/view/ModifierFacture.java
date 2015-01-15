@@ -75,7 +75,18 @@ public class ModifierFacture {
 
 	@FXML
 	private void handleOk() {
-
+		FactureDAO factureDAO = new FactureDAO();
+		RevendeurDAO revendeurDAO = new RevendeurDAO();
+		int indexRevendeur=NumRevendeur.getSelectionModel().getSelectedIndex();
+		int indexFacture = ComboboxFacture.getSelectionModel().getSelectedIndex();
+		int idFacture=listObjetsFacture.get(indexFacture).getIdFacture().getValue();
+		try {
+			factureDAO.modifierFacture(new Facture(idFacture,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(indexRevendeur))));
+		} catch (NumberFormatException e) {
+			new Popup("Erreur de format. Format : 123.45");
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
