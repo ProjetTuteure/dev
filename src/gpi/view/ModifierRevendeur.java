@@ -3,6 +3,7 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Constante;
 import utils.Popup;
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
@@ -56,6 +57,7 @@ public class ModifierRevendeur {
 		catch(ConnexionBDException ce)
 		{
 			new Popup(ce.getMessage());
+			this.dialogStage.close();
 		}
 		for(Revendeur revendeur : listeRevendeur)
 		{
@@ -93,6 +95,18 @@ public class ModifierRevendeur {
 		if(nomfield.getText().equals(""))
 		{
 			new Popup("Le champ \"Nom du revendeur\" doit être rempli");
+		}
+		else if(telfield.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		{
+			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+		}
+		else if(adrfield.getText().length()>Constante.LONGUEUR_ADRESSE)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
+		}
+		else if(nomfield.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
 		}
 		else
 		{
