@@ -35,7 +35,8 @@ public class testbd {
 	public static final String PASS = "123";
 
 	public static void main(String[] args) throws InstantiationException,IllegalAccessException, ClassNotFoundException, SQLException 
-	{		
+	{
+		/*
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		ResultSet resultat;
 		ResultSetMetaData resultMeta;

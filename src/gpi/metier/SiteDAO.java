@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
 public class SiteDAO {
 
 	public SiteDAO(){}
 	
-	public int ajouterSite(Site site){
+	public int ajouterSite(Site site) throws ConnexionBDException {
 		Connection connection=null;
 		int resultat;
 		try{
@@ -38,7 +39,7 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public int modifierSite(Site site){
+	public int modifierSite(Site site) throws ConnexionBDException {
 		Connection connection=null;
 		int resultat;
 		try{
@@ -64,7 +65,7 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public int supprimerSite(Site site){
+	public int supprimerSite(Site site) throws ConnexionBDException {
 		Connection connection=null;
 		int resultat;
 		try{
@@ -88,7 +89,7 @@ public class SiteDAO {
 		return 0;
 	}
 	
-	public Site recupererSiteParId(int idSite){
+	public Site recupererSiteParId(int idSite) throws ConnexionBDException {
 		Connection connection=null;
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
@@ -116,7 +117,7 @@ public class SiteDAO {
 		return null;
 	}
 	
-	public List<Site> recupererAllSite(){
+	public List<Site> recupererAllSite() throws ConnexionBDException {
 		Connection connection=null;
 		List<Site> listSite=new ArrayList<Site>();
 		ResultSet resultat;

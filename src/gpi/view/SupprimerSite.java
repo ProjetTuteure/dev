@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -38,7 +40,11 @@ public class SupprimerSite {
 		
 		listSite=new ArrayList<Site>();
 		listSiteObservable = FXCollections.observableArrayList();
-		listSite=siteDAO.recupererAllSite();
+		try {
+			listSite=siteDAO.recupererAllSite();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		for (Site site : listSite){
 			listSiteObservable.add(site.getNomSiteString());
 		}
@@ -74,7 +80,11 @@ public class SupprimerSite {
 		SiteDAO siteDAO=new SiteDAO();
 		int selected=comboboxSiteSupp.getSelectionModel().getSelectedIndex();
 		int id=listSite.get(selected).getIdSite();
-		siteDAO.supprimerSite(new Site(id,null,null));
+		try {
+			siteDAO.supprimerSite(new Site(id,null,null));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 

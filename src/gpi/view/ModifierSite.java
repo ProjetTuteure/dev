@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.Popup;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,7 +54,11 @@ public class ModifierSite {
 		
 		listSite=new ArrayList<Site>();
 		listSiteObservable = FXCollections.observableArrayList();
-		listSite=siteDAO.recupererAllSite();
+		try {
+			listSite=siteDAO.recupererAllSite();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		for (Site site : listSite){
 			listSiteObservable.add(site.getNomSiteString());
 		}
@@ -97,7 +103,11 @@ public class ModifierSite {
 		// site.setNomSte(NameSiteField.getText());
 		SiteDAO siteDAO=new SiteDAO();
 		setNomSite(NameSiteField.getText());
-		siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
+		try {
+			siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 		// }

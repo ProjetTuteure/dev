@@ -1,5 +1,6 @@
 package gpi.view;
 
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
 
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -29,7 +31,7 @@ public class AjouterSite {
 	private boolean okClicked = false;
 
 	/**
-	 * Initialise les données
+	 * Initialise les donnï¿½es
 	 */
 	@FXML
 	private void initialize() {
@@ -71,7 +73,11 @@ public class AjouterSite {
 		SiteDAO siteDAO = new SiteDAO();
 		// if (isInputValid()) {
 		setNomSite(NameSiteField.getText());
-		siteDAO.ajouterSite(new Site(0,getNomSite(),getCheminImageSite()));
+		try {
+			siteDAO.ajouterSite(new Site(0,getNomSite(),getCheminImageSite()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		dialogStage.close();
 	}
 

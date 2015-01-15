@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
 public class UtiliseDAO {
@@ -13,7 +14,7 @@ public class UtiliseDAO {
 	public UtiliseDAO() {
 	}
 	
-	public int ajouterUtilise(Utilise utilise){
+	public int ajouterUtilise(Utilise utilise) throws ConnexionBDException {
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
@@ -37,7 +38,7 @@ public class UtiliseDAO {
 		return 0;
 	}
 	
-	public int supprimerUtlise(Utilise utilise){
+	public int supprimerUtlise(Utilise utilise) throws ConnexionBDException {
 		Connection connexion = MaConnexion.getInstance().getConnexion();
 		int resultat;
 		try {
