@@ -1,10 +1,12 @@
 package gpi.view;
 
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -60,7 +62,11 @@ public class AjouterFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-		fabricantDAO.ajouterFabricant(new Fabricant(0,nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
+		try {
+			fabricantDAO.ajouterFabricant(new Fabricant(0,nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 	}

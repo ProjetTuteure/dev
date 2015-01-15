@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
 import gpi.metier.Site;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import utils.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,11 @@ public class SupprimerFabricant {
 	private void initialize() {
 		listFabricantObservable = FXCollections.observableArrayList();
 		listFabricant=new ArrayList<Fabricant>();
-		listFabricant=fabricantDAO.recupererAllFabricant();
+		try {
+			listFabricant=fabricantDAO.recupererAllFabricant();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		for (Fabricant fabricant : listFabricant) {
 			listFabricantObservable.add(fabricant.getNomFabricantString());
 		}
@@ -74,7 +80,11 @@ public class SupprimerFabricant {
 	private void handleOk() {
 		int selected=comboboxfabr.getSelectionModel().getSelectedIndex();
 		int id=listFabricant.get(selected).getIdFabricant().getValue();
-		fabricantDAO.supprimerFabricant(new Fabricant(id, null, null,null));
+		try {
+			fabricantDAO.supprimerFabricant(new Fabricant(id, null, null,null));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 	}

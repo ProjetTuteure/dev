@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Type;
 import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
@@ -8,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import utils.Popup;
 
 /**
  * Created by Kevin
@@ -34,8 +36,12 @@ public class SupprimerType {
 	private void initialize() {
 		listNom = FXCollections.observableArrayList();
 
-		for (Type type : typeDAO.recupererAllType()) {
-			listNom.add(type.getNomTypeString());
+		try {
+			for (Type type : typeDAO.recupererAllType()) {
+                listNom.add(type.getNomTypeString());
+            }
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		comboboxtype.setItems(listNom);
 
@@ -66,7 +72,11 @@ public class SupprimerType {
 	 */
 	@FXML
 	private void handleOk() {
-		typeDAO.supprimerType(new Type(comboboxtype.getValue(),""));
+		try {
+			typeDAO.supprimerType(new Type(comboboxtype.getValue(),""));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 

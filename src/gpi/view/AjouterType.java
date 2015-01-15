@@ -1,12 +1,15 @@
 package gpi.view;
 
 
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Type;
 import gpi.metier.TypeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.*;
+import utils.Popup;
 
 import javax.swing.*;
 import java.io.File;
@@ -65,7 +68,11 @@ public class AjouterType {
 	@FXML
 	private void handleOk() {
 		this.setNomType(nomTypeField.getText());
-		typeDAO.ajouterType(new Type(this.getNomType(),this.getCheminImageType()));
+		try {
+			typeDAO.ajouterType(new Type(this.getNomType(),this.getCheminImageType()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
