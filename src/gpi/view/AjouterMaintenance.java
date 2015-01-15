@@ -1,5 +1,10 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gpi.metier.Maintenance;
+import gpi.metier.MaintenanceDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -29,12 +34,15 @@ public class AjouterMaintenance {
 	@FXML
 	private TextArea ta_description;
 	
+	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+	
+	private List<Maintenance> listMaintenance;
 	/**
 	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-		
+		listMaintenance=new ArrayList<Maintenance>();
 	}
 
 	/**

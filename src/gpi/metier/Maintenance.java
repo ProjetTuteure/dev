@@ -1,6 +1,7 @@
 package gpi.metier;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -19,8 +20,8 @@ public class Maintenance {
     private String descriptionMaintenance;
     private float coutMaintenance;
 
-    public Maintenance(IntegerProperty idMaintenance, LocalDate dateMaintenance, String objetMaintenance, String descriptionMaintenance, float coutMaintenance) {
-        this.idMaintenance = idMaintenance;
+    public Maintenance(int idMaintenance, LocalDate dateMaintenance, String objetMaintenance, String descriptionMaintenance, float coutMaintenance) {
+        this.idMaintenance = new SimpleIntegerProperty(idMaintenance);
         this.dateMaintenance = dateMaintenance;
         this.objetMaintenance = objetMaintenance;
         this.descriptionMaintenance = descriptionMaintenance;

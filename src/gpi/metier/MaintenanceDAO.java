@@ -2,12 +2,19 @@ package gpi.metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import utils.MaConnexion;
 import gpi.exception.ConnexionBDException;
 
 public class MaintenanceDAO {
+	public MaintenanceDAO()
+	{}
 	
 	/**
 	 * Permet d'insérer une maintenance dans la BD
@@ -38,5 +45,40 @@ public class MaintenanceDAO {
 				se.printStackTrace();
 			}
 		}
+	}
+	
+	public List<Maintenance> recupererAllMaintenance() throws ConnexionBDException
+	{
+		List<Maintenance> listeARetourner=new ArrayList<Maintenance>();
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM MAINTENANCE");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				listeARetourner.add(new Maintenance(rs.getInt("idMaintenance"),
+						LocalDate.parse(rs.getString("dateMaintenance")),
+						rs.getString("objetMaintenance"),
+						rs.getString("descriptionMaintenance"),
+						rs.getFloat("coutMaintenance")
+						));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listeARetourner;
+		
 	}
 }
