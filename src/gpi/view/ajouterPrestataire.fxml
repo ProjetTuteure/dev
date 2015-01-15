@@ -10,13 +10,13 @@
     <GridPane prefHeight="164.0" prefWidth="301.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label text="Nom du prestataire" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="NameSiteField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <TextField fx:id="nomPrestataireField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Prénom du prestataire" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="162.0" text="Téléphone du prestataire" GridPane.rowIndex="2" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="prenomPrestataireField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Société du prestataire" GridPane.rowIndex="3" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tesPrestataireField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="adressePrestataireField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="143.0" prefWidth="143.0" />

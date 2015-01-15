@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,8 +31,8 @@ public class ModifierFabricant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 
-	private ObservableList<String> listFabricant;
-	List<Fabricant> list;
+	private ObservableList<String> listNomFabricant;
+	private List<Integer> listIdFabricant;
 
 	private FabricantDAO fabricantDAO=new FabricantDAO();
 
@@ -47,12 +48,13 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void initialize() {
-		listFabricant = FXCollections.observableArrayList();
-		list=fabricantDAO.recupererAllFabricant();
-		for (Fabricant fabricant : list) {
-			listFabricant.add(fabricant.getNomFabricant().getValue());
+		listNomFabricant = FXCollections.observableArrayList();
+		listIdFabricant = new ArrayList<Integer>();
+		for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+			listNomFabricant.add(fabricant.getNomFabricant().getValue());
+			listIdFabricant.add(fabricant.getIdFabricant().getValue());
 		}
-		comboboxfabr.setItems(listFabricant);
+		comboboxfabr.setItems(listNomFabricant);
 	}
 
 	/**
@@ -101,7 +103,7 @@ public class ModifierFabricant {
 	 */
 	@FXML
 	private void handlechange() {
-		this.setIdFabriquant(list.get(comboboxfabr.getSelectionModel().getSelectedIndex()).getIdFabricant().getValue());
+		this.setIdFabriquant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()));
 		Fabricant selected=fabricantDAO.recupererFabricantParId(this.getIdFabriquant());
 		nomField.setText(selected.getNomFabricant().getValue());
 		telField.setText(selected.getTelFabricant().getValue());
