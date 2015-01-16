@@ -511,20 +511,6 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
-	/**
-	 * Action lorsqu'un le bouton modifier type est clique
-	 * 
-	 * @param event
-	 *            un evenement sur le bouton modifier Compose
-	 */
-	@FXML
-	private void handlemodCompose(ActionEvent event) {
-		boolean okClicked = MainApp.showModComposeDialog();
-		if (okClicked) {
-
-		}
-	}
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
