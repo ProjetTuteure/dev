@@ -3,14 +3,16 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
 import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
 import gpi.metier.Revendeur;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import gpi.metier.Type;
-
 import gpi.metier.Materiel;
-
+import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +23,8 @@ import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import utils.Popup;
 
 /**
  * Created by Victor on 24/11/2014.
@@ -48,31 +52,51 @@ public class AncienneteController implements Initializable {
 	@FXML
 	private TableColumn<Materiel, String> siteMateriel;
 	
+	ObservableList<Materiel> listMateriel;
+	ObservableList<Site> listSite;
+	ObservableList<Type> listType;
+
 	private MainApp mainApp;
 	
 	public AncienneteController() {
     }
 	
 	/**
-	 * Initialise les donn�es
-	 * ajoute les donn�es dans la tableView
+	 * Initialise les donnees
+	 * ajoute les donnees dans la tableView
 	 * ajoute les actions aux combobox
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
-		MainApp.donnee = new Donnee();
-		ObservableList<Materiel> materiel=this.mainApp.donnee.getMaterielData();
-		ObservableList<Site> site=this.mainApp.donnee.getSiteData();
-		ObservableList<Type> type=this.mainApp.donnee.getTypeData();
-		this.addDonneeTableView(materiel,site,type);
+		MaterielDAO materielDAO = new MaterielDAO();
+		SiteDAO siteDAO = new SiteDAO();
+		TypeDAO typeDAO = new TypeDAO();
+		listMateriel=FXCollections.observableArrayList();
+		listSite=FXCollections.observableArrayList();
+		listType=FXCollections.observableArrayList();
+		
+		try {
+			for(Materiel materiel : materielDAO.recupererAllMateriel()){
+				listMateriel.add(materiel);
+			}
+			for(Site site : siteDAO.recupererAllSite()){
+				listSite.add(site);
+			}
+			for(Type type : typeDAO.recupererAllType()){
+				listType.add(type);
+			}
+		}catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		this.addDonneeTableView(listMateriel,listSite,listType);
 		
 		comboboxSiteAncienneteOverview.setOnAction((event) -> {
-			actionOnCombo(materiel);
+			actionOnCombo(listMateriel);
 		});
 		
 		comboboxTypeAncienneteOverview.setOnAction((event) -> {
-			actionOnCombo(materiel);
+			actionOnCombo(listMateriel);
 		});
 		
 		materielTable.setOnMouseClicked((event) -> {
