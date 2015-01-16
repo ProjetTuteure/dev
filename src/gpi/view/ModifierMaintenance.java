@@ -50,11 +50,13 @@ public class ModifierMaintenance {
 	private ObservableList<String> listdate;
 	
 	private List<Maintenance> listeMaintenance;
+	private List<Maintenance> listeMaintenanceParObjet;
 	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 
 	@FXML
 	private void initialize() {
 		listeMaintenance=new ArrayList<Maintenance>();
+		listobj=FXCollections.observableArrayList();
 		try {
 			listeMaintenance=maintenanceDAO.recupererAllMaintenance();
 		} catch (ConnexionBDException e) {
@@ -91,13 +93,18 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handlechange1() {
-		choix1 = true;
-		Maintenance selected = donnee.getMaintenance(comboboxobj.getValue());
+		if(!comboboxdate.getItems().equals(null))
+		{
+			comboboxdate.setItems(null);
+		}
+		Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
 		listdate = FXCollections.observableArrayList();
-
-		for (Maintenance m : donnee.getMaintenanceData()) {
-			if (m.getObjetMaintenance().equals(selected.getObjetMaintenance())) {
-				listdate.add(selected.getdateMaintenanceStringProperty().getValue());
+		System.out.println(comboboxobj.getSelectionModel().getSelectedIndex());
+		for(Maintenance maintenanceParObjet:listeMaintenance)
+		{
+			if(maintenanceParObjet.getObjetMaintenance().equals(maintenanceSelected.getObjetMaintenance()))
+			{
+				listdate.add(maintenanceParObjet.getdateMaintenanceStringProperty().getValue());
 			}
 		}
 		comboboxdate.setItems(listdate);
@@ -105,21 +112,28 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handlechange2() {
-		try {
-			if (choix1 = true) {
-
-				String test = comboboxobj.getValue() + " "
-						+ comboboxdate.getValue();
-				Maintenance selected2 = donnee.getMaintenance2(test);
-				System.out.println(selected2.getObjetMaintenance());
-				System.out.println(selected2.getDescriptionMaintenance());
-				objfield.setText(selected2.getObjetMaintenance());
-				datefield.setPromptText(selected2.getdateMaintenanceStringProperty().getValue());
-				descfield.setText(selected2.getDescriptionMaintenance());
-				coutfield.setText(selected2.getCoutMaintenanceString());
+		if(comboboxdate.getItems()==null)
+		{
+			objfield.setText("");
+			datefield.setPromptText("");
+			descfield.setText("");
+			coutfield.setText("");
+		}
+		else
+		{
+			Maintenance maintenanceParDate=null;
+			for(Maintenance maintenance:listeMaintenance)
+			{
+				if(maintenance.getdateMaintenanceStringProperty().getValue().equals(comboboxdate.getSelectionModel().getSelectedItem()))
+				{
+					maintenanceParDate=maintenance;
+				}
 			}
-		} catch (NullPointerException e) {
-
+			//Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
+			objfield.setText(maintenanceParDate.getObjetMaintenance());
+			datefield.setPromptText(maintenanceParDate.getdateMaintenanceStringProperty().getValue());
+			descfield.setText(maintenanceParDate.getDescriptionMaintenance());
+			coutfield.setText(maintenanceParDate.getCoutMaintenanceString());
 		}
 	}
 
