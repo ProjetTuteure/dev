@@ -95,9 +95,16 @@ public class SiteOverviewController {
 
                     @Override
                     public void handle(MouseEvent arg0) {
+                    	SiteDAO siteDAO = new SiteDAO();
                       //  System.out.println(((Label)(tempo.getBottom())).getId());
                         String id = ((Label)(tempo.getBottom())).getId();
-                        mainApp.setCritere(mainApp.donnee.getSite(Integer.parseInt(id)+1));
+                        try {
+							mainApp.setCritere(siteDAO.recupererSiteParId(Integer.parseInt(id)+1));
+						} catch (NumberFormatException e) {
+							e.printStackTrace();
+						} catch (ConnexionBDException e) {
+							new Popup(e.getMessage());
+						}
                         mainApp.changerTab("Type");
                     }
                 });
