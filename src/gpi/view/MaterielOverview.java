@@ -1,8 +1,11 @@
 package gpi.view;
 
+import utils.Popup;
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
 import gpi.metier.Site;
 import gpi.metier.Type;
 import javafx.collections.FXCollections;
@@ -61,11 +64,16 @@ public class MaterielOverview {
 	 */
 	@FXML
 	private void initialize() {
+		MaterielDAO materielDAO = new MaterielDAO();
 		Site site;
 		site=(Site)(mainApp.getCritere(0));
 		Type type;
 		type=(Type)mainApp.getCritere(1);
-		this.materiel=donnees.rechercher(site,type);
+		try {
+			this.materiel=FXCollections.observableArrayList(materielDAO.recupererMaterielParSiteEtType(site, type));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		this.setLabelMaterielVille(site.getNomSiteString()+" -> "+type.getNomType().getValue());
 		this.sp_materiel.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterMaterielGridPane(materiel);
