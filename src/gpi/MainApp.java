@@ -1369,4 +1369,31 @@ public class MainApp extends Application {
 		}
 	}
 
+	public static boolean showModDriverDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(
+					MainApp.class.getResource("view/modifierDriver.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Modifier le dossier driver");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			ModifierDriver controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

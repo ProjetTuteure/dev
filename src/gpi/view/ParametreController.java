@@ -2,15 +2,11 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.metier.*;
-
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.stage.DirectoryChooser;
 
 /**
  * Created by Kevin
@@ -69,7 +65,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddFact(ActionEvent event) {
-		Facture facture = new Facture(0,null, null, 0, null);
+		Facture facture = new Facture(0, null, null, 0, null);
 		boolean okClicked = MainApp.showAddFactDialog(facture);
 		if (okClicked) {
 
@@ -198,7 +194,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddMat(ActionEvent event) {
-		Materiel materiel = new Materiel(0,null, null, null, null, null, null,
+		Materiel materiel = new Materiel(0, null, null, null, null, null, null,
 				null, null, null, null);
 		boolean okClicked = MainApp.showAddMatDialog(materiel);
 		if (okClicked) {
@@ -373,7 +369,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddType(ActionEvent event) {
-		Type type = new Type(0,null, null);
+		Type type = new Type(0, null, null);
 		boolean okClicked = MainApp.showAddTypeDialog(type);
 		if (okClicked) {
 
@@ -407,7 +403,7 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
@@ -422,7 +418,7 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
@@ -450,7 +446,6 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
 
 	/**
 	 * Action lorsqu'un le bouton ajouter type est clique
@@ -460,14 +455,14 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddComposant(ActionEvent event) {
-		//Pas de type Type, mais de type compose => pas encore cr��
-		Type type = new Type(0,null, null);
+		// Pas de type Type, mais de type compose => pas encore cr��
+		Type type = new Type(0, null, null);
 		boolean okClicked = MainApp.showAddComposantDialog(type);
 		if (okClicked) {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
@@ -495,7 +490,7 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
@@ -504,7 +499,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddCompose(ActionEvent event) {
-		//Pas de type Type, mais de type compose => pas encore cr��
+		// Pas de type Type, mais de type compose => pas encore cr��
 		Composant comp = new Composant(null, null, null, null);
 		boolean okClicked = MainApp.showAddComposeDialog(comp);
 		if (okClicked) {
@@ -540,8 +535,6 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
-
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
@@ -557,7 +550,6 @@ public class ParametreController implements Initializable {
 		}
 	}
 
-	
 	/**
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
@@ -572,8 +564,6 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
-
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
@@ -588,7 +578,7 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton ajouter type est clique
 	 * 
@@ -603,7 +593,6 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
 
 	/**
 	 * Action lorsqu'un le bouton supprimer type est clique
@@ -618,7 +607,7 @@ public class ParametreController implements Initializable {
 
 		}
 	}
-	
+
 	/**
 	 * Action lorsqu'un le bouton modifier type est clique
 	 * 
@@ -633,7 +622,6 @@ public class ParametreController implements Initializable {
 		}
 	}
 
-	
 	/**
 	 * Initialise les donn�es
 	 */
@@ -651,13 +639,17 @@ public class ParametreController implements Initializable {
 	 *            "Changer le chemin d'acces au repertoire driver"
 	 */
 	@FXML
-	private void handleChoose(ActionEvent event) {
-		DirectoryChooser directoryChooser = new DirectoryChooser();
-		directoryChooser.setTitle("Open directory");
-		File selectedDirectory = directoryChooser.showDialog(null);
+	private void handleDriver(ActionEvent event) {
+		boolean okClicked = MainApp.showModDriverDialog();
+		if (okClicked) {
 
-		if (selectedDirectory != null) {
 		}
+		// DirectoryChooser directoryChooser = new DirectoryChooser();
+		// directoryChooser.setTitle("Open directory");
+		// File selectedDirectory = directoryChooser.showDialog(null);
+		//
+		// if (selectedDirectory != null) {
+		// }
 
 	}
 }

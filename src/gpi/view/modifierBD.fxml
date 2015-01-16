@@ -11,17 +11,11 @@
     <GridPane prefHeight="47.0" prefWidth="480.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
       <children>
         <Label text="Chemin de la base de donnée" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="cheminfield" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleBrowse" text="Parcourir" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Button>
+            <TextField fx:id="cheminfield" prefHeight="23.0" prefWidth="356.0" GridPane.columnIndex="1" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="120.0" prefWidth="164.0" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.0" minWidth="10.0" prefWidth="275.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="73.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="366.0" />
       </columnConstraints>
       <rowConstraints>
         <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />

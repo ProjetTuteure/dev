@@ -1,11 +1,7 @@
 package gpi.view;
 
-import java.io.File;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -57,17 +53,6 @@ public class ModifierBD {
 
 		okClicked = true;
 		dialogStage.close();
-
-	}
-
-	@FXML
-	private void handleBrowse(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Choisir le fichier de base de donnée");
-		File file = fileChooser.showOpenDialog(null);
-
-		if (file != null) {
-		}// do something interesting with the file.
 
 	}
 
