@@ -96,24 +96,30 @@ public class AjouterMaintenance {
 				{
 					tf_coutMaintenance.setText(tf_coutMaintenance.getText().replace(',','.'));
 				}
-				if(Float.parseFloat(tf_coutMaintenance.getText())<0)
+				try
 				{
-					new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+					if(Float.parseFloat(tf_coutMaintenance.getText())<0)
+					{
+						new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+					}
+					coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
 				}
-				coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
+				catch(NumberFormatException e)
+				{
+					new Popup("Saisie du coût non correcte");
+				}
 			}
 			Maintenance maintenance=new Maintenance(0,dp_dateMaintenance.getValue(),
 					tf_objetMaintenance.getText(),
 					ta_description.getText(),
 					coutMaintenance);
 			System.out.println(maintenance.toString());
-			/*try {
+			try {
 				maintenanceDAO.ajouterMaintenance(maintenance);
-				new Popup("Maintenance du"+maintenance.getdateMaintenanceStringProperty().getValue()+"ajoutée !");
+				new Popup("Maintenance du "+maintenance.getdateMaintenanceStringProperty().getValue()+" ajoutée !");
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
-			}*/
-			new Popup("Maintenance du "+maintenance.getdateMaintenanceStringProperty().getValue()+" ajoutée !");
+			}
 			dialogStage.close();
 		}
 	}
