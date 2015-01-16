@@ -1,5 +1,8 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Type;
@@ -23,27 +26,27 @@ public class SupprimerType {
 	@FXML
 	private ComboBox<String> comboboxtype;
 
-	private Donnee donneetype = new Donnee();
-
-	private ObservableList<String> listNom;
+	private ObservableList<String> listNomType;
 
 	TypeDAO typeDAO=new TypeDAO();
 
+	private List<Integer> listIdType;
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
-
+		listNomType = FXCollections.observableArrayList();
+		listIdType=new ArrayList<Integer>();
 		try {
 			for (Type type : typeDAO.recupererAllType()) {
-                listNom.add(type.getNomTypeString());
+                listNomType.add(type.getNomTypeString());
+                listIdType.add(type.getIdType());
             }
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		comboboxtype.setItems(listNom);
+		comboboxtype.setItems(listNomType);
 
 	}
 
@@ -73,7 +76,8 @@ public class SupprimerType {
 	@FXML
 	private void handleOk() {
 		try {
-			typeDAO.supprimerType(new Type(comboboxtype.getValue(),""));
+			System.out.println();
+			typeDAO.supprimerType(new Type(listIdType.get(comboboxtype.getSelectionModel().getSelectedIndex()),"",""));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}

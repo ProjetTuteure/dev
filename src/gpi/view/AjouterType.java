@@ -19,8 +19,6 @@ import java.io.File;
  */
 
 public class AjouterType {
-	private String nomType;
-
 	private String cheminImageType;
 
 	@FXML
@@ -67,9 +65,8 @@ public class AjouterType {
 	 */
 	@FXML
 	private void handleOk() {
-		this.setNomType(nomTypeField.getText());
 		try {
-			typeDAO.ajouterType(new Type(this.getNomType(),this.getCheminImageType()));
+			typeDAO.ajouterType(new Type(0,nomTypeField.getText(),this.getCheminImageType()));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -91,8 +88,8 @@ public class AjouterType {
 	private void handleChoose(ActionEvent event) {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Open File");
-		fileChooser.showOpenDialog(null); // you could pass a stage
-		File file = fileChooser.getSelectedFile();												// reference here if you
+		fileChooser.showOpenDialog(null);
+		File file = fileChooser.getSelectedFile();
 
 
 		if (file != null) {
@@ -108,13 +105,5 @@ public class AjouterType {
 
 	public void setCheminImageType(String cheminImageType) {
 		this.cheminImageType = cheminImageType;
-	}
-
-	public String getNomType() {
-		return nomType;
-	}
-
-	public void setNomType(String nomType) {
-		this.nomType = nomType;
 	}
 }

@@ -88,7 +88,7 @@ public class AjouterEstMaintenu {
 		MaterielDAO materielDAO=new MaterielDAO();
 		try {
 			Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId();
-			Materiel materiel=materielDAO.recupererMaterielDAOParId();
+			Materiel materiel=materielDAO.recupererMaterielDAOParId(0);
 			estMaintenuDAO.ajouterEstMaintenu(new EstMaintenu(maintenance,materiel));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
