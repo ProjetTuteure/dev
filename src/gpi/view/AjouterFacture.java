@@ -9,8 +9,6 @@ import gpi.metier.Facture;
 import gpi.metier.FactureDAO;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
-import gpi.metier.Site;
-import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -1,8 +1,6 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
-import gpi.metier.Fabricant;
 import gpi.metier.Prestataire;
 import gpi.metier.PrestataireDAO;
 import javafx.collections.FXCollections;

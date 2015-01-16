@@ -1,25 +1,12 @@
 package gpi.view;
 
-
-import java.sql.SQLException;
-
 import utils.Constante;
 import utils.Popup;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**

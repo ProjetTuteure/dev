@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
 import gpi.metier.FactureDAO;
-import gpi.metier.Site;
-import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

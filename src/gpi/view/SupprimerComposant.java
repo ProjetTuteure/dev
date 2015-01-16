@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Composant;
 import gpi.metier.ComposantDAO;
-import gpi.metier.Maintenance;
-import gpi.metier.Utilisateur;
-import gpi.metier.UtilisateurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,8 +27,6 @@ public class SupprimerComposant {
 	private ComboBox<String> comboboxnom;
 	@FXML
 	private ComboBox<String> comboboxcarac;
-
-	private Donnee donnee = new Donnee();
 
 	private ObservableList<String> listnom;
 	private ObservableList<String> listcarac;

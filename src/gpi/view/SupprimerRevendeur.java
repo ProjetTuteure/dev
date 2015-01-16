@@ -27,8 +27,6 @@ public class SupprimerRevendeur {
 	@FXML
 	private ComboBox<String> comboboxrev;
 
-	private Donnee donneesite = new Donnee();
-
 	private ObservableList<String> listrev;
 	
 	private List<Revendeur> listeRevendeur;

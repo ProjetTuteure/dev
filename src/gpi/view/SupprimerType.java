@@ -3,7 +3,6 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Type;
 import gpi.metier.TypeDAO;

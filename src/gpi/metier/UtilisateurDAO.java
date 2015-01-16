@@ -22,7 +22,6 @@ public class UtilisateurDAO {
 	public void ajouterUtilisateur(Utilisateur utilisateur)
 			throws ConnexionBDException {
 		Connection connexion = MaConnexion.getInstance().getConnexion();
-		int resultat;
 		try {
 			PreparedStatement ps = connexion
 					.prepareStatement("INSERT INTO UTILISATEUR (nomUtilisateur,prenomUtilisateur,telUtilisateur) "
@@ -32,7 +31,6 @@ public class UtilisateurDAO {
 			ps.setString(3, utilisateur.getTelUtilisateur().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -56,7 +54,6 @@ public class UtilisateurDAO {
 			ps.setInt(4, utilisateur.getIdUtilisateur().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -76,7 +73,6 @@ public class UtilisateurDAO {
 			ps.setInt(1, utilisateur.getIdUtilisateur().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		} finally {
@@ -108,7 +104,6 @@ public class UtilisateurDAO {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -139,7 +134,6 @@ public class UtilisateurDAO {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -167,7 +161,6 @@ public class UtilisateurDAO {
 						.getString("telUtilisateur")));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {

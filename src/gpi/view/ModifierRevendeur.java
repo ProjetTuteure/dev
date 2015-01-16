@@ -5,7 +5,6 @@ import java.util.List;
 
 import utils.Constante;
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;

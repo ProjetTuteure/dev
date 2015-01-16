@@ -3,7 +3,6 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
@@ -25,8 +24,6 @@ public class SupprimerSite {
 	private boolean okClicked = false;
 	@FXML
 	private ComboBox<String> comboboxSiteSupp;
-
-	private Donnee donneesite = new Donnee();
 
 	private ObservableList<String> listSiteObservable;
 	List<Integer> listSiteId;
