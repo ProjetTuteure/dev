@@ -41,9 +41,15 @@ public class ModifierFabricant {
 	@FXML
 	private TextField nomFabricantField;
 	@FXML
-	private TextField adresseFabricantField;
-	@FXML
 	private TextField telFabricantField;
+	@FXML
+	private TextField mobileFabricantField;
+	@FXML
+	private TextField faxFabricantField;
+	@FXML
+	private TextField emailFabricantField;
+	@FXML
+	private TextField adresseFabricantField;
 
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
@@ -122,6 +128,7 @@ public class ModifierFabricant {
 		}
 		nomFabricantField.setText(selected.getNomFabricant().getValue());
 		telFabricantField.setText(selected.getTelFabricant().getValue());
+		mobileFabricantField.setText(selected.getMobileFabricant().getValue());
 		adresseFabricantField.setText(selected.getAdresseFabricant().getValue());
 	}
 

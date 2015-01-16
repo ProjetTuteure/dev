@@ -15,16 +15,18 @@ import utils.Popup;
 public class AjouterFabricant {
 	@FXML
 	private Stage dialogStage;
-
 	@FXML
 	private boolean okClicked = false;
-
 	@FXML
 	private TextField nomFabricantField;
-
 	@FXML
 	private TextField telFabricantField;
-
+	@FXML
+	private TextField mobileFabricantField;
+	@FXML
+	private TextField faxFabricantField;
+	@FXML
+	private TextField emailFabricantField;
 	@FXML
 	private TextField adresseFabricantField;
 
@@ -63,7 +65,7 @@ public class AjouterFabricant {
 	@FXML
 	private void handleOk() {
 		try {
-			fabricantDAO.ajouterFabricant(new Fabricant(0,nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
+			fabricantDAO.ajouterFabricant(new Fabricant(0,nomFabricantField.getText(),telFabricantField.getText(),mobileFabricantField.getText(),faxFabricantField.getText(),emailFabricantField.getText(),adresseFabricantField.getText()));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}

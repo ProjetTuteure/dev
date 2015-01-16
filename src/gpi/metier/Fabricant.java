@@ -12,14 +12,20 @@ public class Fabricant {
     private IntegerProperty idFabricant;
     private StringProperty nomFabricant;
     private StringProperty telFabricant;
+    private StringProperty mobileFabricant;
+    private StringProperty faxFabricant;
+    private StringProperty emailFabricant;
     private StringProperty adresseFabricant;
 
 
-    public Fabricant(int idFabricant, String nomFabricant, String telFabricant, String adresseFabricant) {
+    public Fabricant(int idFabricant, String nomFabricant, String telFabricant, String mobileFabricant, String faxFabricant, String emailFabricant, String adresseFabricant){
 
         this.idFabricant = new SimpleIntegerProperty(idFabricant);
         this.nomFabricant = new SimpleStringProperty(nomFabricant);
         this.telFabricant = new SimpleStringProperty(telFabricant);
+        this.mobileFabricant = new SimpleStringProperty(mobileFabricant);
+        this.faxFabricant = new SimpleStringProperty(faxFabricant);
+        this.emailFabricant = new SimpleStringProperty(emailFabricant);
         this.adresseFabricant = new SimpleStringProperty(adresseFabricant);
     }
 
@@ -59,7 +65,31 @@ public class Fabricant {
         this.nomFabricant.setValue(nomFabricant);
     }
 
-    @Override
+    public StringProperty getMobileFabricant() {
+		return mobileFabricant;
+	}
+
+	public void setMobileFabricant(String mobileFabricant) {
+		this.mobileFabricant.set(mobileFabricant);
+	}
+
+	public StringProperty getFaxFabricant() {
+		return faxFabricant;
+	}
+
+	public void setFaxFabricant(String faxFabricant) {
+		this.faxFabricant.set(faxFabricant);
+	}
+
+	public StringProperty getEmailFabricant() {
+		return emailFabricant;
+	}
+
+	public void setEmailFabricant(String emailFabricant) {
+		this.emailFabricant.set(emailFabricant);
+	}
+
+	@Override
     public String toString() {
         return "Fabricant{" +
                 "idFabricant=" + idFabricant +
