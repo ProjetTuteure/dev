@@ -1,5 +1,6 @@
 package gpi.metier;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -9,7 +10,7 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Utilise {
-	private LocalDateTime dateUtilise;
+	private LocalDate dateUtilise;
     private Utilisateur utilisateurUtilise;
     private Materiel materielUtilise;
     /**
@@ -17,17 +18,17 @@ public class Utilise {
      * @param utilisateurUtilise
      * @param materielUtilise
      */
-    public Utilise(LocalDateTime dateUtilise, Utilisateur utilisateurUtilise, Materiel materielUtilise) {
+    public Utilise(LocalDate dateUtilise, Utilisateur utilisateurUtilise, Materiel materielUtilise) {
     	this.dateUtilise = dateUtilise;
         this.utilisateurUtilise = utilisateurUtilise;	
         this.materielUtilise = materielUtilise;
     }
     
-    public LocalDateTime getDateUtilise() {
+    public LocalDate getDateUtilise() {
 		return dateUtilise;
 	}
 
-	public void setDateUtilise(LocalDateTime dateUtilise) {
+	public void setDateUtilise(LocalDate dateUtilise) {
 		this.dateUtilise = dateUtilise;
 	}
 
