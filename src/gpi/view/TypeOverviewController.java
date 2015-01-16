@@ -2,10 +2,13 @@ package gpi.view;
 
 import java.util.ArrayList;
 
+import utils.Popup;
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.Type;
+import gpi.metier.TypeDAO;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,8 +90,13 @@ public class TypeOverviewController {
 	@FXML
 	private void initialize() {
 		Site site;
+		TypeDAO typeDAO = new TypeDAO();
 		site=(Site)(mainApp.getCritere(0));
-		this.types=donnees.getTypeData();
+		try {
+			this.types=FXCollections.observableArrayList(typeDAO.recupererAllType());
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		this.setLabelNomVille(site.getNomSiteString());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
 		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
