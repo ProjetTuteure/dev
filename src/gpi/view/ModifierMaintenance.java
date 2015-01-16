@@ -5,7 +5,6 @@ import java.util.List;
 
 import utils.Constante;
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Maintenance;
 import gpi.metier.MaintenanceDAO;
@@ -30,35 +29,32 @@ public class ModifierMaintenance {
 	private boolean okClicked = false;
 
 	@FXML
-	private TextField objfield;
+	private TextField tf_objetMaintenance;
 	@FXML
-	private TextField coutfield;
+	private TextField tf_coutMaintenance;
 	@FXML
-	private DatePicker datefield;
+	private DatePicker dp_dateMaintenance;
 	@FXML
-	private TextArea descfield;
+	private TextArea ta_descriptionMaintenance;
 	@FXML
 	private boolean choix1 = false;
 
 	@FXML
-	private ComboBox<String> comboboxobj;
+	private ComboBox<String> cb_objetMaintenance;
 	@FXML
-	private ComboBox<String> comboboxdate;
+	private ComboBox<String> cb_dateMaintenance;
 
-	private Donnee donnee = new Donnee();
-
-	private ObservableList<String> listobj;
-	private ObservableList<String> listdate;
+	private ObservableList<String> listeObjet;
+	private ObservableList<String> listeDate;
 	
 	private List<Maintenance> listeMaintenance;
-	private List<Maintenance> listeMaintenanceParObjet;
 	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 	private Maintenance maintenanceAModifier;
 
 	@FXML
 	private void initialize() {
 		listeMaintenance=new ArrayList<Maintenance>();
-		listobj=FXCollections.observableArrayList();
+		listeObjet=FXCollections.observableArrayList();
 		try {
 			listeMaintenance=maintenanceDAO.recupererAllMaintenance();
 		} catch (ConnexionBDException e) {
@@ -67,9 +63,9 @@ public class ModifierMaintenance {
 		}
 		for(Maintenance maintenance:listeMaintenance)
 		{
-			listobj.add(maintenance.getObjetMaintenance());
+			listeObjet.add(maintenance.getObjetMaintenance());
 		}
-		comboboxobj.setItems(listobj);
+		cb_objetMaintenance.setItems(listeObjet);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -86,13 +82,13 @@ public class ModifierMaintenance {
 		try {
 			if(controlerSaisies()==true)
 			{
-				if(!coutfield.getText().isEmpty()){
-					coutMaintenance=Float.parseFloat(coutfield.getText());
+				if(!tf_coutMaintenance.getText().isEmpty()){
+					coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
 				}
 				Maintenance maintenance=new Maintenance(maintenanceAModifier.getIdMaintenance().getValue(),
-						datefield.getValue(),
-						objfield.getText(),
-						descfield.getText(),
+						dp_dateMaintenance.getValue(),
+						tf_objetMaintenance.getText(),
+						ta_descriptionMaintenance.getText(),
 						coutMaintenance);
 						maintenanceDAO.modifierMaintenance(maintenance);
 				new Popup("Maintenance du "+maintenanceAModifier.getdateMaintenanceStringProperty().getValue()+ " modifiée !");
@@ -110,30 +106,30 @@ public class ModifierMaintenance {
 	 */
 	public boolean controlerSaisies()
 	{
-		if(datefield.getValue()==null)
+		if(dp_dateMaintenance.getValue()==null)
 		{
 			new Popup("Une date doit être saisie");
 			return false;
 		}
-		if(objfield.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
+		if(tf_objetMaintenance.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
 		{
 			new Popup("La longueur de l'objet saisi doit être inférieur à "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
 			return false;
 		}
-		if(descfield.getText().length()>Constante.LONGUEUR_DESCRIPTION_MAINTENANCE)
+		if(ta_descriptionMaintenance.getText().length()>Constante.LONGUEUR_DESCRIPTION_MAINTENANCE)
 		{
 			new Popup("La longueur de la description saisie doit être inférieur à "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
 			return false;
 		}		
-		if(!coutfield.getText().isEmpty())
+		if(!tf_coutMaintenance.getText().isEmpty())
 		{
-			if(coutfield.getText().contains(","))
+			if(tf_coutMaintenance.getText().contains(","))
 			{
-				coutfield.setText(coutfield.getText().replace(',','.'));
+				tf_coutMaintenance.setText(tf_coutMaintenance.getText().replace(',','.'));
 			}
 			try
 			{
-				if(Float.parseFloat(coutfield.getText())<0)
+				if(Float.parseFloat(tf_coutMaintenance.getText())<0)
 				{
 					new Popup("La valeur du coût de la maintenance ne doit pas être négative");
 					return false;
@@ -156,45 +152,45 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handlechange1() {
-		if(!comboboxdate.getItems().equals(null))
+		if(!cb_dateMaintenance.getItems().equals(null))
 		{
-			comboboxdate.setItems(null);
+			cb_dateMaintenance.setItems(null);
 		}
-		Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
-		listdate = FXCollections.observableArrayList();
+		Maintenance maintenanceSelected = listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
+		listeDate = FXCollections.observableArrayList();
 		for(Maintenance maintenanceParObjet:listeMaintenance)
 		{
 			if(maintenanceParObjet.getObjetMaintenance().equals(maintenanceSelected.getObjetMaintenance()))
 			{
-				listdate.add(maintenanceParObjet.getdateMaintenanceStringProperty().getValue());
+				listeDate.add(maintenanceParObjet.getdateMaintenanceStringProperty().getValue());
 			}
 		}
-		comboboxdate.setItems(listdate);
+		cb_dateMaintenance.setItems(listeDate);
 	}
 
 	@FXML
 	private void handlechange2() {
-		if(comboboxdate.getItems()==null)
+		if(cb_dateMaintenance.getItems()==null)
 		{
-			objfield.setText("");
-			datefield.setPromptText("");
-			descfield.setText("");
-			coutfield.setText("");
+			tf_objetMaintenance.setText("");
+			dp_dateMaintenance.setPromptText("");
+			ta_descriptionMaintenance.setText("");
+			tf_coutMaintenance.setText("");
 		}
 		else
 		{
 			for(Maintenance maintenance:listeMaintenance)
 			{
-				if(maintenance.getdateMaintenanceStringProperty().getValue().equals(comboboxdate.getSelectionModel().getSelectedItem()))
+				if(maintenance.getdateMaintenanceStringProperty().getValue().equals(cb_dateMaintenance.getSelectionModel().getSelectedItem()))
 				{
 					maintenanceAModifier=maintenance;
 				}
 			}
-			//Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
-			objfield.setText(maintenanceAModifier.getObjetMaintenance());
-			datefield.setValue(maintenanceAModifier.getdateMaintenance());
-			descfield.setText(maintenanceAModifier.getDescriptionMaintenance());
-			coutfield.setText(maintenanceAModifier.getCoutMaintenanceString());
+			//Maintenance maintenanceSelected = listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
+			tf_objetMaintenance.setText(maintenanceAModifier.getObjetMaintenance());
+			dp_dateMaintenance.setValue(maintenanceAModifier.getdateMaintenance());
+			ta_descriptionMaintenance.setText(maintenanceAModifier.getDescriptionMaintenance());
+			tf_coutMaintenance.setText(maintenanceAModifier.getCoutMaintenanceString());
 		}
 	}
 
