@@ -22,6 +22,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import utils.Popup;
@@ -53,8 +55,10 @@ public class AncienneteController implements Initializable {
 	private TableColumn<Materiel, String> siteMateriel;
 	
 	ObservableList<Materiel> listMateriel;
-	ObservableList<Site> listSite;
-	ObservableList<Type> listType;
+	ObservableList<String> listSite;
+	List<Integer> listSiteId;
+	ObservableList<String> listType;
+	List<Integer> listTypeId;
 
 	private MainApp mainApp;
 	
@@ -74,22 +78,30 @@ public class AncienneteController implements Initializable {
 		TypeDAO typeDAO = new TypeDAO();
 		listMateriel=FXCollections.observableArrayList();
 		listSite=FXCollections.observableArrayList();
+		listSiteId=new ArrayList<Integer>();
 		listType=FXCollections.observableArrayList();
+		listTypeId=new ArrayList<Integer>();
 		
 		try {
 			for(Materiel materiel : materielDAO.recupererAllMateriel()){
 				listMateriel.add(materiel);
 			}
 			for(Site site : siteDAO.recupererAllSite()){
-				listSite.add(site);
+				listSite.add(site.getNomSiteString());
+				listSiteId.add(site.getIdSite());
 			}
+			listSite.add("Tous");
 			for(Type type : typeDAO.recupererAllType()){
-				listType.add(type);
+				listType.add(type.getNomTypeString());
+				listTypeId.add(type.getIdType());
 			}
+			listType.add("Tous");
 		}catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		this.addDonneeTableView(listMateriel,listSite,listType);
+		setItemsTableMateriel(listMateriel);
+		comboboxSiteAncienneteOverview.setItems(listSite);
+		comboboxTypeAncienneteOverview.setItems(listType);
 		
 		comboboxSiteAncienneteOverview.setOnAction((event) -> {
 			actionOnCombo(listMateriel);
@@ -110,7 +122,7 @@ public class AncienneteController implements Initializable {
 	 * @param materiel la liste de materiel qui sera affichee dans la tableView en fonction
 	 * des restrictions
 	 */
-	public void actionOnCombo(ObservableList<Materiel> materiel){
+	public void actionOnCombo(ObservableList<Materiel> listMateriel){
 		String selectedSite="";
 		String selectedType="";
 		selectedSite = comboboxSiteAncienneteOverview.getSelectionModel().getSelectedItem();
@@ -122,7 +134,7 @@ public class AncienneteController implements Initializable {
 			selectedType="Tous";
 		}
 	    if(selectedSite!=null || selectedType!=null){
-	    	addDonneeRestrictTableView(materiel,selectedSite,selectedType);
+	    	addDonneeRestrictTableView(listMateriel,selectedSite,selectedType);
 	    }
 	}
 	
@@ -149,55 +161,33 @@ public class AncienneteController implements Initializable {
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
 	}
 	
-	/**
-	 * Ajoute les donn�es dans la tableView et dans les combobox
-	 * @param materiel la liste de materiels � ajouter dans le tableau de materiel
-	 * @param site la liste de site � ajouter dans la combobox de site
-	 * @param type la liste de type � ajouter dans la combobox de type
-	 */
-	public void addDonneeTableView(ObservableList<Materiel> materiel,ObservableList<Site> site,ObservableList<Type> type){
-		ObservableList<String> listSite = FXCollections.observableArrayList();
-		ObservableList<String> listType = FXCollections.observableArrayList();
-		
-		setItemsTableMateriel(materiel);
-		
-		for(Site s : site){
-			listSite.add(s.getNomSiteString());
-		}
-		listSite.add("Tous");
-		for(Type t : type){
-			listType.add(t.getNomTypeString());
-		}
-		listType.add("Tous");
-		
-		comboboxSiteAncienneteOverview.setItems(listSite);
-		comboboxTypeAncienneteOverview.setItems(listType);
-	}
+	
 	
 	/**
 	 * Permet de restreindre l'affichage des donn�es dans la TableView en fonction des crit�res
 	 * s�lectionn�s dans les combobox
 	 * @param materiel la liste de mat�riel � afficher dans la tableView
-	 * @param selectedSite le site dans lequel les mat�riels sont
+	 * @param selectedSite le site dans lequel sont les mat�riels
 	 * @param selectedType le type de mat�riel � afficher
 	 */
-	public void addDonneeRestrictTableView(ObservableList<Materiel> materiel,String selectedSite, String selectedType){
+	public void addDonneeRestrictTableView(ObservableList<Materiel> listMateriel,String selectedSite, String selectedType){
 		ObservableList<Materiel> restrictedMateriel = FXCollections.observableArrayList();
 		boolean isOk;
-		for(Materiel m : materiel){
+		System.out.println(selectedSite+" "+selectedType);
+		for(Materiel materiel : listMateriel){
 			isOk=true;
 			if(selectedSite!="Tous"){
-				if(m.getSiteMaterielString()!=selectedSite){
+				if(!materiel.getSiteMateriel().getNomSiteString().equals(selectedSite)){
 					isOk=false;
 				}
 			}
 			if(selectedType!="Tous"){
-				if(m.getTypeMateriel().getNomTypeString()!=selectedType){
+				if(!materiel.getTypeMateriel().getNomTypeString().equals(selectedType)){
 					isOk=false;
 				}
 			}
 			if(isOk){
-				restrictedMateriel.add(m);
+				restrictedMateriel.add(materiel);
 			}
 			setItemsTableMateriel(restrictedMateriel);
 		}
