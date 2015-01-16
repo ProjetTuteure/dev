@@ -105,6 +105,45 @@ public class AjouterRevendeur {
 		}
 	}
 
+	public boolean controlerSaisies()
+	{
+		if(nomRevendeur.getText().equals(""))
+		{
+			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
+			return false;
+		}
+		if(telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		{
+			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			return false;
+		}
+		if(tf_mobileRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		{
+			new Popup("Le numéro de mobile saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			return false;
+		}
+		if(tf_faxRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		{
+			new Popup("Le numéro de fax saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			return false;
+		}
+		if(tf_emailRevendeur.getText().length()>Constante.LONGUEUR_MAIL)
+		{
+			new Popup("Le mail saisi doit contenir "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			return false;
+		}
+		if(adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
+			return false;
+		}
+		if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		{
+			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
+			return false;
+		}
+		return true;
+	}
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
 	 * est clique
