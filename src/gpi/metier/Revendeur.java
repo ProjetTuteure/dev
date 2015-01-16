@@ -26,7 +26,8 @@ public class Revendeur {
      * @param faxRevendeur le fax du revendeur
      * @param emailRevendeur l'email du revendeur
      */
-    public Revendeur(IntegerProperty idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur,String mobileRevendeur,String faxRevendeur,String emailRevendeur) {
+    public Revendeur(IntegerProperty idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur,String mobileRevendeur,String faxRevendeur,String emailRevendeur) 
+    {
         this.idRevendeur = idRevendeur;
         this.nomRevendeur= new SimpleStringProperty(nomRevendeur);
         this.telRevendeur = new SimpleStringProperty(telRevendeur);

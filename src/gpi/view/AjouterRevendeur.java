@@ -5,6 +5,7 @@ import utils.Popup;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Revendeur;
 import gpi.metier.RevendeurDAO;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -73,7 +74,13 @@ public class AjouterRevendeur {
 	private void handleOk() {
 		if(controlerSaisies()==true)
 		{
-			Revendeur revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),
+			System.out.println("nomRevendeur "+nomRevendeur.getText());
+			System.out.println("telRevendeur "+telRevendeur.getText());
+			System.out.println("tf_mobileRevendeur "+tf_mobileRevendeur.getText());
+			System.out.println("tf_faxRevendeur "+tf_faxRevendeur.getText());
+			System.out.println("tf_emailRevendeur "+tf_emailRevendeur.getText());
+			System.out.println("adresseRevendeur "+adresseRevendeur.getText());
+			Revendeur revendeurAAjouter=new Revendeur(new SimpleIntegerProperty(0),nomRevendeur.getText(),
 					telRevendeur.getText(),
 					tf_mobileRevendeur.getText(),
 					tf_faxRevendeur.getText(),
