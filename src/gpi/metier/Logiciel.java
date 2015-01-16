@@ -1,6 +1,7 @@
 package gpi.metier;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -16,8 +17,8 @@ public class Logiciel {
     private LocalDate dateExpirationLogiciel;
     private Facture factureLogiciel;
 
-    public Logiciel(IntegerProperty idLogiciel, String nomLogiciel, String versionLogiciel, LocalDate dateExpirationLogiciel, Facture factureLogiciel) {
-        this.idLogiciel = idLogiciel;
+    public Logiciel(int idLogiciel, String nomLogiciel, String versionLogiciel, LocalDate dateExpirationLogiciel, Facture factureLogiciel) {
+        this.idLogiciel = new SimpleIntegerProperty(idLogiciel);
         this.nomLogiciel = new SimpleStringProperty(nomLogiciel);
         this.versionLogiciel = new SimpleStringProperty(versionLogiciel);
         this.dateExpirationLogiciel = dateExpirationLogiciel;

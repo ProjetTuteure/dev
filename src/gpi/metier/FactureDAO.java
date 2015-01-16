@@ -106,7 +106,7 @@ public class FactureDAO {
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
 			RevendeurDAO revendeurDAO=new RevendeurDAO();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE idFacture?;");
+			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE idFacture=?;");
 			
 			prep.setInt(1, idFacture);
 			
