@@ -80,16 +80,7 @@ public class SupprimerUtilisateur {
 	@FXML
 	private void handleOk() {
 		okClicked = true;
-
-		// int
-		// indexRevendeurSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
-		// Utilisateur utilisateur = listePrenom.get(indexRevendeurSelectionne);
-		// utilisateur.setNomUtilisateur(nomfield.getText());
-		// utilisateur.setPrenomUtilisateur(prenomfield.getText());
-		// utilisateur.setTelUtilisateur(telfield.getText());
-		// utilisateurDAO.modifierUtilisateur(utilisateur);
-		// dialogStage.close();
-
+		
 		if (comboboxnom.getValue() == null) {
 			new Popup("Veuillez choisir un nom d'utilisateur");
 		} else if (comboboxprenom.getValue() == null) {
