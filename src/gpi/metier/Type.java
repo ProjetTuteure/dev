@@ -8,7 +8,6 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Type {
-    private IntegerProperty idType;
     private StringProperty nomType;
     private StringProperty cheminImageType;
     
@@ -17,7 +16,7 @@ public class Type {
      * @param nomType
      * @param cheminImageType
      */
-    public Type(int idType,String nomType, String cheminImageType) {
+    public Type(String nomType, String cheminImageType) {
         this.nomType = new SimpleStringProperty(nomType);
         this.cheminImageType = new SimpleStringProperty(cheminImageType);
     }
@@ -60,18 +59,6 @@ public class Type {
      */
     public void setCheminImageType(String cheminImageType) {
         this.cheminImageType.setValue(cheminImageType);
-    }
-
-    public int getIdType() {
-        return idType.get();
-    }
-
-    public IntegerProperty idTypeProperty() {
-        return idType;
-    }
-
-    public void setIdType(int idType) {
-        this.idType.set(idType);
     }
 
     @Override
