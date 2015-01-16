@@ -95,6 +95,11 @@ public class AjouterMaintenance {
 		}
 	}
 
+	/**
+	 * Méthode qui permet de contrôler les valeurs saisies
+	 * par l'utilisateur dans les champs
+	 * @return
+	 */
 	private boolean controlerSaisies()
 	{
 		if(dp_dateMaintenance.getValue()==null)

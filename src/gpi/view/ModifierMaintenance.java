@@ -3,6 +3,7 @@ package gpi.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Constante;
 import utils.Popup;
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
@@ -81,23 +82,73 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handleOk() {
+		float coutMaintenance=0;
 		try {
-			Maintenance maintenance=new Maintenance(maintenanceAModifier.getIdMaintenance().getValue(),
-			datefield.getValue(),
-			objfield.getText(),
-			descfield.getText(),
-			Float.parseFloat(coutfield.getText()));
-			maintenanceDAO.modifierMaintenance(maintenance);
+			if(controlerSaisies()==true)
+			{
+				if(!coutfield.getText().isEmpty()){
+					coutMaintenance=Float.parseFloat(coutfield.getText());
+				}
+				Maintenance maintenance=new Maintenance(maintenanceAModifier.getIdMaintenance().getValue(),
+						datefield.getValue(),
+						objfield.getText(),
+						descfield.getText(),
+						coutMaintenance);
+						maintenanceDAO.modifierMaintenance(maintenance);
+				new Popup("Maintenance du "+maintenanceAModifier.getdateMaintenanceStringProperty().getValue()+ " modifiée !");
+				okClicked = true;
+				dialogStage.close();
+			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		System.out.println(maintenanceAModifier);
-		new Popup("Maintenance "+maintenanceAModifier.getDescriptionMaintenance()+ " modifiée !");
-		okClicked = true;
-		dialogStage.close();
-
 	}
 
+	/**
+	 * Permet de controler la saisie de l'utilisateur
+	 * @return vrai si toutes les saisies sont cohérentes, faux sinon
+	 */
+	public boolean controlerSaisies()
+	{
+		if(datefield.getValue()==null)
+		{
+			new Popup("Une date doit être saisie");
+			return false;
+		}
+		if(objfield.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
+		{
+			new Popup("La longueur de l'objet saisi doit être inférieur à "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
+			return false;
+		}
+		if(descfield.getText().length()>Constante.LONGUEUR_DESCRIPTION_MAINTENANCE)
+		{
+			new Popup("La longueur de la description saisie doit être inférieur à "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
+			return false;
+		}		
+		if(!coutfield.getText().isEmpty())
+		{
+			if(coutfield.getText().contains(","))
+			{
+				coutfield.setText(coutfield.getText().replace(',','.'));
+			}
+			try
+			{
+				if(Float.parseFloat(coutfield.getText())<0)
+				{
+					new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+					return false;
+				}
+			}
+			catch(NumberFormatException nfe)
+			{
+				new Popup("La valeur du coût saisie doit être un nombre");
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
@@ -111,7 +162,6 @@ public class ModifierMaintenance {
 		}
 		Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
 		listdate = FXCollections.observableArrayList();
-		System.out.println(comboboxobj.getSelectionModel().getSelectedIndex());
 		for(Maintenance maintenanceParObjet:listeMaintenance)
 		{
 			if(maintenanceParObjet.getObjetMaintenance().equals(maintenanceSelected.getObjetMaintenance()))
@@ -142,7 +192,7 @@ public class ModifierMaintenance {
 			}
 			//Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
 			objfield.setText(maintenanceAModifier.getObjetMaintenance());
-			datefield.setPromptText(maintenanceAModifier.getdateMaintenanceStringProperty().getValue());
+			datefield.setValue(maintenanceAModifier.getdateMaintenance());
 			descfield.setText(maintenanceAModifier.getDescriptionMaintenance());
 			coutfield.setText(maintenanceAModifier.getCoutMaintenanceString());
 		}
