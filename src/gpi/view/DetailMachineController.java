@@ -1,12 +1,10 @@
 package gpi.view;
 
 import gpi.MainApp;
-import gpi.bd.Donnee;
 import gpi.metier.*;
 
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -34,22 +32,20 @@ public class DetailMachineController implements Initializable{
 	@FXML
 	private Circle colorCircle;
 	@FXML
-	private ListView listViewMateriel;
+	private ListView<String> listViewMateriel;
 	@FXML
-	private ListView listViewFacture;
+	private ListView<String> listViewFacture;
 	@FXML
-	private ListView listViewFabricant;
+	private ListView<String> listViewFabricant;
 	@FXML
-	private ListView listViewRevendeur;
+	private ListView<String> listViewRevendeur;
 	@FXML
-	private ListView listViewMaintenance;
+	private ListView<String> listViewMaintenance;
 	@FXML
-	private ListView listViewUtilisateur;
+	private ListView<String> listViewUtilisateur;
 
 	@FXML
 	private ImageView imageType;
-	
-	private MainApp mainApp;
 	
 	public DetailMachineController() {
     }
@@ -61,7 +57,6 @@ public class DetailMachineController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		int index = 0;
-		MainApp.donnee = new Donnee();
 		switch(MainApp.getActiveTab()){
 			case 0:
 				index=2;
@@ -77,7 +72,7 @@ public class DetailMachineController implements Initializable{
 				index=11;
 				break;
 		}
-		Materiel materiel=(Materiel)mainApp.getCritere(index);
+		Materiel materiel=(Materiel)MainApp.getCritere(index);
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		switch(materiel.getEtatMateriel().toString()){
@@ -166,7 +161,7 @@ public class DetailMachineController implements Initializable{
 	private ObservableList<String> donneesMaintenanceToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Maintenance> listMaintenanceMateriel = FXCollections.observableArrayList();
-		for(EstMaintenu em : mainApp.donnee.getEstMaintenuData()){
+		for(EstMaintenu em : MainApp.donnee.getEstMaintenuData()){
 			if(em.getMaterielEstMaintenu().toString().equals(materiel.toString())){
 				listMaintenanceMateriel.add(em.getMaintenanceEstMaintenu());
 			}
@@ -192,7 +187,7 @@ public class DetailMachineController implements Initializable{
 	private ObservableList<String> donneesUtilisateurToList(Materiel materiel) {
 		ObservableList<String> list= FXCollections.observableArrayList();
 		ObservableList<Utilisateur> listUtilisateurMateriel = FXCollections.observableArrayList();
-		for(Utilise u : mainApp.donnee.getUtiliseData()){
+		for(Utilise u : MainApp.donnee.getUtiliseData()){
 			if(u.getMaterielUtilise().toString().equals(materiel.toString())){
 				listUtilisateurMateriel.add(u.getUtilisateurUtilise());
 			}

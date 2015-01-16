@@ -2,7 +2,7 @@ package gpi.view;
 
 import utils.Popup;
 import gpi.MainApp;
-import gpi.bd.Donnee;
+
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Materiel;
 import gpi.metier.MaterielDAO;
@@ -50,12 +50,12 @@ public class MaterielOverview {
 	@FXML
 	private MainApp mainApp;
 	
-	private Donnee donnees;
+	private MaterielDAO materielDAO;
 	
 	
 	public MaterielOverview()
 	{
-		this.donnees=new Donnee();
+		this.materielDAO = new MaterielDAO();
 		this.materiel=FXCollections.observableArrayList();
 	}
 	
@@ -64,11 +64,10 @@ public class MaterielOverview {
 	 */
 	@FXML
 	private void initialize() {
-		MaterielDAO materielDAO = new MaterielDAO();
 		Site site;
-		site=(Site)(mainApp.getCritere(0));
+		site=(Site)(MainApp.getCritere(0));
 		Type type;
-		type=(Type)mainApp.getCritere(1);
+		type=(Type)MainApp.getCritere(1);
 		try {
 			this.materiel=FXCollections.observableArrayList(materielDAO.recupererMaterielParSiteEtType(site, type));
 		} catch (ConnexionBDException e) {
@@ -89,8 +88,8 @@ public class MaterielOverview {
 		bouton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override 
 		    public void handle(ActionEvent e) {
-		    	mainApp.removeCritere();
-		        mainApp.changerTab("Type");
+		    	MainApp.removeCritere();
+		        MainApp.changerTab("Type");
 		    }
 		});
 	}
@@ -108,36 +107,36 @@ public class MaterielOverview {
 	
 	/**
 	 * Permet d'ajouter les types dans le gridPane
-	 * @param materiel la liste des types � ajouter dans le gridPane
+	 * @param materiels la liste des types � ajouter dans le gridPane
 	 */
 	@FXML
-	public void ajouterMaterielGridPane(ObservableList<Materiel> materiel) {
+	public void ajouterMaterielGridPane(ObservableList<Materiel> materiels) {
 		int ligne=0;
 		int colonne=0; 
 		int hauteurCellule=150;
-		int largeurCellule=getLargeurCellule(materiel);
+		int largeurCellule=getLargeurCellule(materiels);
 		String cheminImage;
 		for(int i=0;i<this.getNbMateriel();i++)
 		{
-			cheminImage=materiel.get(i).getTypeMateriel().getCheminImageType().getValue();
+			Materiel materiel= materiels.get(i);
+			cheminImage=materiel.getTypeMateriel().getCheminImageType().getValue();
 			ImageView image=new ImageView();
 			image.setImage(new Image(cheminImage));
 			image.setFitHeight(100);
 			image.setFitWidth(100);
 			Label label=new Label();
-			label.setText(materiel.get(i).getNomMateriel().getValue());
-            label.setId(materiel.get(i).getNumImmobMateriel().getValue());
+			label.setText(materiels.get(i).getNomMateriel().getValue());
+            label.setId(materiels.get(i).getNumImmobMateriel().getValue());
 			label.setFont(new Font("Arial",20));
 			BorderPane bp_type=new BorderPane();
 			bp_type.setCenter(image);
 			bp_type.setBottom(label);
-			bp_type.setAlignment(label,Pos.CENTER);
+			BorderPane.setAlignment(label,Pos.CENTER);
 			bp_type.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-                    Materiel mat = donnees.getMateriel(((Label)(bp_type.getBottom())).getId());
-                    mainApp.setCritere(mat);
-					mainApp.changerTab("DetailMachine");
+                    MainApp.setCritere(materiel);
+					MainApp.changerTab("DetailMachine");
 				}
 			});
 			if(i%4==0 && i!=0)
@@ -152,7 +151,7 @@ public class MaterielOverview {
 		{
 			gp_materiel.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
 		}
-		for(int i=0;i<getNbLigne(materiel);i++)
+		for(int i=0;i<getNbLigne(materiels);i++)
 		{
 			gp_materiel.getRowConstraints().add(new RowConstraints(hauteurCellule));
 		}

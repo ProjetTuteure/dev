@@ -1,38 +1,28 @@
 package gpi.view;
 
-import java.util.ArrayList;
-
 import utils.Popup;
 import gpi.MainApp;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.Type;
 import gpi.metier.TypeDAO;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.shape.Box;
 import javafx.scene.text.Font;
 
 /**
@@ -60,8 +50,9 @@ public class TypeOverviewController {
 
 	@FXML
 	private MainApp mainApp;
+
 	
-	private Donnee donnees;
+	private TypeDAO typeDAO;
 	
 	
 	/**
@@ -71,7 +62,6 @@ public class TypeOverviewController {
 	public TypeOverviewController() {
 		gp_type=new GridPane();
 		sp_type=new ScrollPane();
-		donnees=new Donnee();
 	}
 
 	/**
@@ -90,8 +80,8 @@ public class TypeOverviewController {
 	@FXML
 	private void initialize() {
 		Site site;
-		TypeDAO typeDAO = new TypeDAO();
-		site=(Site)(mainApp.getCritere(0));
+		this.typeDAO = new TypeDAO();
+		site=(Site)(MainApp.getCritere(0));
 		try {
 			this.types=FXCollections.observableArrayList(typeDAO.recupererAllType());
 		} catch (ConnexionBDException e) {
@@ -99,7 +89,7 @@ public class TypeOverviewController {
 		}
 		this.setLabelNomVille(site.getNomSiteString());
 		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
-		this.ajouterTypeGridPane(this.mainApp.donnee.getTypeData());
+		this.ajouterTypeGridPane(this.types);
 		this.ajouterActionBouton(b_type);
 	}
 	
@@ -112,8 +102,8 @@ public class TypeOverviewController {
 		bouton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override 
 		    public void handle(ActionEvent e) {
-		    	mainApp.removeCritere();
-		        mainApp.changerTab("Site");
+		    	MainApp.removeCritere();
+		        MainApp.changerTab("Site");
 		    }
 		});
 	}
@@ -134,7 +124,7 @@ public class TypeOverviewController {
 	 * pour le gridPane.
 	 * @param types la liste de type de mat�riel que l'on doit ajouter
 	 * au GridPane
-	 * @return le nombre de ligne n�cessaire pour pouvoir afficher tous les types
+	 * @return le nombre de ligne necessaire pour pouvoir afficher tous les types
 	 */
 	private int getNbLigne(ObservableList<Type> types)
 	{
@@ -161,25 +151,25 @@ public class TypeOverviewController {
 		String cheminImage;
 		for(int i=0;i<this.getNbType();i++)
 		{
-			cheminImage=types.get(i).getCheminImageType().getValue();
+			Type type=types.get(i);
+			cheminImage=type.getCheminImageType().getValue();
 			ImageView image=new ImageView();
 			image.setImage(new Image(cheminImage));
 			image.setFitHeight(100);
 			image.setFitWidth(100);
 			Label label=new Label();
-			label.setText(types.get(i).getNomTypeString());
+			label.setText(type.getNomTypeString());
+			label.setId(""+type.getIdType());
 			label.setFont(new Font("Arial",20));
 			BorderPane bp_type=new BorderPane();
 			bp_type.setCenter(image);
 			bp_type.setBottom(label);
-			bp_type.setAlignment(label,Pos.CENTER);
+			BorderPane.setAlignment(label,Pos.CENTER);
 			bp_type.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					Type type=donnees.getTypeByNom(label.getText());
-					mainApp.setCritere(type);
-					Site site=(Site)mainApp.getCritere(0);
-					mainApp.changerTab("Materiel");
+					MainApp.setCritere(type);
+					MainApp.changerTab("Materiel");
 				}
 			});
 			if(i%4==0 && i!=0)

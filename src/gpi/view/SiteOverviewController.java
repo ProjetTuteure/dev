@@ -22,7 +22,7 @@ public class SiteOverviewController {
 	@FXML
 	private GridPane gp_site;
 
-    int onglet;
+	int onglet;
 
 	@FXML
 	private ImageView image_site;
@@ -42,7 +42,8 @@ public class SiteOverviewController {
 	public SiteOverviewController() {
 		SiteDAO siteDAO = new SiteDAO();
 		try {
-			this.sites = FXCollections.observableArrayList(siteDAO.recupererAllSite());
+			this.sites = FXCollections.observableArrayList(siteDAO
+					.recupererAllSite());
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -56,6 +57,7 @@ public class SiteOverviewController {
 
 	/**
 	 * Retourne le nombre de site
+	 * 
 	 * @return
 	 */
 	public int getNbSite() {
@@ -63,52 +65,44 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Initialise les donn�es
-	 * Ajoute les villes dans le GridPane
+	 * Initialise les donn�es Ajoute les villes dans le GridPane
 	 */
 	@FXML
 	private void initialize() {
 		MainApp.donnee = new Donnee();
-		this.ajouterVilleGridPane(this.mainApp.donnee.getSiteData());
+		this.ajouterVilleGridPane(this.sites);
 	}
 
 	/**
 	 * Ajoute les villes dans le gridPane
-	 * @param sites la liste de sites � ajouter dans le gridPane
+	 * 
+	 * @param sites
+	 *            la liste de sites � ajouter dans le gridPane
 	 */
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {
-        setColumn();
-        setRow();
+		setColumn();
+		setRow();
 		for (int i = 0; i < getNbLigne(); i++) {
 			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
+				Site site = sites.get((i * 4) + j);
 				BorderPane tempo = new BorderPane();
-				ImageView image = new ImageView(sites.get((i * 4) + j)
-                        .getCheminImageSite());
-                Label label = new Label(sites.get((i * 4) + j).getNomSiteString());
-                label.setId(""+((i * 4) + j));
+				ImageView image = new ImageView(site.getCheminImageSite());
+				Label label = new Label(site.getNomSiteString());
+				label.setId(""+site.getIdSite());
 				image.setFitHeight(75);
 				image.setFitWidth(75);
 				tempo.setCenter(image);
 				tempo.setBottom(label);
-                tempo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				tempo.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-                    @Override
-                    public void handle(MouseEvent arg0) {
-                    	SiteDAO siteDAO = new SiteDAO();
-                      //  System.out.println(((Label)(tempo.getBottom())).getId());
-                        String id = ((Label)(tempo.getBottom())).getId();
-                        try {
-							mainApp.setCritere(siteDAO.recupererSiteParId(Integer.parseInt(id)+1));
-							mainApp.changerTab("Type");
-						} catch (NumberFormatException e) {
-							e.printStackTrace();
-						} catch (ConnexionBDException e) {
-							new Popup(e.getMessage());
-						}
-                    }
-                });
-                gp_site.add(tempo, j, i);
+					@Override
+					public void handle(MouseEvent arg0) {
+						MainApp.setCritere(site);
+						MainApp.changerTab("Type");
+					}
+				});
+				gp_site.add(tempo, j, i);
 			}
 		}
 
@@ -119,8 +113,8 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Permet de setter le nombre de lignes n�cessaires pour afficher toutes les villes
-	 * dans le gridPane 
+	 * Permet de setter le nombre de lignes n�cessaires pour afficher toutes
+	 * les villes dans le gridPane
 	 */
 	private void setRow() {
 		for (int i = 0; i < getNbLigne(); i++) {
@@ -131,21 +125,23 @@ public class SiteOverviewController {
 	}
 
 	/**
-	 * Permet de setter le nombre de colonnes n�cessaires pour afficher toutes les villes
-	 * dans le gridPane 
+	 * Permet de setter le nombre de colonnes n�cessaires pour afficher toutes
+	 * les villes dans le gridPane
 	 */
-    public void setColumn(){
-        for(int i = 0; i<4;i++){
-            ColumnConstraints col = new ColumnConstraints();
-            col.setPrefWidth(200);
-            gp_site.getColumnConstraints().add(col);
-        }
-    }
+	public void setColumn() {
+		for (int i = 0; i < 4; i++) {
+			ColumnConstraints col = new ColumnConstraints();
+			col.setPrefWidth(200);
+			gp_site.getColumnConstraints().add(col);
+		}
+	}
 
-    /**
-     * Retourne le nombre de lignes en fonction du nombre de site
-     * @return le nombre de lignes n�cessaires � l'ajout des sites dans le gridPane
-     */
+	/**
+	 * Retourne le nombre de lignes en fonction du nombre de site
+	 * 
+	 * @return le nombre de lignes n�cessaires � l'ajout des sites dans le
+	 *         gridPane
+	 */
 	public int getNbLigne() {
 		if (this.getNbSite() % 4 == 0) {
 			return this.getNbSite() / 4;
@@ -156,9 +152,10 @@ public class SiteOverviewController {
 
 	/**
 	 * Retourne le num�ro d'onglet courant
+	 * 
 	 * @return
 	 */
-    public int getOnglet(){
-        return 0;
-    }
+	public int getOnglet() {
+		return 0;
+	}
 }
