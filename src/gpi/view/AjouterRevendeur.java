@@ -71,11 +71,10 @@ public class AjouterRevendeur {
 	 */
 	@FXML
 	private void handleOk() {
-		Revendeur revendeurAAjouter;
 		if(controlerSaisies()==true)
 		{
-			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText()
-					,telRevendeur.getText(),
+			Revendeur revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),
+					telRevendeur.getText(),
 					tf_mobileRevendeur.getText(),
 					tf_faxRevendeur.getText(),
 					tf_emailRevendeur.getText(),

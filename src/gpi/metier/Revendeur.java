@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
  * Created by thibault on 22/11/14.
  */
 public class Revendeur {
-    private IntegerProperty idRevendeur;
+	private IntegerProperty idRevendeur;
     private StringProperty nomRevendeur;
     private StringProperty telRevendeur;
     private StringProperty adresseRevendeur;
@@ -144,4 +144,13 @@ public class Revendeur {
     {
     	return this.emailRevendeur;
     }
+    
+    @Override
+   	public String toString() {
+   		return "Revendeur [idRevendeur=" + idRevendeur.getValue() + ", nomRevendeur="
+   				+ nomRevendeur.getValue() + ", telRevendeur=" + telRevendeur.getValue()
+   				+ ", adresseRevendeur=" + adresseRevendeur.getValue()
+   				+ ", mobileRevendeur=" + mobileRevendeur.getValue() + ", faxRevendeur="
+   				+ faxRevendeur.getValue() + ", emailRevendeur=" + emailRevendeur.getValue() + "]";
+   	}
 }
