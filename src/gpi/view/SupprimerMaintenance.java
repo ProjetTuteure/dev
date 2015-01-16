@@ -86,7 +86,6 @@ public class SupprimerMaintenance {
 			okClicked = true;
 			dialogStage.close();
 		}
-
 	}
 
 	private boolean controlerCombobox()
