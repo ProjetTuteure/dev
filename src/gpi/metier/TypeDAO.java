@@ -39,9 +39,10 @@ public class TypeDAO {
         int nombreLigneAffectee=0;
         try {
             connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement =connection.prepareStatement("UPDATE TYPE SET cheminImageType=? WHERE nomType=?");
-            preparedStatement.setString(1, type.getCheminImageType().getValue());
-            preparedStatement.setString(2, type.getNomTypeString());
+            PreparedStatement preparedStatement =connection.prepareStatement("UPDATE TYPE SET nomType=?,cheminImageType=? WHERE idType=?");
+            preparedStatement.setString(1, type.getNomTypeString());
+            preparedStatement.setString(2, type.getCheminImageType().getValue());
+            preparedStatement.setInt(3, type.getIdType());
             nombreLigneAffectee=preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -60,9 +61,9 @@ public class TypeDAO {
         int nombreLigneAffectee=0;
         try{
             connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TYPE WHERE nomType=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TYPE WHERE idType=?;");
 
-            preparedStatement.setString(1, type.getNomTypeString());
+            preparedStatement.setInt(1, type.getIdType());
 
             nombreLigneAffectee=preparedStatement.executeUpdate();
         }catch(SQLException e){
@@ -84,8 +85,8 @@ public class TypeDAO {
             connection= MaConnexion.getInstance().getConnexion();
             Statement statement = connection.createStatement();
             resultat=statement.executeQuery("SELECT * FROM TYPE");
-            while(resultat.next()){
-                typeList.add(new Type(resultat.getString("nomType"),resultat.getString("cheminImageType")));
+            while(resultat.next()) {
+                typeList.add(new Type(resultat.getInt("idType"),resultat.getString("nomType"),resultat.getString("cheminImageType")));
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -99,16 +100,16 @@ public class TypeDAO {
         return typeList;
     }
 
-    public Type recupererTypeParId(String nomType) throws ConnexionBDException {
+    public Type recupererTypeParId(int idType) throws ConnexionBDException {
         ResultSet resultat;
         Type type=null;
         try{
             connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT nomType,cheminImageType FROM TYPE WHERE nomType=?;");
-            preparedStatement.setString(1, nomType);
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TYPE WHERE idType=?;");
+            preparedStatement.setInt(1, idType);
             resultat=preparedStatement.executeQuery();
             resultat.next();
-            type=new Type(nomType,resultat.getString("cheminImageType"));
+            type=new Type(idType,resultat.getString("nomType"),resultat.getString("cheminImageType"));
         }catch(SQLException e){
             e.printStackTrace();
         }finally{
