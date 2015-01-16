@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -149,44 +150,38 @@ public class MaterielDAO {
 		return materiel;
 	}
 
-	public List<Materiel> recupererAllMateriel() {
-		return new ArrayList<Materiel>();
+	public List<Materiel> recupererAllMateriel() throws ConnexionBDException {
+		ResultSet resultat;
+		List<Materiel> listMateriel=new ArrayList<Materiel>();
+		 try{
+	            connection= MaConnexion.getInstance().getConnexion();
+	            Statement statement = connection.createStatement();
+	            resultat=statement.executeQuery("SELECT * FROM FABRICANT");
+	            while(resultat.next()){
+	            	TypeDAO typeDAO=new TypeDAO();
+	    			Type typeMateriel=typeDAO.recupererTypeParId(resultat.getInt("idType"));
+	    			LocalDate dateExpirationGarantieMateriel= LocalDate.parse(resultat.getString("dateExpirationGarantieMateriel"));
+	    			FactureDAO factureDAO=new FactureDAO();
+	    			Facture factureMateriel=factureDAO.recupererFactureParId(resultat.getInt("idFacture"));
+	    			SiteDAO siteDAO=new SiteDAO();
+	    			Site siteMateriel=siteDAO.recupererSiteParId(resultat.getInt("idSite"));
+	    			FabricantDAO fabricantDAO=new FabricantDAO();
+	    			Fabricant fabricantMateriel=fabricantDAO.recupererFabricantParId(resultat.getInt("idFabricant"));
+	                listMateriel.add(new Materiel(0,resultat.getString("numImmobMateriel"),resultat.getString("nomMateriel"),typeMateriel
+	    					,Etat.valueOf(resultat.getString("etat")),dateExpirationGarantieMateriel,resultat.getString("repertoireDrivers")
+	    					,factureMateriel,siteMateriel,fabricantMateriel,resultat.getString("modeleMateriel")));
+	            }
+	        }catch(SQLException e){
+	            e.printStackTrace();
+	        }finally{
+	            try {
+	                connection.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+		return listMateriel;
 	}
 
-	/**
-	 * Permet de r�cup�rer un materiel par son identifiant
-	 * @param idMateriel l'identifiant du mat�riel � r�cup�rer
-	 */
-	/*public Materiel recupererMaterielParId(int idMateriel)
-	{
-		Materiel materielARetourner=null;
-		Connection connexion=MaConnexion.getInstance().getConnexion();
-		try
-		{
-			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?");
-			ps.setInt(1, idMateriel);
-			ResultSet rs=ps.executeQuery();
-			while(rs.next())
-			{
-				materielARetourner=new Materiel(new SimpleIntegerProperty(rs.getInt("idMateriel")),
-						rs.getString("numImmobMateriel"),rs.getString("nomMateriel"),, null, null, null, null, null, null, null);
-			}
-			return materielARetourner;
-		}
-		catch(SQLException se)
-		{
-			se.printStackTrace();
-		}
-		finally
-		{
-			try {
-				connexion.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}*/
-	
 	
 }
