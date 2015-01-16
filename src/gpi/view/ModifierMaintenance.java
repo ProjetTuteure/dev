@@ -1,7 +1,13 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Maintenance;
+import gpi.metier.MaintenanceDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,13 +48,22 @@ public class ModifierMaintenance {
 
 	private ObservableList<String> listobj;
 	private ObservableList<String> listdate;
+	
+	private List<Maintenance> listeMaintenance;
+	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 
 	@FXML
 	private void initialize() {
-		listobj = FXCollections.observableArrayList();
-
-		for (Maintenance m : donnee.getMaintenanceData()) {
-			listobj.add(m.getObjetMaintenance());
+		listeMaintenance=new ArrayList<Maintenance>();
+		try {
+			listeMaintenance=maintenanceDAO.recupererAllMaintenance();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+			dialogStage.close();
+		}
+		for(Maintenance maintenance:listeMaintenance)
+		{
+			listobj.add(maintenance.getObjetMaintenance());
 		}
 		comboboxobj.setItems(listobj);
 	}
