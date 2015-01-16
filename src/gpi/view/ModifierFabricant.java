@@ -86,7 +86,7 @@ public class ModifierFabricant {
 	@FXML
 	private void handleOk() {
 		try {
-			fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomFabricantField.getText(),adresseFabricantField.getText(),telFabricantField.getText()));
+			fabricantDAO.modifierFabricant(new Fabricant(this.getIdFabriquant(),nomFabricantField.getText(),telFabricantField.getText(),mobileFabricantField.getText(),faxFabricantField.getText(),emailFabricantField.getText(),adresseFabricantField.getText()));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -129,6 +129,8 @@ public class ModifierFabricant {
 		nomFabricantField.setText(selected.getNomFabricant().getValue());
 		telFabricantField.setText(selected.getTelFabricant().getValue());
 		mobileFabricantField.setText(selected.getMobileFabricant().getValue());
+		faxFabricantField.setText(selected.getFaxFabricant().getValue());
+		emailFabricantField.setText(selected.getEmailFabricant().getValue());
 		adresseFabricantField.setText(selected.getAdresseFabricant().getValue());
 	}
 

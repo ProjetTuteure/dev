@@ -105,6 +105,11 @@ public class AjouterRevendeur {
 			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 			return false;
 		}
+		if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		{
+			new Popup("La longueur du nom du revendeur doit être inférieur à "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
+			return false;
+		}
 		if(telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
 		{
 			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
@@ -122,7 +127,7 @@ public class AjouterRevendeur {
 		}
 		if(tf_emailRevendeur.getText().length()>Constante.LONGUEUR_MAIL)
 		{
-			new Popup("Le mail saisi doit contenir "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			new Popup("Le mail saisi doit contenir "+Constante.LONGUEUR_MAIL+" caractères");
 			return false;
 		}
 		if(adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
