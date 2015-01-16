@@ -27,11 +27,14 @@ public class RevendeurDAO {
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
-			PreparedStatement ps=connexion.prepareStatement("INSERT INTO REVENDEUR (nomRevendeur,telRevendeur,adresseRevendeur) "
-					+ "VALUES (?,?,?)");
+			PreparedStatement ps=connexion.prepareStatement("INSERT INTO REVENDEUR (nomRevendeur,telRevendeur,mobileRevendeur,faxRevendeur,emailRevendeur,adresseRevendeur)"
+					+ "VALUES (?,?,?,?,?,?)");
 			ps.setString(1,revendeur.getNomRevendeur().getValue());
 			ps.setString(2,revendeur.getTelRevendeur().getValue());
-			ps.setString(3, revendeur.getAdresseRevendeur().getValue());
+			ps.setString(3, revendeur.getMobileRevendeur().getValue());
+			ps.setString(4,revendeur.getFaxRevendeur().getValue());
+			ps.setString(5,revendeur.getEmailRevendeur().getValue());
+			ps.setString(6,revendeur.getAdresseRevendeur().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -58,12 +61,15 @@ public class RevendeurDAO {
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
-			PreparedStatement ps=connexion.prepareStatement("UPDATE REVENDEUR SET nomRevendeur=?,telRevendeur=?,adresseRevendeur=? "
+			PreparedStatement ps=connexion.prepareStatement("UPDATE REVENDEUR SET nomRevendeur=?,telRevendeur=?,mobileRevendeur=?,faxRevendeur=?,emailRevendeur=?,adresseRevendeur=? "
 					+ "WHERE idRevendeur=?");
 			ps.setString(1,revendeur.getNomRevendeur().getValue());
 			ps.setString(2,revendeur.getTelRevendeur().getValue());
-			ps.setString(3, revendeur.getAdresseRevendeur().getValue());
-			ps.setInt(4,revendeur.getIdRevendeur().getValue());
+			ps.setString(3, revendeur.getMobileRevendeur().getValue());
+			ps.setString(4,revendeur.getFaxRevendeur().getValue());
+			ps.setString(5,revendeur.getEmailRevendeur().getValue());
+			ps.setString(6,revendeur.getAdresseRevendeur().getValue());
+			ps.setInt(7,revendeur.getIdRevendeur().getValue());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -122,6 +128,9 @@ public class RevendeurDAO {
 				listeRevendeur.add(new Revendeur(new SimpleIntegerProperty(rs.getInt("idRevendeur")),
 						rs.getString("nomRevendeur"),
 						rs.getString("telRevendeur"),
+						rs.getString("mobileRevendeur"),
+						rs.getString("faxRevendeur"),
+						rs.getString("emailRevendeur"),
 						rs.getString("adresseRevendeur")));
 			}
 		} catch (SQLException e) {
@@ -160,6 +169,9 @@ public class RevendeurDAO {
 				revendeurARetourner=new Revendeur(new SimpleIntegerProperty(rs.getInt("idRevendeur")),
 						rs.getString("nomRevendeur"),
 						rs.getString("telRevendeur"),
+						rs.getString("mobileRevendeur"),
+						rs.getString("faxRevendeur"),
+						rs.getString("emailRevendeur"),
 						rs.getString("adresseRevendeur"));
 				
 			}
