@@ -111,6 +111,7 @@ public class FactureDAO {
 			prep.setInt(1, idFacture);
 			
 			resultat=prep.executeQuery();
+			resultat.next();
 			numFacture=resultat.getString("numFacture");
 			dateFacture=LocalDate.parse(resultat.getString("dateFacture"));
 			montantFacture=resultat.getFloat("montantFacture");

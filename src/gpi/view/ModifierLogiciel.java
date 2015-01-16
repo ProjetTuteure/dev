@@ -1,8 +1,17 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
 import gpi.metier.Logiciel;
+import gpi.metier.LogicielDAO;
+import gpi.metier.Revendeur;
+import gpi.metier.RevendeurDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,35 +32,40 @@ public class ModifierLogiciel {
 	private boolean okClicked = false;
 
 	@FXML
-	private TextField nomfield;
+	private TextField NomLogicielField;
 	@FXML
-	private TextField versfield;
+	private TextField VersionLogicielField;
 	@FXML
-	private DatePicker datefield;
+	private DatePicker DateExpirationLogiciel;
+	@FXML
+	private ComboBox<String> ComboboxFacture;
 	@FXML
 	private boolean choix1 = false;
 
 	@FXML
-	private ComboBox<String> comboboxlog;
-	@FXML
-	private ComboBox<String> comboboxvers;
-	@FXML
-	private ComboBox<String> comboboxfact;
-
-	private Donnee donneeLog = new Donnee();
-
-	private ObservableList<String> listlog;
-	private ObservableList<String> listvers;
-	private ObservableList<String> listfact;
+	private ComboBox<String> ComboboxLogiciel;
+	private ObservableList<String> listLogiciel;
+	private ObservableList<String> listFacture;
+	List<Logiciel> listObjetsLogiciel;
+	List<Integer> listFactureId;
+	
 
 	@FXML
 	private void initialize() {
-		listlog = FXCollections.observableArrayList();
-		listfact = FXCollections.observableArrayList();
-		for (Logiciel log : donneeLog.getLogicielData()) {
-			listlog.add(log.getNomLogiciel().getValue());
+		listLogiciel = FXCollections.observableArrayList();
+
+		listObjetsLogiciel=new ArrayList<Logiciel>();
+		LogicielDAO logicielDAO = new LogicielDAO();
+		try{
+			listObjetsLogiciel=logicielDAO.recupererAllLogiciel();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxlog.setItems(listlog);
+		for (Logiciel logiciel : listObjetsLogiciel) {
+			listLogiciel.add(logiciel.getNomLogiciel().getValue()+" "+logiciel.getVersionLogiciel().getValue());
+		}
+		
+		ComboboxLogiciel.setItems(listLogiciel);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -64,7 +78,29 @@ public class ModifierLogiciel {
 
 	@FXML
 	private void handleOk() {
-
+		LogicielDAO logicielDAO = new LogicielDAO();
+		FactureDAO factureDAO = new FactureDAO();
+		Facture facture=null;
+		int indexFacture=ComboboxFacture.getSelectionModel().getSelectedIndex();
+		if(indexFacture==-1){
+			facture=listObjetsLogiciel.get(ComboboxLogiciel.getSelectionModel().getSelectedIndex()).getFactureLogiciel();
+		}else{
+			try {
+				facture=factureDAO.recupererFactureParId(listFactureId.get(indexFacture));
+			} catch (ConnexionBDException e) {
+				// TODO Auto-generated catch block
+				new Popup(e.getMessage());
+			}
+		}
+		int indexLogiciel = ComboboxFacture.getSelectionModel().getSelectedIndex();
+		int idLogiciel=listObjetsLogiciel.get(indexLogiciel).getIdLogiciel().getValue();
+		try {
+			logicielDAO.modifierLogiciel(new Logiciel(idLogiciel,NomLogicielField.getText(),VersionLogicielField.getText(),DateExpirationLogiciel.getValue(),facture));
+		} catch (NumberFormatException e) {
+			new Popup("Erreur de format. Format : 123.45");
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
@@ -76,42 +112,25 @@ public class ModifierLogiciel {
 	}
 
 	@FXML
-	private void handlechange1() {
-		choix1 = true;
-
-		Logiciel selected = donneeLog.getLogiciel(comboboxlog.getValue());
-
-		listvers = FXCollections.observableArrayList();
-		for (Logiciel log : donneeLog.getLogicielData()) {
-			if (log.getNomLogiciel().getValue()
-					.equals(selected.getNomLogiciel().getValue())) {
-				listvers.add(selected.getVersionLogiciel().getValue());
-			}
-		}
-		comboboxvers.setItems(listvers);
-	}
-
-	@FXML
-	private void handlechange2() {
+	private void handlechange() {
+		FactureDAO factureDAO=new FactureDAO();
+		int index = ComboboxLogiciel.getSelectionModel().getSelectedIndex();
+		NomLogicielField.setText(listObjetsLogiciel.get(index).getNomLogiciel().getValue());
+		VersionLogicielField.setText(listObjetsLogiciel.get(index).getVersionLogiciel().getValue());
+		DateExpirationLogiciel.setValue(listObjetsLogiciel.get(index).getDateExpirationLogiciel());
+		String numFacture=listObjetsLogiciel.get(index).getFactureLogiciel().getNumFacture();
+		listFactureId=new ArrayList<Integer>();
+		listFacture = FXCollections.observableArrayList();
 		try {
-			if (choix1 = true) {
-				listvers = FXCollections.observableArrayList();
-				String test = comboboxlog.getValue() + " "
-						+ comboboxvers.getValue();
-				Logiciel selected2 = donneeLog.getLogiciel2(test);
-
-				nomfield.setText(selected2.getNomLogiciel().getValue());
-				versfield.setText(selected2.getVersionLogiciel().getValue());
-				datefield.setPromptText(selected2.getDateExpirationLogicielStringProperty().getValue());
-
-				for (Facture fac : donneeLog.getFactureData()) {
-					listfact.add(fac.getNumFacture());
-				}
-				comboboxfact.setItems(listfact);
-				comboboxfact.setPromptText(selected2.getFactureLogiciel().getNumFacture());
+			for (Facture facture : factureDAO.recupererAllFacture()){
+				listFacture.add(facture.getNumFacture());
+				listFactureId.add(facture.getIdFacture().getValue());
 			}
-		} catch (NullPointerException e) {
-
+		} catch (ConnexionBDException e) {
+			// TODO Auto-generated catch block
+			new Popup(e.getMessage());
 		}
+		ComboboxFacture.setItems(listFacture);
+		ComboboxFacture.setPromptText(numFacture);
 	}
 }

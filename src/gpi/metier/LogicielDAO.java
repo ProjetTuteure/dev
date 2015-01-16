@@ -22,7 +22,7 @@ public class LogicielDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO LOGICIEL(nomLogiciel,versionLogiciel,dateExpirationGarantie,factureLogiciel) VALUES (?,?,?,?);");
+			PreparedStatement prep = connection.prepareStatement("INSERT INTO LOGICIEL(nomLogiciel,versionLogiciel,dateExpirationLogiciel,idFacture) VALUES (?,?,?,?);");
 			prep.setString(1, logiciel.getNomLogiciel().getValue());
 			prep.setString(2, logiciel.getVersionLogiciel().getValue());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
@@ -49,7 +49,7 @@ public class LogicielDAO {
 		int resultat;
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE LOGICIEL SET nomLogiciel=?, versionLogiciel=?, dateExpirationGarantie=?, factureLogiciel=? WHERE idLogiciel=? ;");
+			PreparedStatement prep = connection.prepareStatement("UPDATE LOGICIEL SET nomLogiciel=?, versionLogiciel=?, dateExpirationLogiciel=?, idFacture=? WHERE idLogiciel=? ;");
 			prep.setString(1, logiciel.getNomLogiciel().getValue());
 			prep.setString(2, logiciel.getVersionLogiciel().getValue());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
@@ -98,7 +98,7 @@ public class LogicielDAO {
 	public Logiciel recupererLogicielParId(int idLogiciel) throws ConnexionBDException{
 		Connection connection=null;
 		ResultSet resultat;
-		LocalDate dateExpirationGarantie;
+		LocalDate dateExpirationLogiciel;
 		String nomLogiciel,versionLogiciel;
 		int idFacture;
 		try{
@@ -109,12 +109,12 @@ public class LogicielDAO {
 			prep.setInt(1, idLogiciel);
 			
 			resultat=prep.executeQuery();
-			nomLogiciel=resultat.getString("nomLogiciel");
-			versionLogiciel=resultat.getString("versionLogiciel");
-			dateExpirationGarantie=LocalDate.parse(resultat.getString("dateExpirationGarantie"));
-			idFacture=resultat.getInt("factureLogiciel");
+			nomLogiciel=resultat.getString(2);
+			versionLogiciel=resultat.getString(3);
+			dateExpirationLogiciel=LocalDate.parse(resultat.getString(4));
+			idFacture=resultat.getInt(5);
 		
-			return new Logiciel(idLogiciel,nomLogiciel,versionLogiciel,dateExpirationGarantie,factureDAO.recupererFactureParId(idFacture));
+			return new Logiciel(idLogiciel,nomLogiciel,versionLogiciel,dateExpirationLogiciel,factureDAO.recupererFactureParId(idFacture));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -133,7 +133,7 @@ public class LogicielDAO {
 		FactureDAO factureDAO=new FactureDAO();
 		List<Logiciel> listLogiciel=new ArrayList<Logiciel>();
 		ResultSet resultat;
-		LocalDate dateExpirationGarantie;
+		LocalDate dateExpirationLogiciel;
 		String nomLogiciel,versionLogiciel;
 		int idFacture,idLogiciel;
 		Logiciel logiciel;
@@ -144,12 +144,12 @@ public class LogicielDAO {
 			
 			resultat=prep.executeQuery();
 			while(resultat.next()){
-				idLogiciel=resultat.getInt("idLogiciel");
-				nomLogiciel=resultat.getString("nomLogiciel");
-				versionLogiciel=resultat.getString("versionLogiciel");
-				dateExpirationGarantie=LocalDate.parse(resultat.getString("dateExpirationGarantie"));
-				idFacture=resultat.getInt("factureLogiciel");
-				logiciel=new Logiciel(idLogiciel,nomLogiciel,versionLogiciel,dateExpirationGarantie,factureDAO.recupererFactureParId(idFacture));
+				idLogiciel=resultat.getInt(1);
+				nomLogiciel=resultat.getString(2);
+				versionLogiciel=resultat.getString(3);
+				dateExpirationLogiciel=LocalDate.parse(resultat.getString(4));
+				idFacture=resultat.getInt(5);
+				logiciel=new Logiciel(idLogiciel,nomLogiciel,versionLogiciel,dateExpirationLogiciel,factureDAO.recupererFactureParId(idFacture));
 				listLogiciel.add(logiciel);
 			}
 			return listLogiciel;
