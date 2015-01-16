@@ -39,6 +39,7 @@ public class AjouterLogiciel {
 
 	private ObservableList<String> listFacture;
 	private List<Integer> listFactureId;
+	boolean isOkClicked=false;
 
 	/**
 	 * Initialise les donnees Ajoute les donn�es aux combobox
@@ -86,6 +87,7 @@ public class AjouterLogiciel {
 			new Popup(e.getMessage());
 		}
 		dialogStage.close();
+		isOkClicked=true;
 	}
 
 	/**
@@ -95,6 +97,10 @@ public class AjouterLogiciel {
 	@FXML
 	private void handleCancel() {
 		dialogStage.close();
+	}
+
+	public boolean isOkClicked() {
+		return isOkClicked;
 	}
 
 }
