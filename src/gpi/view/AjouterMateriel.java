@@ -2,21 +2,24 @@ package gpi.view;
 
 import java.io.File;
 
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Etat;
 import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
 import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
+import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-
-/**
- * Created by Kevin
- */
 
 public class AjouterMateriel {
 
@@ -25,50 +28,66 @@ public class AjouterMateriel {
 	@FXML
 	private boolean okClicked = false;
 	@FXML
-	private ComboBox<String> comboboxetat;
+	private ComboBox<String> comboboxEtatMateriel;
 	@FXML
-	private ComboBox<String> comboboxfabr;
+	private ComboBox<String> comboboxFabricantMateriel;
 	@FXML
-	private ComboBox<String> comboboxfact;
+	private ComboBox<String> comboboxFactureMateriel;
 	@FXML
-	private ComboBox<String> comboboxsite;
+	private ComboBox<String> comboboxSiteMateriel;
 
-	private Donnee donneeMat = new Donnee();
 
-	private ObservableList<String> listNom1;
-	private ObservableList<String> listNom2;
-	private ObservableList<String> listNom3;
-	private ObservableList<String> listNom4;
+	private ObservableList<String> listEtatMateriel;
+	private ObservableList<String> listSiteMateriel;
+	private ObservableList<String> listFabricantMateriel;
+	private ObservableList<String> listFactureMateriel;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom1 = FXCollections.observableArrayList();
-		listNom2 = FXCollections.observableArrayList();
-		listNom3 = FXCollections.observableArrayList();
-		listNom4 = FXCollections.observableArrayList();
+		listEtatMateriel = FXCollections.observableArrayList();
+		listSiteMateriel = FXCollections.observableArrayList();
+		listFabricantMateriel = FXCollections.observableArrayList();
+		listFactureMateriel = FXCollections.observableArrayList();
 
 		for (Etat etat : Etat.values()) {
-			listNom1.add(etat.name());
+			listEtatMateriel.add(etat.name());
 		}
-		comboboxetat.setItems(listNom1);
+		System.out.println(listEtatMateriel);
+		comboboxEtatMateriel.setItems(listEtatMateriel);
 
-		for (Fabricant fab : donneeMat.getFabricantData()) {
-			listNom2.add(fab.getNomFabricant().getValue());
+		FabricantDAO fabricantDAO=new FabricantDAO();
+		
+		try {
+			for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+				listFabricantMateriel.add(fabricant.getNomFabricant().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfabr.setItems(listNom2);
+		comboboxFabricantMateriel.setItems(listFabricantMateriel);
 
-		for (Facture fac : donneeMat.getFactureData()) {
-			listNom3.add(fac.getNumFacture());
+		FactureDAO factureDAO=new FactureDAO();
+		try {
+			for (Facture facture : factureDAO.recupererAllFacture()) {
+				listFactureMateriel.add(facture.getNumFacture());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfact.setItems(listNom3);
+		comboboxFactureMateriel.setItems(listFactureMateriel);
 
-		for (Site site : donneeMat.getSiteData()) {
-			listNom4.add(site.getNomSiteString());
+		SiteDAO siteDAO=new SiteDAO();
+		try {
+			for (Site site : siteDAO.recupererAllSite()) {
+				listFactureMateriel.add(site.getNomSiteString());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxsite.setItems(listNom4);
+		comboboxSiteMateriel.setItems(listFactureMateriel);
 
 	}
 
@@ -97,7 +116,8 @@ public class AjouterMateriel {
 	 */
 	@FXML
 	private void handleOk() {
-
+		MaterielDAO materielDAO=new MaterielDAO();
+		//materielDAO.ajouterMateriel(new Materiel(0,, nomMateriel, typeMateriel, etatMateriel, dateExpirationGarantieMateriel, repertoireDriverMateriel, factureMateriel, siteMateriel, fabricantMateriel, modeleMateriel))
 		okClicked = true;
 		dialogStage.close();
 

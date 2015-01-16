@@ -1,7 +1,12 @@
 package gpi.view;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,50 +17,52 @@ import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
-/**
- * Created by Kevin
- */
-
 public class ModifierMateriel {
 	@FXML
 	private Stage dialogStage;
 	@FXML
 	private boolean okClicked = false;
 	@FXML
-	private TextField nomfield;
+	private TextField nomMaterielField;
 	@FXML
-	private TextField typefield;
+	private TextField typeMaterielField;
 	@FXML
-	private TextField immofield;
+	private TextField immobMaterielField;
 	@FXML
-	private DatePicker datefield;
+	private DatePicker dateMaterielPicker;
 	@FXML
-	private ComboBox<String> comboboxetat;
+	private ComboBox<String> comboboxEtatMateriel;
 	@FXML
-	private ComboBox<String> comboboxfab;
+	private ComboBox<String> comboboxFabricantMateriel;
 	@FXML
-	private ComboBox<String> comboboxfact;
+	private ComboBox<String> comboboxFactureMateriel;
 	@FXML
-	private ComboBox<String> comboboxsite;
+	private ComboBox<String> comboboxSiteMateriel;
 	@FXML
-	private ComboBox<String> comboboximmo;
+	private ComboBox<String> comboboxImmobMateriel;
 
-	private Donnee donneesite = new Donnee();
-
-	private ObservableList<String> listimmo;
-	private ObservableList<String> listEtat;
-	private ObservableList<String> listSite;
-	private ObservableList<String> listFabr;
-	private ObservableList<String> listFact;
+	private List<Integer> listIdMateriel;
+	private ObservableList<String> listImmobMateriel;
+	private ObservableList<String> listEtatMateriel;
+	private ObservableList<String> listSiteMateriel;
+	private ObservableList<String> listFabricantMateriel;
+	private ObservableList<String> listFactureMateriel;
 
 	@FXML
 	private void initialize() {
-		listimmo = FXCollections.observableArrayList();
-
-		for (Materiel materiel : donneesite.getMaterielData()) {
-			listimmo.add(materiel.getNumImmobMateriel().getValue());
+		listImmobMateriel = FXCollections.observableArrayList();
+		listIdMateriel = new ArrayList<Integer>();
+		MaterielDAO materielDAO=new MaterielDAO();
+		
+		try {
+			for (Materiel materiel : materielDAO.recupererAllMateriel()) {
+				listImmobMateriel.add(materiel.getNumImmobMateriel().getValue());
+				listIdMateriel.add(materiel.getIdMateriel().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboximmo.setItems(listimmo);
+		comboboxImmobMateriel.setItems(listImmobMateriel);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -91,42 +98,67 @@ public class ModifierMateriel {
 
 	@FXML
 	private void handlechange() {
-		listEtat = FXCollections.observableArrayList();
-		listSite = FXCollections.observableArrayList();
-		listFact = FXCollections.observableArrayList();
-		listFabr = FXCollections.observableArrayList();
+		listEtatMateriel = FXCollections.observableArrayList();
+		listSiteMateriel = FXCollections.observableArrayList();
+		listFactureMateriel = FXCollections.observableArrayList();
+		listFabricantMateriel = FXCollections.observableArrayList();
+		
+		MaterielDAO materielDAO=new MaterielDAO();
+		Materiel selected=null;
+		try {
+			selected = materielDAO.recupererMaterielParId(listIdMateriel.get(comboboxImmobMateriel.getSelectionModel().getSelectedIndex()));
+		} catch (NumberFormatException e) {
+			new Popup("NumberFormatException");
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 
-		Materiel selected = donneesite.getMateriel(comboboximmo.getValue());
-
-		nomfield.setText(selected.getNomMateriel().getValue());
-		typefield.setText(selected.getTypeMateriel().getNomType().getValue());
-		immofield.setText(selected.getNumImmobMateriel().getValue());
-		datefield
-				.setPromptText(selected.getDateExpirationGarantieMaterielStringProperty().getValue());
+		nomMaterielField.setText(selected.getNomMateriel().getValue());
+		typeMaterielField.setText(selected.getTypeMateriel().getNomType().getValue());
+		immobMaterielField.setText(selected.getNumImmobMateriel().getValue());
+		dateMaterielPicker.setPromptText(selected.getDateExpirationGarantieMaterielStringProperty().getValue());
 
 		for (Etat etat : Etat.values()) {
-			listEtat.add(etat.name());
+			listEtatMateriel.add(etat.name());
 		}
-		comboboxetat.setItems(listEtat);
-		comboboxetat.setPromptText(selected.getEtatMateriel().name());
+		comboboxEtatMateriel.setItems(listEtatMateriel);
+		comboboxEtatMateriel.setPromptText(selected.getEtatMateriel().name());
 
-		for (Facture fac : donneesite.getFactureData()) {
-			listFact.add(fac.getNumFacture());
+		FactureDAO factureDAO=new FactureDAO();
+		
+		try {
+			for (Facture facture : factureDAO.recupererAllFacture()) {
+				listFactureMateriel.add(facture.getNumFacture());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfact.setItems(listFact);
-		comboboxfact.setPromptText(selected.getFactureMateriel().getNumFacture());
+		comboboxFactureMateriel.setItems(listFactureMateriel);
+		comboboxFactureMateriel.setPromptText(selected.getFactureMateriel().getNumFacture());
 
-		for (Fabricant fb : donneesite.getFabricantData()) {
-			listFabr.add(fb.getNomFabricant().getValue());
+		FabricantDAO fabricantDAO=new FabricantDAO();
+				
+		try {
+			for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
+				listFabricantMateriel.add(fabricant.getNomFabricant().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxfab.setItems(listFabr);
-		comboboxfab.setPromptText(selected.getFabricantMaterielString());
+		comboboxFabricantMateriel.setItems(listFabricantMateriel);
+		comboboxFabricantMateriel.setPromptText(selected.getFabricantMaterielString());
 
-		for (Site st : donneesite.getSiteData()) {
-			listSite.add(st.getNomSiteString());
+		SiteDAO siteDAO=new SiteDAO();
+		
+		try {
+			for (Site site : siteDAO.recupererAllSite()) {
+				listSiteMateriel.add(site.getNomSiteString());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxsite.setItems(listEtat);
-		comboboxsite.setPromptText(selected.getSiteMateriel().getNomSiteString());
+		comboboxSiteMateriel.setItems(listEtatMateriel);
+		comboboxSiteMateriel.setPromptText(selected.getSiteMateriel().getNomSiteString());
 
 	}
 
