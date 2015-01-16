@@ -26,7 +26,7 @@ public class Revendeur {
      * @param faxRevendeur le fax du revendeur
      * @param emailRevendeur l'email du revendeur
      */
-    public Revendeur(IntegerProperty idRevendeur, String nomRevendeur, String telRevendeur, String adresseRevendeur,String mobileRevendeur,String faxRevendeur,String emailRevendeur) 
+    public Revendeur(IntegerProperty idRevendeur, String nomRevendeur, String telRevendeur,String mobileRevendeur,String faxRevendeur,String emailRevendeur,String adresseRevendeur) 
     {
         this.idRevendeur = idRevendeur;
         this.nomRevendeur= new SimpleStringProperty(nomRevendeur);
@@ -148,7 +148,7 @@ public class Revendeur {
     
     @Override
    	public String toString() {
-   		return "Revendeur [idRevendeur=" + idRevendeur.getValue() + ", nomRevendeur="
+   		return "Revendeur ,"+ "nomRevendeur="
    				+ nomRevendeur.getValue() + ", telRevendeur=" + telRevendeur.getValue()
    				+ ", adresseRevendeur=" + adresseRevendeur.getValue()
    				+ ", mobileRevendeur=" + mobileRevendeur.getValue() + ", faxRevendeur="

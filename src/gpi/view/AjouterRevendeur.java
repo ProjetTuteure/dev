@@ -86,6 +86,7 @@ public class AjouterRevendeur {
 					tf_faxRevendeur.getText(),
 					tf_emailRevendeur.getText(),
 					adresseRevendeur.getText());
+			System.out.println(revendeurAAjouter);
 			try
 			{
 				rdao.ajouterRevendeur(revendeurAAjouter);
