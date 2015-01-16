@@ -118,21 +118,21 @@ CREATE TABLE UTILISE(
 	PRIMARY KEY(idMateriel,idUtilisateur))
 	
 
-INSERT INTO FABRICANT VALUES ( 'DELL','05.55.66.77.88' , '2 route perdu 87000'),( 'HP','05.55.66.77.88' , '2 route troeuve 87000');
+INSERT INTO FABRICANT VALUES ( 'DELL','05.55.66.77.88' ,'06.37.56.89.63','05.55.66.77.89','dell@dell.com','2 route perdu 87000'),( 'HP','05.55.66.77.88','06.37.63.53.52','05.55.56.56.56','hp@hp.com', '2 route troeuve 87000');
 
-INSERT INTO PRESTATAIRE VALUES ( 'Caillou', 'Pierre', '05.55.69.87.23', 'Caillou et Co.'),( 'Noel', 'Papa', '00.36.65.65.65', 'Pole Nord');
+INSERT INTO PRESTATAIRE VALUES ( 'Caillou', 'Pierre', '05.55.69.87.23','06.06.06.06.06','05.05.05.05.05','cailloux@pierre.comme','Caillou et Co.'),( 'Noel', 'Papa', '00.36.65.65.65','06.06.06.06.06','05.05.05.05.05','noel@papa.com','Pole Nord');
 INSERT INTO TYPE VALUES ('PC','sources/images/pc.jpg'),('Routeur','sources/images/routeur.png'),('Switch','sources/images/switch.jpg'),('Clef 3G','sources/images/cle3G.PNG');
 INSERT INTO SITE VALUES ('Agen', 'sources/images/logo-ville-agen0.png'),('Bordeaux', 'sources/images/bordeaux.jpg'),('Chateauroux', 'sources/images/chateauroux.jpg'),('Gueret', 'sources/images/Gueret.jpg'),('Limoges', 'sources/images/limoges.jpg'),('Montlucon', 'sources/images/montlucon.jpg'),('Saint-Agnant', 'sources/images/saintAgnan.png'),('Saint-Junien', 'sources/images/saintJunien.jpg');
-INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','4 rue nimporte ou'),('Fnac','05.55.68.57.41','5 rue je sais pas ou ');
+INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','06.06.06.06.06','05.55.55.55.55','darty@darty.com','4 rue nimporte ou'),('Fnac','05.55.68.57.41','06.06.06.06.06','05.55.55.55.55','fnac@fnac.com','5 rue je sais pas ou ');
 INSERT INTO FACTURE VALUES (1,'2011-11-11', 123.5,1),(2,'2012-12-12', 99 ,2);
 
-INSERT INTO MATERIEL VALUES ('1IMMO','pc-martine','numeroSerie1','windowsXP','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
-('2IMMO','pc-gertrude','numeroSerie2','windowsXP','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
-('3IMMO','PC1','numeroSerie3','windowsXP','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
-('4IMMO','PC2','numeroSerie4','windowsXP','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
-('5IMMO','PC3','numeroSerie5','windowsXP','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,1),
-('6IMMO','Routeur1','numeroSerie6','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,1),
-('7IMMO','Routeur2','numeroSerie7','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,1)
+INSERT INTO MATERIEL VALUES ('1IMMO','numeroSerie1','windowsXP','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
+('2IMMO','numeroSerie2','windowsXP','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
+('3IMMO','numeroSerie3','windowsXP','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
+('4IMMO','numeroSerie4','windowsXP','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
+('5IMMO','numeroSerie5','windowsXP','PC3','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,1),
+('6IMMO','numeroSerie6','windowsXP','Routeur1','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,1),
+('7IMMO','numeroSerie7','windowsXP','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,1)
 
 INSERT INTO LOGICIEL VALUES ('Microsoft Office 2012','1.0','2014-10-01',1)
 
@@ -149,12 +149,12 @@ INSERT INTO UTILISATEUR VALUES
 ('Garves','Eddy','058749841')
 
 INSERT INTO UTILISE VALUES
-(1,1),
-(1,2),
-(2,2),
-(3,3),
-(5,4),
-(4,4)
+('2012-11-11',1,2),
+('2011-11-11',1,2),
+('2010-11-25',2,2),
+('2007-11-08',3,3),
+('2012-11-11',5,4),
+('2012-11-11',4,4)
 
 INSERT INTO ESTMAINTENU VALUES
 (1,1),

@@ -55,7 +55,7 @@ CREATE TABLE MATERIEL(
 	idMateriel int IDENTITY(1,1) PRIMARY KEY ,
 	numImmobMateriel varchar(20) NOT NULL,
 	numeroSerieMateriel varchar(50),
-	SystemeExploitation text,
+	systemeExploitationMateriel text,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
