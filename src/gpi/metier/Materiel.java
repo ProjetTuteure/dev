@@ -1,6 +1,7 @@
 package gpi.metier;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -25,8 +26,8 @@ public class Materiel {
     private String modeleMateriel;
     private List<Composant> listComposantMateriel;
 
-    public Materiel(IntegerProperty idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
-        this.idMateriel=idMateriel;
+    public Materiel(int idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
+        this.idMateriel=new SimpleIntegerProperty(idMateriel);
         this.numImmobMateriel = new SimpleStringProperty(numImmobMateriel);
         this.nomMateriel= new SimpleStringProperty(nomMateriel);
         this.typeMateriel = typeMateriel;

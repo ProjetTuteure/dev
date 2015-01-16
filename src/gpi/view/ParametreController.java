@@ -198,7 +198,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddMat(ActionEvent event) {
-		Materiel materiel = new Materiel(null,null, null, null, null, null, null,
+		Materiel materiel = new Materiel(0,null, null, null, null, null, null,
 				null, null, null, null);
 		boolean okClicked = MainApp.showAddMatDialog(materiel);
 		if (okClicked) {
