@@ -11,11 +11,13 @@
             <TableView fx:id="materielTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="nomMateriel" minWidth="0.0" prefWidth="100.0" text="Materiel" />
+                  <TableColumn prefWidth="75.0" text="N° de serie" />
                 <TableColumn fx:id="dateAchatMateriel" minWidth="0.0" prefWidth="100.0" text="Date Achat" />
                   <TableColumn fx:id="etatMateriel" minWidth="0.0" prefWidth="100.0" text="Etat" />
                   <TableColumn fx:id="finGarantieMateriel" minWidth="0.0" prefWidth="100.0" text="Fin Garantie" />
                   <TableColumn fx:id="revendeurMateriel" minWidth="0.0" prefWidth="100.0" text="Revendeur" />
                   <TableColumn fx:id="fabricantMateriel" prefWidth="75.0" text="Fabricant" />
+                  <TableColumn prefWidth="75.0" text="SE" />
                   <TableColumn fx:id="siteMateriel" prefWidth="75.0" text="Site" />
               </columns>
                <columnResizePolicy>
@@ -24,10 +26,10 @@
             </TableView>
          </center>
          <left>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="200.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="200.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
             <AnchorPane prefHeight="110.0" prefWidth="200.0" BorderPane.alignment="CENTER">

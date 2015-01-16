@@ -53,6 +53,10 @@ public class AncienneteController implements Initializable {
 	private TableColumn<Materiel, String> fabricantMateriel;
 	@FXML
 	private TableColumn<Materiel, String> siteMateriel;
+	@FXML
+	private TableColumn<Materiel, String> numSerieMateriel;
+	@FXML
+	private TableColumn<Materiel, String> SEMateriel;
 	
 	ObservableList<Materiel> listMateriel;
 	ObservableList<String> listSite;
@@ -153,11 +157,13 @@ public class AncienneteController implements Initializable {
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
+		//numSerieMateriel.setCellValueFactory(cellData -> cellData.getValue().getN)
 		//dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getDateFacStringProperty());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatMaterielStringProperty());
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
 		//revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeurFacture().getNomRevendeur());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
+		//SEMateriel.setCellValueFactory(cellData -> cellData.getValue().);
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
 	}
 	
