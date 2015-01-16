@@ -5,19 +5,12 @@ import java.util.List;
 
 import utils.Constante;
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Composant;
 import gpi.metier.ComposantDAO;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
-import gpi.metier.Revendeur;
-import gpi.metier.RevendeurDAO;
-import gpi.metier.Site;
-import gpi.metier.SiteDAO;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,9 +32,9 @@ public class AjouterComposant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 	@FXML
-	private TextField nom;
+	private TextField nomField;
 	@FXML
-	private TextArea caracteristiques;
+	private TextArea caracteristiquesField;
 	
 	ComposantDAO composantdao=new ComposantDAO();
 	FabricantDAO fabricantDAO=new FabricantDAO();
@@ -99,26 +92,26 @@ public class AjouterComposant {
 	@FXML
 	private void handleOk() {
 		Composant composantAAjouter;
-		if(nom.getText().equals(""))
+		if(nomField.getText().isEmpty())
 		{
 			new Popup("Le champ \"Nom du composant\" doit être rempli");
 		}
-		else if(nom.getText().length()>Constante.LONGUEUR_NOM_COMPOSANT)
+		else if(nomField.getText().length()>Constante.LONGUEUR_NOM_COMPOSANT)
 		{
 			new Popup("Le nom du composant doit etre inférieur à "+Constante.LONGUEUR_NOM_COMPOSANT+" caractères");
 		}
-		else if(caracteristiques.getText().length()>Constante.LONGUEUR_ADRESSE)
+		else if(caracteristiquesField.getText().length()>Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT)
 		{
 			new Popup("Les caractéristiques ne peuvent pas dépasser "+Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT+" caractères");
 		}
 		else
 		{
 			Fabricant fabricant = listeFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex());		
-			composantAAjouter=new Composant(new SimpleIntegerProperty(0),nom.getText(),caracteristiques.getText(), fabricant);
+			composantAAjouter=new Composant(new SimpleIntegerProperty(0),nomField.getText(),caracteristiquesField.getText(), fabricant);
 			try
 			{
 				composantdao.ajouterComposant(composantAAjouter);;
-				new Popup("Revendeur "+composantAAjouter.getNomComposant()+" ajouté !");
+				new Popup("Composant "+composantAAjouter.getNomComposant()+" ajouté !");
 			}
 			catch(ConnexionBDException ce)
 			{
