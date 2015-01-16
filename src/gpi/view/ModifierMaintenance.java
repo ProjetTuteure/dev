@@ -52,6 +52,7 @@ public class ModifierMaintenance {
 	private List<Maintenance> listeMaintenance;
 	private List<Maintenance> listeMaintenanceParObjet;
 	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+	private Maintenance maintenanceAModifier;
 
 	@FXML
 	private void initialize() {
@@ -80,7 +81,18 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handleOk() {
-
+		try {
+			Maintenance maintenance=new Maintenance(maintenanceAModifier.getIdMaintenance().getValue(),
+			datefield.getValue(),
+			objfield.getText(),
+			descfield.getText(),
+			Float.parseFloat(coutfield.getText()));
+			maintenanceDAO.modifierMaintenance(maintenance);
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		System.out.println(maintenanceAModifier);
+		new Popup("Maintenance "+maintenanceAModifier.getDescriptionMaintenance()+ " modifiée !");
 		okClicked = true;
 		dialogStage.close();
 
@@ -121,19 +133,18 @@ public class ModifierMaintenance {
 		}
 		else
 		{
-			Maintenance maintenanceParDate=null;
 			for(Maintenance maintenance:listeMaintenance)
 			{
 				if(maintenance.getdateMaintenanceStringProperty().getValue().equals(comboboxdate.getSelectionModel().getSelectedItem()))
 				{
-					maintenanceParDate=maintenance;
+					maintenanceAModifier=maintenance;
 				}
 			}
 			//Maintenance maintenanceSelected = listeMaintenance.get(comboboxobj.getSelectionModel().getSelectedIndex());
-			objfield.setText(maintenanceParDate.getObjetMaintenance());
-			datefield.setPromptText(maintenanceParDate.getdateMaintenanceStringProperty().getValue());
-			descfield.setText(maintenanceParDate.getDescriptionMaintenance());
-			coutfield.setText(maintenanceParDate.getCoutMaintenanceString());
+			objfield.setText(maintenanceAModifier.getObjetMaintenance());
+			datefield.setPromptText(maintenanceAModifier.getdateMaintenanceStringProperty().getValue());
+			descfield.setText(maintenanceAModifier.getDescriptionMaintenance());
+			coutfield.setText(maintenanceAModifier.getCoutMaintenanceString());
 		}
 	}
 

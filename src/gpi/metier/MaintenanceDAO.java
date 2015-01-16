@@ -119,4 +119,25 @@ public class MaintenanceDAO {
 		}
 		return listeMaintenance;
 	}
+	
+	public void modifierMaintenance(Maintenance maintenance) throws ConnexionBDException
+	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try {
+			PreparedStatement ps=connexion.prepareStatement("UPDATE MAINTENANCE SET "
+					+ "dateMaintenance=?,"
+					+ "objetMaintenance=?,"
+					+ "descriptionMaintenance=?,"
+					+ "coutMaintenance=? WHERE idMaintenance=?");
+			ps.setString(1,maintenance.getdateMaintenanceStringProperty().getValue());
+			ps.setString(2, maintenance.getObjetMaintenance());
+			ps.setString(3,maintenance.getDescriptionMaintenance());
+			ps.setFloat(4,maintenance.getCoutMaintenance());
+			ps.setInt(5, maintenance.getIdMaintenance().getValue());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
