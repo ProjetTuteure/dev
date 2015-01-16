@@ -7,6 +7,9 @@ CREATE TABLE FABRICANT(
 	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
 	nomFabricant varchar(20) NOT NULL,
 	telFabricant varchar(20),
+	mobileFabricant  varchar(20),
+	faxFabricant varchar(20),
+	emailFabricant varchar(50),
 	adresseFabricant varchar(100))
 
 CREATE TABLE COMPOSANT(
@@ -25,6 +28,9 @@ CREATE TABLE REVENDEUR(
 	idRevendeur int IDENTITY(1,1) PRIMARY KEY ,
 	nomRevendeur varchar(20) NOT NULL,
 	telRevendeur varchar(20),
+	mobileRevendeur  varchar(20),
+	faxRevendeur varchar(20),
+	emailRevendaur varchar(50),
 	adresseRevendeur varchar(100))
 
 CREATE TABLE FACTURE(
@@ -48,6 +54,8 @@ CREATE TABLE ETAT(
 CREATE TABLE MATERIEL(
 	idMateriel int IDENTITY(1,1) PRIMARY KEY ,
 	numImmobMateriel varchar(20) NOT NULL,
+	numeroSerieMateriel varchar(50),
+	SystemeExploitation text,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
@@ -73,6 +81,9 @@ CREATE TABLE PRESTATAIRE(
 	nomPrestataire varchar(20) NOT NULL,
 	prenomPrestataire varchar(20),
 	telPrestataire varchar(20),
+	mobilePrestataire varchar(20),
+	faxPrestataire varchar(20),
+	emailPrestataire varchar(50),
 	societePrestataire varchar(50)
 	)
 	
@@ -101,6 +112,7 @@ CREATE TABLE UTILISATEUR(
 	telUtilisateur varchar(20))
 
 CREATE TABLE UTILISE(
+	dateUtilise date,
 	idMateriel int FOREIGN KEY REFERENCES MATERIEL(idMateriel),
 	idUtilisateur int FOREIGN KEY REFERENCES UTILISATEUR(idUtilisateur),
 	PRIMARY KEY(idMateriel,idUtilisateur))
