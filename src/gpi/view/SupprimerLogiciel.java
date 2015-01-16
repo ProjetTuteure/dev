@@ -1,7 +1,15 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
+import gpi.metier.Facture;
+import gpi.metier.FactureDAO;
 import gpi.metier.Logiciel;
+import gpi.metier.LogicielDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,26 +27,29 @@ public class SupprimerLogiciel {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxlog;
-	@FXML
-	private ComboBox<String> comboboxvers;
+	private ComboBox<String> ComboboxLogiciel;
 
-	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listlog;
-	private ObservableList<String> listvers;
+	private ObservableList<String> listLogiciel;
+	List<Integer> listLogicielId;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listlog = FXCollections.observableArrayList();
-
-		for (Logiciel log : donneesite.getLogicielData()) {
-			listlog.add(log.getNomLogiciel().getValue());
+		LogicielDAO logicielDAO = new LogicielDAO();
+		listLogiciel = FXCollections.observableArrayList();
+		listLogicielId=new ArrayList<Integer>();
+		try {
+			for (Logiciel logiciel : logicielDAO.recupererAllLogiciel()) {
+				listLogiciel.add(logiciel.getNomLogiciel()+" "+logiciel.getVersionLogiciel());
+				listLogicielId.add(logiciel.getIdLogiciel().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxlog.setItems(listlog);
+		ComboboxLogiciel.setItems(listLogiciel);
 	}
 
 	/**
@@ -67,9 +78,16 @@ public class SupprimerLogiciel {
 	@FXML
 	private void handleOk() {
 
+		LogicielDAO logicielDAO=new LogicielDAO();
+		int selected=ComboboxLogiciel.getSelectionModel().getSelectedIndex();
+		int id=listLogicielId.get(selected);
+		try {
+			logicielDAO.supprimerLogiciel(new Logiciel(0,null,null,null,null));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**
@@ -81,22 +99,5 @@ public class SupprimerLogiciel {
 		dialogStage.close();
 	}
 
-	/**
-	 * Cette methode permet de pre remplir le combobox de la version de logiciel
-	 * lorsqu'un nom du logiciel est selectionne
-	 */
-	@FXML
-	private void handlechange() {
-		Logiciel selected = donneesite.getLogiciel(comboboxlog.getValue());
-
-		listvers = FXCollections.observableArrayList();
-		for (Logiciel log : donneesite.getLogicielData()) {
-			if (log.getNomLogiciel().getValue()
-					.equals(selected.getNomLogiciel().getValue())) {
-				listvers.add(selected.getVersionLogiciel().getValue());
-			}
-		}
-		comboboxvers.setItems(listvers);
-	}
 
 }
