@@ -76,44 +76,15 @@ public class AjouterMaintenance {
 	private void handleOk() {
 		okClicked = true;
 		float coutMaintenance=0;
-		if(dp_dateMaintenance.getValue()==null)
+		if(controlerSaisies()==true)
 		{
-			new Popup("La date doit obligatoirement être remplie");
-		}
-		else if(tf_objetMaintenance.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
-		{
-			new Popup("L'objet de la maintenance doit faire au maximum "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
-		}
-		else if(ta_description.getText().length()>400)
-		{
-			new Popup("La description doit contenir au maximum "+Constante.LONGUEUR_DESCRIPTION_MAINTENANCE+" caractères");
-		}
-		else
-		{
-			if(!tf_coutMaintenance.getText().isEmpty())
-			{
-				if(tf_coutMaintenance.getText().contains(","))
-				{
-					tf_coutMaintenance.setText(tf_coutMaintenance.getText().replace(',','.'));
-				}
-				try
-				{
-					if(Float.parseFloat(tf_coutMaintenance.getText())<0)
-					{
-						new Popup("La valeur du coût de la maintenance ne doit pas être négative");
-					}
-					coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
-				}
-				catch(NumberFormatException e)
-				{
-					new Popup("Saisie du coût non correcte");
-				}
+			if(!tf_coutMaintenance.getText().isEmpty()){
+			coutMaintenance=Float.parseFloat(tf_coutMaintenance.getText());
 			}
 			Maintenance maintenance=new Maintenance(0,dp_dateMaintenance.getValue(),
 					tf_objetMaintenance.getText(),
 					ta_description.getText(),
 					coutMaintenance);
-			System.out.println(maintenance.toString());
 			try {
 				maintenanceDAO.ajouterMaintenance(maintenance);
 				new Popup("Maintenance du "+maintenance.getdateMaintenanceStringProperty().getValue()+" ajoutée !");
@@ -124,6 +95,45 @@ public class AjouterMaintenance {
 		}
 	}
 
+	private boolean controlerSaisies()
+	{
+		if(dp_dateMaintenance.getValue()==null)
+		{
+			new Popup("La date doit obligatoirement être remplie");
+			return false;
+		}
+		else if(tf_objetMaintenance.getText().length()>Constante.LONGUEUR_OBJET_MAINTENANCE)
+		{
+			new Popup("L'objet de la maintenance doit faire au maximum "+Constante.LONGUEUR_OBJET_MAINTENANCE+" caractères");
+			return false;
+		}
+		else if(ta_description.getText().length()>Constante.LONGUEUR_DESCRIPTION_MAINTENANCE)
+		{
+			new Popup("La description doit contenir au maximum "+Constante.LONGUEUR_DESCRIPTION_MAINTENANCE+" caractères");
+			return false;
+		}
+		if(!tf_coutMaintenance.getText().isEmpty())
+		{
+			if(tf_coutMaintenance.getText().contains(","))
+			{
+				tf_coutMaintenance.setText(tf_coutMaintenance.getText().replace(',','.'));
+			}
+			try
+			{
+			if(Float.parseFloat(tf_coutMaintenance.getText())<0)
+			{
+				new Popup("La valeur du coût de la maintenance ne doit pas être négative");
+				return false;
+			}
+			}
+			catch(NumberFormatException nfe)
+			{
+				new Popup("La valeur du coût saisie doit être un nombre");
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
 	 * est clique
