@@ -142,11 +142,13 @@ public class SiteDAO {
 				listSite.add(site);
 			}
 			return listSite;
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connection != null)
+					connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

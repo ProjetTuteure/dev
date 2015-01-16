@@ -41,6 +41,7 @@ public class SiteOverviewController {
 	 */
 	public SiteOverviewController() {
 		SiteDAO siteDAO = new SiteDAO();
+		this.sites = FXCollections.observableArrayList();
 		try {
 			this.sites = FXCollections.observableArrayList(siteDAO
 					.recupererAllSite());
@@ -48,10 +49,12 @@ public class SiteOverviewController {
 			new Popup(e.getMessage());
 		}
 		this.gp_site = new GridPane();
-		for (int i = 0; i < sites.size() / 4 + 1; i++) {
-			RowConstraints row = new RowConstraints();
-			row.setPercentHeight(100 / (sites.size() / 4));
-			gp_site.getRowConstraints().add(row);
+		if (sites.size() > 0) {
+			for (int i = 0; i < sites.size() / 4 + 1; i++) {
+				RowConstraints row = new RowConstraints();
+				row.setPercentHeight(100 / (sites.size() / 4));
+				gp_site.getRowConstraints().add(row);
+			}
 		}
 	}
 
@@ -89,7 +92,7 @@ public class SiteOverviewController {
 				BorderPane tempo = new BorderPane();
 				ImageView image = new ImageView(site.getCheminImageSite());
 				Label label = new Label(site.getNomSiteString());
-				label.setId(""+site.getIdSite());
+				label.setId("" + site.getIdSite());
 				image.setFitHeight(75);
 				image.setFitWidth(75);
 				tempo.setCenter(image);
