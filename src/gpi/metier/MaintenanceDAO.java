@@ -87,8 +87,33 @@ public class MaintenanceDAO {
 
 	}
 
-	public Maintenance recupererMaintenanceParId() {
-		return null;
+	/**
+	 * Retourne un maintenance par son id
+	 * @param idMaintenance
+	 * @return la maintenance correspondant à l'id maintenance
+	 * @throws ConnexionBDException si un problème de connexion à la bd survient
+	 */
+	public Maintenance recupererMaintenanceParId(int idMaintenance) throws ConnexionBDException {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		Maintenance maintenance=null;
+		PreparedStatement ps;
+		try {
+			ps = connexion.prepareStatement("SELECT * FROM MAINTENANCE WHERE idMaintenance=?");
+			ps.setInt(1, idMaintenance);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				maintenance=new Maintenance(rs.getInt("idMaintenance"),
+						LocalDate.parse(rs.getString("dateMaintenance")),
+						rs.getString("objetMaintenance"),
+						rs.getString("descriptionMaintenance"),
+						rs.getFloat("coutMaintenance"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return maintenance;
 	}
 	
 	/**
@@ -120,6 +145,11 @@ public class MaintenanceDAO {
 		return listeMaintenance;
 	}
 	
+	/**
+	 * Modifie une maintenance
+	 * @param maintenance la maintenance à modifier
+	 * @throws ConnexionBDException si l'accès à la bd a échoué
+	 */
 	public void modifierMaintenance(Maintenance maintenance) throws ConnexionBDException
 	{
 		Connection connexion=MaConnexion.getInstance().getConnexion();
@@ -137,6 +167,24 @@ public class MaintenanceDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Supprime une maintenance
+	 * @param maintenance la maintenance à supprimer
+	 * @throws ConnexionBDException si la connexion à la BD a échoué
+	 */
+	public void supprimerMaintenance(Maintenance maintenance)throws ConnexionBDException
+	{
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		PreparedStatement ps;
+		try {
+			ps = connexion.prepareStatement("DELETE FROM MAINTENANCE WHERE idMaintenance=?");
+			ps.setInt(1, maintenance.getIdMaintenance().getValue());
+			ps.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

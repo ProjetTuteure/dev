@@ -1,7 +1,13 @@
 package gpi.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Maintenance;
+import gpi.metier.MaintenanceDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,23 +25,34 @@ public class SupprimerMaintenance {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxobj;
+	private ComboBox<String> cb_objetMaintenance;
 	@FXML
-	private ComboBox<String> comboboxdate;
+	private ComboBox<String> cb_dateMaintenance;
 
 	private Donnee donnee = new Donnee();
 
-	private ObservableList<String> listobj;
-	private ObservableList<String> listdate;
+	private ObservableList<String> listeObjet;
+	private ObservableList<String> listeDate;
+	
+	private List<Maintenance> listeMaintenance;
+	
+	private Maintenance maintenanceASupprimer;
+	
+	private MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 
 	@FXML
 	private void initialize() {
-		listobj = FXCollections.observableArrayList();
-
-		for (Maintenance m : donnee.getMaintenanceData()) {
-			listobj.add(m.getObjetMaintenance());
+		listeObjet = FXCollections.observableArrayList();
+		listeMaintenance=new ArrayList<Maintenance>();
+		try {
+			listeMaintenance=maintenanceDAO.recupererAllMaintenance();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
-		comboboxobj.setItems(listobj);
+		for (Maintenance m : listeMaintenance) {
+			listeObjet.add(m.getIdMaintenance().getValue()+"- "+m.getObjetMaintenance());
+		}
+		cb_objetMaintenance.setItems(listeObjet);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -57,12 +74,30 @@ public class SupprimerMaintenance {
 	 */
 	@FXML
 	private void handleOk() {
-
-		okClicked = true;
-		dialogStage.close();
+		if(controlerCombobox()==true)
+		{
+			maintenanceASupprimer=listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
+			try {
+				maintenanceDAO.supprimerMaintenance(maintenanceASupprimer);
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			new Popup("Maintenance du "+maintenanceASupprimer.getdateMaintenanceStringProperty().getValue()+" supprimée");
+			okClicked = true;
+			dialogStage.close();
+		}
 
 	}
 
+	private boolean controlerCombobox()
+	{
+		if(cb_objetMaintenance.getSelectionModel().getSelectedItem()==null)
+		{
+			new Popup("Un objet de maintenance doit être selectionné");
+			return false;
+		}
+		return true;
+	}
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
 	 * est clique
@@ -71,18 +106,4 @@ public class SupprimerMaintenance {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
-	@FXML
-	private void handlechange() {
-		Maintenance selected = donnee.getMaintenance(comboboxobj.getValue());
-
-		listdate = FXCollections.observableArrayList();
-		for (Maintenance m : donnee.getMaintenanceData()) {
-			if (m.getObjetMaintenance().equals(selected.getObjetMaintenance())) {
-				listdate.add(selected.getdateMaintenanceStringProperty().getValue());
-			}
-		}
-		comboboxdate.setItems(listdate);
-	}
-
 }

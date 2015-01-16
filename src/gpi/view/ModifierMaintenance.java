@@ -41,8 +41,6 @@ public class ModifierMaintenance {
 
 	@FXML
 	private ComboBox<String> cb_objetMaintenance;
-	@FXML
-	private ComboBox<String> cb_dateMaintenance;
 
 	private ObservableList<String> listeObjet;
 	private ObservableList<String> listeDate;
@@ -63,7 +61,7 @@ public class ModifierMaintenance {
 		}
 		for(Maintenance maintenance:listeMaintenance)
 		{
-			listeObjet.add(maintenance.getObjetMaintenance());
+			listeObjet.add(maintenance.getIdMaintenance().getValue()+"- "+maintenance.getObjetMaintenance());
 		}
 		cb_objetMaintenance.setItems(listeObjet);
 	}
@@ -106,6 +104,11 @@ public class ModifierMaintenance {
 	 */
 	public boolean controlerSaisies()
 	{
+		if(cb_objetMaintenance.getValue()==null)
+		{
+			new Popup("Une maintenance doit être sélectionnée");
+			return false;
+		}
 		if(dp_dateMaintenance.getValue()==null)
 		{
 			new Popup("Une date doit être saisie");
@@ -152,46 +155,10 @@ public class ModifierMaintenance {
 
 	@FXML
 	private void handlechange1() {
-		if(!cb_dateMaintenance.getItems().equals(null))
-		{
-			cb_dateMaintenance.setItems(null);
-		}
-		Maintenance maintenanceSelected = listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
-		listeDate = FXCollections.observableArrayList();
-		for(Maintenance maintenanceParObjet:listeMaintenance)
-		{
-			if(maintenanceParObjet.getObjetMaintenance().equals(maintenanceSelected.getObjetMaintenance()))
-			{
-				listeDate.add(maintenanceParObjet.getdateMaintenanceStringProperty().getValue());
-			}
-		}
-		cb_dateMaintenance.setItems(listeDate);
+		maintenanceAModifier = listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
+		tf_coutMaintenance.setText(maintenanceAModifier.getCoutMaintenanceString());
+		tf_objetMaintenance.setText(maintenanceAModifier.getObjetMaintenance());
+		ta_descriptionMaintenance.setText(maintenanceAModifier.getDescriptionMaintenance());
+		dp_dateMaintenance.setValue(maintenanceAModifier.getdateMaintenance());
 	}
-
-	@FXML
-	private void handlechange2() {
-		if(cb_dateMaintenance.getItems()==null)
-		{
-			tf_objetMaintenance.setText("");
-			dp_dateMaintenance.setPromptText("");
-			ta_descriptionMaintenance.setText("");
-			tf_coutMaintenance.setText("");
-		}
-		else
-		{
-			for(Maintenance maintenance:listeMaintenance)
-			{
-				if(maintenance.getdateMaintenanceStringProperty().getValue().equals(cb_dateMaintenance.getSelectionModel().getSelectedItem()))
-				{
-					maintenanceAModifier=maintenance;
-				}
-			}
-			//Maintenance maintenanceSelected = listeMaintenance.get(cb_objetMaintenance.getSelectionModel().getSelectedIndex());
-			tf_objetMaintenance.setText(maintenanceAModifier.getObjetMaintenance());
-			dp_dateMaintenance.setValue(maintenanceAModifier.getdateMaintenance());
-			ta_descriptionMaintenance.setText(maintenanceAModifier.getDescriptionMaintenance());
-			tf_coutMaintenance.setText(maintenanceAModifier.getCoutMaintenanceString());
-		}
-	}
-
 }
