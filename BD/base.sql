@@ -115,7 +115,7 @@ CREATE TABLE UTILISE(
 	dateUtilise date,
 	idMateriel int FOREIGN KEY REFERENCES MATERIEL(idMateriel),
 	idUtilisateur int FOREIGN KEY REFERENCES UTILISATEUR(idUtilisateur),
-	PRIMARY KEY(idMateriel,idUtilisateur))
+	PRIMARY KEY(dateUtilise,idMateriel,idUtilisateur))
 	
 
 INSERT INTO FABRICANT VALUES ( 'DELL','05.55.66.77.88' ,'06.37.56.89.63','05.55.66.77.89','dell@dell.com','2 route perdu 87000'),( 'HP','05.55.66.77.88','06.37.63.53.52','05.55.56.56.56','hp@hp.com', '2 route troeuve 87000');
