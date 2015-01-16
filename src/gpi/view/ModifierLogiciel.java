@@ -92,7 +92,7 @@ public class ModifierLogiciel {
 				new Popup(e.getMessage());
 			}
 		}
-		int indexLogiciel = ComboboxFacture.getSelectionModel().getSelectedIndex();
+		int indexLogiciel = ComboboxLogiciel.getSelectionModel().getSelectedIndex();
 		int idLogiciel=listObjetsLogiciel.get(indexLogiciel).getIdLogiciel().getValue();
 		try {
 			logicielDAO.modifierLogiciel(new Logiciel(idLogiciel,NomLogicielField.getText(),VersionLogicielField.getText(),DateExpirationLogiciel.getValue(),facture));
