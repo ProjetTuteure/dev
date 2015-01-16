@@ -90,6 +90,7 @@ public class SiteDAO {
 	}
 	
 	public Site recupererSiteParId(int idSite) throws ConnexionBDException {
+		System.out.println(idSite);
 		Connection connection=null;
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
@@ -100,9 +101,10 @@ public class SiteDAO {
 			prep.setInt(1, idSite);
 			
 			resultat=prep.executeQuery();
+			resultat.next();
 			nomSite=resultat.getString("nomSite");
 			cheminImageSite=resultat.getString("cheminImageSite");
-			
+
 			return new Site(idSite,nomSite,cheminImageSite);
 		}catch(SQLException e){
 			e.printStackTrace();

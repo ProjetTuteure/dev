@@ -100,12 +100,12 @@ public class SiteOverviewController {
                         String id = ((Label)(tempo.getBottom())).getId();
                         try {
 							mainApp.setCritere(siteDAO.recupererSiteParId(Integer.parseInt(id)+1));
+							mainApp.changerTab("Type");
 						} catch (NumberFormatException e) {
 							e.printStackTrace();
 						} catch (ConnexionBDException e) {
 							new Popup(e.getMessage());
 						}
-                        mainApp.changerTab("Type");
                     }
                 });
                 gp_site.add(tempo, j, i);
