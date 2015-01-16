@@ -43,7 +43,7 @@ public class SupprimerLogiciel {
 		listLogicielId=new ArrayList<Integer>();
 		try {
 			for (Logiciel logiciel : logicielDAO.recupererAllLogiciel()) {
-				listLogiciel.add(logiciel.getNomLogiciel()+" "+logiciel.getVersionLogiciel());
+				listLogiciel.add(logiciel.getNomLogiciel().getValue()+" "+logiciel.getVersionLogiciel().getValue());
 				listLogicielId.add(logiciel.getIdLogiciel().getValue());
 			}
 		} catch (ConnexionBDException e) {
@@ -82,7 +82,7 @@ public class SupprimerLogiciel {
 		int selected=ComboboxLogiciel.getSelectionModel().getSelectedIndex();
 		int id=listLogicielId.get(selected);
 		try {
-			logicielDAO.supprimerLogiciel(new Logiciel(0,null,null,null,null));
+			logicielDAO.supprimerLogiciel(new Logiciel(id,null,null,null,null));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
