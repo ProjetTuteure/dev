@@ -24,7 +24,7 @@
         </rowConstraints>
          <children>
             <Label text="N° d'immob. du matériel à supprimer" />
-            <ComboBox fx:id="comboboxmat" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxMateriel" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
   </children>

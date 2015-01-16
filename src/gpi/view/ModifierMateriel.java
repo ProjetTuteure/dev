@@ -40,7 +40,16 @@ public class ModifierMateriel {
 	private ComboBox<String> comboboxSiteMateriel;
 	@FXML
 	private ComboBox<String> comboboxImmobMateriel;
+	@FXML
+	private TextField numeroSerieMaterielField;
+	@FXML
+	private TextField systemeExploitationMaterielField;
+	@FXML
+	private TextField modeleMaterielField;
 
+	private MaterielDAO materielDAO=new MaterielDAO();
+	
+	
 	private List<Integer> listIdMateriel;
 	private ObservableList<String> listImmobMateriel;
 	private ObservableList<String> listEtatMateriel;
@@ -56,7 +65,7 @@ public class ModifierMateriel {
 		
 		try {
 			for (Materiel materiel : materielDAO.recupererAllMateriel()) {
-				listImmobMateriel.add(materiel.getNumImmobMateriel().getValue());
+				//listIdMateriel.add(Integer.parseInt(materiel.getIdMateriel()).getValue().intValue()+"- "+materiel.getNomMateriel().getValue());
 				listIdMateriel.add(materiel.getIdMateriel().getValue());
 			}
 		} catch (ConnexionBDException e) {
@@ -75,7 +84,12 @@ public class ModifierMateriel {
 
 	@FXML
 	private void handleOk() {
-
+		try {
+			materielDAO.modifierMateriel(new Materiel(0, null, null, null, null, null, null, null, null, null, null, null, null));
+			//ma.modifierPrestataire(new Prestataire(this.getIdPrestataire(),nomPrestataireField.getText(),prenomPrestataireField.getText(),telPrestataireField.getText(),societePrestataireField.getText()));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 

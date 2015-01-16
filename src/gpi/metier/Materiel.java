@@ -15,7 +15,9 @@ import java.util.List;
 public class Materiel {
     private IntegerProperty idMateriel;
     private StringProperty numImmobMateriel;
+    private StringProperty numeroSerieMateriel;
     private StringProperty nomMateriel;
+    private StringProperty systemeExploitationMateriel;
     private Type typeMateriel;
     private Etat etatMateriel;
     private LocalDate dateExpirationGarantieMateriel;
@@ -25,10 +27,13 @@ public class Materiel {
     private Fabricant fabricantMateriel;
     private String modeleMateriel;
     private List<Composant> listComposantMateriel;
+    private List<Logiciel> listLogicielMateriel;
 
-    public Materiel(int idMateriel,String numImmobMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
+    public Materiel(int idMateriel,String numImmobMateriel,String numeroSerieMateriel, String systemeExploitationMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
         this.idMateriel=new SimpleIntegerProperty(idMateriel);
         this.numImmobMateriel = new SimpleStringProperty(numImmobMateriel);
+        this.numeroSerieMateriel= new SimpleStringProperty(numeroSerieMateriel);
+        this.systemeExploitationMateriel=new SimpleStringProperty(nomMateriel);
         this.nomMateriel= new SimpleStringProperty(nomMateriel);
         this.typeMateriel = typeMateriel;
         this.etatMateriel = etatMateriel;
@@ -39,7 +44,7 @@ public class Materiel {
         this.fabricantMateriel = fabricantMateriel;
         this.modeleMateriel=modeleMateriel;
         this.listComposantMateriel=new ArrayList<Composant>();
-
+        this.listLogicielMateriel=new ArrayList<Logiciel>();
     }
 
     public IntegerProperty getIdMateriel() {
@@ -174,9 +179,53 @@ public class Materiel {
     public void ajouterListComposantListComposantMateriel(List<Composant> listComposantMateriel){
         this.listComposantMateriel.addAll(listComposantMateriel);
     }
+    
+    public StringProperty getNumeroSerieMateriel() {
+		return numeroSerieMateriel;
+	}
 
+	public void setNumeroSerieMateriel(StringProperty numeroSerieMateriel) {
+		this.numeroSerieMateriel = numeroSerieMateriel;
+	}
 
-    @Override
+	public StringProperty getSystemeExploitationMateriel() {
+		return systemeExploitationMateriel;
+	}
+
+	public void setSystemeExploitationMateriel(
+			StringProperty systemeExploitationMateriel) {
+		this.systemeExploitationMateriel = systemeExploitationMateriel;
+	}
+
+	public List<Logiciel> getListLogicielMateriel() {
+		return listLogicielMateriel;
+	}
+
+	public void setListLogicielMateriel(List<Logiciel> listLogicielMateriel) {
+		this.listLogicielMateriel = listLogicielMateriel;
+	}
+
+	public LocalDate getDateExpirationGarantieMateriel() {
+		return dateExpirationGarantieMateriel;
+	}
+
+	public void setNumImmobMateriel(StringProperty numImmobMateriel) {
+		this.numImmobMateriel = numImmobMateriel;
+	}
+
+	public void setNomMateriel(StringProperty nomMateriel) {
+		this.nomMateriel = nomMateriel;
+	}
+
+	public void setRepertoireDriverMateriel(StringProperty repertoireDriverMateriel) {
+		this.repertoireDriverMateriel = repertoireDriverMateriel;
+	}
+
+	public void setModeleMateriel(String modeleMateriel) {
+		this.modeleMateriel = modeleMateriel;
+	}
+
+	@Override
     public String toString() {
         return nomMateriel.getValue() +
                 ", numImmobMat=" + numImmobMateriel.getValue()+

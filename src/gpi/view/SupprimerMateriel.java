@@ -1,7 +1,12 @@
 package gpi.view;
 
+import java.util.List;
+
+import utils.Popup;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,23 +23,23 @@ public class SupprimerMateriel {
 	@FXML
 	private boolean okClicked = false;
 	@FXML
-	private ComboBox<String> comboboxmat;
+	private ComboBox<String> comboboxMateriel;
 
 	private Donnee donneesite = new Donnee();
 
-	private ObservableList<String> listmat;
+	private ObservableList<String> listMateriel;
 
 	/**
-	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
+	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listmat = FXCollections.observableArrayList();
+		listMateriel = FXCollections.observableArrayList();
 
-		for (Materiel mat : donneesite.getMaterielData()) {
-			listmat.add(mat.getNumImmobMateriel().getValue());
+		for (Materiel materiel : donneesite.getMaterielData()) {
+			listMateriel.add(materiel.getIdMateriel().getValue()+"- "+materiel.getNomMateriel().getValue());
 		}
-		comboboxmat.setItems(listmat);
+		comboboxMateriel.setItems(listMateriel);
 	}
 
 	/**
@@ -62,7 +67,15 @@ public class SupprimerMateriel {
 	 */
 	@FXML
 	private void handleOk() {
-
+		String[] listStrings =comboboxMateriel.getValue().split("-");
+		MaterielDAO materielDAO=new MaterielDAO();
+		try {
+			materielDAO.supprimerMateriel(new Materiel(Integer.parseInt(listStrings[0]), null, null, null, null, null, null, null, null, null, null));
+		} catch (NumberFormatException e) {
+			new Popup("L'id du materiel doit être un entier");
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
