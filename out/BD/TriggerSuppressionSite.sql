@@ -1,7 +1,8 @@
 CREATE TRIGGER supprimerSite on SITE
-AFTER DELETE
+INSTEAD OF DELETE
 AS BEGIN
 	declare @idSite int
 	SELECT @idSite=idSite FROM DELETED
 	DELETE MATERIEL WHERE idSite=@idSite
+	DELETE SITE WHERE idSite=@idSite
 END

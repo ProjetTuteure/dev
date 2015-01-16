@@ -107,21 +107,21 @@ public class Donnee {
 	}
 
 	private void remplirFabricantData() {
-		fabricantData.add(new Fabricant(1, "DELL",
+		/*fabricantData.add(new Fabricant(1, "DELL",
 				"05.55.66.77.88", "2 route perdu 87000"));
 		fabricantData.add(new Fabricant(1, "HP",
-				"05.55.66.77.88", "2 route perdu 87000"));
+				"05.55.66.77.88", "2 route perdu 87000"));*/
 	}
 
 	private void remplirPrestaraireData() {
-		prestataireData.add(new Prestataire(1,
+		/*prestataireData.add(new Prestataire(1,
 				"Caillou", "Pierre", "05.55.69.87.23", "Caillou et Co."));
 		prestataireData.add(new Prestataire(2,
-				"Noel", "Papa", "00.36.65.65.65", "Pole Nord"));
+				"Noel", "Papa", "00.36.65.65.65", "Pole Nord"));*/
 	}
 
 	private void remplirMaterielData() {
-		materielData
+		/*materielData
 				.add(new Materiel(1, "1IMMO","","",
 						"pc-martine", typeData.get(0), Etat.EN_MARCHE,
 						LocalDate.parse("2012-11-11"), "/driver/pc-martine",
@@ -151,7 +151,7 @@ public class Donnee {
 		materielData.add(new Materiel(7, "7IMMO","","",
 				"Routeur2", typeData.get(1), Etat.EN_PANNE, LocalDate
 						.parse("2012-03-14"), "", null, siteData
-						.get(3), fabricantData.get(0), "XXX7<"));
+						.get(3), fabricantData.get(0), "XXX7<"));*/
 	}
 
 	/*private void remplirFactureData() {
@@ -162,10 +162,10 @@ public class Donnee {
 	}*/
 
 	private void remplirRevendeurData() {
-		revendeurData.add(new Revendeur(new SimpleIntegerProperty(1), "Darty",
+		/*revendeurData.add(new Revendeur(new SimpleIntegerProperty(1), "Darty",
 				"05.55.21.36.54", "4 rue n'importe ou"));
 		revendeurData.add(new Revendeur(new SimpleIntegerProperty(2), "Fnac",
-				"05.55.68.57.41", "5 rue je sais pas ou "));
+				"05.55.68.57.41", "5 rue je sais pas ou "));*/
 	}
 
 	private void remplirTypeData() {
@@ -204,7 +204,7 @@ public class Donnee {
 	}
 
 	private void remplirUtiliseData() {
-		this.utiliseData.add(new Utilise(utilisateurData.get(0), materielData
+		/*this.utiliseData.add(new Utilise(utilisateurData.get(0), materielData
 				.get(0)));
 		this.utiliseData.add(new Utilise(utilisateurData.get(1), materielData
 				.get(0)));
@@ -215,7 +215,7 @@ public class Donnee {
 		this.utiliseData.add(new Utilise(utilisateurData.get(3), materielData
 				.get(4)));
 		this.utiliseData.add(new Utilise(utilisateurData.get(3), materielData
-				.get(3)));
+				.get(3)));*/
 	}
 
 	private void remplirMaintenanceData() {

@@ -72,25 +72,14 @@ public class AjouterRevendeur {
 	@FXML
 	private void handleOk() {
 		Revendeur revendeurAAjouter;
-		if(nomRevendeur.getText().equals(""))
+		if(controlerSaisies()==true)
 		{
-			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
-		}
-		else if(telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
-		{
-			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
-		}
-		else if(adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
-		{
-			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
-		}
-		else if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
-		{
-			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
-		}
-		else
-		{
-			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText(),telRevendeur.getText(),adresseRevendeur.getText());
+			revendeurAAjouter=new Revendeur(null,nomRevendeur.getText()
+					,telRevendeur.getText(),
+					tf_mobileRevendeur.getText(),
+					tf_faxRevendeur.getText(),
+					tf_emailRevendeur.getText(),
+					adresseRevendeur.getText());
 			try
 			{
 				rdao.ajouterRevendeur(revendeurAAjouter);
@@ -105,9 +94,13 @@ public class AjouterRevendeur {
 		}
 	}
 
+	/**
+	 * Controle les saisies
+	 * @return vrai si les données saisies sont cohérentes, faux sinon
+	 */
 	public boolean controlerSaisies()
 	{
-		if(nomRevendeur.getText().equals(""))
+		if(!nomRevendeur.getText().isEmpty())
 		{
 			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 			return false;
