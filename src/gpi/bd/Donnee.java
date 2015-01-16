@@ -42,7 +42,6 @@ public class Donnee {
 
 	public Donnee() {
 		remplirSiteData();
-		remplirTypeData();
 		remplirRevendeurData();
 		remplirFabricantData();
 		remplirMaterielData();
@@ -168,12 +167,6 @@ public class Donnee {
 				"05.55.68.57.41", "5 rue je sais pas ou "));
 	}
 
-	private void remplirTypeData() {
-		typeData.add(new Type("PC", "sources/images/pc.jpg"));
-		typeData.add(new Type("Routeur", "sources/images/routeur.png"));
-		typeData.add(new Type("Switch", "sources/images/switch.jpg"));
-		typeData.add(new Type("Clef 3G", "sources/images/cle3G.PNG"));
-	}
 
 	private void remplirSiteData() {
 		siteData.add(new Site(1, "Agen", "sources/images/logo-ville-agen0.png"));
