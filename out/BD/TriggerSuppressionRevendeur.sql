@@ -1,7 +1,8 @@
 CREATE TRIGGER SuppressionRevendeur on REVENDEUR
-AFTER DELETE
+INSTEAD OF DELETE
 AS BEGIN 
 	declare @idRevendeur int;
 	select @idRevendeur= idRevendeur FROM deleted;
-	delete from facture where idrevendeur = @idRevendeur;
+	DELETE facture where idrevendeur = @idRevendeur;
+	DELETE REVENDEUR WHERE idrevendeur = @idRevendeur;
 END

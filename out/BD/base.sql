@@ -30,7 +30,7 @@ CREATE TABLE REVENDEUR(
 	telRevendeur varchar(20),
 	mobileRevendeur  varchar(20),
 	faxRevendeur varchar(20),
-	emailRevendaur varchar(50),
+	emailRevendeur varchar(50),
 	adresseRevendeur varchar(100))
 
 CREATE TABLE FACTURE(
@@ -55,7 +55,7 @@ CREATE TABLE MATERIEL(
 	idMateriel int IDENTITY(1,1) PRIMARY KEY ,
 	numImmobMateriel varchar(20) NOT NULL,
 	numeroSerieMateriel varchar(50),
-	SystemeExploitation text,
+	systemeExploitationMateriel text,
 	nomMateriel varchar(20),
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
