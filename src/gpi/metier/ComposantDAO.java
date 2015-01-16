@@ -1,12 +1,14 @@
 package gpi.metier;
 
 import gpi.exception.ConnexionBDException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import utils.MaConnexion;
 
@@ -74,6 +76,7 @@ public class ComposantDAO {
 			prep.setInt(3, composant.getFabricantComposant().getIdFabricant()
 					.getValue());
 			prep.setInt(4, composant.getIdComposant());
+			prep.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -142,5 +145,40 @@ public class ComposantDAO {
 			}
 		}
 		return listComposant;
+	}
+	
+	public List<Composant> recupererComposantParNom(String nomComposant) throws ConnexionBDException {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		List<Composant> list = null;
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM COMPOSANT WHERE nomComposant=?");
+			ps.setString(1,nomComposant);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				list=new ArrayList<Composant>();
+				list.add(new Composant(new SimpleIntegerProperty(rs.getInt("idComposant")),
+						rs.getString("nomComposant"),
+						rs.getString("caracteristiqueComposant"),
+						fabricantDAO.recupererFabricantParId(rs
+								.getInt("idFabricant"))));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+		}
+		return list;
 	}
 }
