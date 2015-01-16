@@ -45,9 +45,7 @@ public class Donnee {
 		remplirTypeData();
 		remplirRevendeurData();
 		remplirFabricantData();
-	/*	remplirFactureData();*/
 		remplirMaterielData();
-		remplirLogicielData();
 		remplirUtilisateurData();
 		remplirUtiliseData();
 		remplirMaintenanceData();
@@ -192,11 +190,7 @@ public class Donnee {
 
 	}
 
-	private void remplirLogicielData() {
-		this.logicielData.add(new Logiciel(new SimpleIntegerProperty(1),
-				"Microsoft Office 2012", "1.0", LocalDate.parse("2014-10-01"),
-				null));
-	}
+	
 
 	private void remplirUtilisateurData() {
 		this.utilisateurData.add(new Utilisateur(new SimpleIntegerProperty(1),
