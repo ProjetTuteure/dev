@@ -126,13 +126,13 @@ INSERT INTO SITE VALUES ('Agen', 'sources/images/logo-ville-agen0.png'),('Bordea
 INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','4 rue nimporte ou'),('Fnac','05.55.68.57.41','5 rue je sais pas ou ');
 INSERT INTO FACTURE VALUES (1,'2011-11-11', 123.5,1),(2,'2012-12-12', 99 ,2);
 
-INSERT INTO MATERIEL VALUES ('1IMMO','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
-('2IMMO','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
-('3IMMO','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
-('4IMMO','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
-('5IMMO','PC3','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,1),
-('6IMMO','Routeur1','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,1),
-('7IMMO','Routeur2','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,1)
+INSERT INTO MATERIEL VALUES ('1IMMO','pc-martine','numeroSerie1','windowsXP','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
+('2IMMO','pc-gertrude','numeroSerie2','windowsXP','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
+('3IMMO','PC1','numeroSerie3','windowsXP','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
+('4IMMO','PC2','numeroSerie4','windowsXP','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
+('5IMMO','PC3','numeroSerie5','windowsXP','2014-02-05','/driver/PC3','XXX5','HS',2,1,3,1),
+('6IMMO','Routeur1','numeroSerie6','2017-02-14','/driver/Routeur1','XXX6','EN_MARCHE',2,1,4,1),
+('7IMMO','Routeur2','numeroSerie7','2012-03-14','/driver/Routeur2','XXX7','EN_PANNE',2,1,4,1)
 
 INSERT INTO LOGICIEL VALUES ('Microsoft Office 2012','1.0','2014-10-01',1)
 
