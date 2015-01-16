@@ -373,7 +373,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddType(ActionEvent event) {
-		Type type = new Type(null, null);
+		Type type = new Type(0,null, null);
 		boolean okClicked = MainApp.showAddTypeDialog(type);
 		if (okClicked) {
 
@@ -461,7 +461,7 @@ public class ParametreController implements Initializable {
 	@FXML
 	private void handleaddComposant(ActionEvent event) {
 		//Pas de type Type, mais de type compose => pas encore cr��
-		Type type = new Type(null, null);
+		Type type = new Type(0,null, null);
 		boolean okClicked = MainApp.showAddComposantDialog(type);
 		if (okClicked) {
 
