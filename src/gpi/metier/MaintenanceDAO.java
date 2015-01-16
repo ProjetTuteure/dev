@@ -47,6 +47,11 @@ public class MaintenanceDAO {
 		}
 	}
 	
+	/**
+	 * Recupere toutes les maintenance
+	 * @return la liste contenant toutes les maintenances de la BD
+	 * @throws ConnexionBDException si la bd n'est pas accessible
+	 */
 	public List<Maintenance> recupererAllMaintenance() throws ConnexionBDException
 	{
 		List<Maintenance> listeARetourner=new ArrayList<Maintenance>();
@@ -84,5 +89,34 @@ public class MaintenanceDAO {
 
 	public Maintenance recupererMaintenanceParId() {
 		return null;
+	}
+	
+	/**
+	 * Récupere une maintenance par objet
+	 * @param objetMaintenance
+	 * @return une liste de maintenance correspondant à l'objet
+	 * @throws ConnexionBDException
+	 */
+	public List<Maintenance> recupererMaintenancesParObjet(String objetMaintenance) throws ConnexionBDException
+	{
+		List<Maintenance> listeMaintenance=new ArrayList<Maintenance>();
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		try {
+			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM MAINTENANCE WHERE objetMaintenance=?");
+			ps.setString(1,objetMaintenance);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				listeMaintenance.add(new Maintenance(rs.getInt("idMaintenance"),
+						LocalDate.parse(rs.getString("dateMaintenance")),
+						rs.getString("objetMaintenance"),
+						rs.getString("descriptionMaintenance"),
+						rs.getFloat("coutMaintenance")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listeMaintenance;
 	}
 }
