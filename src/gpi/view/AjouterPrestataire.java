@@ -78,38 +78,38 @@ public class AjouterPrestataire {
 	@FXML
 	private void handleOk() {
 		try {
-//			if (nomPrestataireField.getText().equals("")) {
-//				new Popup("Le champ \"Nom du prestataire\" doit être saisi");
-//			} else if (nomPrestataireField.getText().length() > Constante.LONGUEUR_NOM_PRESTATAIRE) {
-//				new Popup("Le nom du prestataire saisi doit être inférieur à "
-//						+ Constante.LONGUEUR_NOM_PRESTATAIRE + " caractères");
-//			} else if (prenomPrestataireField.getText().equals("")) {
-//				new Popup("Le champ \"Prenom du prestataire\" doit être saisi");
-//			} else if (prenomPrestataireField.getText().length() > Constante.LONGUEUR_NOM_PRESTATAIRE) {
-//				new Popup(
-//						"Le prenom du prestataire saisi doit être inférieur à "
-//								+ Constante.LONGUEUR_NOM_PRESTATAIRE
-//								+ " caractères");
-//			} else if (telPrestataireField.getText().length() > Constante.LONGUEUR_NUM_TELEPHONE) {
-//				new Popup(
-//						"Le téléphone du prestataire saisi doit être inférieur à "
-//								+ Constante.LONGUEUR_NUM_TELEPHONE
-//								+ " caractères");
-//			} else if (mobilePrestataireField.getText().length() > Constante.LONGUEUR_NUM_MOBILE) {
-//				new Popup(
-//						"Le mobile du prestataire saisi doit être inférieur à "
-//								+ Constante.LONGUEUR_NUM_MOBILE + " caractères");
-//			} else if (faxPrestataireField.getText().length() > Constante.LONGUEUR_NUM_FAX) {
-//				new Popup("Le fax du prestataire saisi doit être inférieur à "
-//						+ Constante.LONGUEUR_NUM_FAX + " caractères");
-//			} else if (emailPrestataireField.getText().length() > Constante.LONGUEUR_MAIL) {
-//				new Popup("L'email du prestataire saisi doit être inférieur à "
-//						+ Constante.LONGUEUR_MAIL + " caractères");
-//			} else if (societePrestataireField.getText().length() > Constante.LONGUEUR_SOCIETE) {
-//				new Popup(
-//						"La societe du prestataire saisi doit être inférieur à "
-//								+ Constante.LONGUEUR_SOCIETE + " caractères");
-//			} else {
+			if (nomPrestataireField.getText().equals("")) {
+				new Popup("Le champ \"Nom du prestataire\" doit être saisi");
+			} else if (nomPrestataireField.getText().length() > Constante.LONGUEUR_NOM_PRESTATAIRE) {
+				new Popup("Le nom du prestataire saisi doit être inférieur à "
+						+ Constante.LONGUEUR_NOM_PRESTATAIRE + " caractères");
+			} else if (prenomPrestataireField.getText().equals("")) {
+				new Popup("Le champ \"Prenom du prestataire\" doit être saisi");
+			} else if (prenomPrestataireField.getText().length() > Constante.LONGUEUR_NOM_PRESTATAIRE) {
+				new Popup(
+						"Le prenom du prestataire saisi doit être inférieur à "
+								+ Constante.LONGUEUR_NOM_PRESTATAIRE
+								+ " caractères");
+			} else if (telPrestataireField.getText().length() > Constante.LONGUEUR_NUM_TELEPHONE) {
+				new Popup(
+						"Le téléphone du prestataire saisi doit être inférieur à "
+								+ Constante.LONGUEUR_NUM_TELEPHONE
+								+ " caractères");
+			} else if (mobilePrestataireField.getText().length() > Constante.LONGUEUR_NUM_MOBILE) {
+				new Popup(
+						"Le mobile du prestataire saisi doit être inférieur à "
+								+ Constante.LONGUEUR_NUM_MOBILE + " caractères");
+			} else if (faxPrestataireField.getText().length() > Constante.LONGUEUR_NUM_FAX) {
+				new Popup("Le fax du prestataire saisi doit être inférieur à "
+						+ Constante.LONGUEUR_NUM_FAX + " caractères");
+			} else if (emailPrestataireField.getText().length() > Constante.LONGUEUR_MAIL) {
+				new Popup("L'email du prestataire saisi doit être inférieur à "
+						+ Constante.LONGUEUR_MAIL + " caractères");
+			} else if (societePrestataireField.getText().length() > Constante.LONGUEUR_SOCIETE) {
+				new Popup(
+						"La societe du prestataire saisi doit être inférieur à "
+								+ Constante.LONGUEUR_SOCIETE + " caractères");
+			} else {
 
 				prestataireDAO.ajouterPrestataire(new Prestataire(0,
 						nomPrestataireField.getText(), prenomPrestataireField
@@ -117,7 +117,7 @@ public class AjouterPrestataire {
 						mobilePrestataireField.getText(), faxPrestataireField
 								.getText(), emailPrestataireField.getText(),
 						societePrestataireField.getText()));
-//			}
+			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
