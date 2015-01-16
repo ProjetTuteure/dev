@@ -27,6 +27,15 @@ public class AjouterRevendeur {
 	private TextField telRevendeur;
 	
 	@FXML
+	private TextField tf_mobileRevendeur;
+	
+	@FXML 
+	private TextField tf_faxRevendeur;
+	
+	@FXML
+	private TextField tf_emailRevendeur;
+	
+	@FXML
 	private TextField adresseRevendeur;
 	
 	RevendeurDAO rdao=new RevendeurDAO();

@@ -30,7 +30,7 @@ CREATE TABLE REVENDEUR(
 	telRevendeur varchar(20),
 	mobileRevendeur  varchar(20),
 	faxRevendeur varchar(20),
-	emailRevendaur varchar(50),
+	emailRevendeur varchar(50),
 	adresseRevendeur varchar(100))
 
 CREATE TABLE FACTURE(
