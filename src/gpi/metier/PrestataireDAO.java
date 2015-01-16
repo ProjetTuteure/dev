@@ -16,7 +16,7 @@ public class PrestataireDAO {
 		try {
 			connection = MaConnexion.getInstance().getConnexion();
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("INSERT INTO PRESTATAIRE(nomPrestataire,prenomPrestataire, telPrestataire, mobilePrestataire, faxPrestataire, emailPrestataire, societePrestataire) VALUES (?,?,?,?);");
+					.prepareStatement("INSERT INTO PRESTATAIRE(nomPrestataire,prenomPrestataire, telPrestataire, mobilePrestataire, faxPrestataire, emailPrestataire, societePrestataire) VALUES (?,?,?,?,?,?,?);");
 
 			preparedStatement.setString(1, prestataire.getNomPrestataire()
 					.getValue());
