@@ -1,14 +1,19 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Constante;
+import utils.Popup;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Composant;
-import gpi.metier.Facture;
-import gpi.metier.Maintenance;
+import gpi.metier.ComposantDAO;
+import gpi.metier.Fabricant;
+import gpi.metier.FabricantDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -38,18 +43,28 @@ public class ModifierComposant {
 	@FXML
 	private ComboBox<String> comboboxfabr;
 
-	private Donnee donnee = new Donnee();
-
 	private ObservableList<String> listnom;
 	private ObservableList<String> listcarac;
 	private ObservableList<String> listfabr;
 
+	private List<Composant> listeNom;
+	private List<Composant> listeCarac;
+	private List<Fabricant> listeFabricant;
+
+	private ComposantDAO composantDAO = new ComposantDAO();
+	private FabricantDAO fabricantDAO = new FabricantDAO();
+
 	@FXML
 	private void initialize() {
 		listnom = FXCollections.observableArrayList();
-
-		for (Composant c : donnee.getComposantData()) {
-			listnom.add(c.getNomComposant());
+		listeNom = new ArrayList<Composant>();
+		try {
+			listeNom = composantDAO.recupererAllComposant();
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		for (Composant composant : listeNom) {
+			listnom.add(composant.getNomComposant());
 		}
 		comboboxnom.setItems(listnom);
 	}
@@ -64,10 +79,50 @@ public class ModifierComposant {
 
 	@FXML
 	private void handleOk() {
+		Fabricant fabricant = null;
+		if (nomfield.getText().equals("")) {
+			new Popup("Le champ \"Nom du composant\" doit être rempli");
+		} else if (nomfield.getText().length() > Constante.LONGUEUR_NOM_COMPOSANT) {
+			new Popup("Le nom du composant doit etre inférieur à "
+					+ Constante.LONGUEUR_NOM_COMPOSANT + " caractères");
+		} else if (caracfield.getText().length() > Constante.LONGUEUR_ADRESSE) {
+			new Popup("Les caractéristiques ne peuvent pas dépasser "
+					+ Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT
+					+ " caractères");
+		} else {
+			try {
 
-		okClicked = true;
-		dialogStage.close();
+				int indexFabricant = comboboxfabr.getSelectionModel()
+						.getSelectedIndex();
+				int indexComposantSelectionne = comboboxcarac
+						.getSelectionModel().getSelectedIndex();
+				Composant composant = listeCarac.get(indexComposantSelectionne);
 
+				composant.setNomComposant(nomfield.getText());
+				composant.setcaracteristiqueComposant(caracfield.getText());
+				if (indexFabricant == -1) {
+					fabricant = listeCarac.get(
+							comboboxcarac.getSelectionModel()
+									.getSelectedIndex())
+							.getFabricantComposant();
+				} else {
+					try {
+						fabricant = fabricantDAO
+								.recupererFabricantParId((listeFabricant.get(
+										indexFabricant).getIdFabricant()
+										.getValue()));
+					} catch (ConnexionBDException e) {
+						new Popup(e.getMessage());
+					}
+				}
+				composant.setFabricantComposant(fabricant);
+
+				composantDAO.modifierComposant(composant);
+			} catch (ConnexionBDException e) {
+				e.printStackTrace();
+			}
+			dialogStage.close();
+		}
 	}
 
 	@FXML
@@ -77,13 +132,21 @@ public class ModifierComposant {
 
 	@FXML
 	private void handlechange1() {
-		choix1 = true;
-		Composant selected = donnee.getComposant(comboboxnom.getValue());
 		listcarac = FXCollections.observableArrayList();
+		listeCarac = new ArrayList<Composant>();
+		int indexComposantSelectionne = comboboxnom.getSelectionModel()
+				.getSelectedIndex();
+		try {
+			listeCarac = composantDAO.recupererComposantParNom((listnom
+					.get(comboboxnom.getSelectionModel().getSelectedIndex())));
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		Composant selected = listeNom.get(indexComposantSelectionne);
 
-		for (Composant c : donnee.getComposantData()) {
-			if (c.getNomComposant().equals(selected.getNomComposant())) {
-				listcarac.add(selected.getFabricantComposant().getNomFabricant().getValue());
+		for (Composant cp : listeCarac) {
+			if (cp.getNomComposant().equals(selected.getNomComposant())) {
+				listcarac.add(cp.getcaracteristiqueComposant());
 			}
 		}
 		comboboxcarac.setItems(listcarac);
@@ -92,23 +155,29 @@ public class ModifierComposant {
 	@FXML
 	private void handlechange2() {
 		try {
-			if (choix1 = true) {
-				listfabr = FXCollections.observableArrayList();
-				String test = comboboxnom.getValue() + " "
-						+ comboboxcarac.getValue();
-				Composant selected2 = donnee.getComposant2(test);
-				nomfield.setText(selected2.getNomComposant());
-				caracfield.setText(selected2.getcaracteristiqueComposant());
-				
-				for (Composant co : donnee.getComposantData()) {
-					listfabr.add(co.getFabricantComposant().getNomFabricant().getValue());
-				}
-				comboboxfabr.setItems(listfabr);
-				comboboxfabr.setPromptText(selected2.getFabricantComposant().getNomFabricant().getValue());
-				
+			listfabr = FXCollections.observableArrayList();
+			listeFabricant = new ArrayList<Fabricant>();
+			try {
+				listeFabricant = fabricantDAO.recupererAllFabricant();
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
 			}
-		} catch (NullPointerException e) {
 
+			int indexComposantSelectionne = comboboxcarac.getSelectionModel()
+					.getSelectedIndex();
+			Composant selected2 = listeCarac.get(indexComposantSelectionne);
+
+			nomfield.setText(selected2.getNomComposant());
+			caracfield.setText(selected2.getcaracteristiqueComposant());
+
+			for (Fabricant fab : listeFabricant) {
+				listfabr.add(fab.getNomFabricant().getValue());
+			}
+
+			comboboxfabr.setItems(listfabr);
+			comboboxfabr.setPromptText(selected2.getFabricantComposant()
+					.getNomFabricant().getValue());
+		} catch (NullPointerException e) {
 		}
 	}
 
