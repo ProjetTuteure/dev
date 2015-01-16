@@ -41,7 +41,7 @@ public class Donnee {
 			.observableArrayList();
 
 	public Donnee() {
-		remplirSiteData();
+		/*remplirSiteData();
 		remplirTypeData();
 		remplirRevendeurData();
 		remplirFabricantData();
@@ -51,7 +51,7 @@ public class Donnee {
 		remplirMaintenanceData();
 		remplirEstMaintenuData();
 		remplirPrestaraireData();
-		remplirComposantData();
+		remplirComposantData();*/
 	}
 
 	public ObservableList<Site> getSiteData() {

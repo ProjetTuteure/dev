@@ -100,7 +100,7 @@ public class AjouterRevendeur {
 	 */
 	public boolean controlerSaisies()
 	{
-		if(!nomRevendeur.getText().isEmpty())
+		if(nomRevendeur.getText().isEmpty())
 		{
 			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 			return false;

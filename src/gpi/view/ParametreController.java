@@ -22,8 +22,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddFabr(ActionEvent event) {
-		Fabricant fabricant = new Fabricant(0, null, null, null);
-		boolean okClicked = MainApp.showAddFabrDialog(fabricant);
+		boolean okClicked = MainApp.showAddFabrDialog(null);
 		if (okClicked) {
 
 		}
@@ -238,8 +237,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddPrest(ActionEvent event) {
-		Prestataire prest = new Prestataire(0, null, null, null, null);
-		boolean okClicked = MainApp.showAddPrestDialog(prest);
+		boolean okClicked = MainApp.showAddPrestDialog(null);
 		if (okClicked) {
 
 		}
@@ -281,8 +279,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddRev(ActionEvent event) {
-		Revendeur rev = new Revendeur(null, null, null, null);
-		boolean okClicked = MainApp.showAddRevDialog(rev);
+		boolean okClicked = MainApp.showAddRevDialog(null);
 		if (okClicked) {
 
 		}
@@ -558,8 +555,7 @@ public class ParametreController implements Initializable {
 	 */
 	@FXML
 	private void handleaddUtilisation(ActionEvent event) {
-		Utilise util = new Utilise(null, null);
-		boolean okClicked = MainApp.showAddUtilisationDialog(util);
+		boolean okClicked = MainApp.showAddUtilisationDialog(null);
 		if (okClicked) {
 
 		}
