@@ -79,7 +79,7 @@ public class SupprimerFabricant {
 	@FXML
 	private void handleOk() {
 		try {
-			fabricantDAO.supprimerFabricant(new Fabricant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()), null, null,null));
+			fabricantDAO.supprimerFabricant(new Fabricant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()),null, null, null, null, null,null));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
