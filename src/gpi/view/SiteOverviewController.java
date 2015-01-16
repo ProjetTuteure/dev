@@ -1,8 +1,12 @@
 package gpi.view;
 
+import utils.Popup;
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -36,7 +40,12 @@ public class SiteOverviewController {
 	 * Constructeur
 	 */
 	public SiteOverviewController() {
-		this.sites = mainApp.donnee.getSiteData();
+		SiteDAO siteDAO = new SiteDAO();
+		try {
+			this.sites = FXCollections.observableArrayList(siteDAO.recupererAllSite());
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		this.gp_site = new GridPane();
 		for (int i = 0; i < sites.size() / 4 + 1; i++) {
 			RowConstraints row = new RowConstraints();
