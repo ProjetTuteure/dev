@@ -169,10 +169,10 @@ public class Donnee {
 	}
 
 	private void remplirTypeData() {
-		typeData.add(new Type("PC", "sources/images/pc.jpg"));
-		typeData.add(new Type("Routeur", "sources/images/routeur.png"));
-		typeData.add(new Type("Switch", "sources/images/switch.jpg"));
-		typeData.add(new Type("Clef 3G", "sources/images/cle3G.PNG"));
+		typeData.add(new Type(0,"PC", "sources/images/pc.jpg"));
+		typeData.add(new Type(1,"Routeur", "sources/images/routeur.png"));
+		typeData.add(new Type(2,"Switch", "sources/images/switch.jpg"));
+		typeData.add(new Type(3,"Clef 3G", "sources/images/cle3G.PNG"));
 	}
 
 	private void remplirSiteData() {

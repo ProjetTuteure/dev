@@ -2,6 +2,7 @@ package gpi.view;
 
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
+import gpi.metier.Fabricant;
 import gpi.metier.Type;
 import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
@@ -17,16 +18,16 @@ import utils.Popup;
 
 import javax.swing.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kevin
  */
 
 public class ModifierType {
-	private String nomType;
+	private int idType;
 	private String cheminImageType;
-
-
 
 	@FXML
 	private Stage dialogStage;
@@ -38,25 +39,28 @@ public class ModifierType {
 
 	TypeDAO typeDAO=new TypeDAO();
 
-	private ObservableList<String> listNom;
+	private ObservableList<String> listNomFabricant;
+	private List<Integer> listIdFabricant;
 
 	@FXML
-	private TextField typefield;
+	private TextField typeField;
 
 	/**
 	 * Initialise les donn�es Ajoute les donn�es aux combobox
 	 */
 	@FXML
 	private void initialize() {
-		listNom = FXCollections.observableArrayList();
+		listNomFabricant = FXCollections.observableArrayList();
+		listIdFabricant=new ArrayList<Integer>();
 		try {
 			for (Type type : typeDAO.recupererAllType()) {
-                listNom.add(type.getNomTypeString());
+                listNomFabricant.add(type.getNomTypeString());
+				listIdFabricant.add(type.getIdType());
             }
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		comboboxTypeMod.setItems(listNom);
+		comboboxTypeMod.setItems(listNomFabricant);
 	}
 
 	/**
@@ -84,12 +88,9 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handleOk() {
-
 		okClicked = true;
-		System.out.println(comboboxTypeMod.getValue());
-		System.out.println(typefield.getCharacters());
 		try {
-			typeDAO.modifierType(new Type("Routeur",this.getCheminImageType()));
+			typeDAO.modifierType(new Type(this.getIdType(),typeField.getText(),this.getCheminImageType()));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
@@ -133,21 +134,23 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handlechange() {
-		Type selected = null;
+		this.setIdType(listIdFabricant.get(comboboxTypeMod.getSelectionModel().getSelectedIndex()));
+		Type selected= null;
 		try {
-			selected = typeDAO.recupererTypeParId(comboboxTypeMod.getValue());
+			selected = typeDAO.recupererTypeParId(this.getIdType());
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		typefield.setText(selected.getNomType().getValue());
+		typeField.setText(selected.getNomTypeString());
+
 	}
 
-	public String getNomType() {
-		return nomType;
+	public int getIdType() {
+		return idType;
 	}
 
-	public void setNomType(String nomType) {
-		this.nomType = nomType;
+	public void setIdType(int idType) {
+		this.idType = idType;
 	}
 
 	public String getCheminImageType() {
