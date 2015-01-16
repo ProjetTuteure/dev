@@ -43,7 +43,7 @@ public class ComposantDAO {
 		}
 	}
 
-	public void suprimerComposant(Composant composant)
+	public boolean supprimerComposant(Composant composant)
 			throws ConnexionBDException {
 
 		Connection connexion = MaConnexion.getInstance().getConnexion();
@@ -60,8 +60,10 @@ public class ComposantDAO {
 				connexion.close();
 			} catch (SQLException se) {
 				se.printStackTrace();
+				return false;
 			}
 		}
+		return true;
 	}
 
 	public void modifierComposant(Composant composant)
