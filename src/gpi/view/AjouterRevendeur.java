@@ -1,5 +1,7 @@
 package gpi.view;
 
+import java.sql.SQLException;
+
 import utils.Constante;
 import utils.Popup;
 import gpi.exception.ConnexionBDException;
@@ -22,10 +24,10 @@ public class AjouterRevendeur {
 	private boolean okClicked = false;
 
 	@FXML
-	private TextField nomRevendeur;
+	private TextField tf_nomRevendeur;
 	
 	@FXML
-	private TextField telRevendeur;
+	private TextField tf_telRevendeur;
 	
 	@FXML
 	private TextField tf_mobileRevendeur;
@@ -37,7 +39,7 @@ public class AjouterRevendeur {
 	private TextField tf_emailRevendeur;
 	
 	@FXML
-	private TextField adresseRevendeur;
+	private TextField tf_adresseRevendeur;
 	
 	RevendeurDAO rdao=new RevendeurDAO();
 	/**
@@ -74,19 +76,12 @@ public class AjouterRevendeur {
 	private void handleOk() {
 		if(controlerSaisies()==true)
 		{
-			System.out.println("nomRevendeur "+nomRevendeur.getText());
-			System.out.println("telRevendeur "+telRevendeur.getText());
-			System.out.println("tf_mobileRevendeur "+tf_mobileRevendeur.getText());
-			System.out.println("tf_faxRevendeur "+tf_faxRevendeur.getText());
-			System.out.println("tf_emailRevendeur "+tf_emailRevendeur.getText());
-			System.out.println("adresseRevendeur "+adresseRevendeur.getText());
-			Revendeur revendeurAAjouter=new Revendeur(new SimpleIntegerProperty(0),nomRevendeur.getText(),
-					telRevendeur.getText(),
+			Revendeur revendeurAAjouter=new Revendeur(new SimpleIntegerProperty(0),tf_nomRevendeur.getText(),
+					tf_telRevendeur.getText(),
 					tf_mobileRevendeur.getText(),
 					tf_faxRevendeur.getText(),
 					tf_emailRevendeur.getText(),
-					adresseRevendeur.getText());
-			System.out.println(revendeurAAjouter);
+					tf_adresseRevendeur.getText());
 			try
 			{
 				rdao.ajouterRevendeur(revendeurAAjouter);
@@ -107,17 +102,17 @@ public class AjouterRevendeur {
 	 */
 	public boolean controlerSaisies()
 	{
-		if(nomRevendeur.getText().isEmpty())
+		if(tf_nomRevendeur.getText().isEmpty())
 		{
 			new Popup("Le champ \"Nom du revendeur\" doit être saisi");
 			return false;
 		}
-		if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		if(tf_nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
 		{
 			new Popup("La longueur du nom du revendeur doit être inférieur à "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
 			return false;
 		}
-		if(telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
+		if(tf_telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
 		{
 			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
 			return false;
@@ -137,12 +132,12 @@ public class AjouterRevendeur {
 			new Popup("Le mail saisi doit contenir "+Constante.LONGUEUR_MAIL+" caractères");
 			return false;
 		}
-		if(adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
+		if(tf_adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
 		{
 			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
 			return false;
 		}
-		if(nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
+		if(tf_nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR)
 		{
 			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
 			return false;

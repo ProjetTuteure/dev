@@ -129,6 +129,14 @@ public class Revendeur {
     }
     
     /**
+     * Setter du fax du revendeur
+     * @param faxRevendeur le numéro de fax du revendeur à setter
+     */
+    public void setFaxRevendeur(String faxRevendeur)
+    {
+    	this.faxRevendeur.setValue(faxRevendeur);
+    }
+    /**
      * Setter du mail revendeur
      * @param emailRevendeur l'email du revendeur à setter
      */

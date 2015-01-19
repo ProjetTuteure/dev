@@ -51,7 +51,7 @@ public class SupprimerRevendeur {
 		}
 		for(Revendeur revendeur : listeRevendeur)
 		{
-			listrev.add(revendeur.getNomRevendeur().getValue());
+			listrev.add(revendeur.getIdRevendeur().getValue()+"- "+revendeur.getNomRevendeur().getValue());
 		}
 		comboboxrev.setItems(listrev);
 	}
