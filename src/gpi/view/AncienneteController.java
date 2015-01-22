@@ -13,6 +13,9 @@ import gpi.metier.SiteDAO;
 import gpi.metier.Type;
 import gpi.metier.Materiel;
 import gpi.metier.TypeDAO;
+import gpi.metier.UtiliseDAO;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +59,7 @@ public class AncienneteController implements Initializable {
 	@FXML
 	private TableColumn<Materiel, String> numSerieMateriel;
 	@FXML
-	private TableColumn<Materiel, String> SEMateriel;
+	private TableColumn<Materiel, String> dernierUtilisateurMateriel;
 	
 	ObservableList<Materiel> listMateriel;
 	ObservableList<String> listSite;
@@ -155,6 +158,7 @@ public class AncienneteController implements Initializable {
 	 * @param materiel la liste des materiels que l'on ajoute.
 	 */
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
+		UtiliseDAO utiliseDAO = new UtiliseDAO();
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
 		numSerieMateriel.setCellValueFactory(cellData -> cellData.getValue().getNumeroSerieMateriel());
@@ -163,12 +167,21 @@ public class AncienneteController implements Initializable {
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
 		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeurFacture().getNomRevendeur());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
-		SEMateriel.setCellValueFactory(cellData -> cellData.getValue().getSystemeExploitationMateriel());
+		dernierUtilisateurMateriel.setCellValueFactory(cellData -> new SimpleStringProperty(utiliseDAO.recupererNomDernierUtilisateurMachine(cellData.getValue().getIdMateriel().getValue())));
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
 	}
 	
 	
-	
+//	private StringProperty getDernierUtilisateur(Integer idMateriel){
+//		UtiliseDAO utiliseDAO = new UtiliseDAO();
+//		StringProperty nomDernierUtilisateur;
+//		nomDernierUtilisateur=new SimpleStringProperty(utiliseDAO.recupererNomDernierUtilisateurMachine(idMateriel));
+//		if(nomDernierUtilisateur.getValue()==""){
+//			nomDernierUtilisateur=new SimpleStringProperty("Aucun utilisateur");
+//		}
+//		return nomDernierUtilisateur;
+//	}
+
 	/**
 	 * Permet de restreindre l'affichage des donn�es dans la TableView en fonction des crit�res
 	 * s�lectionn�s dans les combobox
