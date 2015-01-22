@@ -1,8 +1,24 @@
 package gpi.view;
 
+import gpi.exception.ConnexionBDException;
+import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
+import gpi.metier.Utilisateur;
+import gpi.metier.UtilisateurDAO;
+import gpi.metier.Utilise;
+import gpi.metier.UtiliseDAO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.plaf.ListUI;
+
+import utils.Popup;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
 /**
@@ -17,21 +33,42 @@ public class AjouterUtilisation {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> comboboxnom;
+	private ComboBox<String> ComboboxNomUtilisateur;
 	@FXML
-	private ComboBox<String> comboboxprenom;
+	private DatePicker dateDebutUtilisation;
 	@FXML
-	private ComboBox<String> comboboxmat;
+	private ComboBox<String> ComboboxMateriel;
 	
-	private ObservableList<String> listnom;
-	private ObservableList<String> listmat;
-	private ObservableList<String> listprenom;
+	private ObservableList<String> listNomUtilisateur;
+	private List<Integer> listIdUtilisateur;
+	private ObservableList<String> listNomMateriel;
+	private List<Integer> listIdMateriel;
 	/**
 	 * Initialise les données
 	 */
 	@FXML
 	private void initialize() {
-
+		UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+		MaterielDAO materielDAO = new MaterielDAO();
+		listNomUtilisateur = FXCollections.observableArrayList();
+		listIdUtilisateur = new ArrayList<Integer>();
+		listNomMateriel = FXCollections.observableArrayList();
+		listIdMateriel = new ArrayList<Integer>();
+		
+		try{
+			for(Utilisateur utilisateur : utilisateurDAO.recupererAllUtilisateur()){
+				listNomUtilisateur.add(utilisateur.getNomUtilisateur().getValue()+" "+utilisateur.getPrenomUtilisateur().getValue());
+				listIdUtilisateur.add(utilisateur.getIdUtilisateur().intValue());
+			}
+			for(Materiel materiel : materielDAO.recupererAllMateriel()){
+				listNomMateriel.add(materiel.getNomMateriel().getValue());
+				listIdMateriel.add(materiel.getIdMateriel().intValue());	
+			}
+		}catch(ConnexionBDException e){
+			new Popup(e.getMessage());
+		}
+		ComboboxNomUtilisateur.setItems(listNomUtilisateur);
+		ComboboxMateriel.setItems(listNomMateriel);
 	}
 
 	/**
@@ -59,7 +96,16 @@ public class AjouterUtilisation {
 	 */
 	@FXML
 	private void handleOk() {
-
+		UtiliseDAO utiliseDAO = new UtiliseDAO();
+		MaterielDAO materielDAO = new MaterielDAO();
+		UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+		int indexUtilisateur = ComboboxNomUtilisateur.getSelectionModel().getSelectedIndex();
+		int indexMateriel = ComboboxMateriel.getSelectionModel().getSelectedIndex();
+		try{
+			utiliseDAO.ajouterUtilise(new Utilise(dateDebutUtilisation.getValue(),utilisateurDAO.recupererUtilisateurParId(listIdUtilisateur.get(indexUtilisateur)), materielDAO.recupererMaterielParId(listIdMateriel.get(indexMateriel))));
+		}catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
