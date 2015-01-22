@@ -11,6 +11,8 @@ import java.lang.ProcessBuilder.Redirect;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ping.Ping;
+import ping.PingWindows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,7 +30,7 @@ import javafx.scene.text.Text;
  * @author Victor
  *
  */
-public class DetailMachineController implements Initializable{
+public class DetailMachineController{
 
 	@FXML
 	private Text textSiteNomMachine;
@@ -51,6 +53,7 @@ public class DetailMachineController implements Initializable{
 	@FXML
 	private ImageView imageType;
 	
+	private Materiel materiel;
 	private int index=0;
 	
 	public DetailMachineController() {
@@ -60,8 +63,8 @@ public class DetailMachineController implements Initializable{
 	 * Initialise les donnï¿½es et affecte l'index en fonction de la page
 	 * courante
 	 */
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	@FXML
+	public void initialize() {
 		switch(MainApp.getActiveTab()){
 			case 0:
 				index=2;
@@ -77,10 +80,38 @@ public class DetailMachineController implements Initializable{
 				index=11;
 				break;
 		}
-		Materiel materiel=(Materiel)MainApp.getCritere(index);
+		materiel=(Materiel)MainApp.getCritere(index);
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
-		ping(materiel);
+		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
+		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
+		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
+		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
+		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
+		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
+		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
+		//Condition si ordinateur ou non à rajouter
+		PingWindows pingWindows=new PingWindows(materiel);
+		Thread threadPing=new Thread(pingWindows);
+		threadPing.start();
+		synchronized(pingWindows)
+		{
+			try {
+				pingWindows.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(pingWindows.getResultatPing()==true)
+			{
+				colorCircle.setFill(Color.GREEN);
+			}
+			else
+			{
+				colorCircle.setFill(Color.ORANGE);
+			}
+		}
+		
 		/*switch(materiel.getEtatMateriel().toString()){
 			case "EN_MARCHE":
 				colorCircle.setFill(Color.GREEN);
@@ -94,13 +125,6 @@ public class DetailMachineController implements Initializable{
 				colorCircle.setFill(Color.ORANGE);
 				break;
 		}*/
-		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
-		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
-		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
-		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
-		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
-		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
-		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 	}
 
 	/**
@@ -232,28 +256,4 @@ public class DetailMachineController implements Initializable{
 			break;
 		}
     }
-	
-	/**
-	 * Réalise un ping après appui sur le bouton
-	 * @Param ping sur le matériel
-	 */
-	private void ping(Materiel materiel)
-	{
-		try {  
-			ProcessBuilder pb=new ProcessBuilder("cmd.exe","/c","ping",materiel.getNomMateriel().getValue());
-			Process p=pb.start();
-	        int exitValue = p.waitFor();
-	        if(exitValue==0)
-	        {
-	        	colorCircle.setFill(Color.GREEN);
-	        }
-	        else
-	        {
-	        	colorCircle.setFill(Color.ORANGE);
-	        }
-	        System.out.println("Exit Value is " + exitValue);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} 
-	}
 }
