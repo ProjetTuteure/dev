@@ -2,8 +2,11 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
+import gpi.metier.SiteDAO;
 import gpi.metier.Type;
+import gpi.metier.TypeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +17,16 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 
+
+
+
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import utils.Popup;
 
 /**
  * Created by Julien on 13/12/2014.
@@ -46,40 +55,74 @@ public class AvanceController implements Initializable {
     @FXML
     private TextField modele;
 
-    private Donnee donnee=new Donnee();
+    private SiteDAO siteDAO = new SiteDAO();
+    private TypeDAO typeDAO = new TypeDAO();
 
-    ObservableList<Site> list1 = donnee.getSiteData();
-    ObservableList<String> list2 = FXCollections.observableArrayList(
-            "moins d'un ans", "moins de deux ans", "moins de trois ans",
-            "moins de quattre ans", "moins de cinq ans", "moins de six ans",
-            "moins de sept ans", "plus de sept ans");
-    ObservableList<Type> list3 = donnee.getTypeData();
+    ObservableList<String> listNomSite;
+    List<Integer> listIdSite;
+    ObservableList<String> listAnciennete;
+    int listNumAnciennete[] = {1,2,3,4,5,6,7,8};
+    ObservableList<String> listNomType;
+    List<Integer> listIdType;
 
     /**
      * Initialise les combobox
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        comboboxSiteAvanceOverview.setItems(getNomSite(list1));
-        comboboxAncienneteAvanceOverview.setItems(list2);
-        comboboxTypeAvanceOverview.setItems(getNomType(list3));
+  
+    	listAnciennete = FXCollections.observableArrayList(
+                "moins d'un ans", "moins de deux ans", "moins de trois ans",
+                "moins de quattre ans", "moins de cinq ans", "moins de six ans",
+                "moins de sept ans", "plus de sept ans");
+    	listIdSite=new ArrayList<Integer>();
+    	listNomSite=FXCollections.observableArrayList();
+    	try {
+			for (Site site : siteDAO.recupererAllSite()) {
+				listNomSite.add(site.getNomSiteString());
+				listIdSite.add(site.getIdSite());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+    	listIdType=new ArrayList<Integer>();
+    	listNomType=FXCollections.observableArrayList();
+    	try {
+			for (Type type : typeDAO.recupererAllType()) {
+				listNomType.add(type.getNomTypeString());
+				listIdType.add(type.getIdType());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+        comboboxSiteAvanceOverview.setItems(listNomSite);
+        comboboxAncienneteAvanceOverview.setItems(listAnciennete);
+        comboboxTypeAvanceOverview.setItems(listNomType);
     }
 
     /**
-     * Permet d'afficher les r�sultats de la recherche avanc�e.
+     * Permet d'afficher les resultats de la recherche avanc�e.
      * @param event
      */
     @FXML
     private void goToScreen2(ActionEvent event) {
         MainApp.setCritere(noImmobilisation.getText());
         MainApp.setCritere(nomMateriel.getText());
-        MainApp.setCritere(comboboxSiteAvanceOverview.getValue());
-        if (comboboxAncienneteAvanceOverview.getValue()==null){
+        if(comboboxSiteAvanceOverview.getSelectionModel().getSelectedIndex()==-1){
+        	MainApp.setCritere("");
+        }else{
+        	MainApp.setCritere(listIdSite.get(comboboxSiteAvanceOverview.getSelectionModel().getSelectedIndex()));
+        }        
+        if (comboboxAncienneteAvanceOverview.getSelectionModel().getSelectedIndex()==-1){
             MainApp.setCritere("");
         }else{
-            MainApp.setCritere(comboboxAncienneteAvanceOverview.getValue());
+            MainApp.setCritere(listNumAnciennete[comboboxAncienneteAvanceOverview.getSelectionModel().getSelectedIndex()]);
         }
-        MainApp.setCritere(comboboxTypeAvanceOverview.getValue());
+        if(comboboxTypeAvanceOverview.getSelectionModel().getSelectedIndex()==-1){
+        	MainApp.setCritere("");
+        }else{
+            MainApp.setCritere(listIdType.get(comboboxTypeAvanceOverview.getSelectionModel().getSelectedIndex()));
+        }
         MainApp.setCritere(utilisateur.getText());
         MainApp.setCritere(dateAchat.getText());
         MainApp.setCritere(noFacture.getText());
@@ -87,31 +130,5 @@ public class AvanceController implements Initializable {
         MainApp.setCritere(fabriquant.getText());
         MainApp.setCritere(modele.getText());
         MainApp.changerTab("ResultatAvance");
-    }
-
-    /**
-     * Permet de r�cup�rer les sites et les ajouter les noms des sites dans une liste
-     * @param sites la liste de sites 
-     * @return la liste compos�e des noms des sites pass�s en param�tre
-     */
-    public ObservableList<String> getNomSite(List<Site> sites){
-        ObservableList<String> list=FXCollections.observableArrayList();
-        for(Site site:sites){
-            list.add(site.getNomSiteString());
-        }
-        return list;
-    }
-
-    /**
-     * Permet de r�cup�rer les sites et les ajouter les noms des sites dans une liste
-     * @param types la liste de types
-     * @return la liste des noms des types pass�s en param�tre
-     */
-    public ObservableList<String> getNomType(List<Type> types){
-        ObservableList<String> list=FXCollections.observableArrayList();
-        for(Type type:types){
-            list.add(type.getNomType().getValue());
-        }
-        return list;
     }
 }
