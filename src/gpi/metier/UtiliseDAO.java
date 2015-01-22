@@ -25,12 +25,12 @@ public class UtiliseDAO {
 		try {
 			connexion = MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connexion
-					.prepareStatement("INSERT INTO UTILISE (dateUtilise idUtilisateur, idMateriel)  VALUES (?,?,?);");
+					.prepareStatement("INSERT INTO UTILISE (dateUtilise, idUtilisateur, idMateriel)  VALUES (?,?,?);");
 
 			prep.setString(1,utilise.getDateUtiliseStringProperty().getValue());
 			prep.setInt(2, utilise.getUtilisateurUtilise().getIdUtilisateur()
 					.getValue());
-			prep.setInt(2, utilise.getMaterielUtilise().getIdMateriel()
+			prep.setInt(3, utilise.getMaterielUtilise().getIdMateriel()
 					.getValue());
 			resultat = prep.executeUpdate();
 			return resultat;
