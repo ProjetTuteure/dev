@@ -86,13 +86,13 @@ public class AjouterEstMaintenu {
 		EstMaintenuDAO estMaintenuDAO=new EstMaintenuDAO();
 		MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 		MaterielDAO materielDAO=new MaterielDAO();
-		try {
+		/*try {
 			Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId();
 			Materiel materiel=materielDAO.recupererMaterielParId(0);
 			estMaintenuDAO.ajouterEstMaintenu(new EstMaintenu(maintenance,materiel));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
-		}
+		}*/
 		okClicked = true;
 		dialogStage.close();
 
