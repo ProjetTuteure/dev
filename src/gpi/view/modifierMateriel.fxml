@@ -30,7 +30,7 @@
             <Separator prefWidth="200.0" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="200.0" text="N° d'immo du materiel à modif" />
-            <ComboBox fx:id="comboboxImmobMateriel" maxWidth="160.0" minWidth="160.0" onAction="#handlechange" prefWidth="160.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboboxIdMateriel" maxWidth="160.0" minWidth="160.0" onAction="#handlechange" prefWidth="160.0" GridPane.columnIndex="1" />
             <ComboBox fx:id="comboboxTypeMateriel" maxWidth="160.0" minWidth="160.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label text="Numero de serie" GridPane.rowIndex="4" />
             <Label text="Système d'exploitation" GridPane.rowIndex="5" />

@@ -25,7 +25,7 @@ public class SupprimerMateriel {
 	@FXML
 	private ComboBox<String> comboboxMateriel;
 
-	private Donnee donneesite = new Donnee();
+	private MaterielDAO materielDAO=new MaterielDAO();
 
 	private ObservableList<String> listMateriel;
 
@@ -36,8 +36,12 @@ public class SupprimerMateriel {
 	private void initialize() {
 		listMateriel = FXCollections.observableArrayList();
 
-		for (Materiel materiel : donneesite.getMaterielData()) {
-			listMateriel.add(materiel.getIdMateriel().getValue()+"- "+materiel.getNomMateriel().getValue());
+		try {
+			for (Materiel materiel : materielDAO.recupererAllMateriel()) {
+				listMateriel.add(materiel.getIdMateriel().getValue()+"- "+materiel.getNomMateriel().getValue());
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		comboboxMateriel.setItems(listMateriel);
 	}

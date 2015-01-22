@@ -86,23 +86,15 @@ public class MaterielDAO {
 					.setString(2, materiel.getNomMateriel().getValue());
 			preparedStatement.setString(3, materiel.getNumeroSerieMateriel()
 					.getValue());
-			preparedStatement.setString(4, materiel
-					.getSystemeExploitationMateriel().getValue());
-			preparedStatement.setString(5, materiel.getDateExpirationGarantie()
-					.toString());
-			preparedStatement.setString(6, materiel
-					.getRepertoireDriverMateriel().getValue());
+			preparedStatement.setString(4, materiel	.getSystemeExploitationMateriel().getValue());
+			preparedStatement.setString(5, materiel.getDateExpirationGarantieMaterielStringProperty().getValue());
+			preparedStatement.setString(6, materiel.getRepertoireDriverMateriel().getValue());
 			preparedStatement.setString(7, materiel.getModeleMateriel());
-			preparedStatement.setString(8, materiel.getEtatMateriel()
-					.toString());
-			preparedStatement.setString(9, materiel.getFactureMateriel()
-					.getNumFacture());
-			preparedStatement.setInt(10, materiel.getFabricantMateriel()
-					.getIdFabricant().getValue());
-			preparedStatement.setInt(11, materiel.getSiteMateriel()
-					.getIdSiteProperty().getValue());
-			preparedStatement.setString(12, materiel.getTypeMateriel()
-					.getNomType().getValue());
+			preparedStatement.setString(8, materiel.getEtatMateriel().toString());
+			preparedStatement.setString(9, materiel.getFactureMateriel().getNumFacture());
+			preparedStatement.setInt(10, materiel.getFabricantMateriel().getIdFabricant().getValue());
+			preparedStatement.setInt(11, materiel.getSiteMateriel().getIdSiteProperty().getValue());
+			preparedStatement.setInt(12, materiel.getTypeMateriel().getIdType());
 			preparedStatement.setInt(13, materiel.getIdMateriel().getValue());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -245,6 +237,11 @@ public class MaterielDAO {
 			}
 		}
 		return listMateriel;
+	}
+	
+	public List<Materiel> recupererRechercheAvanceeMateriel(){
+		
+		return null;
 	}
 
 }
