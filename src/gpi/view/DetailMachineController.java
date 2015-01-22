@@ -49,8 +49,6 @@ public class DetailMachineController implements Initializable{
 	@FXML
 	private ListView<String> listViewUtilisateur;
 	@FXML
-	private Button b_ping;
-	@FXML
 	private ImageView imageType;
 	
 	private int index=0;
@@ -82,9 +80,10 @@ public class DetailMachineController implements Initializable{
 		Materiel materiel=(Materiel)MainApp.getCritere(index);
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
-		switch(materiel.getEtatMateriel().toString()){
+		ping(materiel);
+		/*switch(materiel.getEtatMateriel().toString()){
 			case "EN_MARCHE":
-				colorCircle.setFill(Color.GREEN);;
+				colorCircle.setFill(Color.GREEN);
 				break;
 				
 			case "HS":
@@ -92,9 +91,9 @@ public class DetailMachineController implements Initializable{
 				break;
 			
 			case "EN_PANNE":
-				colorCircle.setFill(Color.ORANGE);;
+				colorCircle.setFill(Color.ORANGE);
 				break;
-		}
+		}*/
 		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
 		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
 		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
@@ -234,20 +233,25 @@ public class DetailMachineController implements Initializable{
 		}
     }
 	
-	public void handlePing()
+	/**
+	 * Réalise un ping après appui sur le bouton
+	 * @Param ping sur le matériel
+	 */
+	private void ping(Materiel materiel)
 	{
 		try {  
-			Materiel materiel=(Materiel)MainApp.getCritere(index);
-			ProcessBuilder pb=new ProcessBuilder("cmd.exe","/c","start","ping","8.8.8.8");
+			ProcessBuilder pb=new ProcessBuilder("cmd.exe","/c","ping",materiel.getNomMateriel().getValue());
 			Process p=pb.start();
-			InputStream is = p.getInputStream(); 
-		    InputStreamReader isr = new InputStreamReader(is);
-		    BufferedReader br = new BufferedReader(isr);
-		    String ligne; 
-		    while (( ligne = br.readLine()) != null) { 
-				  System.out.println("coucou");
-				  System.out.println(ligne);
-		    }
+	        int exitValue = p.waitFor();
+	        if(exitValue==0)
+	        {
+	        	colorCircle.setFill(Color.GREEN);
+	        }
+	        else
+	        {
+	        	colorCircle.setFill(Color.ORANGE);
+	        }
+	        System.out.println("Exit Value is " + exitValue);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} 

@@ -21,7 +21,6 @@
                   <Circle fx:id="colorCircle" fill="#0f8a2a" layoutX="245.0" layoutY="43.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                   <Button layoutX="629.0" layoutY="118.0" mnemonicParsing="false" text="Imprimer Rapport(s)" />
                   <Button layoutX="665.0" layoutY="82.0" mnemonicParsing="false" onAction="#goBack" text="Retour" />
-                  <Button fx:id="b_ping" layoutX="671.0" layoutY="46.0" mnemonicParsing="false" onAction="#handlePing" text="Ping" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="798.0">
