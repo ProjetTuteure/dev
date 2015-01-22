@@ -81,7 +81,7 @@ public class SupprimerPrestataire {
 	@FXML
 	private void handleOk() {
 		try {
-			prestataireDAO.supprimerPrestataire(new Prestataire(listIdPrestataire.get(comboboxPrenomPrestataire.getSelectionModel().getSelectedIndex()), null, null,null,null));
+			prestataireDAO.supprimerPrestataire(new Prestataire(listIdPrestataire.get(comboboxPrenomPrestataire.getSelectionModel().getSelectedIndex()), null, null,null,null,null,null,null));
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}

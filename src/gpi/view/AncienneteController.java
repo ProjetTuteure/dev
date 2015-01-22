@@ -157,13 +157,13 @@ public class AncienneteController implements Initializable {
 	public void setItemsTableMateriel(ObservableList<Materiel> materiel){
 		materielTable.setItems(materiel);
 		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
-		//numSerieMateriel.setCellValueFactory(cellData -> cellData.getValue().getN)
-		//dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getDateFacStringProperty());
+		numSerieMateriel.setCellValueFactory(cellData -> cellData.getValue().getNumeroSerieMateriel());
+		dateAchatMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getDateFacStringProperty());
 		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatMaterielStringProperty());
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
-		//revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeurFacture().getNomRevendeur());
+		revendeurMateriel.setCellValueFactory(cellData -> cellData.getValue().getFactureMateriel().getRevendeurFacture().getNomRevendeur());
 		fabricantMateriel.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
-		//SEMateriel.setCellValueFactory(cellData -> cellData.getValue().);
+		SEMateriel.setCellValueFactory(cellData -> cellData.getValue().getSystemeExploitationMateriel());
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
 	}
 	

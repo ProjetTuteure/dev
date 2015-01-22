@@ -70,7 +70,7 @@ public class SupprimerMateriel {
 		String[] listStrings =comboboxMateriel.getValue().split("-");
 		MaterielDAO materielDAO=new MaterielDAO();
 		try {
-			materielDAO.supprimerMateriel(new Materiel(Integer.parseInt(listStrings[0]), null, null, null, null, null, null, null, null, null, null));
+			materielDAO.supprimerMateriel(new Materiel(Integer.parseInt(listStrings[0]), null, null, null, null, null, null, null, null, null, null,null,null));
 		} catch (NumberFormatException e) {
 			new Popup("L'id du materiel doit être un entier");
 		} catch (ConnexionBDException e) {
