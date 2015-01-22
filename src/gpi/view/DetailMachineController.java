@@ -3,6 +3,11 @@ package gpi.view;
 import gpi.MainApp;
 import gpi.metier.*;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.ProcessBuilder.Redirect;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -233,12 +238,18 @@ public class DetailMachineController implements Initializable{
 	{
 		try {  
 			Materiel materiel=(Materiel)MainApp.getCritere(index);
-			String command = "ping 8.8.8.8";
-			ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", command);
-			Process p = pb.start(); 
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			} 
-		System.out.println("coucou");
+			ProcessBuilder pb=new ProcessBuilder("cmd.exe","/c","start","ping","8.8.8.8");
+			Process p=pb.start();
+			InputStream is = p.getInputStream(); 
+		    InputStreamReader isr = new InputStreamReader(is);
+		    BufferedReader br = new BufferedReader(isr);
+		    String ligne; 
+		    while (( ligne = br.readLine()) != null) { 
+				  System.out.println("coucou");
+				  System.out.println(ligne);
+		    }
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} 
 	}
 }
