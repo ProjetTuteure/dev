@@ -20,14 +20,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 import utils.Popup;
 
@@ -119,8 +122,11 @@ public class AncienneteController implements Initializable {
 		});
 		
 		materielTable.setOnMouseClicked((event) -> {
-			MainApp.setCritere(materielTable.getSelectionModel().getSelectedItem());
-			MainApp.changerTab("DetailMachine");
+			Materiel mat = materielTable.getSelectionModel().getSelectedItem();   
+			if (mat != null){
+				MainApp.setCritere(mat);
+				MainApp.changerTab("DetailMachine");
+			}
 		});
 	}
 	
