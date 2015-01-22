@@ -2,13 +2,20 @@ package gpi.view;
 
 import gpi.MainApp;
 import gpi.bd.Donnee;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.Etat;
 import gpi.metier.Materiel;
+import gpi.metier.MaterielDAO;
+import gpi.metier.SiteDAO;
+import gpi.metier.TypeDAO;
 
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -46,20 +53,27 @@ public class EtatController implements Initializable{
 	@FXML
 	private TableColumn<Materiel, String> etatDepuisDateMateriel;
 
+
 	
-	private MainApp mainApp;
-	
+	private MaterielDAO materielDAO;
+	private List<Materiel> listMateriel;
+	private ObservableList<Object> materiel;
 	public EtatController() {
     }
 	
 	/**
-	 * Initialise les donn�es  et ajoute les �v�nements aux diff�rents composants
+	 * Initialise les donnees et ajoute les evenements aux differents composants
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		MainApp.donnee = new Donnee();
-		ObservableList<Materiel> materiel=this.mainApp.donnee.getMaterielData();
+		materielDAO = new MaterielDAO();
+		listMateriel = null;
+		try {
+			listMateriel = this.materielDAO.recupererAllMateriel();
+		} catch (ConnexionBDException e) {
+			e.printStackTrace();
+		}
+		final ObservableList<Materiel> materiel = FXCollections.observableArrayList(listMateriel);
 		this.addDonneeTableView(materiel);
 		
 		checkBoxEnService.setOnAction((event) -> {
@@ -81,8 +95,8 @@ public class EtatController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les donn�es � la TableView suite aux checkBox coch�es
-	 * @param materiel la liste de materiel � ajouter � la TableView
+	 * Ajoute les donnees a la TableView suite aux checkBox cochees
+	 * @param materiel la liste de materiel a ajouter a la TableView
 	 */
 	public void actionOnCheckBox(ObservableList<Materiel> materiel){
 		boolean checkEnService=checkBoxEnService.selectedProperty().getValue();

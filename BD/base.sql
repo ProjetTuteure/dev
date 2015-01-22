@@ -61,6 +61,7 @@ CREATE TABLE MATERIEL(
 	repertoireDrivers varchar(30),
 	modeleMateriel varchar(20),
 	etat varchar(20),
+	dateModifierEtat DATETIME DEFAULT GETDATE(),
 	idFacture int FOREIGN KEY REFERENCES FACTURE(idFacture),
 	idFabricant int FOREIGN KEY REFERENCES FABRICANT(idFabricant),
 	idSite int FOREIGN KEY REFERENCES SITE(idSite),
