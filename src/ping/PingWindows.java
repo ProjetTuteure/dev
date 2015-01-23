@@ -2,6 +2,7 @@ package ping;
 
 import javafx.scene.paint.Color;
 import gpi.metier.Materiel;
+import gpi.view.DetailMachineController;
 
 public class PingWindows implements Ping,Runnable {
 	
@@ -28,12 +29,12 @@ public class PingWindows implements Ping,Runnable {
 	        if(exitValue==0)
 	        {
 	        	this.resultatPing=true;
-	        	this.notify();
+	        	this.notifyAll();
 	        }
 	        else
 	        {
 	        	this.resultatPing=false;
-	        	this.notify();
+	        	this.notifyAll();
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();

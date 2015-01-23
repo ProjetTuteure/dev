@@ -11,6 +11,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ping.ChangerCouleurPastille;
 import ping.Ping;
 import ping.PingWindows;
 import javafx.collections.FXCollections;
@@ -92,9 +93,12 @@ public class DetailMachineController{
 		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 		//Condition si ordinateur ou non à rajouter
 		PingWindows pingWindows=new PingWindows(materiel);
+		ChangerCouleurPastille pastille=new ChangerCouleurPastille(colorCircle,pingWindows);
 		Thread threadPing=new Thread(pingWindows);
 		threadPing.start();
-		synchronized(pingWindows)
+		Thread threadChangerCouleur=new Thread(pastille);
+		threadChangerCouleur.start();
+		/*synchronized(pingWindows)
 		{
 			try {
 				pingWindows.wait();
@@ -110,7 +114,7 @@ public class DetailMachineController{
 			{
 				colorCircle.setFill(Color.ORANGE);
 			}
-		}
+		}*/
 		
 		/*switch(materiel.getEtatMateriel().toString()){
 			case "EN_MARCHE":

@@ -122,7 +122,8 @@ public class AncienneteController implements Initializable {
 		});
 		
 		materielTable.setOnMouseClicked((event) -> {
-			Materiel mat = materielTable.getSelectionModel().getSelectedItem();   
+			Materiel mat = materielTable.getSelectionModel().getSelectedItem();  
+			
 			if (mat != null){
 				MainApp.setCritere(mat);
 				MainApp.changerTab("DetailMachine");
