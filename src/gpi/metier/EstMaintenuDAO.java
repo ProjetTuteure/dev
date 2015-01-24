@@ -50,14 +50,13 @@ public class EstMaintenuDAO {
             try {
                 connection.close();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
         return nombreLigneAffectee;
     }
 
-    public List<EstMaintenu> recupererAllFabricant() throws ConnexionBDException{
+    public List<EstMaintenu> recupererAllEstMaintenu() throws ConnexionBDException{
         List<EstMaintenu> estMaintenuList= new ArrayList<EstMaintenu>();
         ResultSet resultat;
         try{
@@ -67,8 +66,8 @@ public class EstMaintenuDAO {
             while(resultat.next()){
                 MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
                 MaterielDAO materielDAO=new MaterielDAO();
-                Maintenance maintenance=null;
-                Materiel materiel=null;
+                Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId(resultat.getInt("idMaintenance"));
+                Materiel materiel=materielDAO.recupererMaterielParId(resultat.getInt("idMateriel"));
                 estMaintenuList.add(new EstMaintenu(maintenance,materiel));
             }
         }catch(SQLException e){
@@ -83,20 +82,20 @@ public class EstMaintenuDAO {
         return estMaintenuList;
     }
 
-    public EstMaintenu recupererFabricantParId(int idMaintenance,int idMateriel) throws ConnexionBDException{
+    public EstMaintenu recupererEstMaintenuParId(int idMaintenance,int idMateriel) throws ConnexionBDException{
         ResultSet resultat;
         EstMaintenu estMaintenu=null;
         try{
             connection=MaConnexion.getInstance().getConnexion();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
             preparedStatement.setInt(1, idMaintenance);
-            preparedStatement.setInt(1, idMateriel);
+            preparedStatement.setInt(2, idMateriel);
             resultat=preparedStatement.executeQuery();
             resultat.next();
             MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
             MaterielDAO materielDAO=new MaterielDAO();
-            Maintenance maintenance=null;
-            Materiel materiel=null;
+            Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId(resultat.getInt("idMaintenance"));
+            Materiel materiel=materielDAO.recupererMaterielParId(resultat.getInt("idMateriel"));
             estMaintenu=new EstMaintenu(maintenance,materiel);
         }catch(SQLException e){
             e.printStackTrace();
@@ -108,5 +107,30 @@ public class EstMaintenuDAO {
             }
         }
         return estMaintenu;
+    }
+    
+    public List<Maintenance> recupererMaintenanceParMateriel(int idMateriel) throws ConnexionBDException{
+        ResultSet resultat;
+        List<Maintenance> maintenanceList=new ArrayList<Maintenance>();
+        try{
+            connection=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMateriel=?;");
+            preparedStatement.setInt(1, idMateriel);
+            resultat=preparedStatement.executeQuery();
+            while(resultat.next()){
+                MaterielDAO materielDAO=new MaterielDAO();
+                Materiel materiel=materielDAO.recupererMaterielParId(resultat.getInt("idMateriel"));
+                maintenanceList.add(new Maintenance(resultat.getInt("idMaintenance"), null, null, null, 0));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return maintenanceList;
     }
 }

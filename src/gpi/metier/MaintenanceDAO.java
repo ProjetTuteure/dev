@@ -13,12 +13,9 @@ import utils.MaConnexion;
 import gpi.exception.ConnexionBDException;
 
 public class MaintenanceDAO {
-	public MaintenanceDAO()
-	{}
-	
 	/**
-	 * Permet d'insï¿½rer une maintenance dans la BD
-	 * @param maintenance la maintenance ï¿½ insï¿½rer dans la BD
+	 * Permet d'inserer une maintenance dans la BD
+	 * @param maintenance la maintenance a inserer dans la BD
 	 */
 	public void ajouterMaintenance(Maintenance maintenance) throws ConnexionBDException
 	{
@@ -69,7 +66,6 @@ public class MaintenanceDAO {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally
@@ -79,7 +75,6 @@ public class MaintenanceDAO {
 				connexion.close();
 			}
 			catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -91,7 +86,7 @@ public class MaintenanceDAO {
 	 * Retourne un maintenance par son id
 	 * @param idMaintenance
 	 * @return la maintenance correspondant à l'id maintenance
-	 * @throws ConnexionBDException si un problème de connexion à la bd survient
+	 * @throws ConnexionBDException si un problème de connexion a la bd survient
 	 */
 	public Maintenance recupererMaintenanceParId(int idMaintenance) throws ConnexionBDException {
 		Connection connexion=MaConnexion.getInstance().getConnexion();
@@ -119,7 +114,7 @@ public class MaintenanceDAO {
 	/**
 	 * Récupere une maintenance par objet
 	 * @param objetMaintenance
-	 * @return une liste de maintenance correspondant à l'objet
+	 * @return une liste de maintenance correspondant a l'objet
 	 * @throws ConnexionBDException
 	 */
 	public List<Maintenance> recupererMaintenancesParObjet(String objetMaintenance) throws ConnexionBDException

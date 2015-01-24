@@ -34,4 +34,11 @@ public class EstMaintenu {
    public void setMaintenanceEstMaintenu(Maintenance maintenanceEstMaintenu) {
        this.maintenanceEstMaintenu = maintenanceEstMaintenu;
    }
+
+	@Override
+	public String toString() {
+		return "EstMaintenu [materielEstMaintenu=" + materielEstMaintenu
+				+ ", maintenanceEstMaintenu=" + maintenanceEstMaintenu + "]";
+	}
+   
 }

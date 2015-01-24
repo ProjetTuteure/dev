@@ -28,10 +28,8 @@ public class UtiliseDAO {
 					.prepareStatement("INSERT INTO UTILISE (dateUtilise, idUtilisateur, idMateriel)  VALUES (?,?,?);");
 
 			prep.setString(1,utilise.getDateUtiliseStringProperty().getValue());
-			prep.setInt(2, utilise.getUtilisateurUtilise().getIdUtilisateur()
-					.getValue());
-			prep.setInt(3, utilise.getMaterielUtilise().getIdMateriel()
-					.getValue());
+			prep.setInt(2, utilise.getUtilisateurUtilise().getIdUtilisateur().getValue());
+			prep.setInt(3, utilise.getMaterielUtilise().getIdMateriel()	.getValue());
 			resultat = prep.executeUpdate();
 			return resultat;
 		} catch (SQLException e) {
@@ -53,10 +51,8 @@ public class UtiliseDAO {
 			connexion = MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connexion
 					.prepareStatement("DELETE FROM UTILISE WHERE idUtilisateur=? And idMateriel=?;");
-			prep.setInt(1, utilise.getUtilisateurUtilise().getIdUtilisateur()
-					.getValue());
-			prep.setInt(2, utilise.getMaterielUtilise().getIdMateriel()
-					.getValue());
+			prep.setInt(1, utilise.getUtilisateurUtilise().getIdUtilisateur().getValue());
+			prep.setInt(2, utilise.getMaterielUtilise().getIdMateriel().getValue());
 			resultat = prep.executeUpdate();
 			return resultat;
 		} catch (SQLException e) {

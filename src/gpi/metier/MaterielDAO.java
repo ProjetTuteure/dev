@@ -136,32 +136,25 @@ public class MaterielDAO {
 		}
 	}
 
-	public Materiel recupererMaterielParId(int idMateriel)
-			throws ConnexionBDException {
+	public Materiel recupererMaterielParId(int idMateriel) throws ConnexionBDException {
 		ResultSet resultat;
 		Materiel materiel = null;
 		try {
 			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?;");
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?;");
 			preparedStatement.setInt(1, idMateriel);
 			resultat = preparedStatement.executeQuery();
 			resultat.next();
 			TypeDAO typeDAO = new TypeDAO();
-			Type typeMateriel = typeDAO.recupererTypeParId(resultat
-					.getInt("idType"));
-			LocalDate dateExpirationGarantieMateriel = LocalDate.parse(resultat
-					.getString("dateExpirationGarantieMateriel"));
+			Type typeMateriel = typeDAO.recupererTypeParId(resultat.getInt("idType"));
+			LocalDate dateExpirationGarantieMateriel = LocalDate.parse(resultat.getString("dateExpirationGarantieMateriel"));
 			FactureDAO factureDAO = new FactureDAO();
-			Facture factureMateriel = factureDAO.recupererFactureParId(resultat
-					.getInt("idFacture"));
+			Facture factureMateriel = factureDAO.recupererFactureParId(resultat.getInt("idFacture"));
 			SiteDAO siteDAO = new SiteDAO();
-			Site siteMateriel = siteDAO.recupererSiteParId(resultat
-					.getInt("idSite"));
+			Site siteMateriel = siteDAO.recupererSiteParId(resultat.getInt("idSite"));
 			FabricantDAO fabricantDAO = new FabricantDAO();
-			Fabricant fabricantMateriel = fabricantDAO
-					.recupererFabricantParId(resultat.getInt("idFabricant"));
-			materiel = new Materiel(resultat.getInt("idMateriel"),resultat.getString("numImmobMateriel"),resultat.getString("numeroSerieMateriel"),resultat.getString("systemeExploitation"),resultat.getString("nomMateriel"), typeMateriel, Etat.valueOf(resultat.getString("etat")), dateExpirationGarantieMateriel, resultat.getString("repertoireDrivers"), factureMateriel, siteMateriel, fabricantMateriel, resultat.getString("modeleMateriel"));
+			Fabricant fabricantMateriel = fabricantDAO.recupererFabricantParId(resultat.getInt("idFabricant"));
+			materiel = new Materiel(resultat.getInt("idMateriel"),resultat.getString("numImmobMateriel"),resultat.getString("numeroSerieMateriel"),resultat.getString("systemeExploitationMateriel"),resultat.getString("nomMateriel"), typeMateriel, Etat.valueOf(resultat.getString("etat")), dateExpirationGarantieMateriel, resultat.getString("repertoireDrivers"), factureMateriel, siteMateriel, fabricantMateriel, resultat.getString("modeleMateriel"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

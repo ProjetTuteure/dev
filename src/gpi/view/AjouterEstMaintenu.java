@@ -48,10 +48,9 @@ public class AjouterEstMaintenu {
 				listIdMaintenance.add(String.valueOf(maintenance.getIdMaintenance().getValue()));
 			}
 			for (Materiel materiel : materielDAO.recupererAllMateriel()){
-				listIdMaintenance.add(String.valueOf(materiel));
+				listIdMateriel.add(String.valueOf(materiel.getIdMateriel().getValue()));
 			}
 		} catch (ConnexionBDException e) {
-			// TODO Auto-generated catch block
 			new Popup(e.getMessage());
 		}
 		comboboxMaintenance.setItems(listIdMaintenance);
@@ -86,13 +85,14 @@ public class AjouterEstMaintenu {
 		EstMaintenuDAO estMaintenuDAO=new EstMaintenuDAO();
 		MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
 		MaterielDAO materielDAO=new MaterielDAO();
-		/*try {
-			Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId();
-			Materiel materiel=materielDAO.recupererMaterielParId(0);
-			estMaintenuDAO.ajouterEstMaintenu(new EstMaintenu(maintenance,materiel));
+		try {
+			Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId(Integer.parseInt(comboboxMaintenance.getValue()));
+			Materiel materiel=materielDAO.recupererMaterielParId(Integer.parseInt(comboboxMateriel.getValue()));
+			EstMaintenu estMaintenuAAjoute=new EstMaintenu(maintenance,materiel);
+			estMaintenuDAO.ajouterEstMaintenu(estMaintenuAAjoute);
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
-		}*/
+		}
 		okClicked = true;
 		dialogStage.close();
 

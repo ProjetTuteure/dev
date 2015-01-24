@@ -35,23 +35,16 @@ public class SupprimerEstMaintenu {
 	 */
 	@FXML
 	private void initialize() {
-		MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
-		listIdMaintenance = FXCollections.observableArrayList();
 		MaterielDAO materielDAO=new MaterielDAO();
 		listIdMateriel = FXCollections.observableArrayList();
 
 		try {
-			for (Maintenance maintenance : maintenanceDAO.recupererAllMaintenance()){
-				listIdMaintenance.add(String.valueOf(maintenance.getIdMaintenance().getValue()));
-			}
 			for (Materiel materiel : materielDAO.recupererAllMateriel()){
-				listIdMaintenance.add(String.valueOf(materiel));
+				listIdMateriel.add(String.valueOf(materiel.getIdMateriel().getValue()));
 			}
 		} catch (ConnexionBDException e) {
-			// TODO Auto-generated catch block
 			new Popup(e.getMessage());
 		}
-		comboboxMaintenance.setItems(listIdMaintenance);
 		comboboxMateriel.setItems(listIdMateriel);
 	}
 
@@ -80,7 +73,17 @@ public class SupprimerEstMaintenu {
 	 */
 	@FXML
 	private void handleOk() {
-
+		EstMaintenuDAO estMaintenuDAO=new EstMaintenuDAO();
+		MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
+		MaterielDAO materielDAO=new MaterielDAO();
+		try {
+			Maintenance maintenance=maintenanceDAO.recupererMaintenanceParId(Integer.parseInt(comboboxMaintenance.getValue()));
+			Materiel materiel=materielDAO.recupererMaterielParId(Integer.parseInt(comboboxMateriel.getValue()));
+			EstMaintenu estMaintenuASupprime=new EstMaintenu(maintenance,materiel);
+			estMaintenuDAO.supprimerEstMaintenu(estMaintenuASupprime);
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
 		okClicked = true;
 		dialogStage.close();
 
@@ -97,6 +100,14 @@ public class SupprimerEstMaintenu {
 
 	@FXML
 	private void handleChange() {
-
+		listIdMaintenance = FXCollections.observableArrayList();
+		try {
+			for (Maintenance maintenance : estMaintenuDAO.recupererMaintenanceParMateriel(Integer.parseInt(comboboxMateriel.getValue()))){
+				listIdMaintenance.add(String.valueOf(maintenance.getIdMaintenance().getValue()));
+			}
+		} catch (ConnexionBDException e) {
+			e.printStackTrace();
+		}
+		comboboxMaintenance.setItems(listIdMaintenance);
 	}
 }
