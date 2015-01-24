@@ -127,7 +127,9 @@ INSERT INTO SITE VALUES ('Agen', 'sources/images/logo-ville-agen0.png'),('Bordea
 INSERT INTO REVENDEUR VALUES ('Darty','05.55.21.36.54','06.06.06.06.06','05.55.55.55.55','darty@darty.com','4 rue nimporte ou'),('Fnac','05.55.68.57.41','06.06.06.06.06','05.55.55.55.55','fnac@fnac.com','5 rue je sais pas ou ');
 INSERT INTO FACTURE VALUES (1,'2011-11-11', 123.5,1),(2,'2012-12-12', 99 ,2);
 
-INSERT INTO MATERIEL VALUES ('1IMMO','numeroSerie1','windowsXP','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
+INSERT INTO MATERIEL (numImmobMateriel,numeroSerieMateriel,systemeExploitationMateriel,nomMateriel,dateExpirationGarantieMateriel,
+repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,idType)
+VALUES ('1IMMO','numeroSerie1','windowsXP','pc-martine','2012-11-11','/driver/pc-martine','XXX1','EN_MARCHE',1,1,1,1),
 ('2IMMO','numeroSerie2','windowsXP','pc-gertrude','2012-11-11','/driver/pc-gertrude','XXX2','EN_MARCHE',1,2,1,1),
 ('3IMMO','numeroSerie3','windowsXP','PC1','2014-12-31','/driver/PC1','XXX3','EN_MARCHE',1,1,1,1),
 ('4IMMO','numeroSerie4','windowsXP','PC2','2015-12-31','/driver/PC2','XXX4','EN_MARCHE',1,1,2,1),
