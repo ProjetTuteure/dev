@@ -92,10 +92,10 @@ public class ModifierType {
 		if(controlerSaisies()==true)
 		{
 			okClicked = true;
-			Type typeAAjoute=new Type(this.getIdType(),nomTypeField.getText(),this.getCheminImageType());
+			Type typeAModifie=new Type(this.getIdType(),nomTypeField.getText(),this.getCheminImageType());
 			try {
-				typeDAO.modifierType(typeAAjoute);
-				new Popup("Type "+typeAAjoute.getNomTypeString()+" ajouté !");
+				typeDAO.modifierType(typeAModifie);
+				new Popup("Type "+typeAModifie.getNomTypeString()+" modifié !");
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}
@@ -110,8 +110,7 @@ public class ModifierType {
 			new Popup("Le champ \"Nom du type\" doit être saisi");
 			return false;
 		}
-		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE)
-		{
+		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE){
 			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
 			return false;
 		}

@@ -128,6 +128,10 @@ public class ModifierRevendeur {
 			new Popup("Le champ \"Nom du revendeur\" doit être rempli");
 			return false;
 		}
+		if(tf_nomRevendeur.getText().length()>Constante.LONGUEUR_NOM_REVENDEUR){
+			new Popup("La longueur du nom du revendeur doit être inférieur à "+Constante.LONGUEUR_NOM_REVENDEUR+" caractères");
+			return false;
+		}
 		if(!tf_telRevendeur.getText().isEmpty() && tf_telRevendeur.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE)
 		{
 			new Popup("Le numéro de téléphone saisi doit être inférieur à "+Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
@@ -150,7 +154,7 @@ public class ModifierRevendeur {
 		}
 		if(!tf_adresseRevendeur.getText().isEmpty() && tf_adresseRevendeur.getText().length()>Constante.LONGUEUR_ADRESSE)
 		{
-			new Popup("L'adresse ne peut pas dépasser "+Constante.LONGUEUR_ADRESSE+" caractères");
+			new Popup("L'adresse saisie doit être inférieur à "+Constante.LONGUEUR_ADRESSE+" caractères");
 			return false;
 		}
 		return true;

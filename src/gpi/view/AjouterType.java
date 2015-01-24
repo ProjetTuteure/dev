@@ -82,18 +82,16 @@ public class AjouterType {
 	}
 
 	private boolean controlerSaisies() {
-		if(nomTypeField.getText().isEmpty())
-		{
+		if(nomTypeField.getText().isEmpty()){
 			new Popup("Le champ \"Nom du type\" doit être saisi");
 			return false;
 		}
-		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE)
-		{
-			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
+		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE){
+			new Popup("La longueur du nom du type saisi doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
 			return false;
 		}
 		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
-			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+			new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
 			return false;
 		}
 		return true;
