@@ -17,6 +17,7 @@ import utils.*;
 import utils.Popup;
 
 import javax.swing.*;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ModifierType {
 	private List<Integer> listIdFabricant;
 
 	@FXML
-	private TextField typeField;
+	private TextField nomTypeField;
 
 	/**
 	 * Initialise les donnï¿½es Ajoute les donnï¿½es aux combobox
@@ -88,16 +89,39 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handleOk() {
-		okClicked = true;
-		try {
-			typeDAO.modifierType(new Type(this.getIdType(),typeField.getText(),this.getCheminImageType()));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
+		if(controlerSaisies()==true)
+		{
+			okClicked = true;
+			Type typeAAjoute=new Type(this.getIdType(),nomTypeField.getText(),this.getCheminImageType());
+			try {
+				typeDAO.modifierType(typeAAjoute);
+				new Popup("Type "+typeAAjoute.getNomTypeString()+" ajouté !");
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			dialogStage.close();
 		}
-		dialogStage.close();
 
 	}
 
+	private boolean controlerSaisies() {
+		if(nomTypeField.getText().isEmpty())
+		{
+			new Popup("Le champ \"Nom du type\" doit être saisi");
+			return false;
+		}
+		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE)
+		{
+			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
+			return false;
+		}
+		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
+			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+			return false;
+		}
+		return true;
+	}
+	
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
 	 * est clique
@@ -141,7 +165,7 @@ public class ModifierType {
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		typeField.setText(selected.getNomTypeString());
+		nomTypeField.setText(selected.getNomTypeString());
 
 	}
 

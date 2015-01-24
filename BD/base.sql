@@ -20,7 +20,7 @@ CREATE TABLE COMPOSANT(
 
 CREATE TABLE TYPE(
 	idType int IDENTITY(1,1) PRIMARY KEY,
-	nomType varchar(20),
+	nomType varchar(20) NOT NULL,
 	cheminImageType varchar(60))
 
 

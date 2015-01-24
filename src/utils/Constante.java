@@ -19,4 +19,6 @@ public class Constante {
 	public static final int LONGUEUR_OBJET_MAINTENANCE=30;
 	public static final int LONGUEUR_DESCRIPTION_MAINTENANCE=400;
 	public static final int LONGUEUR_MAIL=50;
+	public static final int LONGUEUR_NOM_TYPE=20;
+	public static final int LONGUEUR_CHEMIN_IMAGE_TYPE=20;
 }

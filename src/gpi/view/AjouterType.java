@@ -12,6 +12,7 @@ import utils.*;
 import utils.Popup;
 
 import javax.swing.*;
+
 import java.io.File;
 
 /**
@@ -65,14 +66,37 @@ public class AjouterType {
 	 */
 	@FXML
 	private void handleOk() {
-		try {
-			typeDAO.ajouterType(new Type(0,nomTypeField.getText(),this.getCheminImageType()));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
+		if(controlerSaisies()==true)
+		{
+			Type typeAAjoute=new Type(0,nomTypeField.getText(),this.getCheminImageType());
+			try {
+				typeDAO.ajouterType(typeAAjoute);
+				new Popup("Type "+typeAAjoute.getNomTypeString()+" ajouté !");
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
 		}
-		okClicked = true;
-		dialogStage.close();
 
+	}
+
+	private boolean controlerSaisies() {
+		if(nomTypeField.getText().isEmpty())
+		{
+			new Popup("Le champ \"Nom du type\" doit être saisi");
+			return false;
+		}
+		if(nomTypeField.getText().length()>Constante.LONGUEUR_NOM_TYPE)
+		{
+			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
+			return false;
+		}
+		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
+			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+			return false;
+		}
+		return true;
 	}
 
 	/**
