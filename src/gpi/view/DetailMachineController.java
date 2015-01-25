@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import ping.ChangerCouleurPastille;
 import ping.Ping;
 import ping.PingWindows;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,44 +92,13 @@ public class DetailMachineController{
 		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
 		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
 		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
+		colorCircle.setVisible(false);
 		//Condition si ordinateur ou non à rajouter
 		PingWindows pingWindows=new PingWindows(materiel);
 		ChangerCouleurPastille pastille=new ChangerCouleurPastille(colorCircle,pingWindows);
 		Thread threadPing=new Thread(pingWindows);
 		threadPing.start();
-		Thread threadChangerCouleur=new Thread(pastille);
-		threadChangerCouleur.start();
-		/*synchronized(pingWindows)
-		{
-			try {
-				pingWindows.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			if(pingWindows.getResultatPing()==true)
-			{
-				colorCircle.setFill(Color.GREEN);
-			}
-			else
-			{
-				colorCircle.setFill(Color.ORANGE);
-			}
-		}*/
-		
-		/*switch(materiel.getEtatMateriel().toString()){
-			case "EN_MARCHE":
-				colorCircle.setFill(Color.GREEN);
-				break;
-				
-			case "HS":
-				colorCircle.setFill(Color.RED);
-				break;
-			
-			case "EN_PANNE":
-				colorCircle.setFill(Color.ORANGE);
-				break;
-		}*/
+		Platform.runLater(pastille);
 	}
 
 	/**
