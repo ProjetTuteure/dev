@@ -93,8 +93,11 @@ public class AncienneteController implements Initializable {
 		listTypeId=new ArrayList<Integer>();
 		
 		try {
-			for(Materiel materiel : materielDAO.recupererAllMateriel()){
-				listMateriel.add(materiel);
+			List<Materiel> AllMateriel = materielDAO.recupererAllMateriel();
+			if (AllMateriel != null){
+				for(Materiel materiel : AllMateriel){
+					listMateriel.add(materiel);
+				}
 			}
 			for(Site site : siteDAO.recupererAllSite()){
 				listSite.add(site.getNomSiteString());

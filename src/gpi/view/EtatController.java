@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import utils.Popup;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -71,26 +72,31 @@ public class EtatController implements Initializable{
 		try {
 			listMateriel = this.materielDAO.recupererAllMateriel();
 		} catch (ConnexionBDException e) {
-			e.printStackTrace();
+			new Popup(e.getMessage());
 		}
-		final ObservableList<Materiel> materiel = FXCollections.observableArrayList(listMateriel);
-		this.addDonneeTableView(materiel);
+		if (listMateriel != null){
+			final ObservableList<Materiel> materiel = FXCollections.observableArrayList(listMateriel);
+			this.addDonneeTableView(materiel);
+			
+			checkBoxEnService.setOnAction((event) -> {
+				actionOnCheckBox(materiel);
+			});
 		
-		checkBoxEnService.setOnAction((event) -> {
-			actionOnCheckBox(materiel);
-		});
 		
-		checkBoxEnReparation.setOnAction((event) -> {
-			actionOnCheckBox(materiel);
-		});
-		
-		checkBoxHorsService.setOnAction((event) -> {
-			actionOnCheckBox(materiel);
-		});
-		
+			checkBoxEnReparation.setOnAction((event) -> {
+				actionOnCheckBox(materiel);
+			});
+			
+			checkBoxHorsService.setOnAction((event) -> {
+				actionOnCheckBox(materiel);
+			});
+		}
 		materielTable.setOnMouseClicked((event) -> {
-			MainApp.setCritere(materielTable.getSelectionModel().getSelectedItem());
-			MainApp.changerTab("DetailMachine");
+			Materiel materiel_clicked = materielTable.getSelectionModel().getSelectedItem();
+			if( materiel_clicked != null){
+				MainApp.setCritere(materiel_clicked);
+				MainApp.changerTab("DetailMachine");
+			}
 		});
 	}
 
@@ -133,8 +139,8 @@ public class EtatController implements Initializable{
 	}
 
 	/**
-	 * Ajoute les donn�es relatives � la liste des materiels dans les cases de la tableView
-	 * @param materiel la liste des materiels � ajouter dans les cases de la tableView
+	 * Ajoute les donnees relatives a la liste des materiels dans les cases de la tableView
+	 * @param materiel la liste des materiels a ajouter dans les cases de la tableView
 	 */
 	private void addDonneeTableView(ObservableList<Materiel> materiel) {
 		materielTable.setItems(materiel);
