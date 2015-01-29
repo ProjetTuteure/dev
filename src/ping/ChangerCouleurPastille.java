@@ -23,13 +23,11 @@ public class ChangerCouleurPastille implements Runnable{
 		{
 			if(pingWindows.getResultatPing()==true)
 			{
-				System.out.println("Vert");
 				pastille.setFill(Color.GREEN);
 				this.pastille.setVisible(true);
 			}
 			else
 			{
-				System.out.println("Orange");
 				pastille.setFill(Color.ORANGE);
 				this.pastille.setVisible(true);
 			}

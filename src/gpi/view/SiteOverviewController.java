@@ -1,6 +1,7 @@
 package gpi.view;
 
 import utils.Popup;
+import gpi.GestionDonneesOnglet;
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
@@ -35,11 +36,13 @@ public class SiteOverviewController {
 
 	@FXML
 	private MainApp mainApp;
-
+	
+	private GestionDonneesOnglet gestionOnglet;
 	/**
 	 * Constructeur
 	 */
 	public SiteOverviewController() {
+		this.gestionOnglet=new GestionDonneesOnglet();
 		SiteDAO siteDAO = new SiteDAO();
 		this.sites = FXCollections.observableArrayList();
 		try {
@@ -101,6 +104,7 @@ public class SiteOverviewController {
 
 					@Override
 					public void handle(MouseEvent arg0) {
+						this.gestionOnglet.
 						MainApp.setCritere(site);
 						MainApp.changerTab("Type");
 					}

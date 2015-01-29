@@ -32,7 +32,7 @@ public class MaterielDAO {
 		try {
 			connection = MaConnexion.getInstance().getConnexion();
 			PreparedStatement prepareStatement = connection
-					.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,numeroSerieMateriel,systemeExploitation,nomMateriel,dateExpirationGarantieMateriel,"
+					.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,numeroSerieMateriel,systemeExploitationMateriel,nomMateriel,dateExpirationGarantieMateriel,"
 							+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,idType) "
 							+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 			prepareStatement.setString(1, materiel.getNumImmobMateriel()
