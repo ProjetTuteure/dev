@@ -114,7 +114,7 @@ public class ModifierFacture {
 		int index = ComboboxFacture.getSelectionModel().getSelectedIndex();
 		NumFacture.setText(listObjetsFacture.get(index).getNumFacture());
 		DateFacture.setValue(listObjetsFacture.get(index).getDateFacture());
-		MontantFacture.setText(listObjetsFacture.get(index).getMontantFactureString());
+		MontantFacture.setText(listObjetsFacture.get(index).getMontantFactureStringProperty().getValue());
 		String nomRevendeur=listObjetsFacture.get(index).getRevendeurFacture().getNomRevendeur().getValue();
 		listRevendeurId=new ArrayList<Integer>();
 		listRevendeurObservable = FXCollections.observableArrayList();

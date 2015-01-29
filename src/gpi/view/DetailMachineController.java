@@ -139,6 +139,7 @@ public class DetailMachineController{
 	private int index=0;
 	
 	ObservableList<Materiel> listMateriel;
+	ObservableList<Facture> listFacture;
 	
 	public DetailMachineController() {
     }
@@ -180,11 +181,15 @@ public class DetailMachineController{
 		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
 		driversMateriel.setCellValueFactory(cellData -> cellData.getValue().getRepertoireDriverMateriel());
 		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
-//		ObservableList<Facture> listFacture = FXCollections.observableArrayList();
-//		listFacture.add(materiel.getFactureMateriel());
-//		tableViewFacture.setItems(listFacture);
-//		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
-//		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
+		
+		listFacture = FXCollections.observableArrayList();
+		listFacture.add(materiel.getFactureMateriel());
+		tableViewFacture.setItems(listFacture);
+		numFacture.setCellValueFactory(cellData -> cellData.getValue().getNumFactureProperty());
+		montantFacture.setCellValueFactory(cellData -> cellData.getValue().getMontantFactureStringProperty());
+		dateFacture.setCellValueFactory(cellData -> cellData.getValue().getDateFacStringProperty());
+		fournisseurFacture.setCellValueFactory(cellData -> cellData.getValue().getRevendeurFacture().getNomRevendeur());
+		
 //		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
 //		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
 //		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));

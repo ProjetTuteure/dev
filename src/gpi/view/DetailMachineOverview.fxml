@@ -54,12 +54,12 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="tableViewFacture" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columns>
-                                          <TableColumn prefWidth="75.0" text="Numero" />
-                                          <TableColumn prefWidth="75.0" text="Date" />
-                                          <TableColumn prefWidth="75.0" text="Montant" />
-                                          <TableColumn prefWidth="75.0" text="Fournisseur" />
+                                          <TableColumn fx:id="numFacture" prefWidth="75.0" text="Numero" />
+                                          <TableColumn fx:id="dateFacture" prefWidth="75.0" text="Date" />
+                                          <TableColumn fx:id="montantFacture" prefWidth="75.0" text="Montant" />
+                                          <TableColumn fx:id="fournisseurFacture" prefWidth="75.0" text="Fournisseur" />
                                        </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

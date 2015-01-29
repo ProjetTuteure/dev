@@ -45,10 +45,6 @@ public class Facture {
         return numFacture.get();
     }
 
-    public StringProperty numFactureProperty() {
-        return numFacture;
-    }
-
     public void setNumFacture(String numFacture) {
         this.numFacture.set(numFacture);
     }
@@ -61,6 +57,10 @@ public class Facture {
         return dateFacture;
     }
 
+    public StringProperty numFactureProperty(){
+        return numFacture;
+    }
+    
     public void setDateFacture(LocalDate dateFacture) {
         this.dateFacture=(dateFacture);
     }
@@ -69,8 +69,8 @@ public class Facture {
         return montantFacture;
     }
     
-    public String getMontantFactureString() {
-        return ""+this.getMontantFacture().floatValue();
+    public StringProperty getMontantFactureStringProperty() {
+        return new SimpleStringProperty(""+this.getMontantFacture().floatValue());
     }
 
     public void setMontantFacture(float montantFacture) {
@@ -91,5 +91,9 @@ public class Facture {
 
 	public void setIdFacture(int idFacture) {
 		this.idFacture = new SimpleIntegerProperty(idFacture);
+	}
+
+	public StringProperty getNumFactureProperty() {
+		return numFacture;
 	}
 }
