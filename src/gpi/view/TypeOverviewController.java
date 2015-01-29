@@ -1,5 +1,7 @@
 package gpi.view;
 
+import java.util.List;
+
 import utils.Popup;
 import gpi.MainApp;
 import gpi.exception.ConnexionBDException;
@@ -82,15 +84,19 @@ public class TypeOverviewController {
 		Site site;
 		this.typeDAO = new TypeDAO();
 		site=(Site)(MainApp.getCritere(0));
+		List<Type> AllType = null;
 		try {
-			this.types=FXCollections.observableArrayList(typeDAO.recupererAllType());
+			AllType = typeDAO.recupererAllType();
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		this.setLabelNomVille(site.getNomSiteString());
-		this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
-		this.ajouterTypeGridPane(this.types);
-		this.ajouterActionBouton(b_type);
+		if (AllType != null){
+			this.types=FXCollections.observableArrayList(AllType);
+			this.setLabelNomVille(site.getNomSiteString());
+			this.sp_type.setHbarPolicy(ScrollBarPolicy.NEVER);
+			this.ajouterTypeGridPane(this.types);
+			this.ajouterActionBouton(b_type);
+		}
 	}
 	
 	/**
