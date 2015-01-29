@@ -61,15 +61,15 @@ public class DetailMachineController{
 	@FXML
 	private TableColumn<Materiel,String> siteMateriel;
 	@FXML
-	private TableView<Materiel> tableViewFacture;
+	private TableView<Facture> tableViewFacture;
 	@FXML
-	private TableColumn<Materiel,String> numFacture;
+	private TableColumn<Facture,String> numFacture;
 	@FXML
-	private TableColumn<Materiel,String> montantFacture;
+	private TableColumn<Facture,String> montantFacture;
 	@FXML
-	private TableColumn<Materiel,String> dateFacture;
+	private TableColumn<Facture,String> dateFacture;
 	@FXML
-	private TableColumn<Materiel,String> fournisseurFacture;
+	private TableColumn<Facture,String> fournisseurFacture;
 	@FXML
 	private TableView<Materiel> tableViewFabricant;
 	@FXML
@@ -166,6 +166,21 @@ public class DetailMachineController{
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
+		
+		ObservableList<Materiel> listMateriel = FXCollections.observableArrayList();
+		listMateriel.add(materiel);
+		tableViewMateriel.setItems(listMateriel);
+		numImmoMateriel.setCellValueFactory(cellData -> cellData.getValue().getNumImmobMateriel());
+		nomMateriel.setCellValueFactory(cellData -> cellData.getValue().getNomMateriel());
+		typeMateriel.setCellValueFactory(cellData -> cellData.getValue().getTypeMateriel().getNomType());
+		seMateriel.setCellValueFactory(cellData -> cellData.getValue().getSystemeExploitationMateriel());
+		etatMateriel.setCellValueFactory(cellData -> cellData.getValue().getEtatMaterielStringProperty());
+		finGarantieMateriel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationGarantieMaterielStringProperty());
+		driversMateriel.setCellValueFactory(cellData -> cellData.getValue().getRepertoireDriverMateriel());
+		siteMateriel.setCellValueFactory(cellData -> cellData.getValue().getSiteMateriel().getNomSiteProperty());
+//		ObservableList<Facture> listFacture = FXCollections.observableArrayList();
+//		listFacture.add(materiel.getFactureMateriel());
+//		tableViewFacture.setItems(listFacture);
 //		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
 //		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
 //		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
