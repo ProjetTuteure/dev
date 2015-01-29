@@ -22,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -41,17 +43,95 @@ public class DetailMachineController{
 	@FXML
 	private Circle colorCircle;
 	@FXML
-	private ListView<String> listViewMateriel;
+	private TableView<Materiel> tableViewMateriel;
 	@FXML
-	private ListView<String> listViewFacture;
+	private TableColumn<Materiel,String> numImmoMateriel;
 	@FXML
-	private ListView<String> listViewFabricant;
+	private TableColumn<Materiel,String> nomMateriel;
 	@FXML
-	private ListView<String> listViewRevendeur;
+	private TableColumn<Materiel,String> typeMateriel;
 	@FXML
-	private ListView<String> listViewMaintenance;
+	private TableColumn<Materiel,String> seMateriel;
 	@FXML
-	private ListView<String> listViewUtilisateur;
+	private TableColumn<Materiel,String> etatMateriel;
+	@FXML
+	private TableColumn<Materiel,String> finGarantieMateriel;
+	@FXML
+	private TableColumn<Materiel,String> driversMateriel;
+	@FXML
+	private TableColumn<Materiel,String> siteMateriel;
+	@FXML
+	private TableView<Materiel> tableViewFacture;
+	@FXML
+	private TableColumn<Materiel,String> numFacture;
+	@FXML
+	private TableColumn<Materiel,String> montantFacture;
+	@FXML
+	private TableColumn<Materiel,String> dateFacture;
+	@FXML
+	private TableColumn<Materiel,String> fournisseurFacture;
+	@FXML
+	private TableView<Materiel> tableViewFabricant;
+	@FXML
+	private TableColumn<Materiel,String> numSerieFabricant;
+	@FXML
+	private TableColumn<Materiel,String> nomFabricant;
+	@FXML
+	private TableColumn<Materiel,String> telFabricant;
+	@FXML
+	private TableColumn<Materiel,String> adresseFabricant;
+	@FXML
+	private TableView<Materiel> tableViewRevendeur;
+	@FXML
+	private TableColumn<Materiel,String> nomRevendeur;
+	@FXML
+	private TableColumn<Materiel,String> telRevendeur;
+	@FXML
+	private TableColumn<Materiel,String> adresseRevendeur;
+	@FXML
+	private TableColumn<Materiel,String> numFactureRevendeur;
+	@FXML
+	private TableView<Materiel> tableViewMaintenances;
+	@FXML
+	private TableColumn<Materiel,String> numMaintenance;
+	@FXML
+	private TableColumn<Materiel,String> dateMaintenance;
+	@FXML
+	private TableColumn<Materiel,String> objetMaintenance;
+	@FXML
+	private TableColumn<Materiel,String> coutMaintenance;
+	@FXML
+	private TableColumn<Materiel,String> descriptionMaintenance;
+	@FXML
+	private TableView<Materiel> tableViewUtilisateurs;
+	@FXML
+	private TableColumn<Materiel,String> nomUtilisateur;
+	@FXML
+	private TableColumn<Materiel,String> prenomUtilisateur;
+	@FXML
+	private TableColumn<Materiel,String> telutilisateur;
+	@FXML
+	private TableColumn<Materiel,String> debutUtilisateur;
+	@FXML
+	private TableColumn<Materiel,String> finUtilisateur;
+	@FXML
+	private TableView<Materiel> tableViewLogiciels;
+	@FXML
+	private TableColumn<Materiel,String> nomLogiciel;
+	@FXML
+	private TableColumn<Materiel,String> versionLogiciel;
+	@FXML
+	private TableColumn<Materiel,String> finGarantieLogiciel;
+	@FXML
+	private TableColumn<Materiel,String> numFactureLogiciel;
+	@FXML
+	private TableView<Materiel> tableViewComposants;
+	@FXML
+	private TableColumn<Materiel,String> nomComposant;
+	@FXML
+	private TableColumn<Materiel,String> caracteristiqueComposant;
+	@FXML
+	private TableColumn<Materiel,String> fabricantComposant;
 	@FXML
 	private ImageView imageType;
 	
