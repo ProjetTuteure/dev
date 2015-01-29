@@ -18,6 +18,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Cell;
@@ -26,10 +27,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
+import javafx.scene.input.MouseEvent;
+
+import java.beans.EventHandler;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+
+
 
 
 import utils.Popup;
@@ -125,6 +132,9 @@ public class AncienneteController implements Initializable {
 		});
 		
 		materielTable.setOnMouseClicked((event) -> {
+//		materielTable.addEventFilter(MouseEvent.MOUSE_CLICKED, 
+//                new Event(arg0)
+       
 			Materiel mat = materielTable.getSelectionModel().getSelectedItem();  
 			
 			if (mat != null){
