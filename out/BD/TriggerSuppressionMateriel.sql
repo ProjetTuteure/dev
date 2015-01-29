@@ -1,4 +1,4 @@
-ALTER TRIGGER SuppressionMateriel on MATERIEL
+CREATE TRIGGER SuppressionMateriel on MATERIEL
 INSTEAD OF DELETE
 AS BEGIN 
 	declare @idMateriel int;
