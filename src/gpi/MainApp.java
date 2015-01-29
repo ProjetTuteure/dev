@@ -122,7 +122,6 @@ public class MainApp extends Application {
             default:
                 return tab4.get(index);
         }
-
     }
 
     public static void removeCritere(){
