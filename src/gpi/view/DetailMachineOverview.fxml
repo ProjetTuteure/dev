@@ -31,16 +31,16 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView fixedCellSize="0.0" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="tableViewMateriel" fixedCellSize="0.0" prefHeight="320.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="N° Immo" />
-                                        <TableColumn prefWidth="75.0" text="Nom" />
-                                          <TableColumn prefWidth="75.0" text="Type" />
-                                          <TableColumn prefWidth="75.0" text="SE" />
-                                          <TableColumn prefWidth="75.0" text="Etat" />
-                                          <TableColumn prefWidth="75.0" text="Fin garantie" />
-                                          <TableColumn prefWidth="75.0" text="Rep drivers" />
-                                          <TableColumn prefWidth="75.0" text="Site" />
+                                        <TableColumn fx:id="numImmoMateriel" prefWidth="75.0" text="N° Immo" />
+                                        <TableColumn fx:id="nomMateriel" prefWidth="75.0" text="Nom" />
+                                          <TableColumn fx:id="typeMateriel" prefWidth="75.0" text="Type" />
+                                          <TableColumn fx:id="seMateriel" prefWidth="75.0" text="SE" />
+                                          <TableColumn fx:id="etatMateriel" prefWidth="75.0" text="Etat" />
+                                          <TableColumn fx:id="finGarantieMateriel" prefWidth="75.0" text="Fin garantie" />
+                                          <TableColumn fx:id="driversMateriel" prefWidth="75.0" text="Rep drivers" />
+                                          <TableColumn fx:id="siteMateriel" prefWidth="75.0" text="Site" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -138,6 +138,8 @@ public class DetailMachineController{
 	private Materiel materiel;
 	private int index=0;
 	
+	ObservableList<Materiel> listMateriel;
+	
 	public DetailMachineController() {
     }
 	
@@ -167,7 +169,7 @@ public class DetailMachineController{
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
 		
-		ObservableList<Materiel> listMateriel = FXCollections.observableArrayList();
+		listMateriel = FXCollections.observableArrayList();
 		listMateriel.add(materiel);
 		tableViewMateriel.setItems(listMateriel);
 		numImmoMateriel.setCellValueFactory(cellData -> cellData.getValue().getNumImmobMateriel());
