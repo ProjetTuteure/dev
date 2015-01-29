@@ -166,12 +166,12 @@ public class DetailMachineController{
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
-		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
-		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
-		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
-		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
-		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
-		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
+//		listViewMateriel.getItems().addAll(donneesMaterielToList(materiel));
+//		listViewFacture.getItems().addAll(donneesFactureToList(materiel.getFactureMateriel()));
+//		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
+//		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
+//		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
+//		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
 		colorCircle.setVisible(false);
 		//Condition si ordinateur ou non à rajouter
 		PingWindows pingWindows=new PingWindows(materiel);
