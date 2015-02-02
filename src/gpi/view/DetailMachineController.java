@@ -1,6 +1,7 @@
 package gpi.view;
 
 import gpi.MainApp;
+import gpi.exception.ConnexionBDException;
 import gpi.metier.*;
 
 import java.io.BufferedReader;
@@ -14,7 +15,9 @@ import java.util.ResourceBundle;
 import ping.ChangerCouleurPastille;
 import ping.Ping;
 import ping.PingWindows;
+import utils.Popup;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,27 +84,27 @@ public class DetailMachineController{
 	@FXML
 	private TableColumn<Materiel,String> adresseFabricant;
 	@FXML
-	private TableView<Materiel> tableViewRevendeur;
+	private TableView<Facture> tableViewRevendeur;
 	@FXML
-	private TableColumn<Materiel,String> nomRevendeur;
+	private TableColumn<Facture,String> nomRevendeur;
 	@FXML
-	private TableColumn<Materiel,String> telRevendeur;
+	private TableColumn<Facture,String> telRevendeur;
 	@FXML
-	private TableColumn<Materiel,String> adresseRevendeur;
+	private TableColumn<Facture,String> adresseRevendeur;
 	@FXML
-	private TableColumn<Materiel,String> numFactureRevendeur;
+	private TableColumn<Facture,String> numFactureRevendeur;
 	@FXML
-	private TableView<Materiel> tableViewMaintenances;
+	private TableView<Maintenance> tableViewMaintenances;
 	@FXML
-	private TableColumn<Materiel,String> numMaintenance;
+	private TableColumn<Maintenance,String> numMaintenance;
 	@FXML
-	private TableColumn<Materiel,String> dateMaintenance;
+	private TableColumn<Maintenance,String> dateMaintenance;
 	@FXML
-	private TableColumn<Materiel,String> objetMaintenance;
+	private TableColumn<Maintenance,String> objetMaintenance;
 	@FXML
-	private TableColumn<Materiel,String> coutMaintenance;
+	private TableColumn<Maintenance,String> coutMaintenance;
 	@FXML
-	private TableColumn<Materiel,String> descriptionMaintenance;
+	private TableColumn<Maintenance,String> descriptionMaintenance;
 	@FXML
 	private TableView<Materiel> tableViewUtilisateurs;
 	@FXML
@@ -109,29 +112,29 @@ public class DetailMachineController{
 	@FXML
 	private TableColumn<Materiel,String> prenomUtilisateur;
 	@FXML
-	private TableColumn<Materiel,String> telutilisateur;
+	private TableColumn<Materiel,String> telUtilisateur;
 	@FXML
 	private TableColumn<Materiel,String> debutUtilisateur;
 	@FXML
 	private TableColumn<Materiel,String> finUtilisateur;
 	@FXML
-	private TableView<Materiel> tableViewLogiciels;
+	private TableView<Logiciel> tableViewLogiciels;
 	@FXML
-	private TableColumn<Materiel,String> nomLogiciel;
+	private TableColumn<Logiciel,String> nomLogiciel;
 	@FXML
-	private TableColumn<Materiel,String> versionLogiciel;
+	private TableColumn<Logiciel,String> versionLogiciel;
 	@FXML
-	private TableColumn<Materiel,String> finGarantieLogiciel;
+	private TableColumn<Logiciel,String> finGarantieLogiciel;
 	@FXML
-	private TableColumn<Materiel,String> numFactureLogiciel;
+	private TableColumn<Logiciel,String> numFactureLogiciel;
 	@FXML
-	private TableView<Materiel> tableViewComposants;
+	private TableView<Composant> tableViewComposants;
 	@FXML
-	private TableColumn<Materiel,String> nomComposant;
+	private TableColumn<Composant,String> nomComposant;
 	@FXML
-	private TableColumn<Materiel,String> caracteristiqueComposant;
+	private TableColumn<Composant,String> caracteristiqueComposant;
 	@FXML
-	private TableColumn<Materiel,String> fabricantComposant;
+	private TableColumn<Composant,String> fabricantComposant;
 	@FXML
 	private ImageView imageType;
 	
@@ -140,6 +143,12 @@ public class DetailMachineController{
 	
 	ObservableList<Materiel> listMateriel;
 	ObservableList<Facture> listFacture;
+	ObservableList<Materiel> listFabricant;
+	ObservableList<Facture> listRevendeur;
+	ObservableList<Maintenance> listMaintenance;
+	
+	ObservableList<Logiciel> listLogiciel;
+	ObservableList<Composant> listComposant;
 	
 	public DetailMachineController() {
     }
@@ -166,6 +175,8 @@ public class DetailMachineController{
 				break;
 		}
 		materiel=(Materiel)MainApp.getCritere(index);
+		EstMaintenuDAO estMaintenuDAO = new EstMaintenuDAO();
+		
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
 		imageType.setImage(new Image(materiel.getTypeMateriel().getCheminImageType().getValue()));
@@ -190,10 +201,59 @@ public class DetailMachineController{
 		dateFacture.setCellValueFactory(cellData -> cellData.getValue().getDateFacStringProperty());
 		fournisseurFacture.setCellValueFactory(cellData -> cellData.getValue().getRevendeurFacture().getNomRevendeur());
 		
-//		listViewFabricant.getItems().addAll(donneesFabricantToList(materiel.getFabricantMateriel()));
-//		listViewRevendeur.getItems().addAll(donneesRevendeurToList(materiel.getFactureMateriel().getRevendeurFacture()));
-//		listViewMaintenance.getItems().addAll(donneesMaintenanceToList(materiel));
-//		listViewUtilisateur.getItems().addAll(donneesUtilisateurToList(materiel));
+		listFabricant = FXCollections.observableArrayList();
+		listFabricant.add(materiel);
+		tableViewFabricant.setItems(listFabricant);
+		numSerieFabricant.setCellValueFactory(cellData -> cellData.getValue().getNumeroSerieMateriel());
+		nomFabricant.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getNomFabricant());
+		telFabricant.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getTelFabricant());
+		adresseFabricant.setCellValueFactory(cellData -> cellData.getValue().getFabricantMateriel().getAdresseFabricant());
+		
+		listRevendeur = FXCollections.observableArrayList();
+		listRevendeur.add(materiel.getFactureMateriel());
+		tableViewRevendeur.setItems(listRevendeur);
+		nomRevendeur.setCellValueFactory(cellData -> cellData.getValue().getRevendeurFacture().getNomRevendeur());
+		telRevendeur.setCellValueFactory(cellData -> cellData.getValue().getRevendeurFacture().getTelRevendeur());
+		adresseRevendeur.setCellValueFactory(cellData -> cellData.getValue().getRevendeurFacture().getAdresseRevendeur());
+		numFactureRevendeur.setCellValueFactory(cellData -> cellData.getValue().getNumFactureProperty());
+		
+		listMaintenance = FXCollections.observableArrayList();
+		try {
+			for(Maintenance maintenance : estMaintenuDAO.recupererMaintenanceParMateriel(materiel.getIdMateriel().getValue())){
+				listMaintenance.add(maintenance);
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
+		}
+		tableViewMaintenances.setItems(listMaintenance);
+		numMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdMaintenance().toString()));
+		dateMaintenance.setCellValueFactory(cellData -> cellData.getValue().getdateMaintenanceStringProperty());
+		objetMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObjetMaintenance()));
+		coutMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoutMaintenanceString()));
+		descriptionMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescriptionMaintenance()));
+		
+		//utilisateurs onglet
+		
+		listLogiciel = FXCollections.observableArrayList();
+		for(Logiciel logiciel : materiel.getListLogicielMateriel()){
+			listLogiciel.add(logiciel);
+		}
+		tableViewLogiciels.setItems(listLogiciel);
+		nomLogiciel.setCellValueFactory(cellData -> cellData.getValue().getNomLogiciel());
+		versionLogiciel.setCellValueFactory(cellData -> cellData.getValue().getVersionLogiciel());
+		finGarantieLogiciel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationLogicielStringProperty());
+		numFactureLogiciel.setCellValueFactory(cellData -> cellData.getValue().getFactureLogiciel().getNumFactureProperty());
+		
+		listComposant = FXCollections.observableArrayList();
+		for(Composant composant : materiel.getListComposantMateriel()){
+			listComposant.add(composant);
+		}
+		tableViewComposants.setItems(listComposant);
+		nomComposant.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomComposant()));
+		caracteristiqueComposant.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcaracteristiqueComposant()));
+		fabricantComposant.setCellValueFactory(cellData -> cellData.getValue().getFabricantComposant().getNomFabricant());
+
+		
 		colorCircle.setVisible(false);
 		//Condition si ordinateur ou non à rajouter
 		PingWindows pingWindows=new PingWindows(materiel);
