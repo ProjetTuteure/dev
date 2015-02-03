@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.Constante;
 import utils.Popup;
 
 import java.io.File;
@@ -98,16 +99,34 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handleOk() {
-		SiteDAO siteDAO=new SiteDAO();
-		setNomSite(NameSiteField.getText());
-		try {
-			siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
+		if(controlerSaisies()==true){
+			SiteDAO siteDAO=new SiteDAO();
+			setNomSite(NameSiteField.getText());
+			try {
+				siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
 		}
-		okClicked = true;
-		dialogStage.close();
-		// }
+		
+	}
+
+	private boolean controlerSaisies() {
+		if(NameSiteField.getText().isEmpty()){
+			new Popup("Le champ \"Nom du site\" doit être saisi");
+			return false;
+		}
+		if(NameSiteField.getText().length()>Constante.LONGUEUR_NOM_SITE){
+			new Popup("La longueur du nom du site saisi doit être inférieur à "+Constante.LONGUEUR_NOM_SITE+" caractères");
+			return false;
+		}	
+		if(getCheminImageSite().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
+			new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
+			return false;
+		}
+		return true;
 	}
 
 	/**

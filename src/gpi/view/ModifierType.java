@@ -114,8 +114,8 @@ public class ModifierType {
 			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
 			return false;
 		}
-		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
-			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
+			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
 			return false;
 		}
 		return true;
