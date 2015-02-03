@@ -13,6 +13,7 @@ public class Constante {
 	public static final int LONGUEUR_ADRESSE=100;
 	public static final int LONGUEUR_SOCIETE=50;
 	public static final int LONGUEUR_NOM_REVENDEUR=20;
+	public static final int LONGUEUR_NOM_MATERIEL=20;
 	public static final int LONGUEUR_NOM_PRESTATAIRE=20;
 	public static final int LONGUEUR_CARACTERISTIQUE_COMPOSANT=200;
 	public static final int LONGUEUR_NOM_COMPOSANT=20;
@@ -25,4 +26,8 @@ public class Constante {
 	public static final int LONGUEUR_NOM_SITE=20;
 	public static final int LONGUEUR_NUM_FACTURE=30;
 	public static final int LONGUEUR_MONTANT_FACTURE=11;
+	public static final int LONGUEUR_NUM_IMMO=20;
+	public static final int LONGUEUR_NUM_SERIE_MAT=50;
+	public static final int LONGUEUR_MODELE_MAT=20;
+	
 }

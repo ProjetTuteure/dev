@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import utils.Constante;
 import utils.Popup;
 import utils.Propriete;
 import gpi.bd.Donnee;
@@ -56,7 +57,7 @@ public class AjouterMateriel {
 	private List<Integer> listIdFabricantMateriel;
 	private ObservableList<String> listFactureMateriel;
 	private List<Integer> listIdFactureMateriel;
-	
+
 	@FXML
 	private TextField immobMaterielField;
 	@FXML
@@ -69,7 +70,7 @@ public class AjouterMateriel {
 	private TextField modeleMaterielField;
 	@FXML
 	private DatePicker dateMaterielPicker;
-	
+
 	/**
 	 * Initialise les donnees Ajoute les donnees aux combobox
 	 */
@@ -77,13 +78,13 @@ public class AjouterMateriel {
 	private void initialize() {
 		listEtatMateriel = FXCollections.observableArrayList();
 		listSiteMateriel = FXCollections.observableArrayList();
-		listIdSiteMateriel=new ArrayList<Integer>();
+		listIdSiteMateriel = new ArrayList<Integer>();
 		listFabricantMateriel = FXCollections.observableArrayList();
-		listIdFabricantMateriel=new ArrayList<Integer>();
+		listIdFabricantMateriel = new ArrayList<Integer>();
 		listFactureMateriel = FXCollections.observableArrayList();
-		listIdFactureMateriel=new ArrayList<Integer>();
-		listTypeMateriel=FXCollections.observableArrayList();
-		listIdTypeMateriel=new ArrayList<Integer>();
+		listIdFactureMateriel = new ArrayList<Integer>();
+		listTypeMateriel = FXCollections.observableArrayList();
+		listIdTypeMateriel = new ArrayList<Integer>();
 
 		for (Etat etat : Etat.values()) {
 			listEtatMateriel.add(etat.name());
@@ -91,19 +92,21 @@ public class AjouterMateriel {
 		System.out.println(listEtatMateriel);
 		comboboxEtatMateriel.setItems(listEtatMateriel);
 
-		FabricantDAO fabricantDAO=new FabricantDAO();
-		
+		FabricantDAO fabricantDAO = new FabricantDAO();
+
 		try {
 			for (Fabricant fabricant : fabricantDAO.recupererAllFabricant()) {
-				listFabricantMateriel.add(fabricant.getNomFabricant().getValue());
-				listIdFabricantMateriel.add(fabricant.getIdFabricant().getValue());
+				listFabricantMateriel.add(fabricant.getNomFabricant()
+						.getValue());
+				listIdFabricantMateriel.add(fabricant.getIdFabricant()
+						.getValue());
 			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
 		comboboxFabricantMateriel.setItems(listFabricantMateriel);
 
-		FactureDAO factureDAO=new FactureDAO();
+		FactureDAO factureDAO = new FactureDAO();
 		try {
 			for (Facture facture : factureDAO.recupererAllFacture()) {
 				listFactureMateriel.add(facture.getNumFacture());
@@ -114,7 +117,7 @@ public class AjouterMateriel {
 		}
 		comboboxFactureMateriel.setItems(listFactureMateriel);
 
-		SiteDAO siteDAO=new SiteDAO();
+		SiteDAO siteDAO = new SiteDAO();
 		try {
 			for (Site site : siteDAO.recupererAllSite()) {
 				listSiteMateriel.add(site.getNomSiteString());
@@ -124,8 +127,8 @@ public class AjouterMateriel {
 			new Popup(e.getMessage());
 		}
 		comboboxSiteMateriel.setItems(listSiteMateriel);
-		
-		TypeDAO typeDAO=new TypeDAO();
+
+		TypeDAO typeDAO = new TypeDAO();
 		try {
 			for (Type type : typeDAO.recupererAllType()) {
 				listTypeMateriel.add(type.getNomTypeString());
@@ -157,60 +160,130 @@ public class AjouterMateriel {
 		return okClicked;
 	}
 
+	private boolean controlerSaisies() {
+		if (nomMaterielField.getText().equals("")) {
+			new Popup("Le champ \"Nom matériel\" doit être rempli");
+			return false;
+		}
+		if (nomMaterielField.getText().length() > Constante.LONGUEUR_NOM_MATERIEL) {
+			new Popup("Le nom du materiel doit etre inférieur à "
+					+ Constante.LONGUEUR_NOM_MATERIEL + " caractères");
+			return false;
+		}
+		if (immobMaterielField.getText().length() > Constante.LONGUEUR_NOM_MATERIEL) {
+			new Popup("Le nom du materiel doit etre inférieur à "
+					+ Constante.LONGUEUR_NOM_MATERIEL + " caractères");
+			return false;
+		}
+		if (numeroSerieMaterielField.getText().length() > Constante.LONGUEUR_NUM_SERIE_MAT) {
+			new Popup("Le numéro de série du materiel doit etre inférieur à "
+					+ Constante.LONGUEUR_NUM_SERIE_MAT + " caractères");
+			return false;
+		}
+		if (modeleMaterielField.getText().length() > Constante.LONGUEUR_MODELE_MAT) {
+			new Popup("Le modèle du materiel doit etre inférieur à "
+					+ Constante.LONGUEUR_MODELE_MAT + " caractères");
+			return false;
+		}
+		return true;
+	}
+
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton AJOUTER
 	 * est clique
 	 */
 	@FXML
 	private void handleOk() {
-		MaterielDAO materielDAO=new MaterielDAO();
-		TypeDAO typeDAO = new TypeDAO();
-		Type typeMateriel=null;
-		try {
-			typeMateriel = typeDAO.recupererTypeParId(listIdTypeMateriel.get(comboboxTypeMateriel.getSelectionModel().getSelectedIndex()));
-		} catch (ConnexionBDException e1) {
-			new Popup(e1.getMessage());
-		}
-		LocalDate dateExpirationGarantieMateriel = dateMaterielPicker.getValue();
-		FactureDAO factureDAO = new FactureDAO();
-		Facture factureMateriel=null;
-		try {
-			factureMateriel = factureDAO.recupererFactureParId(listIdFactureMateriel.get(comboboxFactureMateriel.getSelectionModel().getSelectedIndex()));
-		} catch (ConnexionBDException e1) {
-			new Popup(e1.getMessage());
-		}
-		SiteDAO siteDAO = new SiteDAO();
-		Site siteMateriel=null;
-		try {
-			siteMateriel = siteDAO.recupererSiteParId(listIdSiteMateriel.get(comboboxSiteMateriel.getSelectionModel().getSelectedIndex()));
-		} catch (ConnexionBDException e1) {
-			new Popup(e1.getMessage());
-		}
-		FabricantDAO fabricantDAO = new FabricantDAO();
-		Fabricant fabricantMateriel=null;
-		try {
-			fabricantMateriel = fabricantDAO.recupererFabricantParId(listIdFabricantMateriel.get(comboboxFabricantMateriel.getSelectionModel().getSelectedIndex()));
-		} catch (ConnexionBDException e1) {
-			new Popup(e1.getMessage());
-		}
-		try {
-			materielDAO.ajouterMateriel(new Materiel(0,immobMaterielField.getText(),
-					numeroSerieMaterielField.getText(),
-					systemeExploitationMaterielField.getText(),
-					nomMaterielField.getText(),
-					typeMateriel, Etat.valueOf(comboboxEtatMateriel.getValue()),
-					dateExpirationGarantieMateriel,
-					"",
-					factureMateriel,
-					siteMateriel,
-					fabricantMateriel,
-					modeleMaterielField.getText()));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
-		}
-		okClicked = true;
-		dialogStage.close();
 
+		okClicked = true;
+
+		if (controlerSaisies() == true) {
+
+			MaterielDAO materielDAO = new MaterielDAO();
+			TypeDAO typeDAO = new TypeDAO();
+			Type typeMateriel = null;
+			try {
+				if (comboboxTypeMateriel.getSelectionModel().getSelectedIndex() == -1) {
+					typeMateriel = null;
+				} else {
+					typeMateriel = typeDAO
+							.recupererTypeParId(listIdTypeMateriel
+									.get(comboboxTypeMateriel
+											.getSelectionModel()
+											.getSelectedIndex()));
+				}
+			} catch (ConnexionBDException e1) {
+				new Popup(e1.getMessage());
+			}
+			LocalDate dateExpirationGarantieMateriel = dateMaterielPicker
+					.getValue();
+			FactureDAO factureDAO = new FactureDAO();
+			Facture factureMateriel = null;
+			try {
+				if (comboboxFactureMateriel.getSelectionModel()
+						.getSelectedIndex() == -1) {
+					factureMateriel = null;
+				} else {
+					factureMateriel = factureDAO
+							.recupererFactureParId(listIdFactureMateriel
+									.get(comboboxFactureMateriel
+											.getSelectionModel()
+											.getSelectedIndex()));
+				}
+			} catch (ConnexionBDException e1) {
+				new Popup(e1.getMessage());
+			}
+			SiteDAO siteDAO = new SiteDAO();
+			Site siteMateriel = null;
+			try {
+				if (comboboxSiteMateriel.getSelectionModel().getSelectedIndex() == -1) {
+					siteMateriel = null;
+				} else {
+					siteMateriel = siteDAO
+							.recupererSiteParId(listIdSiteMateriel
+									.get(comboboxSiteMateriel
+											.getSelectionModel()
+											.getSelectedIndex()));
+				}
+			} catch (ConnexionBDException e1) {
+				new Popup(e1.getMessage());
+			}
+			FabricantDAO fabricantDAO = new FabricantDAO();
+			Fabricant fabricantMateriel = null;
+			try {
+				if (comboboxFabricantMateriel.getSelectionModel()
+						.getSelectedIndex() == -1) {
+					fabricantMateriel = null;
+				} else {
+					fabricantMateriel = fabricantDAO
+							.recupererFabricantParId(listIdFabricantMateriel
+									.get(comboboxFabricantMateriel
+											.getSelectionModel()
+											.getSelectedIndex()));
+				}
+			} catch (ConnexionBDException e1) {
+				new Popup(e1.getMessage());
+			}
+			Etat etatMateriel;
+			if (comboboxEtatMateriel.getSelectionModel().getSelectedIndex() == -1) {
+				etatMateriel = null;
+			} else {
+				etatMateriel = Etat.valueOf(comboboxEtatMateriel.getValue());
+			}
+			try {
+				materielDAO.ajouterMateriel(new Materiel(0, immobMaterielField
+						.getText(), numeroSerieMaterielField.getText(),
+						systemeExploitationMaterielField.getText(),
+						nomMaterielField.getText(), typeMateriel, etatMateriel,
+						dateExpirationGarantieMateriel, "", factureMateriel,
+						siteMateriel, fabricantMateriel, modeleMaterielField
+								.getText()));
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
+		}
 	}
 
 	/**

@@ -1,8 +1,6 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
-import gpi.metier.Composant;
 import gpi.metier.Prestataire;
 import gpi.metier.PrestataireDAO;
 import javafx.collections.FXCollections;
@@ -107,7 +105,7 @@ public class ModifierPrestataire {
 	private boolean controlerSaisies()
 	{
 		if(nomPrestataireField.getText().equals("")){
-			new Popup("Le champ \" Nom du prestataire doit être rempli");
+			new Popup("Le champ \"Nom du prestataire\" doit être rempli");
 			return false;
 		} 
 		if (nomPrestataireField.getText().length()>Constante.LONGUEUR_NOM_PRESTATAIRE){
