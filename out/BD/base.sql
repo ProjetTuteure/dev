@@ -1,7 +1,7 @@
 CREATE TABLE SITE(
 	idSite int IDENTITY(1,1) PRIMARY KEY ,
 	nomSite varchar(20) NOT NULL,
-	cheminImageSite varchar(60))
+	cheminImageSite varchar(500))
 
 CREATE TABLE FABRICANT(
 	idFabricant int IDENTITY(1,1) PRIMARY KEY ,
@@ -21,7 +21,7 @@ CREATE TABLE COMPOSANT(
 CREATE TABLE TYPE(
 	idType int IDENTITY(1,1) PRIMARY KEY,
 	nomType varchar(20) NOT NULL,
-	cheminImageType varchar(60))
+	cheminImageType varchar(500))
 
 
 CREATE TABLE REVENDEUR(
