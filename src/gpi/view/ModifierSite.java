@@ -99,7 +99,7 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true){
+		if(controlerSaisies()){
 			SiteDAO siteDAO=new SiteDAO();
 			setNomSite(NameSiteField.getText());
 			try {

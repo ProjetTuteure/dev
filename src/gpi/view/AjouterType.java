@@ -66,7 +66,7 @@ public class AjouterType {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			Type typeAAjoute=new Type(0,nomTypeField.getText(),this.getCheminImageType());
 			try {

@@ -89,7 +89,7 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			okClicked = true;
 			Type typeAModifie=new Type(this.getIdType(),nomTypeField.getText(),this.getCheminImageType());

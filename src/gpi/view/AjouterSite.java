@@ -71,7 +71,7 @@ public class AjouterSite {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			SiteDAO siteDAO = new SiteDAO();
 			setNomSite(NameSiteField.getText());
