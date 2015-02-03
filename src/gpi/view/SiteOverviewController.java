@@ -1,7 +1,6 @@
 package gpi.view;
 
 import utils.Popup;
-import gpi.GestionDonneesOnglet;
 import gpi.MainApp;
 import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
