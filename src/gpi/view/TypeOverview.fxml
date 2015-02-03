@@ -12,12 +12,12 @@
     <children>
         <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <ScrollPane fx:id="sp_type" prefHeight="374.0" prefViewportHeight="584.0" prefViewportWidth="800.0" prefWidth="800.0">
+            <ScrollPane fx:id="sp_type" maxHeight="374.0" prefHeight="374.0" prefViewportHeight="584.0" prefViewportWidth="800.0" prefWidth="800.0">
                <BorderPane.margin>
                   <Insets top="25.0" />
                </BorderPane.margin>
                <content>
-                  <GridPane fx:id="gp_type" gridLinesVisible="true" prefWidth="796.0">
+                  <GridPane fx:id="gp_type" prefWidth="796.0">
                   </GridPane>
                </content>
             </ScrollPane>

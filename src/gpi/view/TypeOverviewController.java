@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +27,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 /**
  * Created by admin on 09/12/14.
@@ -150,52 +152,40 @@ public class TypeOverviewController {
 	 */
 	@FXML
 	public void ajouterTypeGridPane(ObservableList<Type> types) {
-		int ligne=0;
-		int colonne=0; 
-		int hauteurCellule=150;
-		int largeurCellule=getLargeurCellule(types);
-		String cheminImage;
-		for(int i=0;i<this.getNbType();i++)
-		{
-			Type type=types.get(i);
-			cheminImage=type.getCheminImageType().getValue();
-			ImageView image=new ImageView();
-			image.setImage(new Image(cheminImage));
-			image.setFitHeight(100);
-			image.setFitWidth(100);
-			Label label=new Label();
-			label.setText(type.getNomTypeString());
-			label.setId(""+type.getIdType());
-			label.setFont(new Font("Arial",20));
-			BorderPane bp_type=new BorderPane();
-			bp_type.setCenter(image);
-			bp_type.setBottom(label);
-			BorderPane.setAlignment(label,Pos.CENTER);
-			bp_type.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					MainApp.setCritere(type);
-					MainApp.changerTab("Materiel");
-				}
-			});
-			if(i%4==0 && i!=0)
-			{
-				ligne=ligne+1;
-				colonne=0;
-			}
-			gp_type.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
-			//gp_type.getRowConstraints().add(new RowConstraints(hauteurCellule));
-			this.gp_type.add(bp_type, colonne, ligne);
-			colonne=colonne+1;
-		}
-		/*for(int i=0;i<4;i++)
-		{
-			gp_type.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
-		}
+		int nbType,largeurCellule;
+		nbType=types.size();
+		largeurCellule=getLargeurCellule(types);
 		for(int i=0;i<getNbLigne(types);i++)
 		{
-			gp_type.getRowConstraints().add(new RowConstraints(hauteurCellule));
-		}*/
+			for(int j=0;j<4;j++)
+			{
+				if(i*4+j<nbType)
+				{
+					Type type=types.get(i*4+j);
+					BorderPane bp=new BorderPane();
+					Label label=new Label(types.get(i*4+j).getNomType().getValue());
+					label.setFont(new Font("Arial",20));
+					ImageView image=new ImageView(types.get(i*4+j).getCheminImageType().getValue());
+					image.setFitHeight(100);
+					image.setFitWidth(100);
+					BorderPane.setAlignment(label,Pos.CENTER);
+					BorderPane.setAlignment(image,Pos.CENTER);
+					bp.setCenter(image);
+					bp.setBottom(label);
+					Button button=new Button();
+					button.setGraphic(bp);
+					button.setMinWidth(largeurCellule);
+					button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+						@Override
+						public void handle(MouseEvent event) {
+							MainApp.setCritere(type);
+							MainApp.changerTab("Materiel");
+						}
+					});
+					this.gp_type.add(button,j,i);
+				}
+			}
+		}
 	}
 	
 	/**
