@@ -77,6 +77,7 @@ public class AjouterSite {
 			setNomSite(NameSiteField.getText());
 			try {
 				siteDAO.ajouterSite(new Site(0,getNomSite(),getCheminImageSite()));
+				new Popup("Site "+getNomSite()+" ajouté !");
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}
@@ -109,23 +110,6 @@ public class AjouterSite {
 		dialogStage.close();
 	}
 
-	// private boolean isInputValid() {
-	// String errorMessage = "";
-	//
-	// if (NameSiteField.getText() == null
-	// || NameSiteField.getText().length() == 0) {
-	// errorMessage += "Nom de site invalide\n";
-	// }
-	//
-	// if (errorMessage.length() == 0) {
-	// return true;
-	// } else {
-	// // Show the error message
-	// Dialogs.showErrorDialog(dialogStage, errorMessage,
-	// "Veuillez corriger le champ", "Champ invalide");
-	// return false;
-	// }
-	// }
 
 	@FXML
 	private void handleChoose(ActionEvent event) {

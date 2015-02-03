@@ -20,9 +20,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * Created by Kevin
- */
 
 public class AjouterFacture {
 	@FXML
@@ -92,12 +89,14 @@ public class AjouterFacture {
 			int index=numRevendeurCombobox.getSelectionModel().getSelectedIndex();
 			try {
 				factureDAO.ajouterFacture(new Facture(0,numFactureField.getText(),dateFacturePicker.getValue(),Float.parseFloat(montantFactureField.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(index))));
+				new Popup("Facture "+numFactureField.getText()+" ajouté !");
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}
 			okClicked = true;
 			dialogStage.close();
 		}
+		
 	}
 
 	private boolean controlerSaisies() {
@@ -123,7 +122,7 @@ public class AjouterFacture {
 			new Popup("Le format du montant de la facture est erroné. Format : 123.45");
 			return false;
 		}
-		return false;
+		return true;
 	}
 
 

@@ -9,9 +9,6 @@ import javafx.stage.Stage;
 import utils.Constante;
 import utils.Popup;
 
-/**
- * Created by Kevin
- */
 
 public class AjouterFabricant {
 	@FXML
@@ -33,7 +30,7 @@ public class AjouterFabricant {
 
 	private FabricantDAO fabricantDAO=new FabricantDAO();
 	/**
-	 * Initialise les donn�es
+	 * Initialise les donnees
 	 */
 	@FXML
 	private void initialize() {

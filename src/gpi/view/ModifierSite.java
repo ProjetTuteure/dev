@@ -104,6 +104,7 @@ public class ModifierSite {
 			setNomSite(NameSiteField.getText());
 			try {
 				siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
+				new Popup("Site "+getNomSite()+" ajouté !");
 			} catch (ConnexionBDException e) {
 				new Popup(e.getMessage());
 			}

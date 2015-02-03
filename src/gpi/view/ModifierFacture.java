@@ -2,9 +2,11 @@ package gpi.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import utils.Constante;
 import utils.Popup;
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
 import gpi.metier.FactureDAO;
@@ -18,10 +20,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * Created by Kevin
- */
-
 public class ModifierFacture {
 
 	@FXML
@@ -30,39 +28,38 @@ public class ModifierFacture {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> ComboboxFacture;
-
-	private Donnee donneeFact = new Donnee();
+	private ComboBox<String> factureCombobox;
 
 	private ObservableList<String> listFacture;
 
 	@FXML
-	private TextField NumFacture;
+	private TextField numFactureField;
 	@FXML
-	private DatePicker DateFacture;
+	private DatePicker dateFacturePicker;
 	@FXML
-	private TextField MontantFacture;
+	private TextField montantFactureField;
 	@FXML
-	private ComboBox<String> NumRevendeur;
-	List<Facture> listObjetsFacture;
+	private ComboBox<String> numRevendeurCombobox;
+	List<Integer> listIdFacture;
 	private ObservableList<String> listRevendeurObservable;
 	List<Integer> listRevendeurId;
 
 	@FXML
 	private void initialize() {
 		listFacture = FXCollections.observableArrayList();
-		listObjetsFacture=new ArrayList<Facture>();
+		listIdFacture=new ArrayList<Integer>();
 		FactureDAO factureDAO = new FactureDAO();
-		try{
-			listObjetsFacture=factureDAO.recupererAllFacture();
+
+		try {
+			for (Facture facture : factureDAO.recupererAllFacture()) {
+				listIdFacture.add(facture.getIdFacture().getValue());
+				listFacture.add(facture.getNumFacture());
+			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		for (Facture facture : listObjetsFacture) {
-			listFacture.add(facture.getNumFacture());
-		}
 		
-		ComboboxFacture.setItems(listFacture);
+		factureCombobox.setItems(listFacture);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -75,32 +72,58 @@ public class ModifierFacture {
 
 	@FXML
 	private void handleOk() {
-		FactureDAO factureDAO = new FactureDAO();
-		RevendeurDAO revendeurDAO = new RevendeurDAO();
-		Revendeur revendeur=null;
-		int indexRevendeur=NumRevendeur.getSelectionModel().getSelectedIndex();
-		if(indexRevendeur==-1){
-			revendeur=listObjetsFacture.get(ComboboxFacture.getSelectionModel().getSelectedIndex()).getRevendeurFacture();
-		}else{
+		if(controlerSaisies()){
+			FactureDAO factureDAO = new FactureDAO();
+			RevendeurDAO revendeurDAO = new RevendeurDAO();
+			Revendeur revendeur=null;
+			int indexRevendeur=numRevendeurCombobox.getSelectionModel().getSelectedIndex();
+			int idFacture=listIdFacture.get(factureCombobox.getSelectionModel().getSelectedIndex());
 			try {
-				revendeur=revendeurDAO.recupererRevendeurParId(listRevendeurId.get(indexRevendeur));
+				if(indexRevendeur==-1){
+					revendeur=factureDAO.recupererFactureParId(idFacture).getRevendeurFacture();
+				}else{
+					revendeur=revendeurDAO.recupererRevendeurParId(listRevendeurId.get(indexRevendeur));
+				}
 			} catch (ConnexionBDException e) {
-				// TODO Auto-generated catch block
 				new Popup(e.getMessage());
 			}
+			int indexFacture = factureCombobox.getSelectionModel().getSelectedIndex();
+			try {
+				factureDAO.modifierFacture(new Facture(idFacture,numFactureField.getText(),dateFacturePicker.getValue(),Float.parseFloat(montantFactureField.getText()),revendeur));
+				new Popup("Facture "+numFactureField.getText()+" ajouté !");
+			}  catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
 		}
-		int indexFacture = ComboboxFacture.getSelectionModel().getSelectedIndex();
-		int idFacture=listObjetsFacture.get(indexFacture).getIdFacture().getValue();
-		try {
-			factureDAO.modifierFacture(new Facture(idFacture,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeur));
-		} catch (NumberFormatException e) {
-			new Popup("Erreur de format. Format : 123.45");
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
-		}
-		okClicked = true;
-		dialogStage.close();
 
+	}
+
+	private boolean controlerSaisies() {
+		if(numFactureField.getText().isEmpty()){
+			new Popup("Le champ \"Numéro de facture\" doit être saisi");
+			return false;
+		}
+		if(dateFacturePicker.getValue()==null){
+			new Popup("Le champ \"date de facture\" doit être saisi");
+			return false;
+		}
+		if(numFactureField.getText().length()>Constante.LONGUEUR_NUM_FACTURE){
+			new Popup("La longueur du numero de facture saisi doit être inférieur à "+Constante.LONGUEUR_NUM_FACTURE+" caractères");
+			return false;
+		}
+		if(montantFactureField.getText().length()>Constante.LONGUEUR_MONTANT_FACTURE){
+			new Popup("La longueur du montant de la facture saisi doit être inférieur à "+Constante.LONGUEUR_MONTANT_FACTURE+" caractères");
+			return false;
+		}
+		Pattern p = Pattern.compile("[0-9]{1,8}[.]{1}[0-9]{1,2}");
+		Matcher m = p.matcher(montantFactureField.getText());
+		if(!m.matches()){
+			new Popup("Le format du montant de la facture est erroné. Format : 123.45");
+			return false;
+		}
+		return true;
 	}
 
 	@FXML
@@ -110,12 +133,18 @@ public class ModifierFacture {
 
 	@FXML
 	private void handlechange() {
+		FactureDAO factureDAO=new FactureDAO();
 		RevendeurDAO revendeurDAO=new RevendeurDAO();
-		int index = ComboboxFacture.getSelectionModel().getSelectedIndex();
-		NumFacture.setText(listObjetsFacture.get(index).getNumFacture());
-		DateFacture.setValue(listObjetsFacture.get(index).getDateFacture());
-		MontantFacture.setText(listObjetsFacture.get(index).getMontantFactureStringProperty().getValue());
-		String nomRevendeur=listObjetsFacture.get(index).getRevendeurFacture().getNomRevendeur().getValue();
+		Facture factureAModifie=null;
+		try {
+			factureAModifie = factureDAO.recupererFactureParId(listIdFacture.get(factureCombobox.getSelectionModel().getSelectedIndex()));
+		} catch (ConnexionBDException e1) {
+			e1.printStackTrace();
+		}
+		numFactureField.setText(factureAModifie.getNumFacture());
+		dateFacturePicker.setValue(factureAModifie.getDateFacture());
+		montantFactureField.setText(factureAModifie.getMontantFactureStringProperty().getValue());
+		String nomRevendeur=factureAModifie.getRevendeurFacture().getNomRevendeur().getValue();
 		listRevendeurId=new ArrayList<Integer>();
 		listRevendeurObservable = FXCollections.observableArrayList();
 		try {
@@ -124,10 +153,9 @@ public class ModifierFacture {
 				listRevendeurId.add(revendeur.getIdRevendeur().getValue());
 			}
 		} catch (ConnexionBDException e) {
-			// TODO Auto-generated catch block
 			new Popup(e.getMessage());
 		}
-		NumRevendeur.setItems(listRevendeurObservable);
-		NumRevendeur.setPromptText(nomRevendeur);
+		numRevendeurCombobox.setItems(listRevendeurObservable);
+		numRevendeurCombobox.setPromptText(nomRevendeur);
 	}
 }
