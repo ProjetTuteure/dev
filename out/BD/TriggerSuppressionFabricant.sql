@@ -2,30 +2,16 @@ CREATE TRIGGER [dbo].[supprimerFabricant] on [dbo].[FABRICANT]
 INSTEAD OF DELETE
 AS BEGIN
 	declare @idFabricant int;
-	DECLARE @idMateriel int
-	DECLARE @idComposant int
-	SELECT @idFabricant=idFabricant FROM DELETED
-
-	DECLARE CursorMateriel CURSOR FOR SELECT idMateriel FROM MATERIEL WHERE idFabricant=@idFabricant
-	OPEN CursorMateriel
-	FETCH CursorMateriel INTO @idMateriel
+	DECLARE CursorFabricant CURSOR FOR SELECT idFabricant FROM DELETED
+	OPEN CursorFabricant
+	FETCH CursorFabricant INTO @idFabricant
 	WHILE @@FETCH_STATUS=0
 	BEGIN
-		DELETE MATERIEL WHERE idMateriel=@idMateriel
-		FETCH CursorMateriel INTO @idMateriel
+		DELETE MATERIEL WHERE idFabricant=@idFabricant
+		DELETE COMPOSANT WHERE idFabricant=@idFabricant
+		DELETE FABRICANT WHERE idFabricant=@idFabricant
+		FETCH CursorFabricant INTO @idFabricant
 	END
-	CLOSE CursorMateriel
-	DEALLOCATE CursorMateriel
-
-	DECLARE CursorComposant CURSOR FOR SELECT idComposant FROM COMPOSANT WHERE idFabricant=@idFabricant
-	OPEN CursorComposant
-	FETCH CursorComposant INTO @idComposant
-	WHILE @@FETCH_STATUS=0
-	BEGIN
-		DELETE FROM COMPOSANT WHERE idComposant=@idComposant
-		FETCH CursorComposant INTO @idComposant
-	END
-	CLOSE CursorComposant
-	DEALLOCATE CursorComposant
-	DELETE FABRICANT WHERE idFabricant=@idFabricant
+	CLOSE CursorFabricant
+	DEALLOCATE CursorFabricant
 END

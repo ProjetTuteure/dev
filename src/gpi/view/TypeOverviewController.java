@@ -196,7 +196,7 @@ public class TypeOverviewController {
 	 */
 	private int getLargeurCellule(ObservableList<Type> types)
 	{
-		if(types.size()<9)
+		if(types.size()<13)
 		{
 			return 200;
 		}

@@ -124,7 +124,7 @@ public class SiteOverviewController {
 	
 	public int getLargeurCellule(ObservableList<Site> sites)
 	{
-		if(sites.size()<9)
+		if(sites.size()<13)
 		{
 			return 200;
 		}

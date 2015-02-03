@@ -2,16 +2,15 @@ CREATE TRIGGER SuppressionRevendeur on REVENDEUR
 INSTEAD OF DELETE
 AS BEGIN 
 	declare @idRevendeur int
-	DECLARE @idFacture int
-	DECLARE CursorFacture CURSOR FOR SELECT idFacture FROM FACTURE WHERE idRevendeur=@idRevendeur
-	OPEN CursorFacture
-	FETCH CursorFacture INTO @idFacture
+	DECLARE CursorRevendeur CURSOR FOR SELECT idRevendeur FROM DELETED
+	OPEN CursorRevendeur
+	FETCH CursorRevendeur INTO @idRevendeur
 	WHILE @@FETCH_STATUS=0
 	BEGIN
-		DELETE FROM FACTURE WHERE idFacture=@idFacture
-		FETCH CursorFacture INTO @idFacture
+		DELETE FROM FACTURE WHERE idRevendeur=@idRevendeur
+		DELETE FROM REVENDEUR WHERE idRevendeur=@idRevendeur
+		FETCH CursorRevendeur INTO @idRevendeur
 	END
-	CLOSE CursorFacture
-	DEALLOCATE CursorFacture
-	DELETE REVENDEUR WHERE idrevendeur = @idRevendeur
+	CLOSE CursorRevendeur
+	DEALLOCATE CursorRevendeur
 END

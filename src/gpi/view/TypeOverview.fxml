@@ -12,7 +12,7 @@
     <children>
         <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <ScrollPane fx:id="sp_type" maxHeight="374.0" prefHeight="374.0" prefViewportHeight="584.0" prefViewportWidth="800.0" prefWidth="800.0">
+            <ScrollPane fx:id="sp_type" maxHeight="400.0" prefHeight="200.0" prefWidth="200.0">
                <BorderPane.margin>
                   <Insets top="25.0" />
                </BorderPane.margin>

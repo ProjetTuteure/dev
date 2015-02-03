@@ -2,17 +2,14 @@ CREATE TRIGGER supprimerSite ON SITE
 INSTEAD OF DELETE AS
 BEGIN
 	DECLARE @idSite int
-	DECLARE @idMateriel INT
-	SELECT @idSite=idSite FROM DELETED
-	DECLARE CursorMateriel CURSOR FOR SELECT idMateriel FROM MATERIEL WHERE idSite=@idSite
-	OPEN CursorMateriel
-	FETCH CursorMateriel INTO @idMateriel
+
+	DECLARE CursorSite CURSOR FOR SELECT idSite FROM DELETED
+	OPEN CursorSite
+	FETCH CursorSite INTO @idSite
 	WHILE @@FETCH_STATUS=0
 	BEGIN
-		DELETE FROM MATERIEL WHERE idMateriel=@idMateriel
-		FETCH CursorMateriel INTO @idMateriel
+		DELETE FROM MATERIEL WHERE idSite=@idSite
+		DELETE FROM SITE WHERE idSite=@idSite
+		FETCH CursorSite INTO @idSite
 	END
-	CLOSE CursorMateriel
-	DEALLOCATE CursorMateriel
-	DELETE FROM SITE WHERE idSite=@idSite
 END

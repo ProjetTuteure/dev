@@ -198,7 +198,7 @@ public class MaterielOverview {
 	 */
 	private int getLargeurCellule(ObservableList<Materiel> materiel)
 	{
-		if(materiel.size()<9)
+		if(materiel.size()<13)
 		{
 			return 200;
 		}

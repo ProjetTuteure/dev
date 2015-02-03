@@ -12,12 +12,12 @@
    <children>
       <BorderPane layoutX="300.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <ScrollPane fx:id="sp_site" hbarPolicy="NEVER" maxHeight="400.0" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="sp_site" hbarPolicy="NEVER" maxHeight="400.0" prefHeight="200.0" prefWidth="200.0">
                <content>
                   <GridPane fx:id="gp_site" gridLinesVisible="true" />
                </content>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets top="90.0" />
                </BorderPane.margin>
             </ScrollPane>
          </center>
