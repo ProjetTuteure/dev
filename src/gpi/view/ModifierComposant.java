@@ -85,7 +85,7 @@ public class ModifierComposant {
 		} else if (nomfield.getText().length() > Constante.LONGUEUR_NOM_COMPOSANT) {
 			new Popup("Le nom du composant doit etre inférieur à "
 					+ Constante.LONGUEUR_NOM_COMPOSANT + " caractères");
-		} else if (caracfield.getText().length() > Constante.LONGUEUR_ADRESSE) {
+		} else if (caracfield.getText().length() > Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT) {
 			new Popup("Les caractéristiques ne peuvent pas dépasser "
 					+ Constante.LONGUEUR_CARACTERISTIQUE_COMPOSANT
 					+ " caractères");
