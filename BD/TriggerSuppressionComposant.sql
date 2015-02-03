@@ -2,17 +2,15 @@ CREATE TRIGGER supprimerComposant on COMPOSANT
 INSTEAD OF DELETE
 AS BEGIN
 	declare @idComposant int;
-	DECLARE @Compose INT
-	SELECT @idComposant=idComposant FROM DELETED
-	DECLARE CursorCompose CURSOR FOR SELECT idComposant FROM Compose where idComposant=@idComposant
-	OPEN CursorCompose
-	FETCH CursorCompose INTO @Compose
+	DECLARE CursorComposant CURSOR FOR SELECT idComposant FROM DELETED
+	OPEN CursorComposant
+	FETCH CursorComposant INTO @idComposant
 	WHILE @@FETCH_STATUS=0
 	BEGIN
-		DELETE COMPOSE WHERE idComposant=@Compose
-		FETCH CursorCompose INTO @Compose
+		DELETE FROM COMPOSE WHERE idComposant=@idComposant
+		DELETE FROM COMPOSANT WHERE idComposant=@idComposant
+		FETCH CursorComposant INTO @idComposant
 	END
-	DELETE COMPOSANT WHERE idComposant=@idComposant
-	CLOSE CursorCompose
-	DEALLOCATE CursorCompose
+	CLOSE CursorComposant
+	DEALLOCATE CursorComposant
 END

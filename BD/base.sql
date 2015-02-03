@@ -53,10 +53,10 @@ CREATE TABLE ETAT(
 
 CREATE TABLE MATERIEL(
 	idMateriel int IDENTITY(1,1) PRIMARY KEY ,
-	numImmobMateriel varchar(20) NOT NULL,
+	numImmobMateriel varchar(20),
 	numeroSerieMateriel varchar(50),
 	systemeExploitationMateriel text,
-	nomMateriel varchar(20),
+	nomMateriel varchar(20) NOT NULL,
 	dateExpirationGarantieMateriel DATE,
 	repertoireDrivers varchar(30),
 	modeleMateriel varchar(20),

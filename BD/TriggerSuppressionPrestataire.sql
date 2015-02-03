@@ -2,15 +2,15 @@ CREATE TRIGGER SuppressionPrestataire on PRESTATAIRE
 INSTEAD OF DELETE
 AS BEGIN 
 	declare @idPrestataire int;
-	DECLARE MyCursor CURSOR FOR SELECT idPrestataire FROM DELETED
-	OPEN MyCursor
-	FETCH MyCursor INTO @idPrestataire
+	DECLARE CursorPrestataire CURSOR FOR SELECT idPrestataire FROM DELETED
+	OPEN CursorPrestataire
+	FETCH CursorPrestataire INTO @idPrestataire
 	WHILE @@FETCH_STATUS=0
 	BEGIN
 		DELETE FROM ESTINTERVENU WHERE idPrestataire=@idPrestataire
-		FETCH MyCursor INTO @idPrestataire
+		DELETE FROM PRESTATAIRE WHERE idPrestataire=@idPrestataire
+		FETCH CursorPrestataire INTO @idPrestataire
 	END
-	DELETE FROM PRESTATAIRE WHERE idPrestataire=@idPrestataire
-	CLOSE MyCursor
-	DEALLOCATE MyCursor
+	CLOSE CursorPrestataire
+	DEALLOCATE CursorPrestataire
 END
