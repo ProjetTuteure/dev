@@ -11,42 +11,43 @@ import java.time.LocalDate;
  * Created by thibault on 22/11/14.
  */
 public class Logiciel {
-    private IntegerProperty idLogiciel;
-    private StringProperty nomLogiciel;
-    private StringProperty versionLogiciel;
+    private Integer idLogiciel;
+    private String nomLogiciel;
+    private String versionLogiciel;
     private LocalDate dateExpirationLogiciel;
     private Facture factureLogiciel;
 
     public Logiciel(int idLogiciel, String nomLogiciel, String versionLogiciel, LocalDate dateExpirationLogiciel, Facture factureLogiciel) {
-        this.idLogiciel = new SimpleIntegerProperty(idLogiciel);
-        this.nomLogiciel = new SimpleStringProperty(nomLogiciel);
-        this.versionLogiciel = new SimpleStringProperty(versionLogiciel);
+        this.idLogiciel = idLogiciel;
+        this.nomLogiciel = nomLogiciel;
+        this.versionLogiciel = versionLogiciel;
         this.dateExpirationLogiciel = dateExpirationLogiciel;
         this.factureLogiciel = factureLogiciel;
     }
 
-    public IntegerProperty getIdLogiciel() {
+    public Integer getIdLogiciel() {
         return idLogiciel;
     }
 
-    public void setIdLogiciel(IntegerProperty idLogiciel) {
+    public void setIdLogiciel(Integer idLogiciel) {
         this.idLogiciel = idLogiciel;
     }
-
-    public StringProperty getNomLogiciel() {
+    
+    public String getNomLogiciel() {
+    	System.out.println(nomLogiciel);
         return nomLogiciel;
     }
 
     public void setNomLogiciel(String nomLogiciel) {
-        this.nomLogiciel.setValue(nomLogiciel);
+        this.nomLogiciel=nomLogiciel;
     }
 
-    public StringProperty getVersionLogiciel() {
+    public String getVersionLogiciel() {
         return versionLogiciel;
     }
 
     public void setVersionLogiciel(String versionLogiciel) {
-        this.versionLogiciel.setValue(versionLogiciel);
+        this.versionLogiciel=versionLogiciel;
     }
 
     public LocalDate getDateExpirationLogiciel() {

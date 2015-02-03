@@ -391,25 +391,6 @@ public class Donnee {
 		return null;
 	}
 
-	public Logiciel getLogiciel(String value) {
-		for (Logiciel log : logicielData) {
-			if (value == log.getNomLogiciel().getValue()) {
-				return log;
-			}
-		}
-		return null;
-	}
-
-	public Logiciel getLogiciel2(String value) {
-		for (Logiciel log : logicielData) {
-			if (value.equals(log.getNomLogiciel().getValue() + " "
-					+ log.getVersionLogiciel().getValue())) {
-				return log;
-			}
-		}
-		return null;
-	}
-
 	/**
 	 * Retourne une liste de materiel en fonction du site et du type de
 	 * materiel.

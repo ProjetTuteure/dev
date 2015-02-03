@@ -68,7 +68,8 @@ public class Maintenance {
         return dateMaintenance;
     }
 
-    public StringProperty getdateMaintenanceStringProperty() {
+    public String getdateMaintenanceString() {
+    	if(dateMaintenance==null)return null;
         String chaine1="";
         String chaine2="";
         if(dateMaintenance.getDayOfMonth()<10){
@@ -77,8 +78,22 @@ public class Maintenance {
         if(dateMaintenance.getMonthValue()<10){
             chaine2="0";
         }
-        String dateFacture=chaine1+this.dateMaintenance.getDayOfMonth()+"/"+chaine2+this.dateMaintenance.getMonthValue()+"/"+this.dateMaintenance.getYear();
-        return new SimpleStringProperty(dateFacture);
+        String date=chaine1+this.dateMaintenance.getDayOfMonth()+"/"+chaine2+this.dateMaintenance.getMonthValue()+"/"+this.dateMaintenance.getYear();
+        return date;
+    }
+    
+    public StringProperty getdateMaintenanceStringProperty() {
+    	if(dateMaintenance==null)return null;
+        String chaine1="";
+        String chaine2="";
+        if(dateMaintenance.getDayOfMonth()<10){
+            chaine1="0";
+        }
+        if(dateMaintenance.getMonthValue()<10){
+            chaine2="0";
+        }
+        String date=chaine1+this.dateMaintenance.getDayOfMonth()+"/"+chaine2+this.dateMaintenance.getMonthValue()+"/"+this.dateMaintenance.getYear();
+        return new SimpleStringProperty(date);
     }
 
     public void setdateMaintenance(LocalDate dateMaintenance) {

@@ -149,6 +149,7 @@ public class DetailMachineController{
 	
 	ObservableList<Logiciel> listLogiciel;
 	ObservableList<Composant> listComposant;
+	SimpleStringProperty champNull;
 	
 	public DetailMachineController() {
     }
@@ -174,8 +175,11 @@ public class DetailMachineController{
 				index=11;
 				break;
 		}
+		champNull=new SimpleStringProperty(" ");
 		materiel=(Materiel)MainApp.getCritere(index);
 		EstMaintenuDAO estMaintenuDAO = new EstMaintenuDAO();
+		ComposeDAO composeDAO = new ComposeDAO();
+		EstInstalleDAO estInstalleDAO = new EstInstalleDAO();
 		
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
@@ -226,8 +230,8 @@ public class DetailMachineController{
 			new Popup(e.getMessage());
 		}
 		tableViewMaintenances.setItems(listMaintenance);
-		numMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdMaintenance().toString()));
-		dateMaintenance.setCellValueFactory(cellData -> cellData.getValue().getdateMaintenanceStringProperty());
+		numMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdMaintenance().getValue()+""));
+		dateMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getdateMaintenanceString()));
 		objetMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObjetMaintenance()));
 		coutMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoutMaintenanceString()));
 		descriptionMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescriptionMaintenance()));
@@ -235,18 +239,26 @@ public class DetailMachineController{
 		//utilisateurs onglet
 		
 		listLogiciel = FXCollections.observableArrayList();
-		for(Logiciel logiciel : materiel.getListLogicielMateriel()){
-			listLogiciel.add(logiciel);
+		try {
+			for(Logiciel logiciel : estInstalleDAO.recupererLogicielsParMateriel(materiel.getIdMateriel().getValue())){
+				listLogiciel.add(logiciel);
+			}
+		} catch (ConnexionBDException e1) {
+			new Popup(e1.getMessage());
 		}
 		tableViewLogiciels.setItems(listLogiciel);
-		nomLogiciel.setCellValueFactory(cellData -> cellData.getValue().getNomLogiciel());
-		versionLogiciel.setCellValueFactory(cellData -> cellData.getValue().getVersionLogiciel());
+		nomLogiciel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomLogiciel()));
+		versionLogiciel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVersionLogiciel()));
 		finGarantieLogiciel.setCellValueFactory(cellData -> cellData.getValue().getDateExpirationLogicielStringProperty());
 		numFactureLogiciel.setCellValueFactory(cellData -> cellData.getValue().getFactureLogiciel().getNumFactureProperty());
 		
 		listComposant = FXCollections.observableArrayList();
-		for(Composant composant : materiel.getListComposantMateriel()){
-			listComposant.add(composant);
+		try {
+			for(Composant composant : composeDAO.recupererComposantsParMateriel(materiel.getIdMateriel().getValue())){
+				listComposant.add(composant);
+			}
+		} catch (ConnexionBDException e) {
+			new Popup(e.getMessage());
 		}
 		tableViewComposants.setItems(listComposant);
 		nomComposant.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomComposant()));

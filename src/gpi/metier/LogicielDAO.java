@@ -23,8 +23,8 @@ public class LogicielDAO {
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connection.prepareStatement("INSERT INTO LOGICIEL(nomLogiciel,versionLogiciel,dateExpirationLogiciel,idFacture) VALUES (?,?,?,?);");
-			prep.setString(1, logiciel.getNomLogiciel().getValue());
-			prep.setString(2, logiciel.getVersionLogiciel().getValue());
+			prep.setString(1, logiciel.getNomLogiciel());
+			prep.setString(2, logiciel.getVersionLogiciel());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
 			prep.setInt(4, logiciel.getFactureLogiciel().getIdFacture().getValue());
 			
@@ -50,11 +50,11 @@ public class LogicielDAO {
 		try{
 			connection=MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connection.prepareStatement("UPDATE LOGICIEL SET nomLogiciel=?, versionLogiciel=?, dateExpirationLogiciel=?, idFacture=? WHERE idLogiciel=? ;");
-			prep.setString(1, logiciel.getNomLogiciel().getValue());
-			prep.setString(2, logiciel.getVersionLogiciel().getValue());
+			prep.setString(1, logiciel.getNomLogiciel());
+			prep.setString(2, logiciel.getVersionLogiciel());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
 			prep.setInt(4, logiciel.getFactureLogiciel().getIdFacture().getValue());
-			prep.setInt(5, logiciel.getIdLogiciel().getValue());
+			prep.setInt(5, logiciel.getIdLogiciel());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -78,7 +78,7 @@ public class LogicielDAO {
 			connection=MaConnexion.getInstance().getConnexion();
 			PreparedStatement prep = connection.prepareStatement("DELETE FROM LOGICIEL WHERE idLogiciel=?;");
 			
-			prep.setInt(1, logiciel.getIdLogiciel().getValue());
+			prep.setInt(1, logiciel.getIdLogiciel());
 			
 			resultat=prep.executeUpdate();
 			return resultat;
@@ -109,10 +109,11 @@ public class LogicielDAO {
 			prep.setInt(1, idLogiciel);
 			
 			resultat=prep.executeQuery();
-			nomLogiciel=resultat.getString(2);
-			versionLogiciel=resultat.getString(3);
-			dateExpirationLogiciel=LocalDate.parse(resultat.getString(4));
-			idFacture=resultat.getInt(5);
+			resultat.next();
+			nomLogiciel=resultat.getString("nomLogiciel");
+			versionLogiciel=resultat.getString("versionLogiciel");
+			dateExpirationLogiciel=LocalDate.parse(resultat.getString("dateExpirationLogiciel"));
+			idFacture=resultat.getInt("idFacture");
 		
 			return new Logiciel(idLogiciel,nomLogiciel,versionLogiciel,dateExpirationLogiciel,factureDAO.recupererFactureParId(idFacture));
 		}catch(SQLException e){

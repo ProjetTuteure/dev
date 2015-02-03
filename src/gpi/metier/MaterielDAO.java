@@ -330,7 +330,7 @@ public class MaterielDAO {
 				e.printStackTrace();
 			}
 		}
-		return listMateriel;
+		return listMateriel;		
 	}
 
 }

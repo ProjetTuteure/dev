@@ -52,6 +52,7 @@ public class MaintenanceDAO {
 	public List<Maintenance> recupererAllMaintenance() throws ConnexionBDException
 	{
 		List<Maintenance> listeARetourner=new ArrayList<Maintenance>();
+		System.out.println(listeARetourner);
 		Connection connexion=MaConnexion.getInstance().getConnexion();
 		try {
 			PreparedStatement ps=connexion.prepareStatement("SELECT * FROM MAINTENANCE");

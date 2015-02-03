@@ -26,8 +26,7 @@ public class Materiel {
     private Site siteMateriel;
     private Fabricant fabricantMateriel;
     private String modeleMateriel;
-    private List<Composant> listComposantMateriel;
-    private List<Logiciel> listLogicielMateriel;
+
 
     public Materiel(int idMateriel,String numImmobMateriel,String numeroSerieMateriel, String systemeExploitationMateriel, String nomMateriel, Type typeMateriel, Etat etatMateriel, LocalDate dateExpirationGarantieMateriel, String repertoireDriverMateriel, Facture factureMateriel, Site siteMateriel, Fabricant fabricantMateriel,String modeleMateriel) {
         this.idMateriel=new SimpleIntegerProperty(idMateriel);
@@ -43,8 +42,6 @@ public class Materiel {
         this.siteMateriel = siteMateriel;
         this.fabricantMateriel = fabricantMateriel;
         this.modeleMateriel=modeleMateriel;
-        this.listComposantMateriel=new ArrayList<Composant>();
-        this.listLogicielMateriel=new ArrayList<Logiciel>();
     }
 
     public IntegerProperty getIdMateriel() {
@@ -163,22 +160,6 @@ public class Materiel {
     public String getModeleMateriel() {
         return modeleMateriel;
     }
-
-    public List<Composant> getListComposantMateriel() {
-        return listComposantMateriel;
-    }
-
-    public void setListComposantMateriel(List<Composant> listComposantMateriel){
-        this.listComposantMateriel=listComposantMateriel;
-    }
-
-    public void ajouterComposantListComposantMateriel(Composant composant){
-        this.listComposantMateriel.add(composant);
-    }
-
-    public void ajouterListComposantListComposantMateriel(List<Composant> listComposantMateriel){
-        this.listComposantMateriel.addAll(listComposantMateriel);
-    }
     
     public StringProperty getNumeroSerieMateriel() {
 		return numeroSerieMateriel;
@@ -195,14 +176,6 @@ public class Materiel {
 	public void setSystemeExploitationMateriel(
 			StringProperty systemeExploitationMateriel) {
 		this.systemeExploitationMateriel = systemeExploitationMateriel;
-	}
-
-	public List<Logiciel> getListLogicielMateriel() {
-		return listLogicielMateriel;
-	}
-
-	public void setListLogicielMateriel(List<Logiciel> listLogicielMateriel) {
-		this.listLogicielMateriel = listLogicielMateriel;
 	}
 
 	public LocalDate getDateExpirationGarantieMateriel() {

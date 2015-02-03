@@ -62,7 +62,7 @@ public class ModifierLogiciel {
 			new Popup(e.getMessage());
 		}
 		for (Logiciel logiciel : listObjetsLogiciel) {
-			listLogiciel.add(logiciel.getNomLogiciel().getValue()+" "+logiciel.getVersionLogiciel().getValue());
+			listLogiciel.add(logiciel.getNomLogiciel()+" "+logiciel.getVersionLogiciel());
 		}
 		
 		ComboboxLogiciel.setItems(listLogiciel);
@@ -93,7 +93,7 @@ public class ModifierLogiciel {
 			}
 		}
 		int indexLogiciel = ComboboxLogiciel.getSelectionModel().getSelectedIndex();
-		int idLogiciel=listObjetsLogiciel.get(indexLogiciel).getIdLogiciel().getValue();
+		int idLogiciel=listObjetsLogiciel.get(indexLogiciel).getIdLogiciel();
 		try {
 			logicielDAO.modifierLogiciel(new Logiciel(idLogiciel,NomLogicielField.getText(),VersionLogicielField.getText(),DateExpirationLogiciel.getValue(),facture));
 		} catch (NumberFormatException e) {
@@ -115,8 +115,8 @@ public class ModifierLogiciel {
 	private void handlechange() {
 		FactureDAO factureDAO=new FactureDAO();
 		int index = ComboboxLogiciel.getSelectionModel().getSelectedIndex();
-		NomLogicielField.setText(listObjetsLogiciel.get(index).getNomLogiciel().getValue());
-		VersionLogicielField.setText(listObjetsLogiciel.get(index).getVersionLogiciel().getValue());
+		NomLogicielField.setText(listObjetsLogiciel.get(index).getNomLogiciel());
+		VersionLogicielField.setText(listObjetsLogiciel.get(index).getVersionLogiciel());
 		DateExpirationLogiciel.setValue(listObjetsLogiciel.get(index).getDateExpirationLogiciel());
 		String numFacture=listObjetsLogiciel.get(index).getFactureLogiciel().getNumFacture();
 		listFactureId=new ArrayList<Integer>();

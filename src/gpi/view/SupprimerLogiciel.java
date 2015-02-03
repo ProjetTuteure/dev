@@ -43,8 +43,8 @@ public class SupprimerLogiciel {
 		listLogicielId=new ArrayList<Integer>();
 		try {
 			for (Logiciel logiciel : logicielDAO.recupererAllLogiciel()) {
-				listLogiciel.add(logiciel.getNomLogiciel().getValue()+" "+logiciel.getVersionLogiciel().getValue());
-				listLogicielId.add(logiciel.getIdLogiciel().getValue());
+				listLogiciel.add(logiciel.getNomLogiciel()+" "+logiciel.getVersionLogiciel());
+				listLogicielId.add(logiciel.getIdLogiciel());
 			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
