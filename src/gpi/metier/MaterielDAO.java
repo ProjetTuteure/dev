@@ -19,7 +19,7 @@ import javafx.beans.property.SimpleStringProperty;
 import utils.MaConnexion;
 
 public class MaterielDAO {
-	private Connection connection;
+	private Connection connexion;
 
 	/**
 	 * Permet d'ajouter un materiel dans la base de donnees
@@ -30,8 +30,8 @@ public class MaterielDAO {
 	public int ajouterMateriel(Materiel materiel) throws ConnexionBDException {
 		int nombreLigneAffectee = 0;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement prepareStatement = connection
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement prepareStatement = connexion
 					.prepareStatement("INSERT INTO MATERIEL (numImmobMateriel,numeroSerieMateriel,systemeExploitationMateriel,nomMateriel,dateExpirationGarantieMateriel,"
 							+ "repertoireDrivers,modeleMateriel,etat,idFacture,idFabricant,idSite,idType) "
 							+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -62,7 +62,9 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -104,7 +106,9 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -129,7 +133,9 @@ public class MaterielDAO {
 			se.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -140,8 +146,8 @@ public class MaterielDAO {
 		ResultSet resultat;
 		Materiel materiel = null;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?;");
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM MATERIEL WHERE idMateriel=?;");
 			preparedStatement.setInt(1, idMateriel);
 			resultat = preparedStatement.executeQuery();
 			resultat.next();
@@ -159,7 +165,9 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -171,8 +179,8 @@ public class MaterielDAO {
 		ResultSet resultat;
 		List<Materiel> listMateriel = new ArrayList<Materiel>();
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			Statement statement = connection.createStatement();
+			connexion = MaConnexion.getInstance().getConnexion();
+			Statement statement = connexion.createStatement();
 			resultat = statement.executeQuery("SELECT * FROM MATERIEL");
 			while (resultat.next()) {
 				TypeDAO typeDAO = new TypeDAO();
@@ -191,8 +199,8 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (connection !=null){
-					connection.close();
+				if (connexion !=null){
+					connexion.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -207,8 +215,8 @@ public class MaterielDAO {
 		ResultSet resultat;
 		Materiel materiel = null;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MATERIEL WHERE idType=? And idSite=?;");
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM MATERIEL WHERE idType=? And idSite=?;");
 			preparedStatement.setInt(1, type.getIdType());
 			preparedStatement.setInt(2, site.getIdSite());
 			resultat = preparedStatement.executeQuery();
@@ -229,7 +237,9 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -305,8 +315,8 @@ public class MaterielDAO {
 		}
 		sql+=" 1=1 ";
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			Statement statement = connection.createStatement();
+			connexion = MaConnexion.getInstance().getConnexion();
+			Statement statement = connexion.createStatement();
 			ResultSet resultat = statement.executeQuery(sql);
 			while (resultat.next()) {
 				TypeDAO typeDAO = new TypeDAO();
@@ -325,7 +335,9 @@ public class MaterielDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

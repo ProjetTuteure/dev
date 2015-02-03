@@ -8,14 +8,14 @@ import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
 public class PrestataireDAO {
-	private Connection connection;
+	private Connection connexion;
 
 	public int ajouterPrestataire(Prestataire prestataire)
 			throws ConnexionBDException {
 		int nombreLigneAffectee = 0;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion
 					.prepareStatement("INSERT INTO PRESTATAIRE(nomPrestataire,prenomPrestataire, telPrestataire, mobilePrestataire, faxPrestataire, emailPrestataire, societePrestataire) VALUES (?,?,?,?,?,?,?);");
 
 			preparedStatement.setString(1, prestataire.getNomPrestataire()
@@ -38,7 +38,9 @@ public class PrestataireDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -50,8 +52,8 @@ public class PrestataireDAO {
 			throws ConnexionBDException {
 		int nombreLigneAffectee = 0;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion
 					.prepareStatement("UPDATE PRESTATAIRE SET nomPrestataire=?,prenomPrestataire=?,telPrestataire=?,mobilePrestataire=?,faxPrestataire=?,emailPrestataire=?,societePrestataire=? WHERE idPrestataire=?");
 			preparedStatement.setString(1, prestataire.getNomPrestataire()
 					.getValue());
@@ -75,7 +77,9 @@ public class PrestataireDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -87,8 +91,8 @@ public class PrestataireDAO {
 			throws ConnexionBDException {
 		int nombreLigneAffectee = 0;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion
 					.prepareStatement("DELETE FROM PRESTATAIRE WHERE idPrestataire=?;");
 			preparedStatement.setInt(1, prestataire.getIdPrestataire()
 					.getValue());
@@ -97,7 +101,9 @@ public class PrestataireDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -110,8 +116,8 @@ public class PrestataireDAO {
 		List<Prestataire> prestataireList = new ArrayList<Prestataire>();
 		ResultSet resultat;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			Statement statement = connection.createStatement();
+			connexion = MaConnexion.getInstance().getConnexion();
+			Statement statement = connexion.createStatement();
 			resultat = statement.executeQuery("SELECT * FROM PRESTATAIRE");
 			while (resultat.next()) {
 				prestataireList.add(new Prestataire(resultat
@@ -128,7 +134,9 @@ public class PrestataireDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -141,8 +149,8 @@ public class PrestataireDAO {
 		ResultSet resultat;
 		Prestataire prestataire = null;
 		try {
-			connection = MaConnexion.getInstance().getConnexion();
-			PreparedStatement preparedStatement = connection
+			connexion = MaConnexion.getInstance().getConnexion();
+			PreparedStatement preparedStatement = connexion
 					.prepareStatement("SELECT * FROM PRESTATAIRE WHERE idPrestataire=?;");
 			preparedStatement.setInt(1, idPrestataire);
 			resultat = preparedStatement.executeQuery();
@@ -159,7 +167,9 @@ public class PrestataireDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

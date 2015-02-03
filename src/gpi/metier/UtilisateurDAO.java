@@ -34,7 +34,9 @@ public class UtilisateurDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -57,7 +59,9 @@ public class UtilisateurDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -77,7 +81,9 @@ public class UtilisateurDAO {
 			return false;
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 				return false;
@@ -107,7 +113,9 @@ public class UtilisateurDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -137,7 +145,9 @@ public class UtilisateurDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -164,7 +174,9 @@ public class UtilisateurDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}

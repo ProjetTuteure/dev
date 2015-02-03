@@ -15,11 +15,11 @@ public class SiteDAO {
 	public SiteDAO(){}
 	
 	public int ajouterSite(Site site) throws ConnexionBDException {
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO SITE(nomSite,cheminImageSite) VALUES (?,?);");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("INSERT INTO SITE(nomSite,cheminImageSite) VALUES (?,?);");
 			
 			prep.setString(1, site.getNomSiteString());
 			prep.setString(2, site.getCheminImageSiteProperty().getValue());
@@ -30,7 +30,9 @@ public class SiteDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -40,11 +42,11 @@ public class SiteDAO {
 	}
 	
 	public int modifierSite(Site site) throws ConnexionBDException {
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE SITE SET nomSite=?, cheminImageSite=? WHERE idSite=?;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("UPDATE SITE SET nomSite=?, cheminImageSite=? WHERE idSite=?;");
 			
 			prep.setString(1, site.getNomSiteString());
 			prep.setString(2, site.getCheminImageSite());
@@ -56,7 +58,9 @@ public class SiteDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -66,11 +70,11 @@ public class SiteDAO {
 	}
 	
 	public int supprimerSite(Site site) throws ConnexionBDException {
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM SITE WHERE idSite=?;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("DELETE FROM SITE WHERE idSite=?;");
 			
 			prep.setInt(1, site.getIdSite());
 			
@@ -80,7 +84,9 @@ public class SiteDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -90,12 +96,12 @@ public class SiteDAO {
 	}
 	
 	public Site recupererSiteParId(int idSite) throws ConnexionBDException {
-		Connection connection=null;
+		Connection connexion=null;
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE WHERE idSite=?;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM SITE WHERE idSite=?;");
 			
 			prep.setInt(1, idSite);
 			
@@ -109,7 +115,9 @@ public class SiteDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -119,15 +127,15 @@ public class SiteDAO {
 	}
 	
 	public List<Site> recupererAllSite() throws ConnexionBDException {
-		Connection connection=null;
+		Connection connexion=null;
 		List<Site> listSite=new ArrayList<Site>();
 		ResultSet resultat;
 		String nomSite,cheminImageSite;
 		int idSite;
 		Site site;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM SITE;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM SITE;");
 			
 			
 			resultat=prep.executeQuery();
@@ -147,8 +155,9 @@ public class SiteDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				if (connection != null)
-					connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

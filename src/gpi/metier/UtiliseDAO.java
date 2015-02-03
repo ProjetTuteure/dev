@@ -36,7 +36,9 @@ public class UtiliseDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -59,7 +61,9 @@ public class UtiliseDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -88,7 +92,9 @@ public class UtiliseDAO {
 		} catch (SQLException e) {
 		}finally{
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				new Popup(e.getMessage());
 			}

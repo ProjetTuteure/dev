@@ -35,7 +35,9 @@ public class MaintenanceDAO {
 		{
 			try
 			{
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			}
 			catch(SQLException se)
 			{
@@ -73,7 +75,9 @@ public class MaintenanceDAO {
 		{
 			try
 			{
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
