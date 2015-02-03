@@ -4,6 +4,7 @@ import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,10 +125,9 @@ public class EstMaintenuDAO {
             PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMateriel=?;");
             preparedStatement.setInt(1, idMateriel);
             resultat=preparedStatement.executeQuery();
-            while(resultat.next()){
-                MaterielDAO materielDAO=new MaterielDAO();
-                Materiel materiel=materielDAO.recupererMaterielParId(resultat.getInt("idMateriel"));
-                maintenanceList.add(new Maintenance(resultat.getInt("idMaintenance"), null, null, null, 0));
+            MaintenanceDAO maintenanceDAO = new MaintenanceDAO();
+            while(resultat.next()){  	
+                maintenanceList.add(maintenanceDAO.recupererMaintenanceParId(resultat.getInt("idMaintenance")));
             }
         }catch(SQLException e){
             e.printStackTrace();
