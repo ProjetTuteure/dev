@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Popup;
 import gpi.bd.Donnee;
 import gpi.metier.*;
 import gpi.view.*;
@@ -49,6 +50,7 @@ public class MainApp extends Application {
 		this.primaryStage.setHeight(605);
 		this.primaryStage.setResizable(false);
 		initRootLayout();
+		new Popup("connection à la base");
 		Thread threadSite = new Thread(new OngletLoader(this.rootLayout,this.SiteOverview,"Site"));
 		Thread threadAnciennete = new Thread(new OngletLoader(this.rootLayout,this.AncienneteOverview,"Anciennete"));
 		Thread threadEtat = new Thread(new OngletLoader(this.rootLayout,this.EtatOverview,"Etat"));
@@ -59,11 +61,6 @@ public class MainApp extends Application {
 		Platform.runLater(threadEtat);
 		Platform.runLater(threadAvance);
 		Platform.runLater(threadParametre);
-		//initTabOverview(this.SiteOverview, "Site");
-		//initTabOverview(this.AncienneteOverview, "Anciennete");
-		//initTabOverview(this.EtatOverview, "Etat");
-		//initTabOverview(this.AvanceOverview, "Avance");
-		//initTabOverview(this.ParametreOverview, "Parametre");
 	}
 
 	public void initTabOverview(Tab tab, String nom) {

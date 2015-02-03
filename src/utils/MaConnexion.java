@@ -26,9 +26,10 @@ public class MaConnexion {
 		String mdp = p.getProperty("mdp");
 		String user= p.getProperty("user");
 		try {
+			DriverManager.setLoginTimeout(2);
 			connexion = DriverManager.getConnection(url,user,mdp);
 		} catch (SQLException e) {
-			throw new ConnexionBDException("Problï¿½me de connexion ï¿½ la bd");
+			throw new ConnexionBDException("Problème de connexion à la bd");
 		}
 		return connexion;
 	}
