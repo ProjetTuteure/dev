@@ -11,12 +11,12 @@ import java.util.List;
  * Created by Julien on 15/01/2015.
  */
 public class EstMaintenuDAO {
-    private Connection connection;
+    private Connection connexion;
     public int ajouterEstMaintenu(EstMaintenu estMaintenu) throws ConnexionBDException {
         int nombreLigneAffectee=0;
         try {
-            connection= MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ESTMAINTENU (idMaintenance,idMateriel) VALUES(?,?)");
+            connexion= MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO ESTMAINTENU (idMaintenance,idMateriel) VALUES(?,?)");
             preparedStatement.setInt(1,estMaintenu.getIdMaintenanceEstMaintenu());
             preparedStatement.setInt(2,estMaintenu.getIdMaterielEstMaintenu());
 
@@ -25,7 +25,9 @@ public class EstMaintenuDAO {
             e.printStackTrace();
         } finally {
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -34,11 +36,10 @@ public class EstMaintenuDAO {
     }
 
     public int supprimerEstMaintenu(EstMaintenu estMaintenu) throws ConnexionBDException{
-        Connection connection=null;
         int nombreLigneAffectee=0;
         try{
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("DELETE FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
 
             preparedStatement.setInt(1, estMaintenu.getIdMaintenanceEstMaintenu());
             preparedStatement.setInt(2, estMaintenu.getIdMaterielEstMaintenu());
@@ -48,7 +49,9 @@ public class EstMaintenuDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				};
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -60,8 +63,8 @@ public class EstMaintenuDAO {
         List<EstMaintenu> estMaintenuList= new ArrayList<EstMaintenu>();
         ResultSet resultat;
         try{
-            connection= MaConnexion.getInstance().getConnexion();
-            Statement statement = connection.createStatement();
+            connexion= MaConnexion.getInstance().getConnexion();
+            Statement statement = connexion.createStatement();
             resultat=statement.executeQuery("SELECT * FROM ESTMAINTENU");
             while(resultat.next()){
                 MaintenanceDAO maintenanceDAO=new MaintenanceDAO();
@@ -74,7 +77,9 @@ public class EstMaintenuDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -86,8 +91,8 @@ public class EstMaintenuDAO {
         ResultSet resultat;
         EstMaintenu estMaintenu=null;
         try{
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMaintenance=? AND idMateriel=?;");
             preparedStatement.setInt(1, idMaintenance);
             preparedStatement.setInt(2, idMateriel);
             resultat=preparedStatement.executeQuery();
@@ -101,7 +106,9 @@ public class EstMaintenuDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -113,8 +120,8 @@ public class EstMaintenuDAO {
         ResultSet resultat;
         List<Maintenance> maintenanceList=new ArrayList<Maintenance>();
         try{
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMateriel=?;");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM ESTMAINTENU WHERE idMateriel=?;");
             preparedStatement.setInt(1, idMateriel);
             resultat=preparedStatement.executeQuery();
             while(resultat.next()){
@@ -126,7 +133,9 @@ public class EstMaintenuDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
