@@ -176,5 +176,40 @@ public class PrestataireDAO {
 		}
 		return prestataire;
 	}
-
+	
+	public List<Prestataire> recupererPrestataireParNom(String nomPrestataire) throws ConnexionBDException {
+		Connection connexion=MaConnexion.getInstance().getConnexion();
+		List<Prestataire> list=null;
+		try {
+			PreparedStatement ps= connexion.prepareStatement("SELECT * FROM PRESTATAIRE WHERE nomPrestataire=?");
+			ps.setString(1, nomPrestataire);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+				list=new ArrayList<Prestataire>();
+				list.add(new Prestataire(rs.getInt("idPrestataire"),
+						rs.getString("nomPrestataire"),
+						rs.getString("prenomPrestataire"),
+						rs.getString("telPrestataire"),
+						rs.getString("faxPrestataire"),
+						rs.getString("mobilePrestataire"),
+						rs.getString("emailPrestataire"),
+						rs.getString("societePrestataire")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				connexion.close();
+			}
+			catch(SQLException se)
+			{
+				se.printStackTrace();
+			}
+		}
+		return list;
+	}
 }

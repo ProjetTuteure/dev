@@ -77,6 +77,7 @@ public class AjouterPrestataire {
 	 */
 	@FXML
 	private void handleOk() {
+		Prestataire prest;
 		try {
 			if (nomPrestataireField.getText().equals("")) {
 				new Popup("Le champ \"Nom du prestataire\" doit être saisi");
@@ -117,6 +118,8 @@ public class AjouterPrestataire {
 						mobilePrestataireField.getText(), faxPrestataireField
 								.getText(), emailPrestataireField.getText(),
 						societePrestataireField.getText()));
+				new Popup("Prestataire "+nomPrestataireField.getText()+" "+prenomPrestataireField
+						.getText()+" ajouté !");
 			}
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
