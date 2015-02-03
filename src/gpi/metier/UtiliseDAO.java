@@ -5,14 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import gpi.exception.ConnexionBDException;
 import utils.MaConnexion;
 import utils.Popup;
+import utils.UtilisateursDetailsMachine;
 
 public class UtiliseDAO {
 
@@ -128,9 +131,42 @@ public class UtiliseDAO {
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		return nomUtilisateur;
-		
-		
+		return nomUtilisateur;	
+	}
+	
+	public List<UtilisateursDetailsMachine> recupererUtilisateursParMachine(int idMateriel) throws ConnexionBDException {
+		Connection connexion = MaConnexion.getInstance().getConnexion();
+		List<UtilisateursDetailsMachine> listeUtilisateur = new ArrayList<>();
+		try {
+			PreparedStatement ps = connexion.prepareStatement("SELECT * FROM UTILISE WHERE idMateriel=? ORDER BY dateUtilise asc");
+			ps.setInt(1, idMateriel);
+			ResultSet rs = ps.executeQuery();
+			UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+			Utilisateur utilisateur;
+			String dateDebut,dateFin;
+			rs.next();
+			utilisateur=utilisateurDAO.recupererUtilisateurParId(rs.getInt("idUtilisateur"));
+			dateDebut=rs.getString("dateUtilise");
+			while (rs.next()) {
+				dateFin=rs.getString("dateUtilise");
+				listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
+				utilisateur=utilisateurDAO.recupererUtilisateurParId(rs.getInt("idUtilisateur"));
+				dateDebut=rs.getString("dateUtilise");
+			}
+			dateFin="";
+			listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connexion != null){
+					connexion.close();
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return listeUtilisateur;
 	}
 
 }

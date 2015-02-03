@@ -16,6 +16,7 @@ import ping.ChangerCouleurPastille;
 import ping.Ping;
 import ping.PingWindows;
 import utils.Popup;
+import utils.UtilisateursDetailsMachine;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -106,17 +107,17 @@ public class DetailMachineController{
 	@FXML
 	private TableColumn<Maintenance,String> descriptionMaintenance;
 	@FXML
-	private TableView<Materiel> tableViewUtilisateurs;
+	private TableView<UtilisateursDetailsMachine> tableViewUtilisateurs;
 	@FXML
-	private TableColumn<Materiel,String> nomUtilisateur;
+	private TableColumn<UtilisateursDetailsMachine,String> nomUtilisateur;
 	@FXML
-	private TableColumn<Materiel,String> prenomUtilisateur;
+	private TableColumn<UtilisateursDetailsMachine,String> prenomUtilisateur;
 	@FXML
-	private TableColumn<Materiel,String> telUtilisateur;
+	private TableColumn<UtilisateursDetailsMachine,String> telUtilisateur;
 	@FXML
-	private TableColumn<Materiel,String> debutUtilisateur;
+	private TableColumn<UtilisateursDetailsMachine,String> debutUtilisateur;
 	@FXML
-	private TableColumn<Materiel,String> finUtilisateur;
+	private TableColumn<UtilisateursDetailsMachine,String> finUtilisateur;
 	@FXML
 	private TableView<Logiciel> tableViewLogiciels;
 	@FXML
@@ -146,10 +147,10 @@ public class DetailMachineController{
 	ObservableList<Materiel> listFabricant;
 	ObservableList<Facture> listRevendeur;
 	ObservableList<Maintenance> listMaintenance;
-	
+	ObservableList<UtilisateursDetailsMachine> listUtilisateur;
 	ObservableList<Logiciel> listLogiciel;
 	ObservableList<Composant> listComposant;
-	SimpleStringProperty champNull;
+
 	
 	public DetailMachineController() {
     }
@@ -175,11 +176,11 @@ public class DetailMachineController{
 				index=11;
 				break;
 		}
-		champNull=new SimpleStringProperty(" ");
 		materiel=(Materiel)MainApp.getCritere(index);
 		EstMaintenuDAO estMaintenuDAO = new EstMaintenuDAO();
 		ComposeDAO composeDAO = new ComposeDAO();
 		EstInstalleDAO estInstalleDAO = new EstInstalleDAO();
+		UtiliseDAO utiliseDAO = new UtiliseDAO();
 		
 		textSiteNomMachine.setText(materiel.getSiteMateriel().getNomSiteProperty().getValue()+" --> "+materiel.getNomMateriel().getValueSafe());
 		textCheminDossierDrivers.setText(materiel.getRepertoireDriverMateriel().getValueSafe());
@@ -236,7 +237,20 @@ public class DetailMachineController{
 		coutMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoutMaintenanceString()));
 		descriptionMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescriptionMaintenance()));
 		
-		//utilisateurs onglet
+		listUtilisateur = FXCollections.observableArrayList();
+		try {
+			for(UtilisateursDetailsMachine utilisateursDetailsMachine : utiliseDAO.recupererUtilisateursParMachine(materiel.getIdMateriel().getValue())){
+				listUtilisateur.add(utilisateursDetailsMachine);
+			}
+		} catch (ConnexionBDException e2) {
+			new Popup(e2.getMessage());
+		}
+		tableViewUtilisateurs.setItems(listUtilisateur);
+		nomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomUtilisateur()));
+		prenomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrenomUtilisateur()));
+		telUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelUtilisateur()));
+		debutUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateDebutUtilisation()));
+		finUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateFinUtilisation()));
 		
 		listLogiciel = FXCollections.observableArrayList();
 		try {
