@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Constante;
 import utils.Popup;
 
 import java.util.ArrayList;
@@ -103,24 +104,75 @@ public class ModifierPrestataire {
 		return okClicked;
 	}
 
+	private boolean controlerSaisies()
+	{
+		if(nomPrestataireField.getText().equals("")){
+			new Popup("Le champ \" Nom du prestataire doit être rempli");
+			return false;
+		} 
+		if (nomPrestataireField.getText().length()>Constante.LONGUEUR_NOM_PRESTATAIRE){
+			new Popup("Le nom du composant doit etre inférieur à "
+					+ Constante.LONGUEUR_NOM_PRESTATAIRE + " caractères");
+			return false;
+		} 
+		if (prenomPrestataireField.getText().equals("")){
+			new Popup("Le champ \" Nom du prestataire doit être rempli");
+			return false;
+		} 
+		if (prenomPrestataireField.getText().length()>Constante.LONGUEUR_NOM_PRESTATAIRE){
+			new Popup("Le nom du composant doit etre inférieur à "
+					+ Constante.LONGUEUR_NOM_PRESTATAIRE + " caractères");
+			return false;
+		} 
+		if(telPrestataireField.getText().length()>Constante.LONGUEUR_NUM_TELEPHONE){
+			new Popup("Le numéro de téléphone doit être inférieur à" + Constante.LONGUEUR_NUM_TELEPHONE+" caractères");
+			return false;
+		} 
+		if(faxPrestataireField.getText().length()>Constante.LONGUEUR_NUM_FAX){
+			new Popup("Le numéro de fax doit être inférieur à" + Constante.LONGUEUR_NUM_FAX+" caractères");
+			return false;
+		} 
+		if(mobilePrestataireField.getText().length()>Constante.LONGUEUR_NUM_MOBILE){
+			new Popup("Le numéro de mobile doit être inférieur à" + Constante.LONGUEUR_NUM_MOBILE+" caractères");
+			return false;
+		} 
+		if(emailPrestataireField.getText().length()>Constante.LONGUEUR_MAIL){
+			new Popup("L'adresse email doit être inférieur à" + Constante.LONGUEUR_MAIL+" caractères");
+			return false;
+		}
+		return true;
+		
+	}
+	
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton MODIFIER
 	 * est clique
 	 */
 	@FXML
 	private void handleOk() {
-		try {
-			prestataireDAO.modifierPrestataire(new Prestataire(this
-					.getIdPrestataire(), nomPrestataireField.getText(),
-					prenomPrestataireField.getText(), telPrestataireField
-							.getText(), societePrestataireField.getText(),
-					null, null, null));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
-		}
 		okClicked = true;
-		dialogStage.close();
-
+		
+		if(controlerSaisies()==true)
+		{
+			try {
+				int indexPrestataireSelectionne=comboboxprenom.getSelectionModel().getSelectedIndex();
+				Prestataire pr = listePrenom.get(indexPrestataireSelectionne);
+				
+				pr.setNomPrestataire(nomPrestataireField.getText());
+				pr.setPrenomPrestataire(prenomPrestataireField.getText());
+				pr.setTelPrestataire(telPrestataireField.getText());
+				pr.setMobilePrestataire(mobilePrestataireField.getText());
+				pr.setFaxPrestataire(faxPrestataireField.getText());
+				pr.setEmailPrestataire(emailPrestataireField.getText());
+				pr.setSocietePrestataire(societePrestataireField.getText());
+				
+				prestataireDAO.modifierPrestataire(pr);
+				new Popup("Prestataire "+pr.getNomPrestataire().get()+" "+pr.getSocieteePrestataire().get()+" modifié !");
+			} catch (ConnexionBDException e) {
+				e.printStackTrace();
+			}
+			dialogStage.close();
+		}
 	}
 
 	/**
