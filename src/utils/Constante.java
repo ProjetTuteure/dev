@@ -23,4 +23,6 @@ public class Constante {
 	public static final int LONGUEUR_CHEMIN_IMAGE=500;
 	public static final int LONGUEUR_NOM_FABRICANT=20;
 	public static final int LONGUEUR_NOM_SITE=20;
+	public static final int LONGUEUR_NUM_FACTURE=30;
+	public static final int LONGUEUR_MONTANT_FACTURE=11;
 }

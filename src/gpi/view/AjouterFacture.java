@@ -2,7 +2,10 @@ package gpi.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import utils.Constante;
 import utils.Popup;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Facture;
@@ -25,13 +28,13 @@ public class AjouterFacture {
 	@FXML
 	private Stage dialogStage;
 	@FXML
-	private TextField NumFacture;
+	private TextField numFactureField;
 	@FXML
-	private DatePicker DateFacture;
+	private DatePicker dateFacturePicker;
 	@FXML
-	private TextField MontantFacture;
+	private TextField montantFactureField;
 	@FXML
-	private ComboBox<String> NumRevendeur;
+	private ComboBox<String> numRevendeurCombobox;
 	@FXML
 	private boolean okClicked = false;
 	private ObservableList<String> listRevendeurObservable;
@@ -54,7 +57,7 @@ public class AjouterFacture {
 			// TODO Auto-generated catch block
 			new Popup(e.getMessage());
 		}
-		NumRevendeur.setItems(listRevendeurObservable);
+		numRevendeurCombobox.setItems(listRevendeurObservable);
 	}
 
 
@@ -83,20 +86,46 @@ public class AjouterFacture {
 	 */
 	@FXML
 	private void handleOk() {
-		FactureDAO factureDAO = new FactureDAO();
-		RevendeurDAO revendeurDAO = new RevendeurDAO();
-		int index=NumRevendeur.getSelectionModel().getSelectedIndex();
-		try {
-			factureDAO.ajouterFacture(new Facture(0,NumFacture.getText(),DateFacture.getValue(),Float.parseFloat(MontantFacture.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(index))));
-		} catch (NumberFormatException e) {
-			new Popup("Erreur de format. Format : 123.45");
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
+		if(controlerSaisies()){
+			FactureDAO factureDAO = new FactureDAO();
+			RevendeurDAO revendeurDAO = new RevendeurDAO();
+			int index=numRevendeurCombobox.getSelectionModel().getSelectedIndex();
+			try {
+				factureDAO.ajouterFacture(new Facture(0,numFactureField.getText(),dateFacturePicker.getValue(),Float.parseFloat(montantFactureField.getText()),revendeurDAO.recupererRevendeurParId(listRevendeurId.get(index))));
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
 		}
-		okClicked = true;
-		dialogStage.close();
-
 	}
+
+	private boolean controlerSaisies() {
+		if(numFactureField.getText().isEmpty()){
+			new Popup("Le champ \"Numéro de facture\" doit être saisi");
+			return false;
+		}
+		if(dateFacturePicker.getValue()==null){
+			new Popup("Le champ \"date de facture\" doit être saisi");
+			return false;
+		}
+		if(numFactureField.getText().length()>Constante.LONGUEUR_NUM_FACTURE){
+			new Popup("La longueur du numero de facture saisi doit être inférieur à "+Constante.LONGUEUR_NUM_FACTURE+" caractères");
+			return false;
+		}
+		if(montantFactureField.getText().length()>Constante.LONGUEUR_MONTANT_FACTURE){
+			new Popup("La longueur du montant de la facture saisi doit être inférieur à "+Constante.LONGUEUR_MONTANT_FACTURE+" caractères");
+			return false;
+		}
+		Pattern p = Pattern.compile("[0-9]{1,8}[.]{1}[0-9]{1,2}");
+		Matcher m = p.matcher(montantFactureField.getText());
+		if(!m.matches()){
+			new Popup("Le format du montant de la facture est erroné. Format : 123.45");
+			return false;
+		}
+		return false;
+	}
+
 
 	/**
 	 * Cette procedure permet de fermer la fenetre, lorsque le bouton ANNULER
