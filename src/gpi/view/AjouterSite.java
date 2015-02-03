@@ -71,7 +71,6 @@ public class AjouterSite {
 	@FXML
 	private void handleOk() {
 		SiteDAO siteDAO = new SiteDAO();
-		// if (isInputValid()) {
 		setNomSite(NameSiteField.getText());
 		try {
 			siteDAO.ajouterSite(new Site(0,getNomSite(),getCheminImageSite()));
@@ -112,13 +111,16 @@ public class AjouterSite {
 	private void handleChoose(ActionEvent event) {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Open File");
-		fileChooser.showOpenDialog(null); // you could pass a stage
-		File file = fileChooser.getSelectedFile();												// reference here if you
+		fileChooser.showOpenDialog(null); 
+		File file = fileChooser.getSelectedFile();
 
 
 		if (file != null) {
-			setCheminImageSite(file.getAbsolutePath());
-		}// do something interesting with the file.
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			setCheminImageSite(adresse);
+		}
 
 	}
 

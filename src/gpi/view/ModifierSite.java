@@ -98,9 +98,6 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handleOk() {
-		// a voir pour la suite
-		// if (isInputValid()) {
-		// site.setNomSte(NameSiteField.getText());
 		SiteDAO siteDAO=new SiteDAO();
 		setNomSite(NameSiteField.getText());
 		try {
@@ -122,25 +119,6 @@ public class ModifierSite {
 		dialogStage.close();
 	}
 
-	// a voir pour la suite
-	// private boolean isInputValid() {
-	// String errorMessage = "";
-	//
-	// if (NameSiteField.getText() == null
-	// || NameSiteField.getText().length() == 0) {
-	// errorMessage += "Nom de site invalide\n";
-	// }
-	//
-	// if (errorMessage.length() == 0) {
-	// return true;
-	// } else {
-	// // Show the error message
-	// Dialogs.showErrorDialog(dialogStage, errorMessage,
-	// "Veuillez corriger le champ", "Champ invalide");
-	// return false;
-	// }
-	// }
-
 	/**
 	 * Cette methode permet de faire apparaitre un Filechooser lorsqu'on clique
 	 * sur "choisir l'image"
@@ -157,7 +135,10 @@ public class ModifierSite {
 
 
 		if (file != null) {
-			setCheminImageSite(file.getAbsolutePath());
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			this.setCheminImageSite(adresse);
 		}
 
 	}

@@ -115,7 +115,10 @@ public class AjouterType {
 
 
 		if (file != null) {
-			this.setCheminImageType(file.getAbsolutePath());
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			this.setCheminImageType(adresse);
 		}
 
 	}
