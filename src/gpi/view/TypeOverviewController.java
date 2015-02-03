@@ -183,17 +183,19 @@ public class TypeOverviewController {
 				ligne=ligne+1;
 				colonne=0;
 			}
+			gp_type.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
+			//gp_type.getRowConstraints().add(new RowConstraints(hauteurCellule));
 			this.gp_type.add(bp_type, colonne, ligne);
 			colonne=colonne+1;
 		}
-		for(int i=0;i<4;i++)
+		/*for(int i=0;i<4;i++)
 		{
 			gp_type.getColumnConstraints().add(new ColumnConstraints(largeurCellule));
 		}
 		for(int i=0;i<getNbLigne(types);i++)
 		{
 			gp_type.getRowConstraints().add(new RowConstraints(hauteurCellule));
-		}
+		}*/
 	}
 	
 	/**

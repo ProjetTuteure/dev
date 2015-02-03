@@ -20,11 +20,11 @@ public class FactureDAO {
 	public FactureDAO(){}
 	
 	public int ajouterFacture(Facture facture) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO FACTURE(numFacture,dateFacture,montantFacture,idRevendeur) VALUES (?,?,?,?);");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("INSERT INTO FACTURE(numFacture,dateFacture,montantFacture,idRevendeur) VALUES (?,?,?,?);");
 			prep.setString(1, facture.getNumFacture());
 			prep.setString(2, facture.getDateFacture().toString());
 			prep.setFloat(3, facture.getMontantFacture().get());
@@ -36,7 +36,9 @@ public class FactureDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -46,11 +48,11 @@ public class FactureDAO {
 	}
 	
 	public int modifierFacture(Facture facture) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE FACTURE SET numFacture=?, dateFacture=?, montantFacture=? , idRevendeur=? WHERE idFacture=? ;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("UPDATE FACTURE SET numFacture=?, dateFacture=?, montantFacture=? , idRevendeur=? WHERE idFacture=? ;");
 			prep.setString(1, facture.getNumFacture());
 			prep.setString(2, facture.getDateFacture().toString());
 			prep.setFloat(3, facture.getMontantFacture().get());
@@ -63,7 +65,9 @@ public class FactureDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,11 +77,11 @@ public class FactureDAO {
 	}
 	
 	public int supprimerFacture(Facture facture) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM FACTURE WHERE idFacture=?;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("DELETE FROM FACTURE WHERE idFacture=?;");
 			
 			prep.setInt(1, facture.getIdFacture().getValue());
 			
@@ -87,7 +91,9 @@ public class FactureDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,16 +103,16 @@ public class FactureDAO {
 	}
 	
 	public Facture recupererFactureParId(int idFacture) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		ResultSet resultat;
 		LocalDate dateFacture;
 		String numFacture;
 		float montantFacture;
 		int idRevendeur;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
+			connexion=MaConnexion.getInstance().getConnexion();
 			RevendeurDAO revendeurDAO=new RevendeurDAO();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE WHERE idFacture=?;");
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM FACTURE WHERE idFacture=?;");
 			
 			prep.setInt(1, idFacture);
 			
@@ -122,7 +128,9 @@ public class FactureDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -133,7 +141,7 @@ public class FactureDAO {
 	
 	
 	public List<Facture> recupererAllFacture() throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		RevendeurDAO revendeurDAO=new RevendeurDAO();
 		List<Facture> listFacture=new ArrayList<Facture>();
 		ResultSet resultat;
@@ -144,8 +152,8 @@ public class FactureDAO {
 		int idRevendeur;
 		Facture facture;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM FACTURE;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM FACTURE;");
 			
 			
 			resultat=prep.executeQuery();
@@ -163,7 +171,9 @@ public class FactureDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -66,7 +66,7 @@ public class AjouterType {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			Type typeAAjoute=new Type(0,nomTypeField.getText(),this.getCheminImageType());
 			try {
@@ -90,8 +90,8 @@ public class AjouterType {
 			new Popup("La longueur du nom du type saisi doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
 			return false;
 		}
-		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
-			new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
+			new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
 			return false;
 		}
 		return true;
@@ -115,7 +115,10 @@ public class AjouterType {
 
 
 		if (file != null) {
-			this.setCheminImageType(file.getAbsolutePath());
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			this.setCheminImageType(adresse);
 		}
 
 	}

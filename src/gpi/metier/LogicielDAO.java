@@ -18,11 +18,11 @@ public class LogicielDAO {
 	public LogicielDAO(){}
 	
 	public int ajouterLogiciel(Logiciel logiciel) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("INSERT INTO LOGICIEL(nomLogiciel,versionLogiciel,dateExpirationLogiciel,idFacture) VALUES (?,?,?,?);");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("INSERT INTO LOGICIEL(nomLogiciel,versionLogiciel,dateExpirationLogiciel,idFacture) VALUES (?,?,?,?);");
 			prep.setString(1, logiciel.getNomLogiciel());
 			prep.setString(2, logiciel.getVersionLogiciel());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
@@ -34,7 +34,9 @@ public class LogicielDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -45,11 +47,11 @@ public class LogicielDAO {
 	
 	
 	public int modifierLogiciel(Logiciel logiciel) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("UPDATE LOGICIEL SET nomLogiciel=?, versionLogiciel=?, dateExpirationLogiciel=?, idFacture=? WHERE idLogiciel=? ;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("UPDATE LOGICIEL SET nomLogiciel=?, versionLogiciel=?, dateExpirationLogiciel=?, idFacture=? WHERE idLogiciel=? ;");
 			prep.setString(1, logiciel.getNomLogiciel());
 			prep.setString(2, logiciel.getVersionLogiciel());
 			prep.setString(3, logiciel.getDateExpirationLogiciel().toString());
@@ -62,7 +64,9 @@ public class LogicielDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -72,11 +76,11 @@ public class LogicielDAO {
 	}
 	
 	public int supprimerLogiciel(Logiciel logiciel) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		int resultat;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("DELETE FROM LOGICIEL WHERE idLogiciel=?;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("DELETE FROM LOGICIEL WHERE idLogiciel=?;");
 			
 			prep.setInt(1, logiciel.getIdLogiciel());
 			
@@ -86,7 +90,9 @@ public class LogicielDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -96,15 +102,15 @@ public class LogicielDAO {
 	}
 	
 	public Logiciel recupererLogicielParId(int idLogiciel) throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		ResultSet resultat;
 		LocalDate dateExpirationLogiciel;
 		String nomLogiciel,versionLogiciel;
 		int idFacture;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
+			connexion=MaConnexion.getInstance().getConnexion();
 			FactureDAO factureDAO=new FactureDAO();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM LOGICIEL WHERE idLogiciel=?;");
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM LOGICIEL WHERE idLogiciel=?;");
 		
 			prep.setInt(1, idLogiciel);
 			
@@ -120,7 +126,9 @@ public class LogicielDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -130,7 +138,7 @@ public class LogicielDAO {
 	}
 		
 	public List<Logiciel> recupererAllLogiciel() throws ConnexionBDException{
-		Connection connection=null;
+		Connection connexion=null;
 		FactureDAO factureDAO=new FactureDAO();
 		List<Logiciel> listLogiciel=new ArrayList<Logiciel>();
 		ResultSet resultat;
@@ -139,8 +147,8 @@ public class LogicielDAO {
 		int idFacture,idLogiciel;
 		Logiciel logiciel;
 		try{
-			connection=MaConnexion.getInstance().getConnexion();
-			PreparedStatement prep = connection.prepareStatement("SELECT * FROM LOGICIEL;");
+			connexion=MaConnexion.getInstance().getConnexion();
+			PreparedStatement prep = connexion.prepareStatement("SELECT * FROM LOGICIEL;");
 			
 			
 			resultat=prep.executeQuery();
@@ -158,7 +166,9 @@ public class LogicielDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				connection.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

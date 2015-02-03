@@ -29,7 +29,9 @@ public class estIntervenueDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -53,7 +55,9 @@ public class estIntervenueDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

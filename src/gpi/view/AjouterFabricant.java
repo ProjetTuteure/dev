@@ -65,7 +65,7 @@ public class AjouterFabricant {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			Fabricant fabricantAAjouter=new Fabricant(0,nomFabricantField.getText(),telFabricantField.getText(),mobileFabricantField.getText(),faxFabricantField.getText(),emailFabricantField.getText(),adresseFabricantField.getText());
 			try {

@@ -79,7 +79,7 @@ public class SiteOverviewController {
 	 * Ajoute les villes dans le gridPane
 	 * 
 	 * @param sites
-	 *            la liste de sites � ajouter dans le gridPane
+	 * la liste de sites a ajouter dans le gridPane
 	 */
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {

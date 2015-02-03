@@ -89,7 +89,7 @@ public class ModifierType {
 	 */
 	@FXML
 	private void handleOk() {
-		if(controlerSaisies()==true)
+		if(controlerSaisies())
 		{
 			okClicked = true;
 			Type typeAModifie=new Type(this.getIdType(),nomTypeField.getText(),this.getCheminImageType());
@@ -114,8 +114,8 @@ public class ModifierType {
 			new Popup("La longueur du nom du type doit être inférieur à "+Constante.LONGUEUR_NOM_TYPE+" caractères");
 			return false;
 		}
-		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE_TYPE){
-			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE_TYPE+" caractères");
+		if(this.getCheminImageType().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
+			new Popup("La longueur du chemin doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
 			return false;
 		}
 		return true;
@@ -146,7 +146,10 @@ public class ModifierType {
 
 
 		if (file != null) {
-			this.setCheminImageType(file.getAbsolutePath());
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			this.setCheminImageType(adresse);
 		}
 
 	}

@@ -12,13 +12,13 @@ import java.util.List;
  * Created by Julien on 14/01/2015.
  */
 public class FabricantDAO {
-    private Connection connection;
+    private Connection connexion;
 
     public int ajouterFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try {
-            connection= MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO FABRICANT (nomFabricant,telFabricant,mobileFabricant,faxFabricant,emailFabricant,adresseFabricant) VALUES(?,?,?,?,?,?)");
+            connexion= MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO FABRICANT (nomFabricant,telFabricant,mobileFabricant,faxFabricant,emailFabricant,adresseFabricant) VALUES(?,?,?,?,?,?)");
             preparedStatement.setString(1,fabricant.getNomFabricantString());
             preparedStatement.setString(2,fabricant.getTelFabricant().getValue());
             preparedStatement.setString(3,fabricant.getMobileFabricant().getValue());
@@ -31,7 +31,7 @@ public class FabricantDAO {
             e.printStackTrace();
         } finally {
             try {
-                connection.close();
+                connexion.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -42,8 +42,8 @@ public class FabricantDAO {
     public int modifierFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try {
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement =connection.prepareStatement("UPDATE FABRICANT SET nomFabricant=?,telFabricant=?,mobileFabricant=?,faxFabricant=?,emailFabricant=?,adresseFabricant=? WHERE idFabricant=?");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement =connexion.prepareStatement("UPDATE FABRICANT SET nomFabricant=?,telFabricant=?,mobileFabricant=?,faxFabricant=?,emailFabricant=?,adresseFabricant=? WHERE idFabricant=?");
             preparedStatement.setString(1,fabricant.getNomFabricantString());
             preparedStatement.setString(2,fabricant.getTelFabricant().getValue());
             preparedStatement.setString(3,fabricant.getMobileFabricant().getValue());
@@ -57,7 +57,9 @@ public class FabricantDAO {
             e.printStackTrace();
         } finally {
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -68,8 +70,8 @@ public class FabricantDAO {
     public int supprimerFabricant(Fabricant fabricant) throws ConnexionBDException{
         int nombreLigneAffectee=0;
         try{
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM FABRICANT WHERE idFabricant=?;");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("DELETE FROM FABRICANT WHERE idFabricant=?;");
 
             preparedStatement.setInt(1, fabricant.getIdFabricant().getValue());
 
@@ -78,7 +80,9 @@ public class FabricantDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+                if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -90,8 +94,8 @@ public class FabricantDAO {
         List<Fabricant> fabricantList= new ArrayList<Fabricant>();
         ResultSet resultat;
         try{
-            connection= MaConnexion.getInstance().getConnexion();
-            Statement statement = connection.createStatement();
+            connexion= MaConnexion.getInstance().getConnexion();
+            Statement statement = connexion.createStatement();
             resultat=statement.executeQuery("SELECT * FROM FABRICANT");
             while(resultat.next()){
                 fabricantList.add(new Fabricant(resultat.getInt("idFabricant"),resultat.getString("nomFabricant"),resultat.getString("telFabricant"),resultat.getString("mobileFabricant"),resultat.getString("faxFabricant"),resultat.getString("emailFabricant"),resultat.getString("adresseFabricant")));
@@ -100,7 +104,9 @@ public class FabricantDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -112,8 +118,8 @@ public class FabricantDAO {
         ResultSet resultat;
         Fabricant fabricant=null;
         try{
-            connection=MaConnexion.getInstance().getConnexion();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM FABRICANT WHERE idFabricant=?;");
+            connexion=MaConnexion.getInstance().getConnexion();
+            PreparedStatement preparedStatement = connexion.prepareStatement("SELECT * FROM FABRICANT WHERE idFabricant=?;");
             preparedStatement.setInt(1, idFabricant);
             resultat=preparedStatement.executeQuery();
             resultat.next();
@@ -122,7 +128,9 @@ public class FabricantDAO {
             e.printStackTrace();
         }finally{
             try {
-                connection.close();
+            	if (connexion != null){
+					connexion.close();
+				}
             } catch (SQLException e) {
                 e.printStackTrace();
             }

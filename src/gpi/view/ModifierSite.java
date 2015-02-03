@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.Constante;
 import utils.Popup;
 
 import java.io.File;
@@ -98,19 +99,34 @@ public class ModifierSite {
 	 */
 	@FXML
 	private void handleOk() {
-		// a voir pour la suite
-		// if (isInputValid()) {
-		// site.setNomSte(NameSiteField.getText());
-		SiteDAO siteDAO=new SiteDAO();
-		setNomSite(NameSiteField.getText());
-		try {
-			siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
-		} catch (ConnexionBDException e) {
-			new Popup(e.getMessage());
+		if(controlerSaisies()){
+			SiteDAO siteDAO=new SiteDAO();
+			setNomSite(NameSiteField.getText());
+			try {
+				siteDAO.modifierSite(new Site(getIdSite(),getNomSite(),getCheminImageSite()));
+			} catch (ConnexionBDException e) {
+				new Popup(e.getMessage());
+			}
+			okClicked = true;
+			dialogStage.close();
 		}
-		okClicked = true;
-		dialogStage.close();
-		// }
+		
+	}
+
+	private boolean controlerSaisies() {
+		if(NameSiteField.getText().isEmpty()){
+			new Popup("Le champ \"Nom du site\" doit être saisi");
+			return false;
+		}
+		if(NameSiteField.getText().length()>Constante.LONGUEUR_NOM_SITE){
+			new Popup("La longueur du nom du site saisi doit être inférieur à "+Constante.LONGUEUR_NOM_SITE+" caractères");
+			return false;
+		}	
+		if(getCheminImageSite().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
+			new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -121,25 +137,6 @@ public class ModifierSite {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
-	// a voir pour la suite
-	// private boolean isInputValid() {
-	// String errorMessage = "";
-	//
-	// if (NameSiteField.getText() == null
-	// || NameSiteField.getText().length() == 0) {
-	// errorMessage += "Nom de site invalide\n";
-	// }
-	//
-	// if (errorMessage.length() == 0) {
-	// return true;
-	// } else {
-	// // Show the error message
-	// Dialogs.showErrorDialog(dialogStage, errorMessage,
-	// "Veuillez corriger le champ", "Champ invalide");
-	// return false;
-	// }
-	// }
 
 	/**
 	 * Cette methode permet de faire apparaitre un Filechooser lorsqu'on clique
@@ -157,7 +154,10 @@ public class ModifierSite {
 
 
 		if (file != null) {
-			setCheminImageSite(file.getAbsolutePath());
+			String adresse=file.getAbsolutePath();
+			adresse=adresse.replace("\\", "/");
+			adresse="file:///"+adresse;
+			this.setCheminImageSite(adresse);
 		}
 
 	}
