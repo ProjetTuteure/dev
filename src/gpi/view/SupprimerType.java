@@ -13,9 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import utils.Popup;
 
-/**
- * Created by Kevin
- */
 
 public class SupprimerType {
 	@FXML
@@ -75,14 +72,13 @@ public class SupprimerType {
 	@FXML
 	private void handleOk() {
 		try {
-			System.out.println();
 			typeDAO.supprimerType(new Type(listIdType.get(comboboxtype.getSelectionModel().getSelectedIndex()),"",""));
+			new Popup("Type "+comboboxtype.getValue()+" supprimer !");
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
 		okClicked = true;
 		dialogStage.close();
-
 	}
 
 	/**
@@ -93,5 +89,4 @@ public class SupprimerType {
 	private void handleCancel() {
 		dialogStage.close();
 	}
-
 }

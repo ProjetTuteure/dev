@@ -13,9 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import utils.Popup;
 
-/**
- * Created by Kevin
- */
 
 public class SupprimerSite {
 	@FXML
@@ -80,6 +77,7 @@ public class SupprimerSite {
 		int id=listSiteId.get(selected);
 		try {
 			siteDAO.supprimerSite(new Site(id,null,null));
+			new Popup("Site "+comboboxSiteSupp.getValue()+" supprimer !");
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}

@@ -13,9 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-/**
- * Created by Kevin
- */
 
 public class SupprimerFacture {
 	@FXML
@@ -24,7 +21,7 @@ public class SupprimerFacture {
 	private boolean okClicked = false;
 
 	@FXML
-	private ComboBox<String> ComboboxFacture;
+	private ComboBox<String> comboboxFacture;
 
 
 	private ObservableList<String> listFacture;
@@ -46,7 +43,7 @@ public class SupprimerFacture {
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		ComboboxFacture.setItems(listFacture);
+		comboboxFacture.setItems(listFacture);
 	}
 
 	/**
@@ -74,12 +71,12 @@ public class SupprimerFacture {
 	 */
 	@FXML
 	private void handleOk() {
-
 		FactureDAO factureDAO=new FactureDAO();
-		int selected=ComboboxFacture.getSelectionModel().getSelectedIndex();
+		int selected=comboboxFacture.getSelectionModel().getSelectedIndex();
 		int id=listFactureId.get(selected);
 		try {
 			factureDAO.supprimerFacture(new Facture(id,null,null,0,null));
+			new Popup("Facture "+comboboxFacture.getValue()+" supprimer !");
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
