@@ -36,7 +36,9 @@ public class ComposantDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -83,7 +85,9 @@ public class ComposantDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -113,7 +117,9 @@ public class ComposantDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -141,7 +147,9 @@ public class ComposantDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
@@ -167,14 +175,15 @@ public class ComposantDAO {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally
 		{
 			try
 			{
-				connexion.close();
+				if (connexion != null){
+					connexion.close();
+				}
 			}
 			catch(SQLException se)
 			{
