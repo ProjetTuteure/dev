@@ -179,6 +179,7 @@ public class ModifierComposant {
 			comboboxfabr.setPromptText(selected2.getFabricantComposant()
 					.getNomFabricant().getValue());
 		} catch (NullPointerException e) {
+			//tripotasse
 		}
 	}
 
