@@ -94,7 +94,7 @@ public class AjouterSite {
 			new Popup("La longueur du nom du site saisi doit être inférieur à "+Constante.LONGUEUR_NOM_SITE+" caractères");
 			return false;
 		}	
-		if(getCheminImageSite()==null){
+		if(getCheminImageSite()!=null){
 			if(getCheminImageSite().length()>Constante.LONGUEUR_CHEMIN_IMAGE){
 				new Popup("La longueur du chemin saisi doit être inférieur à "+Constante.LONGUEUR_CHEMIN_IMAGE+" caractères");
 				return false;
