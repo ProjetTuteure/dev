@@ -12,5 +12,7 @@ BEGIN
 		DELETE FROM MATERIEL WHERE idMateriel=@idMateriel
 		FETCH CursorMateriel INTO @idMateriel
 	END
+	CLOSE CursorMateriel
+	DEALLOCATE CursorMateriel
 	DELETE FROM SITE WHERE idSite=@idSite
 END
