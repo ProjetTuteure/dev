@@ -8,6 +8,7 @@ import gpi.bd.Donnee;
 import gpi.metier.*;
 import gpi.view.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
@@ -48,11 +49,21 @@ public class MainApp extends Application {
 		this.primaryStage.setHeight(605);
 		this.primaryStage.setResizable(false);
 		initRootLayout();
-		initTabOverview(this.SiteOverview, "Site");
-		initTabOverview(this.AncienneteOverview, "Anciennete");
-		initTabOverview(this.EtatOverview, "Etat");
-		initTabOverview(this.AvanceOverview, "Avance");
-		initTabOverview(this.ParametreOverview, "Parametre");
+		Thread threadSite = new Thread(new OngletLoader(this.rootLayout,this.SiteOverview,"Site"));
+		Thread threadAnciennete = new Thread(new OngletLoader(this.rootLayout,this.AncienneteOverview,"Anciennete"));
+		Thread threadEtat = new Thread(new OngletLoader(this.rootLayout,this.EtatOverview,"Etat"));
+		Thread threadAvance = new Thread(new OngletLoader(this.rootLayout,this.AvanceOverview,"Avance"));
+		Thread threadParametre = new Thread(new OngletLoader(this.rootLayout,this.ParametreOverview,"Parametre"));
+		Platform.runLater(threadSite);
+		Platform.runLater(threadAnciennete);
+		Platform.runLater(threadEtat);
+		Platform.runLater(threadAvance);
+		Platform.runLater(threadParametre);
+		//initTabOverview(this.SiteOverview, "Site");
+		//initTabOverview(this.AncienneteOverview, "Anciennete");
+		//initTabOverview(this.EtatOverview, "Etat");
+		//initTabOverview(this.AvanceOverview, "Avance");
+		//initTabOverview(this.ParametreOverview, "Parametre");
 	}
 
 	public void initTabOverview(Tab tab, String nom) {
