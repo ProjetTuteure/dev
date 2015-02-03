@@ -72,7 +72,6 @@ public class SiteOverviewController {
 	 */
 	@FXML
 	private void initialize() {
-		MainApp.donnee = new Donnee();
 		this.ajouterVilleGridPane(this.sites);
 	}
 
