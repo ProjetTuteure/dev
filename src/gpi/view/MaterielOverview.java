@@ -2,7 +2,6 @@ package gpi.view;
 
 import utils.Popup;
 import gpi.MainApp;
-
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Materiel;
 import gpi.metier.MaterielDAO;
@@ -111,7 +110,42 @@ public class MaterielOverview {
 	 */
 	@FXML
 	public void ajouterMaterielGridPane(ObservableList<Materiel> materiels) {
-		int ligne=0;
+		int nbType,largeurCellule;
+		nbType=materiels.size();
+		largeurCellule=getLargeurCellule(materiels);
+		for(int i=0;i<getNbLigne(materiels);i++)
+		{
+			for(int j=0;j<4;j++)
+			{
+				if(i*4+j<nbType)
+				{
+					Materiel materiel=materiels.get(i*4+j);
+					BorderPane bp=new BorderPane();
+					Label label=new Label(materiels.get(i*4+j).getNomMateriel().getValue());
+					label.setFont(new Font("Arial",20));
+					ImageView image=new ImageView(materiels.get(i*4+j).getTypeMateriel().getCheminImageType().getValue());
+					image.setFitHeight(100);
+					image.setFitWidth(100);
+					BorderPane.setAlignment(label,Pos.CENTER);
+					BorderPane.setAlignment(image,Pos.CENTER);
+					bp.setCenter(image);
+					bp.setBottom(label);
+					Button button=new Button();
+					button.setGraphic(bp);
+					button.setMinWidth(largeurCellule);
+					button.setMaxWidth(largeurCellule);
+					button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+						@Override
+						public void handle(MouseEvent event) {
+							MainApp.setCritere(materiel);
+							MainApp.changerTab("DetailMachine");
+						}
+					});
+					this.gp_materiel.add(button,j,i);
+				}
+			}
+		}
+		/*int ligne=0;
 		int colonne=0; 
 		int hauteurCellule=150;
 		int largeurCellule=getLargeurCellule(materiels);
@@ -154,7 +188,7 @@ public class MaterielOverview {
 		for(int i=0;i<getNbLigne(materiels);i++)
 		{
 			gp_materiel.getRowConstraints().add(new RowConstraints(hauteurCellule));
-		}
+		}*/
 	}
 	
 	/**
