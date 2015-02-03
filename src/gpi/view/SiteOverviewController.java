@@ -120,31 +120,6 @@ public class SiteOverviewController {
 				}
 			}
 		}
-		/*setColumn();
-		setRow();
-		for (int i = 0; i < getNbLigne(); i++) {
-			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
-				Site site = sites.get((i * 4) + j);
-				BorderPane tempo = new BorderPane();
-				ImageView image = new ImageView(site.getCheminImageSite());
-				Label label = new Label(site.getNomSiteString());
-				label.setId("" + site.getIdSite());
-				image.setFitHeight(75);
-				image.setFitWidth(75);
-				tempo.setCenter(image);
-				tempo.setBottom(label);
-				tempo.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-					@Override
-					public void handle(MouseEvent arg0) {
-						MainApp.setCritere(site);
-						MainApp.changerTab("Type");
-					}
-				});
-				gp_site.add(tempo, j, i);
-			}
-		}*/
-
 	}
 	
 	public int getLargeurCellule(ObservableList<Site> sites)
@@ -162,30 +137,6 @@ public class SiteOverviewController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 	}
-
-	/**
-	 * Permet de setter le nombre de lignes n�cessaires pour afficher toutes
-	 * les villes dans le gridPane
-	 */
-	/*private void setRow() {
-		for (int i = 0; i < getNbLigne(); i++) {
-			RowConstraints row = new RowConstraints();
-			row.setPrefHeight(150);
-			gp_site.getRowConstraints().add(row);
-		}
-	}*/
-
-	/**
-	 * Permet de setter le nombre de colonnes n�cessaires pour afficher toutes
-	 * les villes dans le gridPane
-	 */
-	/*public void setColumn() {
-		for (int i = 0; i < 4; i++) {
-			ColumnConstraints col = new ColumnConstraints();
-			col.setPrefWidth(200);
-			gp_site.getColumnConstraints().add(col);
-		}
-	}*/
 
 	/**
 	 * Retourne le nombre de lignes en fonction du nombre de site
