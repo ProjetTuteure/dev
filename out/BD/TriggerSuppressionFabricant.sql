@@ -1,4 +1,4 @@
-CREATE TRIGGER supprimerFabricant on FABRICANT
+CREATE TRIGGER [dbo].[supprimerFabricant] on [dbo].[FABRICANT]
 INSTEAD OF DELETE
 AS BEGIN
 	declare @idFabricant int;
@@ -25,7 +25,7 @@ AS BEGIN
 		DELETE FROM COMPOSANT WHERE idComposant=@idComposant
 		FETCH CursorComposant INTO @idComposant
 	END
-	CLOSE MyCursor
-	DEALLOCATE MyCursor
+	CLOSE CursorComposant
+	DEALLOCATE CursorComposant
 	DELETE FABRICANT WHERE idFabricant=@idFabricant
 END

@@ -175,6 +175,7 @@ public class TypeOverviewController {
 					Button button=new Button();
 					button.setGraphic(bp);
 					button.setMinWidth(largeurCellule);
+					button.setMaxWidth(largeurCellule);
 					button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 						@Override
 						public void handle(MouseEvent event) {

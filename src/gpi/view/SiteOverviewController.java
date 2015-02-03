@@ -6,17 +6,23 @@ import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Site;
 import gpi.metier.SiteDAO;
+import gpi.metier.Type;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Font;
 
 public class SiteOverviewController {
 	@FXML
@@ -24,6 +30,9 @@ public class SiteOverviewController {
 
 	int onglet;
 
+	@FXML
+	private ScrollPane sp_site;
+	
 	@FXML
 	private ImageView image_site;
 
@@ -48,14 +57,6 @@ public class SiteOverviewController {
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
-		this.gp_site = new GridPane();
-		if (sites.size() > 0) {
-			for (int i = 0; i < sites.size() / 4 + 1; i++) {
-				RowConstraints row = new RowConstraints();
-				row.setPercentHeight(100 / (sites.size() / 4));
-				gp_site.getRowConstraints().add(row);
-			}
-		}
 	}
 
 	/**
@@ -72,6 +73,7 @@ public class SiteOverviewController {
 	 */
 	@FXML
 	private void initialize() {
+		this.gp_site.setGridLinesVisible(false);
 		this.ajouterVilleGridPane(this.sites);
 	}
 
@@ -83,7 +85,42 @@ public class SiteOverviewController {
 	 */
 	@FXML
 	public void ajouterVilleGridPane(ObservableList<Site> sites) {
-		setColumn();
+		int nbType,largeurCellule;
+		nbType=sites.size();
+		largeurCellule=getLargeurCellule(sites);
+		for(int i=0;i<getNbLigne();i++)
+		{
+			for(int j=0;j<4;j++)
+			{
+				if(i*4+j<nbType)
+				{
+					Site site=sites.get(i*4+j);
+					BorderPane bp=new BorderPane();
+					Label label=new Label(sites.get(i*4+j).getNomSiteProperty().getValue());
+					label.setFont(new Font("Arial",20));
+					ImageView image=new ImageView(sites.get(i*4+j).getCheminImageSiteProperty().getValue());
+					image.setFitHeight(100);
+					image.setFitWidth(100);
+					BorderPane.setAlignment(label,Pos.CENTER);
+					BorderPane.setAlignment(image,Pos.CENTER);
+					bp.setCenter(image);
+					bp.setBottom(label);
+					Button button=new Button();
+					button.setGraphic(bp);
+					button.setMinWidth(largeurCellule);
+					button.setMaxWidth(largeurCellule);
+					button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+						@Override
+						public void handle(MouseEvent event) {
+							MainApp.setCritere(site);
+							MainApp.changerTab("Type");
+						}
+					});
+					this.gp_site.add(button,j,i);
+				}
+			}
+		}
+		/*setColumn();
 		setRow();
 		for (int i = 0; i < getNbLigne(); i++) {
 			for (int j = 0; j < 4 && (i * 4) + j < this.getNbSite(); j++) {
@@ -106,8 +143,20 @@ public class SiteOverviewController {
 				});
 				gp_site.add(tempo, j, i);
 			}
-		}
+		}*/
 
+	}
+	
+	public int getLargeurCellule(ObservableList<Site> sites)
+	{
+		if(sites.size()<9)
+		{
+			return 200;
+		}
+		else
+		{
+			 return 196;
+		}
 	}
 
 	public void setMainApp(MainApp mainApp) {
@@ -118,25 +167,25 @@ public class SiteOverviewController {
 	 * Permet de setter le nombre de lignes n�cessaires pour afficher toutes
 	 * les villes dans le gridPane
 	 */
-	private void setRow() {
+	/*private void setRow() {
 		for (int i = 0; i < getNbLigne(); i++) {
 			RowConstraints row = new RowConstraints();
 			row.setPrefHeight(150);
 			gp_site.getRowConstraints().add(row);
 		}
-	}
+	}*/
 
 	/**
 	 * Permet de setter le nombre de colonnes n�cessaires pour afficher toutes
 	 * les villes dans le gridPane
 	 */
-	public void setColumn() {
+	/*public void setColumn() {
 		for (int i = 0; i < 4; i++) {
 			ColumnConstraints col = new ColumnConstraints();
 			col.setPrefWidth(200);
 			gp_site.getColumnConstraints().add(col);
 		}
-	}
+	}*/
 
 	/**
 	 * Retourne le nombre de lignes en fonction du nombre de site
