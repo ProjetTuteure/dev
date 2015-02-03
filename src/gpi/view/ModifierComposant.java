@@ -118,6 +118,7 @@ public class ModifierComposant {
 				composant.setFabricantComposant(fabricant);
 
 				composantDAO.modifierComposant(composant);
+				new Popup("Composant "+composant.getNomComposant()+" modifié !");
 			} catch (ConnexionBDException e) {
 				e.printStackTrace();
 			}
