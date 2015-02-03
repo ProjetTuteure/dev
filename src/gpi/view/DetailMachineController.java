@@ -237,20 +237,23 @@ public class DetailMachineController{
 		coutMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCoutMaintenanceString()));
 		descriptionMaintenance.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescriptionMaintenance()));
 		
-		listUtilisateur = FXCollections.observableArrayList();
 		try {
-			for(UtilisateursDetailsMachine utilisateursDetailsMachine : utiliseDAO.recupererUtilisateursParMachine(materiel.getIdMateriel().getValue())){
-				listUtilisateur.add(utilisateursDetailsMachine);
+			if(utiliseDAO.recupererUtilisateursParMachine(materiel.getIdMateriel().getValue())!=null){
+				listUtilisateur = FXCollections.observableArrayList();
+				for(UtilisateursDetailsMachine utilisateursDetailsMachine : utiliseDAO.recupererUtilisateursParMachine(materiel.getIdMateriel().getValue())){
+					listUtilisateur.add(utilisateursDetailsMachine);
+				}	
+				tableViewUtilisateurs.setItems(listUtilisateur);
+				nomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomUtilisateur()));
+				prenomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrenomUtilisateur()));
+				telUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelUtilisateur()));
+				debutUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateDebutUtilisation()));
+				finUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateFinUtilisation()));
 			}
 		} catch (ConnexionBDException e2) {
 			new Popup(e2.getMessage());
 		}
-		tableViewUtilisateurs.setItems(listUtilisateur);
-		nomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomUtilisateur()));
-		prenomUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrenomUtilisateur()));
-		telUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelUtilisateur()));
-		debutUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateDebutUtilisation()));
-		finUtilisateur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDateFinUtilisation()));
+		
 		
 		listLogiciel = FXCollections.observableArrayList();
 		try {

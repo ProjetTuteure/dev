@@ -144,17 +144,20 @@ public class UtiliseDAO {
 			UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 			Utilisateur utilisateur;
 			String dateDebut,dateFin;
-			rs.next();
-			utilisateur=utilisateurDAO.recupererUtilisateurParId(rs.getInt("idUtilisateur"));
-			dateDebut=rs.getString("dateUtilise");
-			while (rs.next()) {
-				dateFin=rs.getString("dateUtilise");
-				listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
+			if(rs.next()){
 				utilisateur=utilisateurDAO.recupererUtilisateurParId(rs.getInt("idUtilisateur"));
 				dateDebut=rs.getString("dateUtilise");
+				while (rs.next()) {
+					dateFin=rs.getString("dateUtilise");
+					listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
+					utilisateur=utilisateurDAO.recupererUtilisateurParId(rs.getInt("idUtilisateur"));
+					dateDebut=rs.getString("dateUtilise");
+				}
+				dateFin="";
+				listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
+			}else{
+				return null;
 			}
-			dateFin="";
-			listeUtilisateur.add(new UtilisateursDetailsMachine(utilisateur.getNomUtilisateur().getValue(),utilisateur.getPrenomUtilisateur().getValue(),utilisateur.getTelUtilisateur().getValue(),dateDebut,dateFin));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
