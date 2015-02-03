@@ -1,11 +1,8 @@
 package gpi.view;
 
-import gpi.bd.Donnee;
 import gpi.exception.ConnexionBDException;
 import gpi.metier.Fabricant;
 import gpi.metier.FabricantDAO;
-import gpi.metier.Site;
-import gpi.metier.SiteDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,10 +12,6 @@ import utils.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Kevin
- */
 
 public class SupprimerFabricant {
 	@FXML
@@ -80,6 +73,7 @@ public class SupprimerFabricant {
 	private void handleOk() {
 		try {
 			fabricantDAO.supprimerFabricant(new Fabricant(listIdFabricant.get(comboboxfabr.getSelectionModel().getSelectedIndex()),null, null, null, null, null,null));
+			new Popup("Fabricant "+comboboxfabr.getValue()+" supprimer !");
 		} catch (ConnexionBDException e) {
 			new Popup(e.getMessage());
 		}
